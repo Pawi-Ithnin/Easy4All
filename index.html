@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Easy4All 1.0</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    /* Sembunyikan bahagian Sign Language to Text secara lalai */
+    #signLanguageSection {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+    #output {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+    canvas {
+      border: 1px solid black;
+    }
+    /* Gaya untuk gambar bahasa isyarat */
+    #signImage {
+      display: none; /* Sembunyikan gambar secara lalai */
+      width: 300px;
+      height: auto;
+      border: 2px solid black;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Header of the Page -->
+  <header>
+    <h1>Easy4All 1.0</h1>
+  </header>
+
+  <!-- Main Content Section -->
+  <main>
+    <section id="outputContainer">
+      <p></p>
+    </section>
+
+    <!-- Status Section -->
+    <section id="statusContainer">
+      <div id="status">Status akan dipaparkan di sini</div>
+      <button onclick="startRecognition()">Mulakan Pengenalan Suara</button>
+      <button onclick="toggleSignLanguage()">Tunjukkan Sign Language to Text</button>
+    </section>
+
+    <!-- Sign Language to Text Section -->
+    <section id="signLanguageSection">
+      <h1>Sign Language to Text</h1>
+      <p id="output">Detected Text: None</p>
+      <video id="video" autoplay playsinline style="display: none;"></video>
+      <canvas id="canvas"></canvas>
+      
+      <!-- Tambah Gambar Bahasa Isyarat -->
+      <img id="signImage" src="isyarat.jpg" alt="Bahasa Isyarat">
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <p></p>
+  </footer>
+
+  <!-- Load the necessary external libraries for MediaPipe -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
+
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
+  <script src="app.js"></script>
+
+  <script>
+    function toggleSignLanguage() {
+      let section = document.getElementById("signLanguageSection");
+      let image = document.getElementById("signImage");
+
+      // Toggle bahagian Sign Language
+      if (section.style.display === "none") {
+        section.style.display = "block";
+        image.style.display = "block"; // Paparkan gambar
+      } else {
+        section.style.display = "none";
+        image.style.display = "none"; // Sembunyikan gambar
+      }
+    }
+  </script>
+
+</body>
+</html>
