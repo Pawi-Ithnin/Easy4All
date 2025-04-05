@@ -417,7 +417,138 @@ permaian: "https://i.ibb.co/rfFXR5tk/Permainan-47089a52105228079a54.jpg", // Per
 perlawananakhir: "https://i.ibb.co/LXVRM5Zh/Perlawanan-akhir-65b7ed77a9813664dab4.jpg", // PerlawananAkhir
 pertandingan: "https://i.ibb.co/ch89FJT7/Pertandingan-115a5b238d3fc606f9e2.jpg" , // Pertandingan
 memanah: "https://i.ibb.co/Wpp98NqP/Memanah-224b550d16e0d4347b78.jpg", // Memanah 
-  
+tempat: "https://i.ibb.co/DD0z0BfB/Tempat-39d65ef07f156f68e998-1.jpg", //Tempat
+asrama: "https://i.ibb.co/7tcpGPGf/Asrama-65db96ef2640639f5a5a-1.jpg" , // Asrama 
+surau: "https://i.ibb.co/1JmtKGZS/Surau-e0779f818583c7846344.jpg" , // Surau
+stadium: "https://i.ibb.co/0yBh18L9/Stadium-I-84964342dae94adf8ffd.jpg", // Stadium 
+restoran: "https://i.ibb.co/TMX2m6ZZ/Restoran-dc9126b5e180efd0f6e6.jpg", // Restoran
+lif: "https://i.ibb.co/rGHjZbTt/Lif-ea2087943301702498f5-1.jpg", // Lif
+kilang: "https://i.ibb.co/6ckBLmDv/Kilang-26db5b426667fe2944d0-1.jpg",// Kilang
+kampung: "https://i.ibb.co/TBQq0gfY/Kampung-0a0d99255650f9c93fd1-1.jpg" , // Kampung
+dwan: "https://i.ibb.co/tpWP8NPh/Dewan-1ff3a3fe38c16416c032-1.jpg", // Dewan 
+hotel: "https://i.ibb.co/jkPg3JBR/Hotel-ff4f747da332d15828cc-1.jpg", // Hotel
+bengkel: "https://i.ibb.co/HDSBBSwJ/Bengkel-bd2ad9acccf65e96aa6b-1.jpg", // Bengkel
+bolasepak: "https://i.ibb.co/RqFrXq5/Bola-sepak-bfb658fa247e21ed37a6-2.jpg", // Bola Sepak
+bolajaring: "https://i.ibb.co/93pkkZXv/Bola-jaring-551684fe82fd59720160-1.jpg", // Bola Jaring 
+angkatberat: "https://i.ibb.co/SwhSJ2KL/Angkat-berat-3d3d2e6d1a3a7d71a0e1-1.jpg", // Angkat Berat
+seri: "https://i.ibb.co/RpNJVZYb/Sukan-752622b9074af9e707e9.jpg", // Seri  
+sepaktarwa: "https://i.ibb.co/rrrgzb3/Sepak-takraw-fa4a60e6db8b26c24e6f.jpg", // Sepak Takra
+pertandingan: "https://i.ibb.co/MDV9CTWG/Pertandingan-115a5b238d3fc606f9e2-1.jpg", // pertandigan
+perlawanan: "https://i.ibb.co/WvHMQH8S/Perlawanan-akhir-65b7ed77a9813664dab4-1.jpg", // Perlawanan
+ofsaid: "https://i.ibb.co/RG0LNNJP/Ofsaid-37c3c0cfd8c944e6e981.jpg", // Ofsaid
+pecahrekod: "https://i.ibb.co/TBwcY8pW/Pecah-rekod-f7069e863109efeb0d8b.jpg", // Pecah Rekod 
+hoki: "https://i.ibb.co/HR8hcpN/Hoki-119228f1a9945096ecfc-1.jpg", // Hoki
+aras: "https://i.ibb.co/p6SycfRP/Aras-6ba2ec02ea4e77e7436d-1.jpg", // Aras
+beberapa: "https://i.ibb.co/XkJZXxHS/Beberapa-c359bddb9257a7b54e8a-1.jpg", // Beberapa
+alademik: "https://i.ibb.co/fVfrHWpM/Gred-akademik-f6931f11591132d45240-1.jpg", // Akademik 
+peringkat: "https://i.ibb.co/wFCNBjD3/Peringkat-acb9df07eb86aa827eef-1.jpg", // Peringkat
+pertengahan: "https://i.ibb.co/bgnQwX00/Pertengahan-eb9c8d014e733f110bd8-1.jpg", // Pertengahan
+saiz: "https://i.ibb.co/sdL3hYbX/Saiz-b9189abaec0305b5c127.jpg", // Saiz
+suhu: "https://i.ibb.co/fVbWd9v2/Suhu-4fb6639d1b0796848e34-1.jpg", // Suhu
+usia: "https://i.ibb.co/JFrPsM9Y/Usia-4e407790a9b469b596e6-1.jpg" , // Usia
+tehtarik: "https://i.ibb.co/TMCS0RkC/Teh-Tarik-ad70872406a1969ef281.jpg" , // Teh Tarik
+arak: "https://i.ibb.co/zW5M1MCF/Arak-a65ee71a8ef852376f3b.jpg" , // Arak 
+sirap: "https://i.ibb.co/Ld4rCqPg/Sirap-bbf770554a51bed81024.jpg" , // Sirap
+nescafe: "https://i.ibb.co/VYwg9Cwm/Nescafe-e4a2f72b6a4b5cd24856.jpg" , // Nesacafe 
+teh: "https://i.ibb.co/jkMFkMbP/Teh-fe1f3af532222ffa98d9.jpg" , // Teh
+kondom: "https://i.ibb.co/8D8xcSHr/Kondom-d010fb097688da8d4c5f.jpg", // Kondom
+luka: "https://i.ibb.co/999wzRFq/Luka-0e49f3a61c13aff2aaf3.jpg" , // Luka 
+rabun: "https://i.ibb.co/HL8Kf621/Rabun-82074aee38427a0e9ea7.jpg" , // Rabun
+selesema: "https://i.ibb.co/21z1r6Fs/Selesema-1c2adb3dd3a6885c2e4d.jpg", // Selesema
+sperma: "https://i.ibb.co/7dnmqsmK/Sperma-71852fc3b48265034342.jpg", // Sperma
+urut: "https://i.ibb.co/QvWwvhKB/Urut-70e7fc2c77fcf300d04a.jpg" , // Urut
+xray: "https://i.ibb.co/rKJx0kk7/X-ray-74b15797d651b6dd8ee8.jpg" , // Xray
+vitamin: "https://i.ibb.co/HMkgWtK/Vitamin-aa781c45f280ac1f6bf6.jpg" , // Vitamin
+juri: "https://i.ibb.co/HpMTfbQd/Juri-b7cace7e5f3ae0b25c3c-1.jpg" , // Juri
+jururawat: "https://i.ibb.co/bMDv5wTL/Jururawat-1ed9515be06e9d01b59a.jpg", // Jururawat
+pengurus: "https://i.ibb.co/Y7Z6bmcV/Pengurus-27e20f6ccacb55dc09b5.jpg", // Pengurus
+polis: "https://i.ibb.co/PsSWfhQW/Polis-3fa95d7b38ba3020ef42.jpg" , // Polis
+temuduga: "https://i.ibb.co/1tg9gSBb/Temuduga-387ba83c1aa7874b78ff.jpg" , // Temuduga
+jurubahasa: "https://i.ibb.co/PbHRDYw/Jurubahasa-Isyarat-763bfdaf44e550f26d6c.jpg" , // JuruBahasa
+bos: "https://i.ibb.co/Fqf2Zkb9/Bos-b9650dc7122a78706fb8.jpg" , // Bos
+jurukamera: "https://i.ibb.co/5Wyc8ZmF/Jurukamera-1846bfcf490ce764a30e.jpg" , // Jurukamera
+jadual: "https://i.ibb.co/V0D7KHSJ/Jadual-0428bd7bac1a44e7c297.jpg" , // jadual
+novel: "https://i.ibb.co/BVSZ7wK2/Novel-1f785b556a45adc52c45-1.jpg" , // Novel
+pasport: "https://i.ibb.co/HTJhf1r0/Pasport-574c5f5f40388f5d91d1.jpg" , // Pasport
+statistik: "https://i.ibb.co/xSmckxnf/Statistik-fb6971ba0093d72004ae.jpg" , // Stastik
+visa: "https://i.ibb.co/NgBthz49/Visa-15e3af232c1eeb19109c.jpg" , // Visa
+sampul: "https://i.ibb.co/fZzSGnn/Sampul-f2d51fb42a252426fc8b.jpg" , // Sampul
+rekod: "https://i.ibb.co/S7HRXz8m/Rekod-453268191b4216cf6b2d.jpg", // Rekod
+belajar: "https://i.ibb.co/dN9KRbK/Belajar-88861e428bb0aa10c470.jpg" , // Belajar
+diploma: "https://i.ibb.co/QjnQGtJD/Diploma-c9ca2041fa0e4ebfa2f2.jpg" , // Diploma
+fizik: "https://i.ibb.co/N2XF2n9L/Fizik-d39dc9735c9ab79d2fba.jpg" , // Fizik
+ijazah: "https://i.ibb.co/60LtHWYF/Ijazah-01f4bd302dda40bf45df.jpg" , // Ijazah
+pendidikan: "https://i.ibb.co/nsyFmtLW/Pendidikan-4111b5ed3a78e948a199.jpg" , // Pendidikan
+pelajaran: "https://i.ibb.co/R4MqFfGq/Pelajaran-c276ee8367f967a36334.jpg" , // Pelajaran
+ponteng: "https://i.ibb.co/RGtCWJhN/Ponteng-1235705e94f36a7028fa.jpg" , // Ponteng 
+semester: "https://i.ibb.co/rfQZ6TJH/Semester-d6d3368b0833cf9f465f.jpg", // Semester
+ujian: "https://i.ibb.co/rGLDBKsG/Ujian-4197cd6e78075d23363c.jpg" , // Ujian
+vokasional: "https://i.ibb.co/4Rb1VPrY/Vokasional-5e60550ebfb716f9f009.jpg", // Vokasional
+ubi: "https://i.ibb.co/cSm4Y4QW/Ubi-kayu-30457a4dea354d2705ea.jpg", // ubi 
+sup: "https://i.ibb.co/F47ZN60K/Sup-003cd6faa9a2c918834f.jpg", // Sup 
+apam: "https://i.ibb.co/chXbJ8zr/Apam-balik-d29bf7de133b94644cac.jpg", // Apam
+rotinaam: "https://i.ibb.co/Fb4qLNqv/Roti-Naan-0035603ba43062784694.jpg", // Roti Naan
+sarapan: "https://i.ibb.co/tM8pQhkx/Sarapan-df9487cf2c1805e01674.jpg", // Sarapan
+nasikandar: "https://i.ibb.co/HLcgZrgV/Nasi-kandar-44e4a0f2fbf341ef43d3.jpg" , // Nasi Kandar
+lemang: "https://i.ibb.co/gFPgHfG9/Lemang-8d47975c08f946783dd4.jpg" , // Lemang
+lauk: "https://i.ibb.co/21gX6r6k/Lauk-49d191a33fd7bf46bfa1.jpg", // Lauk
+laksa: "https://i.ibb.co/RGQzZfs8/Laksa-356c93af6f6b0051edac.jpg", // Laksa
+kurma: "https://i.ibb.co/1Y3jtCs9/Kurma-886ef7c573a6f5a510ae.jpg", // Kurma
+kuaci: "https://i.ibb.co/yB4Kgjnb/Kuaci-ab9b5529f2474bbb8618.jpg", // Kuaci
+ketupat: "https://i.ibb.co/n8jWBLVf/Ketupat-add201e9f20768c5ebc6.jpg", // Ketupat
+keju: "https://i.ibb.co/HT0HZvbm/Keju-49c270459c23f1da1680.jpg", // Keju
+karipap: "https://i.ibb.co/xSPftx5z/Karipap-45098c87f743062b7858.jpg", // Karipap
+goreng: "https://i.ibb.co/fdrX9Sz2/Goreng-8fd2b87a2883de17a63a.jpg", // Goreng
+burger: "https://i.ibb.co/bR2H7wX1/Burger-a788953f9de33f0e1942.jpg", // Burger
+bawang: "https://i.ibb.co/C3mzSCqs/Bawang-61c3cb7933a64f074ecd.jpg", // Bawang
+aiskrim: "https://i.ibb.co/S7thKtJN/Ais-krim-0733e7061d1777f86327.jpg", // Aiskrim
+hai: "https://i.ibb.co/XZqYGvt4/Hai-Hello-03ea1190ba05ac8a629b.jpg", // Hai
+maaf: "https://i.ibb.co/bjBKsPr5/Maaf-II-9e6cbaceca7ba3baf668.jpg", // Maaf
+selamatdatang: "https://i.ibb.co/8D4bNdD1/Selamat-Datang-0c6d9b3d11f04b337c29-1.jpg" , // Selamat Datang
+selamatharijadi: "https://i.ibb.co/ZpBdLCv9/Selamat-Hari-Jadi-14766948db4d75ea68e2.jpg" , // selamatharijadi
+selamatmalam: "https://i.ibb.co/bjrBj0Nq/Selamat-Malam-35884f65ce5164f213e9.jpg", // selamatmalam
+tahniah: "https://i.ibb.co/sdYBr9bt/Tahniah-87273d2bad5306178aae.jpg", // Tahniah
+wawasan: "https://i.ibb.co/Nd2Wx32w/Wawasan-493854025811a68c88d2.jpg" , // Wawasan
+teori: "https://i.ibb.co/d4ZMDQPL/Teori-1f9aeec79e7e87c3a427.jpg", // Teori
+teka: "https://i.ibb.co/bM7T5hDr/Teka-1d9e18afd4cbdae6acfb.jpg", // Teka 
+politik: "https://i.ibb.co/LXxvLMKS/Politik-46f91067efadd4fbe82c.jpg", // Politik 
+mimpi: "https://i.ibb.co/fzQf10VX/Mimpi-2432cb1bda9dd830c4cb-1.jpg", // Mimpi 
+konsep: "https://i.ibb.co/dJ74gz2W/Konsep-767b9f3103264b07fcb2.jpg", // Konsep
+kenangan: "https://i.ibb.co/dd2PV19/Kenangan-5b1377b57af62fa811cc.jpg", // Kenangan
+hafal: "https://i.ibb.co/cXMbR63M/Imaginasi-2902e4835f9689868d9c.jpg" , // Hafal
+hafal: "https://i.ibb.co/C56H3dXk/Hafal-dba477244c0d793d23c1-1.jpg" , // Hafal
+fikiranterbuka: "https://i.ibb.co/vCjFPbhV/Fikiran-terbuka-855075a5e39cda92173f-1.jpg" , // Fikiran Terbuka
+fikir: "https://i.ibb.co/fdrzQ5nJ/Fikir-d1b0678a5cfbe777bbed-1.jpg" , // Fikir
+idea: "https://i.ibb.co/jvpJrJPM/Dapat-idea-30fa75a243489c4d7c0b.jpg" , // Idea
+akal: "https://i.ibb.co/BV68dRt1/Akal-6396a3a0639a0f98ad47-1.jpg" , // Akal
+ambulans: "https://i.ibb.co/pNsp9Qr/Ambulans-9b9aa1b0fde34732c0f3.jpg" , // Ambulans
+tiap: "https://i.ibb.co/s9s8x9Qb/Tiap-843e17b0a15a8a0cdd30.jpg" , // Tiap
+tergesa: "https://i.ibb.co/WNySv0d1/Tergesa-gesa-9128e41e4dd6be69712a.jpg" , // Tergesa
+sekejao: "https://i.ibb.co/mVzRRQXg/Sekejap-Sejenak-64eb4c1e9c03dfb6af92.jpg", // Sekejap
+pertama: "https://i.ibb.co/7N05srYs/Pertama-sekali-ae0d560f617ddbe67207.jpg" , // Pertama
+lewat: "https://i.ibb.co/BV87LYcN/Lewat-b2edf4f9dbc58a01ceb2.jpg" , // Lewat
+hanya: "https://i.ibb.co/7JWYwMvF/Hanya-b420f93704f9fd0e5a22.jpg" , // Hanya
+duakali: "https://i.ibb.co/Pz5qd3GG/Dua-kali-bcfb8c3c5fe3ecf624ae.jpg" , // Dua Kali
+begitujuga: "https://i.ibb.co/LhJ2KTdW/Begitu-juga-76a6549e6e0a10cc91bd.jpg", // Begitu Juga
+isnin: "https://i.ibb.co/7t3qz4y9/Isnin-e38ec9d3112b573368b1.jpg", // Isnin
+sabtu: "https://i.ibb.co/1fY8RDYQ/Sabtu-05bf598f58d88eda322a.jpg" , // Sabtu
+jumaat: "https://i.ibb.co/TxWw4hXV/Jumaat-cbbc9d9565786c6b7520.jpg" , // Jumaat
+selasa: "https://i.ibb.co/chmMdTNf/Selasa-586faa2750e65740e9f6.jpg", // Selasa
+rabu: "https://i.ibb.co/C3y9pnx9/Rabu-87f28ffc6daa355936cf.jpg" , // Rabu
+khamis: "https://i.ibb.co/SwG4rZ4s/Khamis-a0de62f073fb6b42661b.jpg" , // Khamis
+ahad: "https://i.ibb.co/XkSNkPKk/Ahad-ee47df49c3eab4e4faec.jpg", // Ahad
+bintang: "https://i.ibb.co/B29MWTfR/Bintang-f419cee00d2ed3f16c9c.jpg", // Bintang
+kelapasawit: "https://i.ibb.co/RR77yYz/Kelapa-sawit-6ec8aeebce43c61caa3c.jpg" , // KelapaSawit
+kayupapan: "https://i.ibb.co/B2CgR9Yh/Kayu-Papan-78bde928c0446c777dbd.jpg", // Kayu Papan 
+daun: "https://i.ibb.co/JRJKspJZ/Daun-55befd05561876f686ed.jpg", // Daun
+binatang: "https://i.ibb.co/M5MyPNsc/Binatang-peliharaan-4d569b593edafbcb6976.jpg", // Binatang
+harimaukumbang: "https://i.ibb.co/zH6Y0SLN/Harimau-kumbang-42e0f19949b8659aacff.jpg" , // Kumbang
+ketam: "https://i.ibb.co/HDqky2GF/Ketam-fc797dbed16651837cc0.jpg", // Ketam
+sotong: "https://i.ibb.co/nGQ9fkT/Sotong-a6a8efe864030d496839-1.jpg", // Sotong
+https://i.ibb.co/HfV5LkXm/Kahwin-648473470a71b000ef85-1.jpg"
+https://i.ibb.co/4ny3Tw6m/Keturunan-Generasi-17afbafd97a21157a047-1.jpg" 
+
+ 
 };
 
 
@@ -477,7 +608,7 @@ const hands = new Hands({
 });
 
 hands.setOptions({
-  maxNumHands: 2, // Membolehkan pengesanan sehingga 2 tangan
+  maxNumHands: 2, // Boleh kesan sehingga 2 tangan
   modelComplexity: 1,
   minDetectionConfidence: 0.5,
   minTrackingConfidence: 0.5,
@@ -505,36 +636,39 @@ hands.onResults((results) => {
   canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
 
   if (results.multiHandLandmarks) {
-    let totalFingersRaised = 0;
+    let detectedGesture = "None";
 
     results.multiHandLandmarks.forEach((landmarks, handIndex) => {
       drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS, {
-        color: handIndex === 0 ? '#00FF00' : '#0000FF', // Warna berbeza untuk setiap tangan
+        color: handIndex === 0 ? '#00FF00' : '#0000FF',
         lineWidth: 2,
       });
       drawLandmarks(canvasCtx, landmarks, { color: '#FF0000', lineWidth: 1 });
 
-      // Log landmarks untuk debugging
-      console.log(`Hand ${handIndex + 1}`, landmarks);
+      const totalFingers = countFingersRaised(landmarks);
 
-      // Kira jumlah jari terangkat pada setiap tangan
-      totalFingersRaised += countFingersRaised(landmarks);
+      if (detectThumbsUp(landmarks)) {
+        detectedGesture = "👍 Bagus!";
+      } else if (detectMiniLove(landmarks)) {
+        detectedGesture = "❤️ Mini Love!";
+      } else if (detectSaya(landmarks)) {
+        detectedGesture = "👆 Saya";
+      } else if (detectPesan(landmarks)) {
+        detectedGesture = "📩 Pesan";
+      } else if (detectAir(landmarks)) {
+        detectedGesture = "💧 Air";
+      } else if (totalFingers >= 1 && totalFingers <= 10) {
+        detectedGesture = `Detected Number: ${totalFingers}`;
+      }
     });
 
-    // Papar nombor yang dikesan (1 hingga 10)
-    if (totalFingersRaised >= 1 && totalFingersRaised <= 10) {
-      outputElement.textContent = `Detected Number: ${totalFingersRaised}`;
-    } else {
-      outputElement.textContent = 'Detected Number: None';
-    }
+    outputElement.textContent = detectedGesture;
   }
 });
 
 // Fungsi untuk mengira jari yang terangkat
 function countFingersRaised(landmarks) {
-  // Posisi penting
   const thumbTip = landmarks[4];
-  const thumbBase = landmarks[2];
   const indexTip = landmarks[8];
   const middleTip = landmarks[12];
   const ringTip = landmarks[16];
@@ -542,15 +676,67 @@ function countFingersRaised(landmarks) {
 
   let count = 0;
 
-  // Logik untuk ibu jari (berbanding pangkalnya)
-  if (thumbTip.x < thumbBase.x) count++; // Untuk tangan kiri
-  else if (thumbTip.x > thumbBase.x) count++; // Untuk tangan kanan
-
-  // Logik untuk jari lain (y lebih tinggi daripada posisi pangkalnya)
   if (indexTip.y < landmarks[6].y) count++;
   if (middleTip.y < landmarks[10].y) count++;
   if (ringTip.y < landmarks[14].y) count++;
   if (pinkyTip.y < landmarks[18].y) count++;
 
+  if (Math.abs(thumbTip.x - landmarks[2].x) > 0.05) count++;
+
   return count;
+}
+
+// Fungsi untuk kesan isyarat "Saya"
+function detectSaya(landmarks) {
+  const indexTip = landmarks[8];
+  const indexBase = landmarks[5];
+  return indexTip.y > indexBase.y;
+}
+
+// Fungsi untuk kesan isyarat "Pesan"
+function detectPesan(landmarks) {
+  const thumbTip = landmarks[4];
+  const indexTip = landmarks[8];
+  const middleTip = landmarks[12];
+  const isOKSign = Math.abs(thumbTip.x - indexTip.x) < 0.05 && Math.abs(thumbTip.y - indexTip.y) < 0.05;
+  const isMiddleUp = middleTip.y < landmarks[10].y;
+  return isOKSign && isMiddleUp;
+}
+
+// Fungsi untuk kesan isyarat "Air"
+function detectAir(landmarks) {
+  const pinkyTip = landmarks[20];
+  const pinkyBase = landmarks[17];
+  const isPinkyUp = pinkyTip.y < pinkyBase.y;
+  const isOtherFingersBent =
+    landmarks[8].y > landmarks[6].y &&
+    landmarks[12].y > landmarks[10].y &&
+    landmarks[16].y > landmarks[14].y;
+  return isPinkyUp && isOtherFingersBent;
+}
+
+// Fungsi untuk kesan isyarat "Bagus" (👍)
+function detectThumbsUp(landmarks) {
+  const thumbTip = landmarks[4];
+  const thumbBase = landmarks[2];
+  const isOtherFingersBent =
+    landmarks[8].y > landmarks[6].y &&
+    landmarks[12].y > landmarks[10].y &&
+    landmarks[16].y > landmarks[14].y &&
+    landmarks[20].y > landmarks[18].y;
+  const isThumbUp = thumbTip.y < thumbBase.y;
+  return isThumbUp && isOtherFingersBent;
+}
+
+// Fungsi untuk kesan isyarat "Mini Love" (❤️)
+function detectMiniLove(landmarks) {
+  const indexTip = landmarks[8];
+  const thumbTip = landmarks[4];
+  const isOtherFingersBent =
+    landmarks[12].y > landmarks[10].y &&
+    landmarks[16].y > landmarks[14].y &&
+    landmarks[20].y > landmarks[18].y;
+  const isMiniLove = Math.abs(indexTip.x - thumbTip.x) < 0.05 &&
+                     Math.abs(indexTip.y - thumbTip.y) < 0.05;
+  return isMiniLove && isOtherFingersBent;
 }
