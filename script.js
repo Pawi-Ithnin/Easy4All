@@ -545,10 +545,9 @@ binatang: "https://i.ibb.co/M5MyPNsc/Binatang-peliharaan-4d569b593edafbcb6976.jp
 harimaukumbang: "https://i.ibb.co/zH6Y0SLN/Harimau-kumbang-42e0f19949b8659aacff.jpg" , // Kumbang
 ketam: "https://i.ibb.co/HDqky2GF/Ketam-fc797dbed16651837cc0.jpg", // Ketam
 sotong: "https://i.ibb.co/nGQ9fkT/Sotong-a6a8efe864030d496839-1.jpg", // Sotong
-https://i.ibb.co/HfV5LkXm/Kahwin-648473470a71b000ef85-1.jpg"
-https://i.ibb.co/4ny3Tw6m/Keturunan-Generasi-17afbafd97a21157a047-1.jpg" 
+kahwin: "https://i.ibb.co/HfV5LkXm/Kahwin-648473470a71b000ef85-1.jpg", // Kahwin
+kuturunan: "https://i.ibb.co/4ny3Tw6m/Keturunan-Generasi-17afbafd97a21157a047-1.jpg", // Kuturunan 
 
- 
 };
 
 
