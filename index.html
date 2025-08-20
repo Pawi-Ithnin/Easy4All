@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tanda X 1.0 No Buli </title>
+  <title>Tanda X 1.0 No Buli</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
@@ -28,6 +28,22 @@
       border: 2px solid black;
       margin-top: 20px;
     }
+    /* Gaya untuk header */
+    header {
+      text-align: center;
+      margin: 20px 0;
+    }
+    header h1 {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 28px;
+    }
+    header h1 .flag {
+      width: 40px; /* kecilkan bendera */
+      border: 2px solid #000;
+      border-radius: 4px;
+    }
     /* Gaya untuk footer */
     footer {
       text-align: center;
@@ -37,33 +53,17 @@
     }
     footer p {
       font-weight: bold;
-      margin-bottom: 15px;
-      font-size: 18px;
+      margin-bottom: 10px;
     }
-    footer .logos {
+    footer .sponsors {
       display: flex;
       justify-content: center;
       gap: 20px;
     }
-    footer .logos img {
-      width: 80px;   /* <<< kecilkan logo */
+    footer .sponsors img {
+      width: 80px; /* kecilkan logo penaja */
       border: 2px solid #000;
-      border-radius: 10px;
-    }
-    /* Gaya untuk header */
-    header {
-      text-align: center;
-      margin: 20px 0;
-    }
-    header h1 {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-    header h1 img {
-      width: 60px;
-      border: 2px solid #000;
-      border-radius: 5px;
+      border-radius: 8px;
     }
   </style>
 </head>
@@ -72,8 +72,9 @@
   <!-- Main Header of the Page -->
   <header>
     <h1>
-      Tanda X 1.0 No Buli
-      <img src="https://i.ibb.co/jkRX4t7W/download-3.jpg" alt="Bendera Malaysia">
+      Tanda X
+      <img src="https://i.ibb.co/jkRX4t7W/download-3.jpg" alt="Bendera Malaysia" class="flag">
+      1.0 No Buli
     </h1>
   </header>
 
@@ -104,8 +105,8 @@
 
   <!-- Footer Section -->
   <footer>
-    <p>Penaja bersama</p>
-    <div class="logos">
+    <p>Penaja Bersama</p>
+    <div class="sponsors">
       <img src="https://i.ibb.co/qL2Jsb6F/Whats-App-Image-2025-08-20-at-20-36-07-eeaf9cb4.jpg" alt="Logo Penaja 1">
       <img src="https://i.ibb.co/yB5Qzqjm/Whats-App-Image-2025-08-20-at-20-48-29-5711d2a7.jpg" alt="Logo Penaja 2">
     </div>
@@ -138,3 +139,4 @@
 
 </body>
 </html>
+
