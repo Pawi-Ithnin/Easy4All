@@ -484,8 +484,9 @@ ponteng: "https://i.ibb.co/RGtCWJhN/Ponteng-1235705e94f36a7028fa.jpg" , // Ponte
 semester: "https://i.ibb.co/rfQZ6TJH/Semester-d6d3368b0833cf9f465f.jpg", // Semester
 ujian: "https://i.ibb.co/rGLDBKsG/Ujian-4197cd6e78075d23363c.jpg" , // Ujian
 aman: "https://i.ibb.co/JjCnSS3d/Aman-616d20b3eecb8fb90566.jpg", // Aman
-buruk: "https://i.ibb.co/tMR02xBJ/Buruk-b1f390e55da673b287c4.jpg", // Buruk
-  
+buruk: "https://i.ibb.co/tMR02xBJ/Buruk-b1f390e55da673b287c4.jpg", // buruk
+dahaga:"https://i.ibb.co/23gDGjPt/Dahaga-85d238bb1353e551fcf3-1.jpg", // Dahaga
+kacak: "https://i.ibb.co/B2WvJM82/Kacak-e6f187c95b8a38f8bcc8.jpg", // Kacak  
 };
 
 
@@ -677,5 +678,6 @@ function detectMiniLove(landmarks) {
                      Math.abs(indexTip.y - thumbTip.y) < 0.05;
   return isMiniLove && isOtherFingersBent;
 }
+
 
 
