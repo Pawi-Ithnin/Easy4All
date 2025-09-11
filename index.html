@@ -3,142 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tanda X 1.0 No Buli</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>Senarai Penaja</title>
   <style>
-    /* Sembunyikan bahagian Sign Language to Text secara lalai */
-    #signLanguageSection {
-      display: none;
-      text-align: center;
-      padding: 20px;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
     }
-    #output {
-      font-size: 24px;
-      margin: 20px 0;
-    }
-    canvas {
-      border: 1px solid black;
-    }
-    /* Gaya untuk gambar bahasa isyarat */
-    #signImage {
-      display: none; /* Sembunyikan gambar secara lalai */
-      width: 300px;
-      height: auto;
-      border: 2px solid black;
-      margin-top: 20px;
-    }
-    /* Gaya untuk header */
-    header {
-      text-align: center;
-      margin: 20px 0;
-    }
-    header h1 {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 28px;
-    }
-    header h1 .flag {
-      width: 40px; /* kecilkan bendera */
-      border: 2px solid #000;
-      border-radius: 4px;
-    }
-    /* Gaya untuk footer */
     footer {
       text-align: center;
+      margin-top: 40px;
       padding: 20px;
-      background: #f4f4f4;
-      margin-top: 30px;
+      background: #f8f8f8;
     }
     footer p {
       font-weight: bold;
-      margin-bottom: 10px;
+      font-size: 18px;
+      margin-bottom: 15px;
     }
-    footer .sponsors {
+    .sponsors {
       display: flex;
-      justify-content: center; /* logo tengah */
+      justify-content: center;
+      align-items: center;
       gap: 20px;
-      flex-wrap: wrap; /* supaya responsive */
+      flex-wrap: wrap;
     }
-    footer .sponsors img {
-      width: 80px;   /* semua logo sama saiz */
-      height: auto;
+    .sponsors img {
+      width: 120px;   /* semua logo sama lebar */
+      height: 120px;  /* semua logo sama tinggi */
+      object-fit: contain; /* elak logo terpotong */
       border: 2px solid #000;
       border-radius: 8px;
+      background: #fff;
+      padding: 5px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Main Header of the Page -->
-  <header>
-    <h1>
-      Tanda X
-      <img src="https://i.ibb.co/jkRX4t7W/download-3.jpg" alt="Bendera Malaysia" class="flag">
-      1.0 No Buli
-    </h1>
-  </header>
-
-  <!-- Main Content Section -->
-  <main>
-    <section id="outputContainer">
-      <p></p>
-    </section>
-
-    <!-- Status Section -->
-    <section id="statusContainer">
-      <div id="status">Status akan dipaparkan disini</div>
-      <button onclick="startRecognition()">Mulakan Pengenalan Suara</button>
-      <button onclick="toggleSignLanguage()">Tunjukkan Sign Language to Text</button>
-    </section>
-
-    <!-- Sign Language to Text Section -->
-    <section id="signLanguageSection">
-      <h1>Sign Language to Text</h1>
-      <p id="output">Detected Text: None</p>
-      <video id="video" autoplay playsinline style="display: none;"></video>
-      <canvas id="canvas"></canvas>
-      
-      <!-- Tambah Gambar Bahasa Isyarat -->
-      <img id="signImage" src="isyarat.jpg" alt="Bahasa Isyarat">
-    </section>
-  </main>
-
   <!-- Footer Section -->
   <footer>
     <p>Penaja Bersama</p>
     <div class="sponsors">
-      <img src="https://i.ibb.co/qL2Jsb6F/Whats-App-Image-2025-08-20-at-20-36-07-eeaf9cb4.jpg" alt="Logo Penaja 1">
       <img src="https://i.ibb.co/yJ9NN0r/IMG-20250912-WA0000.jpg" alt="Logo Penaja Baru">
+      <img src="https://i.ibb.co/Y47DxrMZ/IMG-20250904-WA0096-1.jpg" alt="Logo Penaja Tambahan">
       <img src="https://i.ibb.co/RkfQ5QTM/Whats-App-Image-2025-08-21-at-17-20-20-98d5ba03.jpg" alt="Logo Penaja 3">
     </div>
   </footer>
-
-  <!-- Load the necessary external libraries for MediaPipe -->
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
-
-  <!-- External JavaScript -->
-  <script src="script.js"></script>
-  <script src="app.js"></script>
-
-  <script>
-    function toggleSignLanguage() {
-      let section = document.getElementById("signLanguageSection");
-      let image = document.getElementById("signImage");
-
-      // Toggle bahagian Sign Language
-      if (section.style.display === "none") {
-        section.style.display = "block";
-        image.style.display = "block"; // Paparkan gambar
-      } else {
-        section.style.display = "none";
-        image.style.display = "none"; // Sembunyikan gambar
-      }
-    }
-  </script>
 
 </body>
 </html>
