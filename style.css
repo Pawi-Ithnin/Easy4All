@@ -1,3 +1,4 @@
+/* BODY */
 body { 
   font-family: Arial, sans-serif;
   text-align: center;
@@ -7,7 +8,7 @@ body {
   padding: 0;
 }
 
-/* Container untuk output */
+/* CONTAINER OUTPUT */
 #outputContainer {
   display: flex;
   flex-direction: column;
@@ -18,10 +19,15 @@ body {
 
 .output-item {
   margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .output-item img {
   max-width: 150px;
+  width: 100%;
+  height: auto;
   margin-bottom: 10px;
   border-radius: 10px;
 }
@@ -31,9 +37,10 @@ body {
   font-weight: bold;
   color: black; /* Pastikan tulisan dalam output juga hitam */
   text-align: center;
+  margin: 0;
 }
 
-/* Header */
+/* HEADER */
 header {
   text-align: center;
   margin: 20px 0;
@@ -48,11 +55,12 @@ header h1 {
 
 header h1 .flag {
   width: 40px;  /* kecilkan bendera */
+  height: auto;
   border: 2px solid #000;
   border-radius: 4px;
 }
 
-/* Footer */
+/* FOOTER */
 footer {
   text-align: center;
   padding: 20px;
@@ -69,10 +77,13 @@ footer .sponsors {
   display: flex;
   justify-content: center;
   gap: 20px;
+  flex-wrap: wrap; /* supaya responsif di skrin kecil */
 }
 
 footer .sponsors img {
   width: 80px; /* kecilkan logo penaja */
+  height: auto;
   border: 2px solid #000;
   border-radius: 8px;
 }
+
