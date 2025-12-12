@@ -3,9 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tanda X 1.0</title>
+
+  <!-- SEO Title -->
+  <title>Tanda X 1.0 – Bahasa Isyarat Malaysia (BIM) ke Teks | Easy4All</title>
+
+  <!-- Meta SEO -->
+  <meta name="description" content="Tanda X 1.0 ialah platform Bahasa Isyarat Malaysia (BIM) untuk menukar bahasa isyarat kepada teks. Sesuai untuk OKU Pekak, pusat pembelajaran, sekolah, masjid, kaunter perkhidmatan dan komuniti.">
+  <meta name="keywords" content="bahasa isyarat, BIM, bahasa isyarat malaysia, sign language, sign language malaysia, aplikasi bahasa isyarat, OKU pekak, komunikasi pekak, terjemah bahasa isyarat, sign language to text">
+  <meta name="author" content="Easy4All">
+
+  <!-- Social Sharing (Open Graph) -->
+  <meta property="og:title" content="Tanda X 1.0 – Bahasa Isyarat Malaysia ke Teks">
+  <meta property="og:description" content="Platform BIM untuk menukar gerakan tangan kepada teks. Mudah, pantas dan sesuai untuk komuniti OKU Pekak.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://i.ibb.co/whQpdgKF/images-10.jpg">
+  <meta property="og:url" content="https://pawi-ithnin.github.io/Easy4All/">
+
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+
   <style>
     /* Sembunyikan bahagian Sign Language to Text secara lalai */
     #signLanguageSection {
@@ -22,7 +38,7 @@
     }
     /* Gaya untuk gambar bahasa isyarat */
     #signImage {
-      display: none; /* Sembunyikan gambar secara lalai */
+      display: none;
       width: 300px;
       height: auto;
       border: 2px solid black;
@@ -40,11 +56,11 @@
       font-size: 28px;
     }
     header h1 .flag {
-      width: 40px; /* kecilkan gambar */
+      width: 40px;
       border: 2px solid #000;
       border-radius: 4px;
     }
-    /* Gaya untuk footer */
+    /* Footer */
     footer {
       text-align: center;
       padding: 20px;
@@ -59,10 +75,10 @@
       display: flex;
       justify-content: center;
       gap: 20px;
-      flex-wrap: wrap; /* supaya responsive */
+      flex-wrap: wrap;
     }
     footer .sponsors img {
-      width: 80px;   /* semua logo sama saiz */
+      width: 80px;
       height: auto;
       border: 2px solid #000;
       border-radius: 8px;
@@ -71,67 +87,77 @@
       margin-top: 20px;
     }
     footer .sponsor-bottom img {
-      width: 100px;  /* lebih besar untuk logo bawah */
+      width: 100px;
       height: auto;
       border: 2px solid #000;
       border-radius: 8px;
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Main Header of the Page -->
+  <!-- HEADER -->
   <header>
     <h1>
       Tanda X
-      <img src="https://i.ibb.co/whQpdgKF/images-10.jpg" alt="Logo Baru" class="flag">
+      <img src="https://i.ibb.co/whQpdgKF/images-10.jpg" alt="Logo Tanda X Bahasa Isyarat Malaysia" class="flag">
       1.0
     </h1>
+    <h2 style="margin-top:10px; font-size:18px;">
+      Platform Bahasa Isyarat Malaysia (BIM) → Teks
+    </h2>
   </header>
 
-  <!-- Main Content Section -->
+  <!-- PENGENALAN SEO -->
+  <section style="text-align:center; padding:15px 20px;">
+    <p style="font-size:16px;">
+      Tanda X 1.0 ialah aplikasi pengenalan Bahasa Isyarat Malaysia (BIM) yang membantu menukar gerakan tangan kepada teks bagi memudahkan komunikasi antara pengguna pekak dan orang awam. Dibangunkan untuk komuniti OKU Pekak, sekolah, masjid, kaunter perkhidmatan dan pusat pembelajaran.
+    </p>
+  </section>
+
+  <!-- STATUS & BUTANG -->
   <main>
     <section id="outputContainer">
       <p></p>
     </section>
 
-    <!-- Status Section -->
-    <section id="statusContainer">
+    <section id="statusContainer" style="text-align:center;">
       <div id="status">Status akan dipaparkan disini</div>
       <button onclick="startRecognition()">Mulakan Pengenalan Suara</button>
-      <button onclick="toggleSignLanguage()">Tunjukkan Sign Language to Text</button>
+      <button onclick="toggleSignLanguage()">Tunjukkan Bahagian Bahasa Isyarat → Teks</button>
     </section>
 
-    <!-- Sign Language to Text Section -->
+    <!-- SIGN LANGUAGE DETECTION SECTION -->
     <section id="signLanguageSection">
-      <h1>Sign Language to Text</h1>
+      <h1>Bahasa Isyarat Malaysia (BIM) ke Teks</h1>
       <p id="output">Detected Text: None</p>
+
       <video id="video" autoplay playsinline style="display: none;"></video>
       <canvas id="canvas"></canvas>
-      
-      <!-- Tambah Gambar Bahasa Isyarat -->
-      <img id="signImage" src="isyarat.jpg" alt="Bahasa Isyarat">
+
+      <img id="signImage" src="isyarat.jpg" alt="Contoh Isyarat Tangan Bahasa Isyarat Malaysia">
     </section>
   </main>
 
-  <!-- Footer Section -->
+  <!-- FOOTER -->
   <footer>
     <p>Penaja Bersama</p>
     <div class="sponsors">
-      <img src="https://i.ibb.co/XfvyBbdj/IMG-20250912-WA0000-1.jpg" alt="Logo Penaja 4">
-      <img src="https://i.ibb.co/k64VHWdm/IMG-20250904-WA0096-2.jpg" alt="Logo Penaja 5">
+      <img src="https://i.ibb.co/XfvyBbdj/IMG-20250912-WA0000-1.jpg" alt="Logo Penaja 1">
+      <img src="https://i.ibb.co/k64VHWdm/IMG-20250904-WA0096-2.jpg" alt="Logo Penaja 2">
     </div>
     <div class="sponsor-bottom">
-      <img src="https://i.ibb.co/mFRVrz9s/IMG-20250924-093602.jpg" alt="Logo Penaja Bawah">
+      <img src="https://i.ibb.co/mFRVrz9s/IMG-20250924-093602.jpg" alt="Logo Penaja Utama">
     </div>
   </footer>
 
-  <!-- Load the necessary external libraries for MediaPipe -->
+  <!-- MEDIAPIPE LIBRARIES -->
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
 
-  <!-- External JavaScript -->
+  <!-- JS FILES -->
   <script src="script.js"></script>
   <script src="app.js"></script>
 
@@ -140,17 +166,15 @@
       let section = document.getElementById("signLanguageSection");
       let image = document.getElementById("signImage");
 
-      // Toggle bahagian Sign Language
       if (section.style.display === "none") {
         section.style.display = "block";
-        image.style.display = "block"; // Paparkan gambar
+        image.style.display = "block";
       } else {
         section.style.display = "none";
-        image.style.display = "none"; // Sembunyikan gambar
+        image.style.display = "none";
       }
     }
   </script>
 
 </body>
 </html>
-
