@@ -1,87 +1,80 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="ms">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tanda X 1.0 – Bahasa Isyarat Malaysia (BIM) ke Teks</title>
+  <title>Tanda X 1.0</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
   <style>
-    /* GENERAL */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+    /* Sembunyikan bahagian Sign Language to Text secara lalai */
+    #signLanguageSection {
+      display: none;
+      text-align: center;
+      padding: 20px;
     }
 
-    /* HEADER */
+    #output {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+
+    canvas {
+      border: 1px solid black;
+    }
+
+    /* Gaya untuk gambar bahasa isyarat */
+    #signImage {
+      display: none;
+      width: 300px;
+      height: auto;
+      border: 2px solid black;
+      margin-top: 20px;
+    }
+
+    /* Gaya untuk header */
     header {
       text-align: center;
       margin: 20px 0;
     }
+
     header h1 {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
       font-size: 28px;
     }
-    header h1 .flag {
-      width: 40px;
-      border: 2px solid #000;
-      border-radius: 4px;
-    }
-    header h2 {
-      margin-top: 10px;
-      font-size: 18px;
-    }
 
-    /* MAIN */
-    main {
-      text-align: center;
-      padding: 20px;
-    }
-    #status {
-      margin-bottom: 15px;
-      font-weight: bold;
-      font-size: 16px;
-    }
-    button {
-      margin: 5px;
-      padding: 10px 15px;
-      font-size: 14px;
-      border-radius: 5px;
-      border: 1px solid #333;
-      cursor: pointer;
-      background-color: #f0f0f0;
-    }
-    button:hover {
-      background-color: #ddd;
-    }
-
-    /* FOOTER */
+    /* Gaya untuk footer */
     footer {
       text-align: center;
       padding: 20px;
       background: #f4f4f4;
       margin-top: 30px;
     }
+
     footer p {
       font-weight: bold;
       margin-bottom: 10px;
     }
+
     footer .sponsors {
       display: flex;
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
     }
+
     footer .sponsors img {
       width: 80px;
       height: auto;
       border: 2px solid #000;
       border-radius: 8px;
     }
+
     footer .sponsor-bottom {
       margin-top: 20px;
     }
+
     footer .sponsor-bottom img {
       width: 100px;
       height: auto;
@@ -90,65 +83,82 @@
     }
   </style>
 </head>
+
 <body>
 
-  <!-- HEADER -->
+  <!-- HEADER (TANPA LOGO) -->
   <header>
-    <h1>
-      Tanda X
-      <img src="https://i.ibb.co/whQpdgKF/images-10.jpg" alt="Logo Tanda X Bahasa Isyarat Malaysia" class="flag">
-      1.0
-    </h1>
-    <h2>Platform Bahasa Isyarat Malaysia (BIM) → Teks</h2>
+    <h1>Tanda X 1.0</h1>
   </header>
 
-  <!-- MAIN -->
+  <!-- MAIN CONTENT -->
   <main>
-    <!-- Output container -->
+
     <section id="outputContainer">
-      <p id="outputText"></p>
+      <p></p>
     </section>
 
-    <!-- Status & buttons -->
+    <!-- STATUS SECTION -->
     <section id="statusContainer">
-      <div id="status">Status akan dipaparkan di sini</div>
+      <div id="status">Status akan dipaparkan disini</div>
       <button onclick="startRecognition()">Mulakan Pengenalan Suara</button>
-      <button onclick="toggleSignLanguage()">Tunjukkan Bahagian Bahasa Isyarat → Teks</button>
+      <button onclick="toggleSignLanguage()">Tunjukkan Sign Language to Text</button>
     </section>
+
+    <!-- SIGN LANGUAGE TO TEXT SECTION -->
+    <section id="signLanguageSection">
+      <h1>Sign Language to Text</h1>
+
+      <p id="output">Detected Text: None</p>
+
+      <video id="video" autoplay playsinline style="display: none;"></video>
+
+      <canvas id="canvas"></canvas>
+
+      <!-- Gambar Bahasa Isyarat -->
+      <img id="signImage" src="isyarat.jpg" alt="Bahasa Isyarat">
+    </section>
+
   </main>
 
   <!-- FOOTER -->
   <footer>
-    <p>Penaja Rasmi</p>
+    <p>Penaja Bersama</p>
+
     <div class="sponsors">
-      <img src="https://via.placeholder.com/80" alt="Sponsor 1">
-      <img src="https://via.placeholder.com/80" alt="Sponsor 2">
-      <img src="https://via.placeholder.com/80" alt="Sponsor 3">
+      <img src="https://i.ibb.co/XfvyBbdj/IMG-20250912-WA0000-1.jpg" alt="Logo Penaja 4">
+      <img src="https://i.ibb.co/k64VHWdm/IMG-20250904-WA0096-2.jpg" alt="Logo Penaja 5">
     </div>
+
     <div class="sponsor-bottom">
-      <img src="https://via.placeholder.com/100" alt="Sponsor Utama">
+      <img src="https://i.ibb.co/mFRVrz9s/IMG-20250924-093602.jpg" alt="Logo Penaja Bawah">
     </div>
   </footer>
 
-  <!-- JAVASCRIPT PLACEHOLDER -->
-  <script>
-    function startRecognition() {
-      const status = document.getElementById('status');
-      const output = document.getElementById('outputText');
-      status.innerText = 'Pengenalan suara sedang berjalan...';
-      output.innerText = 'Teks dari suara akan dipaparkan di sini.';
-    }
+  <!-- MediaPipe Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
 
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
+  <script src="app.js"></script>
+
+  <!-- Toggle Sign Language -->
+  <script>
     function toggleSignLanguage() {
-      const outputContainer = document.getElementById('outputContainer');
-      if (outputContainer.style.display === 'none' || outputContainer.style.display === '') {
-        outputContainer.style.display = 'block';
+      let section = document.getElementById("signLanguageSection");
+      let image = document.getElementById("signImage");
+
+      if (section.style.display === "none") {
+        section.style.display = "block";
+        image.style.display = "block";
       } else {
-        outputContainer.style.display = 'none';
+        section.style.display = "none";
+        image.style.display = "none";
       }
     }
   </script>
 
 </body>
 </html>
-
