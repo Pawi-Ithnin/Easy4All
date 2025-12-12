@@ -410,7 +410,12 @@ const wordImages = {
   rindu2: "https://i.ibb.co/abc/Rindu2.jpg",
   cinta3: "https://i.ibb.co/abc/Cinta3.jpg"
   
-};
+  };
+
+
+// Menampilkan output dalam elemen 'outputContainer'
+const outputContainer = document.getElementById("outputContainer");
+
 
 
 
