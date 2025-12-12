@@ -1,4 +1,4 @@
-onst wordImages = {
+const wordImages = {
   kami: "kami.png",
   saya: "saya.png",
   rumah: "rumah.png",
