@@ -81,12 +81,40 @@
       border: 2px solid #000;
       border-radius: 8px;
     }
+
+    /* Gaya untuk Jejak Kuliah / Form */
+    #jejakKuliah {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    #jejakKuliah button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+    }
+
+    #formContainer {
+      margin-top: 20px;
+    }
+
+    #formContainer iframe {
+      width: 100%;
+      max-width: 640px;
+      height: 800px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- HEADER (TANPA LOGO) -->
+  <!-- HEADER -->
   <header>
     <h1>Tanda X 1.0</h1>
   </header>
@@ -94,6 +122,7 @@
   <!-- MAIN CONTENT -->
   <main>
 
+    <!-- OUTPUT CONTAINER -->
     <section id="outputContainer">
       <p></p>
     </section>
@@ -115,8 +144,22 @@
 
       <canvas id="canvas"></canvas>
 
-      <!-- Gambar Bahasa Isyarat -->
       <img id="signImage" src="isyarat.jpg" alt="Bahasa Isyarat">
+    </section>
+
+    <!-- JEJAK KULIAH SECTION -->
+    <section id="jejakKuliah">
+      <button onclick="toggleForm()">Isi Jejak Kuliah</button>
+
+      <div id="formContainer" style="display:none;">
+        <iframe 
+          src="https://docs.google.com/forms/d/e/1FAIpQLSeJFFuerjcHtGdVPd59AXhDEj-pj_bbPCdB5qcz9KMQ20vpCA/viewform?embedded=true"
+          frameborder="0" 
+          marginheight="0" 
+          marginwidth="0">
+          Memuatkan…
+        </iframe>
+      </div>
     </section>
 
   </main>
@@ -125,9 +168,8 @@
   <footer>
     <p>Penaja Bersama</p>
 
-    <!-- Ruang sponsor atas telah dibuang -->
     <div class="sponsors">
-      <!-- Tiada logo di sini -->
+      <!-- Tiada logo -->
     </div>
 
     <div class="sponsor-bottom">
@@ -158,7 +200,18 @@
         image.style.display = "none";
       }
     }
+
+    // Toggle Google Form
+    function toggleForm() {
+      let formDiv = document.getElementById("formContainer");
+      if (formDiv.style.display === "none") {
+        formDiv.style.display = "block";
+      } else {
+        formDiv.style.display = "none";
+      }
+    }
   </script>
 
 </body>
 </html>
+
