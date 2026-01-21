@@ -494,8 +494,14 @@ hospital:"https://i.ibb.co/jkGkgwNv/Hospital-e1de8168a6129a770291-1.jpg", // Hos
 ambulans:"https://i.ibb.co/gZk2pwkZ/Ambulans-9b9aa1b0fde34732c0f3-1.jpg", // Ambulans
 kanan:"https://i.ibb.co/bg9Qbvnq/Kanan-5b39ee88da259bea25d4-1.jpg", // Kanan
 kiri: "https://i.ibb.co/62KcdbR/Kiri-378d09483b0911ff12c1-1.jpg", // Kiri 
-
-
+tidak: "https://i.ibb.co/FRrgzyQ/Tidak-a785ae42f197ad1e523e-1.jpg", // Tidak
+selalu: "https://i.ibb.co/HTFtffJJ/Selalu-53535a255bbeaf06558c-1.jpg", // Selalu
+akan: "https://i.ibb.co/39n59FMW/Akan-3bb1faa656300c10097c.jpg", // Akan
+juga: "https://i.ibb.co/B2fZJjQh/Juga-8feca30d97f1a840f0b3.jpg" , // Juga
+tanpa: "https://i.ibb.co/79dgNVy/Tanpa-50cda4b4d88253ad3040-1.jpg", // Tanpa
+kecuali: "https://i.ibb.co/B5t8TQhZ/Kecuali-0c145c698b686699423d-2.jpg", // Kecuali
+kemudian: "https://i.ibb.co/M5VzySq7/Kemudian-7f4a8a08a8e91827c26c-2.jpg", // Kemudian
+soalan: "https://i.ibb.co/tMymQ8g6/Soalan-7a8711f0b79530118b10.jpg", // Soalan
 };
 
 
