@@ -238,7 +238,7 @@ perempuan: "https://i.ibb.co/hJtZMZHn/Perempuan-cd4e9db3a361c8669dc4.jpg" , // P
   keturunan: "https://i.ibb.co/0ywxmnqW/Keturunan-Generasi-17afbafd97a21157a047.jpg" , // Keturunan 
  keluarga: "https://i.ibb.co/hxtnFSk1/Keluarga-a59bea1cb025c9f91246.jpg", // Keluarga
  Kekasih: "https://i.ibb.co/c4HGFVV/Kekasih-4782368daa0315e80216.jpg", // kekasih 
- kanakkanak : "https://i.ibb.co/8DHqzt5N/Kanak-kanak-a93179989a88a56966bd.jpg", // Kanak Kanak
+ kanakkanak: "https://i.ibb.co/8DHqzt5N/Kanak-kanak-a93179989a88a56966bd.jpg" , // Kanak Kanak
  kahwin: "https://i.ibb.co/gMtWnMwQ/Kahwin-648473470a71b000ef85.jpg" , //  Kahwin
  Isteri: "https://i.ibb.co/7tDjcY07/Isteri-Bini-0763d2dda611a6f7c43f.jpg" , // isteri
  emak: "https://i.ibb.co/hF8xTn3c/Emak-Ibu-Bonda-c7118950c38d42f24e2a.jpg" , // Emak
@@ -263,8 +263,8 @@ perempuan: "https://i.ibb.co/hJtZMZHn/Perempuan-cd4e9db3a361c8669dc4.jpg" , // P
  jabatan: "https://i.ibb.co/bg7nwkJR/Jabatan-ec553b53f8d59c24aea1.jpg" , // Jabatan
  ditindas: "https://i.ibb.co/mrTk8Zwk/Ditindas-d76da52f50b9bed2c698.jpg" , // Ditindas
  demokrasi: "https://i.ibb.co/W4WPLyW0/Demokrasi-96329d2bccab0f8965cb.jpg" , // Demokrasi
- tiadaidea: "https://i.ibb.co/dsT4z1Ty/Tiada-idea-1f0400b6f94d999a69d8.jpg" , // TiadaIdea
- tengahberfikir: "https://i.ibb.co/ymqsm86R/Tengah-berfikir-ef31a07c88406e130658.jpg" ,// TengahBerfikir
+ tiadaidea: "https://i.ibb.co/dsT4z1Ty/Tiada-idea-1f0400b6f94d999a69d8.jpg" , // Tiada Idea
+ tengahberfikir: "https://i.ibb.co/ymqsm86R/Tengah-berfikir-ef31a07c88406e130658.jpg" ,// Tengah Berfikir
  pengetahuan: "https://i.ibb.co/23Ftrs5D/Pengetahuan-6700d11244a0aaefd626.jpg" , // Pengetahuan 
  pendapat: "https://i.ibb.co/5h21VHdX/Pendapat-bf1e1c9cc9153d2f1372.jpg" , // Pendapat
  dibuangkerja: "https://i.ibb.co/0RQKzXqt/Pecat-Dibuang-kerja-3c7c68d03f73b08ecf9e.jpg" , // Dibuangkerja
@@ -489,7 +489,11 @@ dahaga:"https://i.ibb.co/23gDGjPt/Dahaga-85d238bb1353e551fcf3-1.jpg", // Dahaga
 kacak: "https://i.ibb.co/B2WvJM82/Kacak-e6f187c95b8a38f8bcc8.jpg", // kacak 
 lipat: "https://i.ibb.co/FkTjKWX7/Lipat-aa858e1f47f0c79b08ac.jpg", // Lipat
 pandu: "https://i.ibb.co/bjfxcgL1/Pandu-9ea12a2f407481caa065.jpg", // Pandu
-sembelih: "https://i.ibb.co/qty7RCy/Sembelih-haiwan-b1e88771bbc1a806f08b.jpg", // Sembelih
+sembelih:"https://i.ibb.co/qty7RCy/Sembelih-haiwan-b1e88771bbc1a806f08b.jpg", // Sembelih
+hospital:"https://i.ibb.co/jkGkgwNv/Hospital-e1de8168a6129a770291-1.jpg", // Hospital
+ambulans:"https://i.ibb.co/gZk2pwkZ/Ambulans-9b9aa1b0fde34732c0f3-1.jpg", // Ambulans
+kanan:"https://i.ibb.co/bg9Qbvnq/Kanan-5b39ee88da259bea25d4-1.jpg", // Kanan
+kiri: "https://i.ibb.co/62KcdbR/Kiri-378d09483b0911ff12c1-1.jpg", // Kiri 
 
 
 };
@@ -683,10 +687,3 @@ function detectMiniLove(landmarks) {
                      Math.abs(indexTip.y - thumbTip.y) < 0.05;
   return isMiniLove && isOtherFingersBent;
 }
-
-
-
-
-
-
-
