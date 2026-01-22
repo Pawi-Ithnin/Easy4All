@@ -502,6 +502,10 @@ tanpa: "https://i.ibb.co/79dgNVy/Tanpa-50cda4b4d88253ad3040-1.jpg", // Tanpa
 kecuali: "https://i.ibb.co/B5t8TQhZ/Kecuali-0c145c698b686699423d-2.jpg", // Kecuali
 kemudian: "https://i.ibb.co/M5VzySq7/Kemudian-7f4a8a08a8e91827c26c-2.jpg", // Kemudian
 soalan: "https://i.ibb.co/tMymQ8g6/Soalan-7a8711f0b79530118b10.jpg", // Soalan
+puisi: "https://i.ibb.co/N2mvR7cM/Puisi-025fab03f71ad9f2b0ad-1.jpg", // Puisi
+tariansinga: "https://i.ibb.co/Lz5gLRN7/Tarian-Singa-0f0d3ed786dcde9db0a3.jpg" , // TarianSinga
+silapmata: "https://i.ibb.co/6RfYxSgm/Silap-mata-7f21b61cdf6a1368cde2.jpg" , // SilapMat 
+  
 };
 
 
@@ -693,3 +697,4 @@ function detectMiniLove(landmarks) {
                      Math.abs(indexTip.y - thumbTip.y) < 0.05;
   return isMiniLove && isOtherFingersBent;
 }
+
