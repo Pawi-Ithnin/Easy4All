@@ -504,7 +504,15 @@ kemudian: "https://i.ibb.co/M5VzySq7/Kemudian-7f4a8a08a8e91827c26c-2.jpg", // Ke
 soalan: "https://i.ibb.co/tMymQ8g6/Soalan-7a8711f0b79530118b10.jpg", // Soalan
 puisi: "https://i.ibb.co/N2mvR7cM/Puisi-025fab03f71ad9f2b0ad-1.jpg", // Puisi
 tariansinga: "https://i.ibb.co/Lz5gLRN7/Tarian-Singa-0f0d3ed786dcde9db0a3.jpg" , // TarianSinga
-silapmata: "https://i.ibb.co/6RfYxSgm/Silap-mata-7f21b61cdf6a1368cde2.jpg" , // SilapMat 
+silapmata: "https://i.ibb.co/6RfYxSgm/Silap-mata-7f21b61cdf6a1368cde2.jpg" , // SilapMata
+pencen: "https://i.ibb.co/B2szmDPn/Pencen-a93c846569532755052a-1.jpg", // Pencen
+almari: "https://i.ibb.co/vvVs0qRp/Almari-89fd881bdc63362f1423-2.jpg", // Almari
+badan: "https://i.ibb.co/S4Gn6D59/Badan-87f34d5ee3cc8b2cdbed-1.jpg", // Badan
+bonus: "https://i.ibb.co/XxS76Fqw/Bonus-be399506a62e2dd35766-1.jpg", // Bonus
+jiran: "https://i.ibb.co/cKsVJvZN/Jiran-31bd1cc4a9898a87afa9-3.jpg" , // Jiran
+kampung: "https://i.ibb.co/Lz2CyLJX/Kampung-0a0d99255650f9c93fd1-2.jpg" , // Kampung
+pasar: "https://i.ibb.co/PsYBW4GL/Pasar-bb015a83e4f3b92eb10b-1.jpg", // Pasar
+
   
 };
 
@@ -697,4 +705,5 @@ function detectMiniLove(landmarks) {
                      Math.abs(indexTip.y - thumbTip.y) < 0.05;
   return isMiniLove && isOtherFingersBent;
 }
+
 
