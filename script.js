@@ -595,4 +595,19 @@ function fingerspell(word) {
 function startRecognition() {
     recognition.start();
     document.getElementById('status').innerText = "Mendengar audio...";
+  // Letak kod ini di bahagian paling bawah script.js
+function preloadImages() {
+    const statusDiv = document.getElementById('status');
+    statusDiv.innerText = "Sedang memuatkan pangkalan data isyarat...";
+    
+    Object.values(wordImages).forEach(url => {
+        const img = new Image();
+        img.src = url;
+    });
+    
+    statusDiv.innerText = "Sistem sedia! (Data telah disimpan)";
+}
+
+// Jalankan preload sebaik sahaja page dibuka
+window.onload = preloadImages;
 }
