@@ -1,10 +1,13 @@
+var player;
+// Gunakan wordImages anda (Pastikan senarai penuh diletakkan di sini)
 const wordImages = {
-  kami: "kami.png",
-  saya: "saya.png",
-  rumah: "rumah.png",
-  makan: "makan.png",
-  belajar: "belajar.png",
-  ambil: "https://i.ibb.co/xFDdTgC/Ambil-67ae1c8186f3856aa6b2-2.jpg",// Ambil
+    kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
+    saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
+    makan: "https://i.ibb.co/pd6WB8L/Makan-Makanan-358171f7a0d456b53998.jpg",
+    sebab: "https://i.ibb.co/PGRPGQ5T/Sebab-951f0f5aea5f868a56bf.jpg",
+    boleh: "https://i.ibb.co/GcLkjKY/Boleh-68f3d2dc078ea01232e0-1.jpg",
+    nampak: "https://i.ibb.co/2S0LmmK/Lihat-Tengok-40c6f1eb831eb4fa42c4.jpg",
+    ambil: "https://i.ibb.co/xFDdTgC/Ambil-67ae1c8186f3856aa6b2-2.jpg",// Ambil
   angkat: "https://i.ibb.co/CKyDRtL/Angkat-5a39a6cc3f28b66e33d5-1.jpg", // Angkat
   baca: "https://i.ibb.co/WfqmLPZ/Baca-4f6dce926d7cb25e66a3-1.jpg", // Baca
   bercakap: "https://i.ibb.co/K9BL7Xm/Bercakap-besar-a11f170056a0771a27e4.jpg", // Becakap
@@ -513,197 +516,107 @@ jiran: "https://i.ibb.co/cKsVJvZN/Jiran-31bd1cc4a9898a87afa9-3.jpg" , // Jiran
 kampung: "https://i.ibb.co/Lz2CyLJX/Kampung-0a0d99255650f9c93fd1-2.jpg" , // Kampung
 pasar: "https://i.ibb.co/PsYBW4GL/Pasar-bb015a83e4f3b92eb10b-1.jpg", // Pasar
 
-  
 };
 
+// --- LOGIK YOUTUBE ---
+function extractVideoID(url) {
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    return (match && match[2].length == 11) ? match[2] : null;
+}
 
-// Menampilkan output dalam elemen 'outputContainer'
-const outputContainer = document.getElementById("outputContainer");
+function loadYoutubeVideo() {
+    const url = document.getElementById('youtubeUrl').value;
+    const videoId = extractVideoID(url);
 
-// Mula mendengar suara
-const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-recognition.lang = "ms-MY"; 
-recognition.continuous = true; 
-recognition.interimResults = true; 
-
-recognition.start();
-
-// Mendengar hasil percakapan
-recognition.onresult = (event) => {
-  const spokenText = event.results[event.results.length - 1][0].transcript.toLowerCase();
-  outputContainer.textContent = spokenText;
-  displayResult(spokenText);
-};
-
-// Apabila berlaku ralat
-recognition.onerror = (event) => {
-  outputContainer.textContent = "Ralat berlaku. Sila cuba lagi.";
-};
-
-// Apabila pengiktirafan suara berhenti
-recognition.onend = () => {
-  recognition.start();
-};
-
-// Menambah hasil suara yang dikenalpasti
-function displayResult(spokenText) {
-  const words = spokenText.split(" ");
-  words.forEach(word => {
-    if (wordImages[word]) {
-      const item = document.createElement("div");
-      item.classList.add("output-item");
-      
-      const img = document.createElement("img");
-      img.src = wordImages[word];
-      
-      item.appendChild(img);
-      outputContainer.appendChild(item);
+    if (videoId) {
+        if (player) {
+            player.loadVideoById(videoId);
+        } else {
+            player = new YT.Player('player', {
+                height: '360',
+                width: '100%',
+                videoId: videoId,
+            });
+        }
+        document.getElementById('status').innerText = "Video sedia. Klik 'Mulakan Pengenalan Suara' dan mainkan video.";
+    } else {
+        alert("Pautan tidak sah!");
     }
-  });
 }
-// Inisialisasi Elemen
-const videoElement = document.getElementById('video');
-const canvasElement = document.getElementById('canvas');
-const canvasCtx = canvasElement.getContext('2d');
-const outputElement = document.getElementById('output');
 
-// Inisialisasi MediaPipe Hands
-const hands = new Hands({
-  locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`,
-});
+// --- LOGIK SPEECH RECOGNITION (TERJEMAH AUDIO) ---
+const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (!Recognition) {
+    alert("Maaf, pelayar anda tidak menyokong Pengenalan Suara. Sila guna Chrome.");
+}
 
-hands.setOptions({
-  maxNumHands: 2, // Boleh kesan sehingga 2 tangan
-  modelComplexity: 1,
-  minDetectionConfidence: 0.5,
-  minTrackingConfidence: 0.5,
-});
+const recognition = new Recognition();
+recognition.lang = 'ms-MY'; // Set Bahasa Melayu
+recognition.continuous = true;
+recognition.interimResults = false;
 
-// Muatkan Kamera
-const camera = new Camera(videoElement, {
-  onFrame: async () => {
-    await hands.send({ image: videoElement });
-  },
-  width: 640,
-  height: 480,
-});
+function startRecognition() {
+    recognition.start();
+    document.getElementById('status').innerText = "Sistem sedang mendengar... Sila mainkan audio video.";
+}
 
-camera.start();
-
-// Tetapkan saiz canvas sama dengan saiz video
-videoElement.onloadeddata = () => {
-  canvasElement.width = videoElement.videoWidth;
-  canvasElement.height = videoElement.videoHeight;
+recognition.onresult = function(event) {
+    const resultIndex = event.resultIndex;
+    const transcript = event.results[resultIndex][0].transcript.toLowerCase();
+    
+    // Paparkan teks yang didengar di skrin
+    document.getElementById('output').innerText = "Dikesan: " + transcript;
+    
+    // Terjemahkan teks tersebut kepada imej
+    translateTextToSign(transcript);
 };
 
-// Pengesanan Tangan
-hands.onResults((results) => {
-  canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+recognition.onerror = function(event) {
+    console.error("Ralat Recognition: ", event.error);
+    document.getElementById('status').innerText = "Ralat: " + event.error;
+};
 
-  if (results.multiHandLandmarks) {
-    let detectedGesture = "None";
+// --- LOGIK PAPARAN IMEJ (TANDA X) ---
+function translateTextToSign(text) {
+    const words = text.split(/\s+/);
+    const imageElement = document.getElementById('signImage');
+    const displayArea = document.getElementById('signLanguageSection');
 
-    results.multiHandLandmarks.forEach((landmarks, handIndex) => {
-      drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS, {
-        color: handIndex === 0 ? '#00FF00' : '#0000FF',
-        lineWidth: 2,
-      });
-      drawLandmarks(canvasCtx, landmarks, { color: '#FF0000', lineWidth: 1 });
+    displayArea.style.display = "block";
+    imageElement.style.display = "block";
 
-      const totalFingers = countFingersRaised(landmarks);
-
-      if (detectThumbsUp(landmarks)) {
-        detectedGesture = "👍 Bagus!";
-      } else if (detectMiniLove(landmarks)) {
-        detectedGesture = "❤️ Mini Love!";
-      } else if (detectSaya(landmarks)) {
-        detectedGesture = "👆 Saya";
-      } else if (detectPesan(landmarks)) {
-        detectedGesture = "📩 Pesan";
-      } else if (detectAir(landmarks)) {
-        detectedGesture = "💧 Air";
-      } else if (totalFingers >= 1 && totalFingers <= 10) {
-        detectedGesture = `Detected Number: ${totalFingers}`;
-      }
-    });
-
-    outputElement.textContent = detectedGesture;
-  }
-});
-
-// Fungsi untuk mengira jari yang terangkat
-function countFingersRaised(landmarks) {
-  const thumbTip = landmarks[4];
-  const indexTip = landmarks[8];
-  const middleTip = landmarks[12];
-  const ringTip = landmarks[16];
-  const pinkyTip = landmarks[20];
-
-  let count = 0;
-
-  if (indexTip.y < landmarks[6].y) count++;
-  if (middleTip.y < landmarks[10].y) count++;
-  if (ringTip.y < landmarks[14].y) count++;
-  if (pinkyTip.y < landmarks[18].y) count++;
-
-  if (Math.abs(thumbTip.x - landmarks[2].x) > 0.05) count++;
-
-  return count;
+    let i = 0;
+    function showSequence() {
+        if (i < words.length) {
+            let word = words[i].replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,""); // Bersihkan simbol
+            
+            if (wordImages[word]) {
+                imageElement.src = wordImages[word];
+                console.log("Menunjukkan isyarat: " + word);
+            } else {
+                imageElement.src = "isyarat.jpg"; // Gambar default jika tiada
+                console.log("Tiada dalam kamus: " + word);
+            }
+            
+            i++;
+            setTimeout(showSequence, 1200); // Kelajuan tukar imej (1.2 saat)
+        }
+    }
+  // Fungsi untuk sorok/tampilkan bahagian YouTube
+function toggleYouTubeSection() {
+    let ytSection = document.getElementById("youtubeSection");
+    
+    if (ytSection.style.display === "none" || ytSection.style.display === "") {
+        ytSection.style.display = "block";
+        document.getElementById('status').innerText = "Mod YouTube diaktifkan.";
+    } else {
+        ytSection.style.display = "none";
+        document.getElementById('status').innerText = "Mod YouTube ditutup.";
+    }
+}
+    showSequence();
 }
 
-// Fungsi untuk kesan isyarat "Saya"
-function detectSaya(landmarks) {
-  const indexTip = landmarks[8];
-  const indexBase = landmarks[5];
-  return indexTip.y > indexBase.y;
-}
-
-// Fungsi untuk kesan isyarat "Pesan"
-function detectPesan(landmarks) {
-  const thumbTip = landmarks[4];
-  const indexTip = landmarks[8];
-  const middleTip = landmarks[12];
-  const isOKSign = Math.abs(thumbTip.x - indexTip.x) < 0.05 && Math.abs(thumbTip.y - indexTip.y) < 0.05;
-  const isMiddleUp = middleTip.y < landmarks[10].y;
-  return isOKSign && isMiddleUp;
-}
-
-// Fungsi untuk kesan isyarat "Air"
-function detectAir(landmarks) {
-  const pinkyTip = landmarks[20];
-  const pinkyBase = landmarks[17];
-  const isPinkyUp = pinkyTip.y < pinkyBase.y;
-  const isOtherFingersBent =
-    landmarks[8].y > landmarks[6].y &&
-    landmarks[12].y > landmarks[10].y &&
-    landmarks[16].y > landmarks[14].y;
-  return isPinkyUp && isOtherFingersBent;
-}
-
-// Fungsi untuk kesan isyarat "Bagus" (👍)
-function detectThumbsUp(landmarks) {
-  const thumbTip = landmarks[4];
-  const thumbBase = landmarks[2];
-  const isOtherFingersBent =
-    landmarks[8].y > landmarks[6].y &&
-    landmarks[12].y > landmarks[10].y &&
-    landmarks[16].y > landmarks[14].y &&
-    landmarks[20].y > landmarks[18].y;
-  const isThumbUp = thumbTip.y < thumbBase.y;
-  return isThumbUp && isOtherFingersBent;
-}
-
-// Fungsi untuk kesan isyarat "Mini Love" (❤️)
-function detectMiniLove(landmarks) {
-  const indexTip = landmarks[8];
-  const thumbTip = landmarks[4];
-  const isOtherFingersBent =
-    landmarks[12].y > landmarks[10].y &&
-    landmarks[16].y > landmarks[14].y &&
-    landmarks[20].y > landmarks[18].y;
-  const isMiniLove = Math.abs(indexTip.x - thumbTip.x) < 0.05 &&
-                     Math.abs(indexTip.y - thumbTip.y) < 0.05;
-  return isMiniLove && isOtherFingersBent;
-}
 
 
