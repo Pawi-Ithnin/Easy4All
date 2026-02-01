@@ -5,104 +5,110 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tanda X 1.0</title>
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-
   <style>
-    /* Sembunyikan bahagian YouTube secara lalai */
+    body { 
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #ffffff; 
+      color: black; 
+      margin: 0;
+      padding: 0;
+    }
+
+    header { padding: 10px; background: #fff; }
+    header h1 { font-size: 28px; color: #d32f2f; margin: 10px 0; }
+
+    /* CONTAINER FLEXBOX - Ini kunci untuk Side-by-Side */
+    .main-content {
+      display: flex;
+      flex-direction: row; /* Sebelah menyebelah di PC */
+      flex-wrap: wrap;    /* Turun bawah di Phone */
+      gap: 15px;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 15px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* KOTAK YOUTUBE */
     #youtubeSection {
-      display: none; 
-      margin: 20px auto;
-      max-width: 800px;
-      padding: 20px;
+      flex: 1.5; /* Lebih lebar sedikit untuk video */
+      min-width: 320px;
       background: #f9f9f9;
+      padding: 15px;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: none; 
     }
 
-    .yt-controls {
-      margin-bottom: 15px;
-      display: flex;
-      gap: 10px;
-    }
-
-    input[type="text"] {
-      padding: 12px;
-      flex-grow: 1;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-    }
-
-    button {
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 8px;
-      border: none;
-      background-color: #d32f2f;
-      color: white;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background-color: #b71c1c;
+    /* KOTAK ISYARAT */
+    #signLanguageSection {
+      flex: 1; /* Lebih kecil sedikit untuk isyarat */
+      min-width: 320px;
+      background: #ffffff;
+      padding: 15px;
+      border: 2px dashed #d32f2f;
+      border-radius: 12px;
+      display: none;
     }
 
     #player {
       width: 100%;
       aspect-ratio: 16 / 9;
       border-radius: 8px;
-      background: #000;
-    }
-
-    #signLanguageSection {
-      display: none;
-      text-align: center;
-      padding: 20px;
-    }
-
-    #output {
-      font-size: 24px;
-      margin: 20px 0;
-      font-weight: bold;
-      color: #333;
     }
 
     #signImage {
-      display: none;
-      width: 350px;
+      width: 100%;
+      max-width: 250px; /* Saiz ideal */
       height: auto;
-      border: 4px solid #d32f2f;
       border-radius: 12px;
-      margin: 20px auto;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      margin: 10px auto;
+      display: block;
     }
 
-    header { text-align: center; margin: 20px 0; }
-    header h1 { font-size: 32px; color: #d32f2f; }
-
+    /* KAWALAN */
     .control-panel {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 20px;
+      margin: 15px;
     }
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #f4f4f4;
-      margin-top: 50px;
-    }
-
-    footer .sponsors img {
-      width: 90px;
-      height: auto;
-      border: 2px solid #ddd;
+    button {
+      padding: 12px 18px;
+      cursor: pointer;
       border-radius: 8px;
-      margin: 5px;
+      border: none;
+      background-color: #d32f2f;
+      color: white;
+      font-weight: bold;
     }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 60%;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    /* RESPONSIVE UNTUK PHONE */
+    @media (max-width: 768px) {
+      .main-content {
+        flex-direction: column; /* Tukar jadi Atas-Bawah di phone */
+      }
+      #youtubeSection, #signLanguageSection {
+        width: 100%;
+        max-width: 100%;
+      }
+      #signImage {
+        max-width: 180px; /* Kecilkan sikit di phone supaya muat satu skrin */
+      }
+    }
+
+    footer .sponsors img { width: 70px; margin: 10px; border-radius: 5px; }
   </style>
 </head>
 
@@ -113,84 +119,69 @@
   </header>
 
   <main>
-    <section id="statusContainer" style="text-align:center; margin-bottom: 20px;">
-      <div id="status" style="margin-bottom: 15px; font-style: italic; color: #666;">Sedia untuk memulakan...</div>
-      
+    <section id="statusContainer">
+      <div id="status" style="font-style: italic; color: #666;">Sedia untuk beraksi...</div>
       <div class="control-panel">
-        <button onclick="startRecognition()" style="background-color: #2e7d32;">🎤 Mulakan Suara</button>
-        <button onclick="toggleYouTubeSection()" style="background-color: #1976d2;">📺 Mod Video YouTube</button>
-        <button onclick="toggleSignLanguage()">👐 Kamera (Hand Detection)</button>
+        <button onclick="startRecognition()" style="background-color: #2e7d32;">🎤 Mula Suara</button>
+        <button onclick="toggleYouTubeSection()" style="background-color: #1976d2;">📺 Mod YouTube</button>
+        <button onclick="toggleSignLanguage()" style="background-color: #f57c00;">👐 Kamera/Isyarat</button>
         <button onclick="resetSystem()" style="background-color: #555;">🔄 Reset</button>
       </div>
     </section>
 
-    <section id="youtubeSection">
-      <h3>Terjemah Video YouTube</h3>
-      <div class="yt-controls">
-        <input type="text" id="youtubeUrl" placeholder="Tampal pautan (URL) YouTube di sini...">
-        <button onclick="loadYoutubeVideo()" style="background-color: #000;">Muat Video</button>
-      </div>
-      <div id="player"></div>
-    </section>
-
-    <section id="outputContainer" style="text-align:center;">
-      <h2 id="transcriptDisplay" style="color: #d32f2f; min-height: 30px;"></h2>
+    <div class="main-content">
       
-      <div id="signLanguageSection">
-        <p id="output">Teks Dikesan: Tiada</p>
-        <video id="video" autoplay playsinline style="display: none;"></video>
-        <canvas id="canvas" style="max-width: 100%; height: auto; display: none;"></canvas>
-        <img id="signImage" src="isyarat.jpg" alt="Paparan Bahasa Isyarat">
-      </div>
-    </section>
+      <section id="youtubeSection">
+        <div class="yt-controls" style="margin-bottom:10px;">
+          <input type="text" id="youtubeUrl" placeholder="Tampal link YouTube...">
+          <button onclick="loadYoutubeVideo()" style="background-color: #000;">Muat</button>
+        </div>
+        <div id="player"></div>
+        <h2 id="transcriptDisplay" style="color: #d32f2f; margin-top:15px;"></h2>
+      </section>
 
+      <section id="signLanguageSection">
+        <p id="output" style="font-weight:bold;">Visual Terjemahan:</p>
+        <img id="signImage" src="isyarat.jpg" alt="Paparan Isyarat">
+        <video id="video" autoplay playsinline style="display: none;"></video>
+        <canvas id="canvas" style="display: none; width: 100%;"></canvas>
+      </section>
+
+    </div>
   </main>
 
   <footer>
     <p><b>Penaja Bersama</b></p>
     <div class="sponsors">
-      <img src="https://i.ibb.co/XfvyBbdj/IMG-20250912-WA0000-1.jpg" alt="Logo Penaja 4">
-      <img src="https://i.ibb.co/k64VHWdm/IMG-20250904-WA0096-2.jpg" alt="Logo Penaja 5">
-    </div>
-    <div class="sponsor-bottom" style="margin-top: 15px;">
-      <img src="https://i.ibb.co/mFRVrz9s/IMG-20250924-093602.jpg" alt="Logo Penaja Bawah" style="width: 120px;">
+      <img src="https://i.ibb.co/XfvyBbdj/IMG-20250912-WA0000-1.jpg" alt="P1">
+      <img src="https://i.ibb.co/k64VHWdm/IMG-20250904-WA0096-2.jpg" alt="P2">
+      <img src="https://i.ibb.co/mFRVrz9s/IMG-20250924-093602.jpg" alt="P3" style="width: 100px;">
     </div>
   </footer>
 
   <script src="https://www.youtube.com/iframe_api"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
-
-  <script src="script.js"></script>
+  <script src="script.js"></script> 
   <script src="app.js"></script>
 
   <script>
-    // Fungsi untuk sorok/tampil bahagian YouTube
     function toggleYouTubeSection() {
-      let ytSection = document.getElementById("youtubeSection");
-      if (ytSection.style.display === "none" || ytSection.style.display === "") {
-        ytSection.style.display = "block";
-        document.getElementById('status').innerText = "Mod YouTube Aktif. Sila masukkan pautan.";
-      } else {
-        ytSection.style.display = "none";
-      }
+      let yt = document.getElementById("youtubeSection");
+      let sign = document.getElementById("signLanguageSection");
+      
+      // Papar kedua-duanya serentak
+      yt.style.display = "block";
+      sign.style.display = "block";
+      
+      document.getElementById('status').innerText = "Mod YouTube & Isyarat Aktif";
     }
 
-    // Fungsi asal anda untuk Kamera
     function toggleSignLanguage() {
       let section = document.getElementById("signLanguageSection");
-      let canvas = document.getElementById("canvas");
-      let image = document.getElementById("signImage");
-      
       section.style.display = "block";
-      canvas.style.display = (canvas.style.display === "none") ? "block" : "none";
-      image.style.display = "block";
     }
 
-    // Fungsi Reset Skrin
     function resetSystem() {
-      location.reload(); // Cara paling mudah untuk bersihkan semua state
+      location.reload();
     }
   </script>
 
