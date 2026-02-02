@@ -500,6 +500,28 @@ bonus: "https://i.ibb.co/XxS76Fqw/Bonus-be399506a62e2dd35766-1.jpg", // Bonus
 jiran: "https://i.ibb.co/cKsVJvZN/Jiran-31bd1cc4a9898a87afa9-3.jpg" , // Jiran
 kampung: "https://i.ibb.co/Lz2CyLJX/Kampung-0a0d99255650f9c93fd1-2.jpg" , // Kampung
 pasar: "https://i.ibb.co/PsYBW4GL/Pasar-bb015a83e4f3b92eb10b-1.jpg", // Pasar
+alahan: "https://i.ibb.co/VY8q32P3/Alahan-e0199fd13c15226fef99.jpg" , // Alahan
+koma: "https://i.ibb.co/gbDy1PMy/Koma-3672073456d5d150c032.jpg", // Koma
+lemak: "https://i.ibb.co/9kfvR06K/Lemak-839500fc78de5aa5afd0.jpg" , // Lemak
+rabun: "https://i.ibb.co/Dg658KRf/Rabun-82074aee38427a0e9ea7-1.jpg" , // Rabun
+virus: "https://i.ibb.co/6J8MPZr6/Virus-d212b92f52c854d4479c-1.jpg" , // Virus
+hanya: "https://i.ibb.co/KxTFd4z8/Hanya-b420f93704f9fd0e5a22-1.jpg", // Hanya
+tiap: "https://i.ibb.co/cShB7PwT/Tiap-843e17b0a15a8a0cdd30-1.jpg" , // Tiap
+bawang: "https://i.ibb.co/dwBRD9T9/Bawang-61c3cb7933a64f074ecd-1.jpg" , // Bawang
+biskut: "https://i.ibb.co/hRpZdBR7/Biskut-76abab4ace2c7bad8977.jpg" , // Biskut
+daging: "https://i.ibb.co/s9924P2r/Daging-42fc3b365e415b039348.jpg" , // Daging
+garam: "https://i.ibb.co/k6PJm65P/Garam-192ee12eb33c2ddf2399.jpg" , // Garam
+kicap: "https://i.ibb.co/nqKKgfMN/Kicap-afa67c250ef28e7c37de-1.jpg" , // Kicap
+kurma: "https://i.ibb.co/7dLdVQTb/Kurma-886ef7c573a6f5a510ae-1.jpg", // Kurma
+lemang: "https://i.ibb.co/BVCTL1HP/Lemang-8d47975c08f946783dd4-1.jpg", // Lemang
+nasi: "https://i.ibb.co/zHHTTf0q/Nasi-81c4e6ad724545aa8068.jpg", // Nasi
+roti: "https://i.ibb.co/XZgDcWnP/Roti-8ec35ce96766609e5af3.jpg", // Roti
+sarapan: "https://i.ibb.co/fGkJgZGD/Sarapan-df9487cf2c1805e01674-1.jpg" ,// Sarapan
+benci: "https://i.ibb.co/KTD1RCY/Benci-0cc240f8b9ecd6ec0ec9.jpg" , // Benci
+cinta: "https://i.ibb.co/HLdQjnWK/Cinta-6c7e958d080b126ff423.jpg" , // Cinta
+dendam: "https://i.ibb.co/C5vkdhzb/Dendam-366067bd6be7943c2d6c-1.jpg", // Dendam
+kecewa: "https://i.ibb.co/8nCKkGGT/Kecewa-2e845cc0ab6a7b8ae24c.jpg", // Kecewa
+letih: "https://i.ibb.co/mFrv7WRj/Letih-c3f167daa801aee71591-1.jpg", // Letih
 
 };
 
@@ -611,3 +633,4 @@ function preloadImages() {
 // Jalankan preload sebaik sahaja page dibuka
 window.onload = preloadImages;
 }
+
