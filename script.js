@@ -522,6 +522,8 @@ cinta: "https://i.ibb.co/HLdQjnWK/Cinta-6c7e958d080b126ff423.jpg" , // Cinta
 dendam: "https://i.ibb.co/C5vkdhzb/Dendam-366067bd6be7943c2d6c-1.jpg", // Dendam
 kecewa: "https://i.ibb.co/8nCKkGGT/Kecewa-2e845cc0ab6a7b8ae24c.jpg", // Kecewa
 letih: "https://i.ibb.co/mFrv7WRj/Letih-c3f167daa801aee71591-1.jpg", // Letih
+bersemuka: "https://i.ibb.co/9H23sGNB/Bersemuka-e1d19d9efd57e173aae5.jpg", // Bersemuka
+
 
 };
 
@@ -633,4 +635,5 @@ function preloadImages() {
 // Jalankan preload sebaik sahaja page dibuka
 window.onload = preloadImages;
 }
+
 
