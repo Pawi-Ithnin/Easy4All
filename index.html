@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tanda X 1.0</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanda X 1.0</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -16,10 +16,11 @@
   <section id="statusContainer">
     <div id="status" class="status-text">Sedia untuk beraksi...</div>
     <div class="control-panel">
-      <button onclick="startRecognition()">🎤 Mula Suara</button>
-      <button onclick="toggleYouTubeSection()">📺 Mod YouTube</button>
-      <button onclick="toggleSignLanguage()">👐 Kamera/Isyarat</button>
-      <button onclick="resetSystem()">🔄 Reset</button>
+      <button id="btnStart">🎤 Mula Suara</button>
+      <button id="btnStop">⏹ Henti Suara</button>
+      <button id="btnYT">📺 Mod YouTube</button>
+      <button id="btnSign">👐 Kamera/Isyarat</button>
+      <button id="btnReset">🔄 Reset</button>
     </div>
   </section>
 
@@ -27,7 +28,7 @@
     <section id="youtubeSection">
       <div class="yt-controls">
         <input type="text" id="youtubeUrl" placeholder="Tampal link YouTube...">
-        <button onclick="loadYoutubeVideo()">Muat</button>
+        <button id="btnLoad">Muat</button>
       </div>
       <div id="player"></div>
       <h2 id="transcriptDisplay"></h2>
@@ -55,3 +56,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
