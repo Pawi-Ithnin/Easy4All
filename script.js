@@ -1,17 +1,19 @@
-var player;
-const wordImages = {
-  kami:"https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
-  saya:"https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
-  angkat:"https://i.ibb.co/CKyDRtL/Angkat-5a39a6cc3f28b66e33d5-1.jpg",
-  baca:"https://i.ibb.co/WfqmLPZ/Baca-4f6dce926d7cb25e66a3-1.jpg",
-  bercakap:"https://i.ibb.co/K9BL7Xm/Bercakap-besar-a11f170056a0771a27e4.jpg",
-  bawa:"https://i.ibb.co/CHscC4p/Bawa-250f55f76a406ca4adad.jpg",
-  beritahu:"https://i.ibb.co/wy13Lg4/Beritahu-fd1792e920403d8e504f-1.jpg",
-  berlari:"https://i.ibb.co/p4Y28D3/Berlari-1daf3af9f975eb86c8ad-1.jpg",
-  bina:"https://i.ibb.co/mXcWwCN/Bina-160e1ad310bc007f2cef-1.jpg",
-  bincang:"https://i.ibb.co/KWzygWy/Bincang-7c33e7a5ab9329804165.jpg",
-  bohong:"https://i.ibb.co/2Pnfm2x/Bohong-Dusta-1be08c8d2eab6b1a0420.jpg",
-  cari: "https://i.ibb.co/sCs539m/Cari-6243616cf7ff3cf770b1.jpg",
+document.addEventListener('DOMContentLoaded', function(){
+
+  // ----- Word Images -----
+  const wordImages = {
+    kami:"https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
+    saya:"https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
+    angkat:"https://i.ibb.co/CKyDRtL/Angkat-5a39a6cc3f28b66e33d5-1.jpg",
+    baca:"https://i.ibb.co/WfqmLPZ/Baca-4f6dce926d7cb25e66a3-1.jpg",
+    bercakap:"https://i.ibb.co/K9BL7Xm/Bercakap-besar-a11f170056a0771a27e4.jpg",
+    bawa:"https://i.ibb.co/CHscC4p/Bawa-250f55f76a406ca4adad.jpg",
+    beritahu:"https://i.ibb.co/wy13Lg4/Beritahu-fd1792e920403d8e504f-1.jpg",
+    berlari:"https://i.ibb.co/p4Y28D3/Berlari-1daf3af9f975eb86c8ad-1.jpg",
+    bina:"https://i.ibb.co/mXcWwCN/Bina-160e1ad310bc007f2cef-1.jpg",
+    bincang:"https://i.ibb.co/KWzygWy/Bincang-7c33e7a5ab9329804165.jpg",
+    bohong:"https://i.ibb.co/2Pnfm2x/Bohong-Dusta-1be08c8d2eab6b1a0420.jpg",
+     cari: "https://i.ibb.co/sCs539m/Cari-6243616cf7ff3cf770b1.jpg",
 dapat: "https://i.ibb.co/frJhvCZ/Dapat-bf3f428e2690fc364f3f.jpg", // Dapat
   curi: "https://i.ibb.co/y0s9VcZ/Curi-965466ebcc080427c968.jpg", // Curi
   gaduh: "https://i.ibb.co/D8jpHzd/Gaduh-94f7a9ac7b4487f0f5d5.jpg", // Gaduh
@@ -521,70 +523,109 @@ dendam: "https://i.ibb.co/C5vkdhzb/Dendam-366067bd6be7943c2d6c-1.jpg", // Dendam
 kecewa: "https://i.ibb.co/8nCKkGGT/Kecewa-2e845cc0ab6a7b8ae24c.jpg", // Kecewa
 letih: "https://i.ibb.co/mFrv7WRj/Letih-c3f167daa801aee71591-1.jpg", // Letih
 bersemuka: "https://i.ibb.co/9H23sGNB/Bersemuka-e1d19d9efd57e173aae5.jpg", // Bersemuka
-  
 };
 
-// YouTube
-function onYouTubeIframeAPIReady(){}
-function loadYoutubeVideo(){
-  const url=document.getElementById('youtubeUrl').value;
-  const videoId=extractVideoID(url);
-  if(videoId){
+  // ----- YouTube -----
+  let player;
+  function extractVideoID(url){
+    var regExp=/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match=url.match(regExp);
+    return (match && match[2].length==11)?match[2]:null;
+  }
+
+  function loadYoutubeVideo(){
+    const url = document.getElementById('youtubeUrl').value;
+    const videoId = extractVideoID(url);
+    if(!videoId){alert("Pautan tidak sah!"); return;}
     if(player){player.loadVideoById(videoId);}
     else{player=new YT.Player('player',{height:'360',width:'100%',videoId:videoId});}
     document.getElementById('status').innerText="Video sedia. Klik 'Mula Suara'.";
-  } else {alert("Pautan tidak sah!");}
-}
-function extractVideoID(url){
-  var regExp=/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-  var match=url.match(regExp);
-  return (match && match[2].length==11)?match[2]:null;
-}
+  }
+  window.loadYoutubeVideo = loadYoutubeVideo;
+  window.onYouTubeIframeAPIReady = function(){};
 
-// Speech Recognition
-const Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
-const recognition=new Recognition();
-recognition.lang='ms-MY';
-recognition.continuous=true;
-recognition.interimResults=true;
-recognition.onresult=function(event){
-  let result=event.results[event.results.length-1];
-  let transcript=result[0].transcript.toLowerCase().trim();
-  document.getElementById('transcriptDisplay').innerText=transcript;
-  let words=transcript.split(/\s+/);
-  displaySign(words[words.length-1]);
-};
+  // ----- Speech Recognition -----
+  const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let recognition;
+  if(Recognition){
+    recognition = new Recognition();
+    recognition.lang = 'ms-MY';
+    recognition.continuous = true;
+    recognition.interimResults = true;
+  } else {
+    alert("Browser ini tidak menyokong Speech Recognition. Gunakan Chrome di Android atau desktop.");
+  }
 
-function displaySign(word){
-  const img=document.getElementById('signImage');
-  const out=document.getElementById('output');
-  let clean=word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-  if(wordImages[clean]){
-    img.src=wordImages[clean]; img.style.display="block"; out.innerText="Isyarat: "+clean;
-    document.getElementById('signLanguageSection').style.display="block";
-  } else {fingerspell(clean);}
-}
+  function startRecognition(){
+    if(!recognition) return;
+    recognition.start();
+    document.getElementById('status').innerText="Mendengar audio...";
+  }
+  function stopRecognition(){
+    if(!recognition) return;
+    recognition.stop();
+    document.getElementById('status').innerText="Suara dihenti.";
+  }
 
-function fingerspell(word){
-  let letters=word.split(""); let i=0;
-  function showLetter(){
-    if(i<letters.length){
-      let char=letters[i];
-      if(wordImages[char]){
-        document.getElementById('signImage').src=wordImages[char];
-        document.getElementById('output').innerText="Mengeja: "+char.toUpperCase();
-      }
-      i++; setTimeout(showLetter,600);
+  if(recognition){
+    recognition.onresult = function(event){
+      let transcript = event.results[event.results.length-1][0].transcript.toLowerCase().trim();
+      document.getElementById('transcriptDisplay').innerText = transcript;
+      let words = transcript.split(/\s+/);
+      displaySign(words[words.length-1]);
+    };
+  }
+
+  function displaySign(word){
+    let clean = word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+    const img = document.getElementById('signImage');
+    const out = document.getElementById('output');
+
+    if(wordImages[clean]){
+      img.src = wordImages[clean];
+      img.style.display = "block";
+      out.innerText = "Isyarat: "+clean;
+      document.getElementById('signLanguageSection').style.display="block";
+    } else {
+      fingerspell(clean);
     }
   }
-  showLetter();
-}
 
-function startRecognition(){recognition.start(); document.getElementById('status').innerText="Mendengar audio...";}
-function toggleYouTubeSection(){document.getElementById("youtubeSection").style.display="block";document.getElementById("signLanguageSection").style.display="block";document.getElementById('status').innerText="Mod YouTube & Isyarat Aktif";}
-function toggleSignLanguage(){document.getElementById("signLanguageSection").style.display="block";}
-function resetSystem(){location.reload();}
+  function fingerspell(word){
+    const letters = word.split("");
+    let i=0;
+    function showLetter(){
+      if(i<letters.length){
+        let char = letters[i];
+        if(wordImages[char]){
+          document.getElementById('signImage').src = wordImages[char];
+          document.getElementById('output').innerText="Mengeja: "+char.toUpperCase();
+        }
+        i++; setTimeout(showLetter,600);
+      }
+    }
+    showLetter();
+  }
 
-// Preload images
-function preloadImages(){Object.values(wordImages).forEach(url=>{let img=new Image();img.src=url;});}
-window.onload=preloadImages;
+  // ----- Controls -----
+  document.getElementById('btnStart').onclick = startRecognition;
+  document.getElementById('btnStop').onclick = stopRecognition;
+  document.getElementById('btnYT').onclick = function(){
+    document.getElementById('youtubeSection').style.display="block";
+    document.getElementById('signLanguageSection').style.display="block";
+    document.getElementById('status').innerText="Mod YouTube & Isyarat Aktif";
+  };
+  document.getElementById('btnSign').onclick = function(){
+    document.getElementById('signLanguageSection').style.display="block";
+  };
+  document.getElementById('btnReset').onclick = function(){
+    location.reload();
+  };
+
+  // ----- Preload Images -----
+  Object.values(wordImages).forEach(url=>{
+    const img = new Image();
+    img.src = url;
+  });
+
+});
