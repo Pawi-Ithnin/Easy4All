@@ -18,11 +18,11 @@
     header { padding: 10px; background: #fff; }
     header h1 { font-size: 28px; color: #d32f2f; margin: 10px 0; }
 
-    /* CONTAINER FLEXBOX - Side-by-Side di PC, Atas-Bawah di Phone */
+    /* CONTAINER FLEXBOX - Ini kunci untuk Side-by-Side */
     .main-content {
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-direction: row; /* Sebelah menyebelah di PC */
+      flex-wrap: wrap;    /* Turun bawah di Phone */
       gap: 15px;
       justify-content: center;
       align-items: flex-start;
@@ -33,7 +33,7 @@
 
     /* KOTAK YOUTUBE */
     #youtubeSection {
-      flex: 1.5;
+      flex: 1.5; /* Lebih lebar sedikit untuk video */
       min-width: 320px;
       background: #f9f9f9;
       padding: 15px;
@@ -44,7 +44,7 @@
 
     /* KOTAK ISYARAT */
     #signLanguageSection {
-      flex: 1;
+      flex: 1; /* Lebih kecil sedikit untuk isyarat */
       min-width: 320px;
       background: #ffffff;
       padding: 15px;
@@ -61,7 +61,7 @@
 
     #signImage {
       width: 100%;
-      max-width: 250px;
+      max-width: 250px; /* Saiz ideal */
       height: auto;
       border-radius: 12px;
       margin: 10px auto;
@@ -82,14 +82,10 @@
       cursor: pointer;
       border-radius: 8px;
       border: none;
-      font-weight: bold;
+      background-color: #d32f2f;
       color: white;
+      font-weight: bold;
     }
-
-    button:nth-child(1){background-color: #2e7d32;}
-    button:nth-child(2){background-color: #1976d2;}
-    button:nth-child(3){background-color: #f57c00;}
-    button:nth-child(4){background-color: #555;}
 
     input[type="text"] {
       padding: 10px;
@@ -101,18 +97,14 @@
     /* RESPONSIVE UNTUK PHONE */
     @media (max-width: 768px) {
       .main-content {
-        flex-direction: column; /* Atas-Bawah di phone */
-        padding: 10px;
+        flex-direction: column; /* Tukar jadi Atas-Bawah di phone */
       }
       #youtubeSection, #signLanguageSection {
         width: 100%;
         max-width: 100%;
       }
       #signImage {
-        max-width: 180px; /* Kecilkan untuk phone */
-      }
-      input[type="text"] {
-        width: 90%; /* Input full width untuk phone */
+        max-width: 180px; /* Kecilkan sikit di phone supaya muat satu skrin */
       }
     }
 
@@ -130,10 +122,10 @@
     <section id="statusContainer">
       <div id="status" style="font-style: italic; color: #666;">Sedia untuk beraksi...</div>
       <div class="control-panel">
-        <button onclick="startRecognition()">🎤 Mula Suara</button>
-        <button onclick="toggleYouTubeSection()">📺 Mod YouTube</button>
-        <button onclick="toggleSignLanguage()">👐 Kamera/Isyarat</button>
-        <button onclick="resetSystem()">🔄 Reset</button>
+        <button onclick="startRecognition()" style="background-color: #2e7d32;">🎤 Mula Suara</button>
+        <button onclick="toggleYouTubeSection()" style="background-color: #1976d2;">📺 Mod YouTube</button>
+        <button onclick="toggleSignLanguage()" style="background-color: #f57c00;">👐 Kamera/Isyarat</button>
+        <button onclick="resetSystem()" style="background-color: #555;">🔄 Reset</button>
       </div>
     </section>
 
@@ -176,6 +168,7 @@
       let yt = document.getElementById("youtubeSection");
       let sign = document.getElementById("signLanguageSection");
       
+      // Papar kedua-duanya serentak
       yt.style.display = "block";
       sign.style.display = "block";
       
