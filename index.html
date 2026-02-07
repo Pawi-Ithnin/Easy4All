@@ -22,7 +22,6 @@
     margin: 20px 0;
     border: 2px solid #0055ab;
   }
-  /* Gaya untuk gambar QR dari link ImgBB */
   .qr-image {
     width: 250px;
     height: auto;
@@ -88,7 +87,6 @@
     
     <div class="bank-info">
       <img src="https://i.ibb.co/8n5MbgjF/photo-6070863400645889743-y.jpg" alt="QR TNG Mohamad Shafawi" class="qr-image">
-      
       <p style="margin: 0; color: #666;">Nama Akaun:</p>
       <p style="font-size: 1.1rem; margin: 5px 0; color: #0055ab;"><b>MOHAMAD SHAFAWI BIN ITHNIN</b></p>
       <div class="price-tag">RM 3.00</div>
@@ -145,14 +143,25 @@
 </footer>
 
 <script>
+  // 1. Semak status & masa luput bila buka laman web
   window.addEventListener('load', function() {
+    const expiryTime = localStorage.getItem('tandaX_expiry');
+    const currentTime = new Date().getTime();
+
+    // Jika masa sekarang sudah melepasi masa luput
+    if (expiryTime && currentTime > parseInt(expiryTime)) {
+      localStorage.removeItem('tandaX_paid');
+      localStorage.removeItem('tandaX_expiry');
+      alert("Akses anda telah tamat (24 Jam). Sila hubungi Admin untuk kod baru.");
+      window.location.reload();
+    }
+
     if (localStorage.getItem('tandaX_paid') === 'true') {
       bukaAplikasi();
     }
   });
 
   function bukaAplikasi() {
-    localStorage.setItem('tandaX_paid', 'true');
     document.getElementById('pay-screen').style.display = 'none';
     document.getElementById('mainAppSection').style.display = 'block';
   }
@@ -163,15 +172,25 @@
     window.open(`https://wa.me/${noAdmin}?text=${mesej}`, '_blank');
   }
 
+  // 2. Fungsi Sahkan Kod & Set Masa Luput
   function semakKod() {
     const kodInput = document.getElementById('adminKey').value;
     const kodRahsia = "TANDAX98"; 
 
     if (kodInput === kodRahsia) {
-      alert("Aktivasi Berjaya! Nikmati akses Tanda X Pro.");
+      // Set status aktif
+      localStorage.setItem('tandaX_paid', 'true');
+      
+      // Set masa luput: Waktu sekarang + 24 jam
+      // (24 jam * 60 minit * 60 saat * 1000 milisaat)
+      const satuHari = 24 * 60 * 60 * 1000;
+      const masaLuput = new Date().getTime() + satuHari;
+      localStorage.setItem('tandaX_expiry', masaLuput);
+
+      alert("Aktivasi Berjaya! Akses anda aktif selama 24 jam.");
       bukaAplikasi();
     } else {
-      alert("Kod tidak sah. Sila pastikan anda memasukkan kod yang betul dari Admin.");
+      alert("Kod tidak sah. Sila dapatkan kod betul daripada Admin.");
     }
   }
 </script>
@@ -180,5 +199,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
-
