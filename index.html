@@ -3,8 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tanda X 1.0</title>
+<title>Tanda X 1.0 - Pro</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  /* Gaya tambahan untuk skrin bayaran */
+  #pay-screen {
+    text-align: center;
+    padding: 50px 20px;
+    background: white;
+    margin: 20px auto;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  .btn-pay {
+    background: #ff4757;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+  }
+  .price-tag { font-size: 2.5rem; font-weight: bold; color: #2ed573; margin: 15px 0; }
+</style>
 </head>
 <body>
 
@@ -13,50 +37,58 @@
 </header>
 
 <main>
-  <section id="statusContainer">
-    <div id="status" class="status-text">Sedia untuk beraksi...</div>
-    <div class="control-panel">
-      <button id="btnStart">🎤 Mula Suara</button>
-      <button id="btnStop">⏹ Henti Suara</button>
-      <button id="btnYT">📺 Mod YouTube</button>
-      <button id="btnSign">👐 Kamera/Isyarat</button>
-      <button id="btnReset">🔄 Reset</button>
-    </div>
+  <section id="pay-screen">
+    <h2>Aktifkan Akses Pro 🤟</h2>
+    <p>Sila buat bayaran RM 3.00 untuk menggunakan fungsi penuh Tanda X (Voice, YouTube & Kamera).</p>
+    <div class="price-tag">RM 3.00</div>
+    <button class="btn-pay" onclick="mulaBayar()">BAYAR SEKARANG</button>
+    <p style="font-size: 0.8rem; color: #999; margin-top: 15px;">Pembayaran diproses secara selamat oleh ToyyibPay.</p>
   </section>
 
-  <div class="main-content">
-    <section id="youtubeSection">
-      <div class="yt-controls">
-        <input type="text" id="youtubeUrl" placeholder="Tampal link YouTube...">
-        <button id="btnLoad">Muat</button>
+  <div id="mainAppSection" style="display:none;">
+    <section id="statusContainer">
+      <div id="status" class="status-text">Sedia untuk beraksi...</div>
+      <div class="control-panel">
+        <button id="btnStart">🎤 Mula Suara</button>
+        <button id="btnStop">⏹ Henti Suara</button>
+        <button id="btnYT">📺 Mod YouTube</button>
+        <button id="btnSign">👐 Kamera/Isyarat</button>
+        <button id="btnReset">🔄 Reset</button>
       </div>
-      <div id="player"></div>
-      <h2 id="transcriptDisplay"></h2>
     </section>
 
-    <section id="signLanguageSection">
-      <p id="output">Visual Terjemahan:</p>
-      <img id="signImage" src="isyarat.jpg" alt="Paparan Isyarat">
-      <video id="video" autoplay playsinline style="display:none;"></video>
-      <canvas id="canvas" style="display:none;width:100%;"></canvas>
-    </section>
+    <div class="main-content">
+      <section id="youtubeSection">
+        <div class="yt-controls">
+          <input type="text" id="youtubeUrl" placeholder="Tampal link YouTube...">
+          <button id="btnLoad">Muat</button>
+        </div>
+        <div id="player"></div>
+        <h2 id="transcriptDisplay"></h2>
+      </section>
+
+      <section id="signLanguageSection">
+        <p id="output">Visual Terjemahan:</p>
+        <img id="signImage" src="isyarat.jpg" alt="Paparan Isyarat">
+        <video id="video" autoplay playsinline style="display:none;"></video>
+        <canvas id="canvas" style="display:none;width:100%;"></canvas>
+      </section>
+    </div>
   </div>
 </main>
 
 <footer>
   <p><b>Rakan Penaja</b></p>
   <div class="sponsors">
-    <img src="https://i.ibb.co/N6tpWFQP/photo-6068993784202071328-y.jpg" alt=
-    <img src="https://i.ibb.co/4g0hbBrL/photo-6068993784202071327-x.jpg" alt=
-      
-    </div>
+    <img src="https://i.ibb.co/N6tpWFQP/photo-6068993784202071328-y.jpg" alt="Sponsor 1" width="100">
+    <img src="https://i.ibb.co/4g0hbBrL/photo-6068993784202071327-x.jpg" alt="Sponsor 2" width="100">
+  </div>
 </footer>
 
 <script src="https://www.youtube.com/iframe_api"></script>
 <script src="script.js"></script>
 </body>
 </html>
-
 
 
 
