@@ -17,11 +17,18 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   }
   .bank-info {
-    background: #f8f9fa;
+    background: #f0f7ff;
     padding: 20px;
     border-radius: 12px;
     margin: 20px 0;
-    border: 2px dashed #ff4757;
+    border: 2px solid #0055ab;
+  }
+  .qr-image {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   }
   .btn-pay {
     background: #25d366; /* Warna WhatsApp */
@@ -34,6 +41,7 @@
     cursor: pointer;
     transition: 0.3s;
     width: 100%;
+    margin-top: 10px;
   }
   .btn-pay:hover {
     background: #128c7e;
@@ -71,13 +79,14 @@
 <main>
   <section id="pay-screen">
     <h2>Aktifkan Akses Pro 🤟</h2>
-    <p>Sila buat bayaran manual RM 3.00 untuk akses penuh.</p>
+    <p>Sila imbas QR TNG atau transfer manual RM 3.00.</p>
     
     <div class="bank-info">
+      <img src="photo_6070863400645889743_y.jpg" alt="QR TNG Mohamad Shafawi" class="qr-image">
+      
       <p style="margin: 0; color: #666;">Transfer Ke:</p>
-      <p style="font-size: 1.2rem; margin: 5px 0;"><b>MAYBANK</b></p>
-      <p style="font-size: 1.4rem; margin: 5px 0; letter-spacing: 1px;"><b>1234567890</b></p>
-      <p style="margin: 0;">MOHAMAD SHAFAWI</p>
+      <p style="font-size: 1.1rem; margin: 5px 0; color: #0055ab;"><b>TOUCH 'N GO EWALLET</b></p>
+      <p style="margin: 0;">MOHAMAD SHAFAWI BIN ITHNIN</p>
       <div class="price-tag">RM 3.00</div>
     </div>
 
@@ -145,17 +154,17 @@
     document.getElementById('mainAppSection').style.display = 'block';
   }
 
-  // 3. Fungsi ke WhatsApp (Ganti no fon anda di bawah)
+  // 3. Fungsi ke WhatsApp
   function hantarResit() {
-    const noAdmin = "60123456789"; // GANTI DENGAN NO WHATSAPP ANDA
-    const mesej = encodeURIComponent("Helo Admin, saya ingin aktifkan Tanda X Pro. Ini bukti bayaran saya.");
+    const noAdmin = "601114920612"; 
+    const mesej = encodeURIComponent("Salam Admin, saya dah scan QR TNG untuk Tanda X Pro. Ini bukti bayaran saya.");
     window.open(`https://wa.me/${noAdmin}?text=${mesej}`, '_blank');
   }
 
   // 4. Sahkan Kod Aktivasi Rahsia
   function semakKod() {
     const kodInput = document.getElementById('adminKey').value;
-    const kodRahsia = "TANDAX789"; // INI KOD YANG ANDA PERLU BERI KEPADA PELANGGAN
+    const kodRahsia = "TANDAX789"; // Berikan kod ini kepada pelanggan anda
 
     if (kodInput === kodRahsia) {
       alert("Aktivasi Berjaya! Selamat menggunakan Tanda X Pro.");
