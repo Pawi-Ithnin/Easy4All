@@ -1,39 +1,4 @@
-function mulaBayar() {
-    // 1. Sediakan data bil
-    const refNo = 'TX' + Date.now();
-    
-    // 2. Kita buat "Form" halimunan untuk hantar data ke ToyyibPay
-    // Cara ini 100% Berjaya di GitHub Pages tanpa perlu CORS Proxy
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = 'https://toyyibpay.com/index.php/api/createBill';
-
-    const data = {
-        userSecretKey: 'ff0m68yg-4t3n-paxv-7a8j-c7akswxxa5tp',
-        categoryCode: 'mafshp4f',
-        billName: 'Akses Tanda X Pro',
-        billDescription: 'Bayaran Akses Penuh Tanda X',
-        billPriceSetting: 1,
-        billAmount: 300, // RM3.00 (dalam sen)
-        billReturnUrl: window.location.origin + window.location.pathname,
-        billExternalReferenceNo: refNo
-    };
-
-    // 3. Masukkan semua data ke dalam form
-    for (const key in data) {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = data[key];
-        form.appendChild(input);
-    }
-
-    // 4. Masukkan form ke dalam page dan hantar (Submit)
-    document.body.appendChild(form);
-    form.submit();
-}
-
-  // ----- Word Images -----
+ // ----- Word Images -----
   const wordImages = {
     kami:"https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
     saya:"https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
@@ -662,6 +627,7 @@ bersemuka: "https://i.ibb.co/9H23sGNB/Bersemuka-e1d19d9efd57e173aae5.jpg", // Be
   });
 
 });
+
 
 
 
