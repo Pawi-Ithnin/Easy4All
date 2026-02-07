@@ -6,7 +6,6 @@
 <title>Tanda X 1.0 - Pro</title>
 <link rel="stylesheet" href="style.css">
 <style>
-  /* Gaya untuk skrin bayaran manual */
   #pay-screen {
     text-align: center;
     padding: 40px 20px;
@@ -23,15 +22,17 @@
     margin: 20px 0;
     border: 2px solid #0055ab;
   }
+  /* Gaya untuk gambar QR dari link ImgBB */
   .qr-image {
     width: 250px;
     height: auto;
     border-radius: 10px;
     margin-bottom: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 5px solid white;
   }
   .btn-pay {
-    background: #25d366; /* Warna WhatsApp */
+    background: #25d366;
     color: white;
     padding: 15px 30px;
     border: none;
@@ -42,6 +43,8 @@
     transition: 0.3s;
     width: 100%;
     margin-top: 10px;
+    text-decoration: none;
+    display: inline-block;
   }
   .btn-pay:hover {
     background: #128c7e;
@@ -58,14 +61,16 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     margin-bottom: 10px;
+    text-align: center;
   }
   .btn-verify {
-    padding: 12px 20px;
-    background: #444;
+    padding: 12px 25px;
+    background: #333;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    font-weight: bold;
   }
   .price-tag { font-size: 2.2rem; font-weight: bold; color: #2ed573; margin: 10px 0; }
 </style>
@@ -79,23 +84,23 @@
 <main>
   <section id="pay-screen">
     <h2>Aktifkan Akses Pro 🤟</h2>
-    <p>Sila imbas QR TNG atau transfer manual RM 3.00.</p>
+    <p>Sila imbas QR TNG di bawah untuk bayaran:</p>
     
     <div class="bank-info">
-      <img src="photo_6070863400645889743_y.jpg" alt="QR TNG Mohamad Shafawi" class="qr-image">
+      <img src="https://i.ibb.co/8n5MbgjF/photo-6070863400645889743-y.jpg" alt="QR TNG Mohamad Shafawi" class="qr-image">
       
-      <p style="margin: 0; color: #666;">Transfer Ke:</p>
-      <p style="font-size: 1.1rem; margin: 5px 0; color: #0055ab;"><b>TOUCH 'N GO EWALLET</b></p>
-      <p style="margin: 0;">MOHAMAD SHAFAWI BIN ITHNIN</p>
+      <p style="margin: 0; color: #666;">Nama Akaun:</p>
+      <p style="font-size: 1.1rem; margin: 5px 0; color: #0055ab;"><b>MOHAMAD SHAFAWI BIN ITHNIN</b></p>
       <div class="price-tag">RM 3.00</div>
     </div>
 
     <button class="btn-pay" onclick="hantarResit()">HANTAR RESIT (WHATSAPP)</button>
     
     <div class="activation-box">
-      <p style="font-size: 0.9rem; color: #666;">Dah dapat <b>Kod Aktivasi</b> dari Admin?</p>
-      <input type="password" id="adminKey" placeholder="Masukkan kod di sini">
-      <button class="btn-verify" onclick="semakKod()">Sahkan</button>
+      <p style="font-size: 0.9rem; color: #666;">Dah bayar? Masukkan <b>Kod Aktivasi</b> di sini:</p>
+      <input type="password" id="adminKey" placeholder="Kod rahsia dari Admin">
+      <br>
+      <button class="btn-verify" onclick="semakKod()">Sahkan Kod</button>
     </div>
   </section>
 
@@ -140,37 +145,33 @@
 </footer>
 
 <script>
-  // 1. Semak status aktivasi bila page load
   window.addEventListener('load', function() {
     if (localStorage.getItem('tandaX_paid') === 'true') {
       bukaAplikasi();
     }
   });
 
-  // 2. Fungsi buka aplikasi
   function bukaAplikasi() {
     localStorage.setItem('tandaX_paid', 'true');
     document.getElementById('pay-screen').style.display = 'none';
     document.getElementById('mainAppSection').style.display = 'block';
   }
 
-  // 3. Fungsi ke WhatsApp
   function hantarResit() {
     const noAdmin = "601114920612"; 
     const mesej = encodeURIComponent("Salam Admin, saya dah scan QR TNG untuk Tanda X Pro. Ini bukti bayaran saya.");
     window.open(`https://wa.me/${noAdmin}?text=${mesej}`, '_blank');
   }
 
-  // 4. Sahkan Kod Aktivasi Rahsia
   function semakKod() {
     const kodInput = document.getElementById('adminKey').value;
-    const kodRahsia = "TANDAX789"; // Berikan kod ini kepada pelanggan anda
+    const kodRahsia = "TANDAX789"; 
 
     if (kodInput === kodRahsia) {
-      alert("Aktivasi Berjaya! Selamat menggunakan Tanda X Pro.");
+      alert("Aktivasi Berjaya! Nikmati akses Tanda X Pro.");
       bukaAplikasi();
     } else {
-      alert("Kod aktivasi tidak sah. Sila hubungi Admin.");
+      alert("Kod tidak sah. Sila pastikan anda memasukkan kod yang betul dari Admin.");
     }
   }
 </script>
