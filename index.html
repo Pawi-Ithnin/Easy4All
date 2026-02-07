@@ -26,6 +26,11 @@
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+    transition: 0.3s;
+  }
+  .btn-pay:hover {
+    background: #ff6b81;
+    transform: scale(1.05);
   }
   .price-tag { font-size: 2.5rem; font-weight: bold; color: #2ed573; margin: 15px 0; }
 </style>
@@ -85,12 +90,58 @@
   </div>
 </footer>
 
+<script>
+  // 1. Semak status bayaran sebaik sahaja laman dimuatkan
+  window.addEventListener('load', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get('status_id');
+
+    // Jika user baru lepas bayar (status_id=1) atau pernah bayar sebelum ini
+    if (status === '1' || localStorage.getItem('tandaX_paid') === 'true') {
+      localStorage.setItem('tandaX_paid', 'true');
+      document.getElementById('pay-screen').style.display = 'none';
+      document.getElementById('mainAppSection').style.display = 'block';
+    }
+  });
+
+  // 2. Fungsi untuk hantar ke ToyyibPay menggunakan borang (Form Redirect)
+  function mulaBayar() {
+    const refNo = 'TX' + Date.now();
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://toyyibpay.com/index.php/api/createBill';
+
+    // Data akaun anda
+    const data = {
+      userSecretKey: 'ff0m68yg-4t3n-paxv-7a8j-c7akswxxa5tp',
+      categoryCode: 'mafshp4f',
+      billName: 'Akses Tanda X Pro',
+      billDescription: 'Bayaran Akses Penuh Tanda X',
+      billPriceSetting: 1,
+      billAmount: 300, // RM 3.00 dalam sen
+      billReturnUrl: window.location.origin + window.location.pathname,
+      billExternalReferenceNo: refNo
+    };
+
+    // Masukkan data ke dalam borang
+    for (const key in data) {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = data[key];
+      form.appendChild(input);
+    }
+
+    // Hantar borang
+    document.body.appendChild(form);
+    form.submit();
+  }
+</script>
+
 <script src="https://www.youtube.com/iframe_api"></script>
 <script src="script.js"></script>
 </body>
 </html>
-
-
 
 
 
