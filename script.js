@@ -1,8 +1,9 @@
 function mulaBayar() {
-    // 1. Sediakan data
+    // 1. Sediakan data bil
     const refNo = 'TX' + Date.now();
     
     // 2. Kita buat "Form" halimunan untuk hantar data ke ToyyibPay
+    // Cara ini 100% Berjaya di GitHub Pages tanpa perlu CORS Proxy
     const form = document.createElement('form');
     form.method = 'POST';
     form.action = 'https://toyyibpay.com/index.php/api/createBill';
@@ -13,7 +14,7 @@ function mulaBayar() {
         billName: 'Akses Tanda X Pro',
         billDescription: 'Bayaran Akses Penuh Tanda X',
         billPriceSetting: 1,
-        billAmount: 300, // RM3
+        billAmount: 300, // RM3.00 (dalam sen)
         billReturnUrl: window.location.origin + window.location.pathname,
         billExternalReferenceNo: refNo
     };
@@ -27,7 +28,7 @@ function mulaBayar() {
         form.appendChild(input);
     }
 
-    // 4. Hantar form tersebut
+    // 4. Masukkan form ke dalam page dan hantar (Submit)
     document.body.appendChild(form);
     form.submit();
 }
@@ -661,5 +662,6 @@ bersemuka: "https://i.ibb.co/9H23sGNB/Bersemuka-e1d19d9efd57e173aae5.jpg", // Be
   });
 
 });
+
 
 
