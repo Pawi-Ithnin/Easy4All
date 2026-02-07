@@ -143,21 +143,24 @@
 </footer>
 
 <script>
-  // 1. Semak status & masa luput bila buka laman web
+  // --- KONFIGURASI ADMIN ---
+  const kodRahsiaSemasa = "TANDAX98"; // Tukar kod ini untuk log keluar semua orang secara paksa
+
   window.addEventListener('load', function() {
+    const savedKey = localStorage.getItem('tandaX_key');
     const expiryTime = localStorage.getItem('tandaX_expiry');
     const currentTime = new Date().getTime();
 
-    // Jika masa sekarang sudah melepasi masa luput
-    if (expiryTime && currentTime > parseInt(expiryTime)) {
-      localStorage.removeItem('tandaX_paid');
-      localStorage.removeItem('tandaX_expiry');
-      alert("Akses anda telah tamat (24 Jam). Sila hubungi Admin untuk kod baru.");
-      window.location.reload();
-    }
-
+    // 1. Semak jika kod dalam browser pelanggan berbeza dengan kod rahsia di atas
+    // 2. Semak jika tempoh 24 jam sudah tamat
     if (localStorage.getItem('tandaX_paid') === 'true') {
-      bukaAplikasi();
+        if (savedKey !== kodRahsiaSemasa || (expiryTime && currentTime > parseInt(expiryTime))) {
+            localStorage.clear(); 
+            alert("Sesi telah tamat atau kod telah ditukar oleh Admin. Sila log masuk semula.");
+            window.location.reload();
+            return;
+        }
+        bukaAplikasi();
     }
   });
 
@@ -172,25 +175,22 @@
     window.open(`https://wa.me/${noAdmin}?text=${mesej}`, '_blank');
   }
 
-  // 2. Fungsi Sahkan Kod & Set Masa Luput
   function semakKod() {
     const kodInput = document.getElementById('adminKey').value;
-    const kodRahsia = "TANDAX98"; 
 
-    if (kodInput === kodRahsia) {
-      // Set status aktif
+    if (kodInput === kodRahsiaSemasa) {
       localStorage.setItem('tandaX_paid', 'true');
+      localStorage.setItem('tandaX_key', kodRahsiaSemasa); 
       
-      // Set masa luput: Waktu sekarang + 24 jam
-      // (24 jam * 60 minit * 60 saat * 1000 milisaat)
+      // Set masa luput: 24 jam dari sekarang
       const satuHari = 24 * 60 * 60 * 1000;
       const masaLuput = new Date().getTime() + satuHari;
       localStorage.setItem('tandaX_expiry', masaLuput);
 
-      alert("Aktivasi Berjaya! Akses anda aktif selama 24 jam.");
+      alert("Aktivasi Berjaya! Akses anda aktif selagi kod ini sah.");
       bukaAplikasi();
     } else {
-      alert("Kod tidak sah. Sila dapatkan kod betul daripada Admin.");
+      alert("Kod tidak sah. Sila hubungi Admin.");
     }
   }
 </script>
