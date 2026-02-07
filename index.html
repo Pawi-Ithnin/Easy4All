@@ -91,11 +91,12 @@
 </footer>
 
 <script>
-  // 1. Semak status bayaran sebaik sahaja laman dimuatkan
+  // 1. Logik buka kunci aplikasi
   window.addEventListener('load', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const status = urlParams.get('status_id');
 
+    // Jika berjaya bayar (status_id=1) atau sudah ada rekod dalam browser
     if (status === '1' || localStorage.getItem('tandaX_paid') === 'true') {
       localStorage.setItem('tandaX_paid', 'true');
       document.getElementById('pay-screen').style.display = 'none';
@@ -103,38 +104,43 @@
     }
   });
 
-  // 2. Fungsi untuk hantar ke ToyyibPay (Dah betulkan ralat billPayorInfo)
+  // 2. Fungsi bayaran yang telah diperbaiki
   function mulaBayar() {
     const refNo = 'TX' + Date.now();
+    
+    // Kita buat form secara dinamik
     const form = document.createElement('form');
     form.method = 'POST';
+    // Gunakan URL createBill
     form.action = 'https://toyyibpay.com/index.php/api/createBill';
 
     const data = {
       userSecretKey: 'ff0m68yg-4t3n-paxv-7a8j-c7akswxxa5tp',
       categoryCode: 'mafshp4f',
       billName: 'Akses Tanda X Pro',
-      billDescription: 'Bayaran Akses Penuh Tanda X',
+      billDescription: 'Pembelian Akses Premium Tanda X',
       billPriceSetting: 1,
-      billAmount: 300, 
-      billReturnUrl: window.location.origin + window.location.pathname,
+      billAmount: 300, // RM 3.00 (Integer tanpa titik perpuluhan)
+      billReturnUrl: window.location.href.split('?')[0], // Kembali ke page asal tanpa parameter lama
       billExternalReferenceNo: refNo,
-      
-      // BARIS WAJIB UNTUK ELAK RALAT:
-      billTo: 'Pengguna Tanda X',
-      billEmail: 'pembayar@tandax.com',
+      billTo: 'Pelanggan Tanda X',
+      billEmail: 'pawi@gmail.com',
       billPhone: '0123456789'
     };
 
+    // Masukkan data ke dalam form
     for (const key in data) {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = key;
-      input.value = data[key];
-      form.appendChild(input);
+      if (data.hasOwnProperty(key)) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = data[key];
+        form.appendChild(input);
+      }
     }
 
     document.body.appendChild(form);
+    console.log("Menghantar ke ToyyibPay...");
     form.submit();
   }
 </script>
