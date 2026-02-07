@@ -6,33 +6,60 @@
 <title>Tanda X 1.0 - Pro</title>
 <link rel="stylesheet" href="style.css">
 <style>
-  /* Gaya tambahan untuk skrin bayaran */
+  /* Gaya untuk skrin bayaran manual */
   #pay-screen {
     text-align: center;
-    padding: 50px 20px;
+    padding: 40px 20px;
     background: white;
     margin: 20px auto;
     max-width: 500px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   }
+  .bank-info {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+    border: 2px dashed #ff4757;
+  }
   .btn-pay {
-    background: #ff4757;
+    background: #25d366; /* Warna WhatsApp */
     color: white;
     padding: 15px 30px;
     border: none;
     border-radius: 50px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
     transition: 0.3s;
+    width: 100%;
   }
   .btn-pay:hover {
-    background: #ff6b81;
-    transform: scale(1.05);
+    background: #128c7e;
+    transform: scale(1.02);
   }
-  .price-tag { font-size: 2.5rem; font-weight: bold; color: #2ed573; margin: 15px 0; }
+  .activation-box {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+  }
+  input[type="password"] {
+    padding: 12px;
+    width: 70%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .btn-verify {
+    padding: 12px 20px;
+    background: #444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .price-tag { font-size: 2.2rem; font-weight: bold; color: #2ed573; margin: 10px 0; }
 </style>
 </head>
 <body>
@@ -44,10 +71,23 @@
 <main>
   <section id="pay-screen">
     <h2>Aktifkan Akses Pro 🤟</h2>
-    <p>Sila buat bayaran RM 3.00 untuk menggunakan fungsi penuh Tanda X (Voice, YouTube & Kamera).</p>
-    <div class="price-tag">RM 3.00</div>
-    <button class="btn-pay" onclick="mulaBayar()">BAYAR SEKARANG</button>
-    <p style="font-size: 0.8rem; color: #999; margin-top: 15px;">Pembayaran diproses secara selamat oleh ToyyibPay.</p>
+    <p>Sila buat bayaran manual RM 3.00 untuk akses penuh.</p>
+    
+    <div class="bank-info">
+      <p style="margin: 0; color: #666;">Transfer Ke:</p>
+      <p style="font-size: 1.2rem; margin: 5px 0;"><b>MAYBANK</b></p>
+      <p style="font-size: 1.4rem; margin: 5px 0; letter-spacing: 1px;"><b>1234567890</b></p>
+      <p style="margin: 0;">MOHAMAD SHAFAWI</p>
+      <div class="price-tag">RM 3.00</div>
+    </div>
+
+    <button class="btn-pay" onclick="hantarResit()">HANTAR RESIT (WHATSAPP)</button>
+    
+    <div class="activation-box">
+      <p style="font-size: 0.9rem; color: #666;">Dah dapat <b>Kod Aktivasi</b> dari Admin?</p>
+      <input type="password" id="adminKey" placeholder="Masukkan kod di sini">
+      <button class="btn-verify" onclick="semakKod()">Sahkan</button>
+    </div>
   </section>
 
   <div id="mainAppSection" style="display:none;">
@@ -91,57 +131,38 @@
 </footer>
 
 <script>
-  // 1. Logik buka kunci aplikasi
+  // 1. Semak status aktivasi bila page load
   window.addEventListener('load', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const status = urlParams.get('status_id');
-
-    // Jika berjaya bayar (status_id=1) atau sudah ada rekod dalam browser
-    if (status === '1' || localStorage.getItem('tandaX_paid') === 'true') {
-      localStorage.setItem('tandaX_paid', 'true');
-      document.getElementById('pay-screen').style.display = 'none';
-      document.getElementById('mainAppSection').style.display = 'block';
+    if (localStorage.getItem('tandaX_paid') === 'true') {
+      bukaAplikasi();
     }
   });
 
-  // 2. Fungsi bayaran yang telah diperbaiki
-  function mulaBayar() {
-    const refNo = 'TX' + Date.now();
-    
-    // Kita buat form secara dinamik
-    const form = document.createElement('form');
-    form.method = 'POST';
-    // Gunakan URL createBill
-    form.action = 'https://toyyibpay.com/index.php/api/createBill';
+  // 2. Fungsi buka aplikasi
+  function bukaAplikasi() {
+    localStorage.setItem('tandaX_paid', 'true');
+    document.getElementById('pay-screen').style.display = 'none';
+    document.getElementById('mainAppSection').style.display = 'block';
+  }
 
-    const data = {
-      userSecretKey: 'ff0m68yg-4t3n-paxv-7a8j-c7akswxxa5tp',
-      categoryCode: 'mafshp4f',
-      billName: 'Akses Tanda X Pro',
-      billDescription: 'Pembelian Akses Premium Tanda X',
-      billPriceSetting: 1,
-      billAmount: 300, // RM 3.00 (Integer tanpa titik perpuluhan)
-      billReturnUrl: window.location.href.split('?')[0], // Kembali ke page asal tanpa parameter lama
-      billExternalReferenceNo: refNo,
-      billTo: 'Pelanggan Tanda X',
-      billEmail: 'pawi@gmail.com',
-      billPhone: '0123456789'
-    };
+  // 3. Fungsi ke WhatsApp (Ganti no fon anda di bawah)
+  function hantarResit() {
+    const noAdmin = "60123456789"; // GANTI DENGAN NO WHATSAPP ANDA
+    const mesej = encodeURIComponent("Helo Admin, saya ingin aktifkan Tanda X Pro. Ini bukti bayaran saya.");
+    window.open(`https://wa.me/${noAdmin}?text=${mesej}`, '_blank');
+  }
 
-    // Masukkan data ke dalam form
-    for (const key in data) {
-      if (data.hasOwnProperty(key)) {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = data[key];
-        form.appendChild(input);
-      }
+  // 4. Sahkan Kod Aktivasi Rahsia
+  function semakKod() {
+    const kodInput = document.getElementById('adminKey').value;
+    const kodRahsia = "TANDAX789"; // INI KOD YANG ANDA PERLU BERI KEPADA PELANGGAN
+
+    if (kodInput === kodRahsia) {
+      alert("Aktivasi Berjaya! Selamat menggunakan Tanda X Pro.");
+      bukaAplikasi();
+    } else {
+      alert("Kod aktivasi tidak sah. Sila hubungi Admin.");
     }
-
-    document.body.appendChild(form);
-    console.log("Menghantar ke ToyyibPay...");
-    form.submit();
   }
 </script>
 
