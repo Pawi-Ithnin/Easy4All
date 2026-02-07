@@ -96,7 +96,6 @@
     const urlParams = new URLSearchParams(window.location.search);
     const status = urlParams.get('status_id');
 
-    // Jika user baru lepas bayar (status_id=1) atau pernah bayar sebelum ini
     if (status === '1' || localStorage.getItem('tandaX_paid') === 'true') {
       localStorage.setItem('tandaX_paid', 'true');
       document.getElementById('pay-screen').style.display = 'none';
@@ -104,26 +103,29 @@
     }
   });
 
-  // 2. Fungsi untuk hantar ke ToyyibPay menggunakan borang (Form Redirect)
+  // 2. Fungsi untuk hantar ke ToyyibPay (Dah betulkan ralat billPayorInfo)
   function mulaBayar() {
     const refNo = 'TX' + Date.now();
     const form = document.createElement('form');
     form.method = 'POST';
     form.action = 'https://toyyibpay.com/index.php/api/createBill';
 
-    // Data akaun anda
     const data = {
       userSecretKey: 'ff0m68yg-4t3n-paxv-7a8j-c7akswxxa5tp',
       categoryCode: 'mafshp4f',
       billName: 'Akses Tanda X Pro',
       billDescription: 'Bayaran Akses Penuh Tanda X',
       billPriceSetting: 1,
-      billAmount: 300, // RM 3.00 dalam sen
+      billAmount: 300, 
       billReturnUrl: window.location.origin + window.location.pathname,
-      billExternalReferenceNo: refNo
+      billExternalReferenceNo: refNo,
+      
+      // BARIS WAJIB UNTUK ELAK RALAT:
+      billTo: 'Pengguna Tanda X',
+      billEmail: 'pembayar@tandax.com',
+      billPhone: '0123456789'
     };
 
-    // Masukkan data ke dalam borang
     for (const key in data) {
       const input = document.createElement('input');
       input.type = 'hidden';
@@ -132,7 +134,6 @@
       form.appendChild(input);
     }
 
-    // Hantar borang
     document.body.appendChild(form);
     form.submit();
   }
@@ -142,8 +143,6 @@
 <script src="script.js"></script>
 </body>
 </html>
-
-
 
 
 
