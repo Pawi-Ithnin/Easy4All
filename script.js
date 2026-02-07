@@ -1,56 +1,36 @@
-// --- SISTEM PEMBAYARAN TOYYIBPAY ---
-const TOYYIB_SECRET = 'ff0m68yg-4t3n-paxv-7a8j-c7akswxxa5tp';
-const TOYYIB_CATEGORY = 'mafshp4f';
-
-// Semak status bila page dibuka
-window.addEventListener('load', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const status = urlParams.get('status_id');
-
-    if (status === '1' || localStorage.getItem('tandaX_paid') === 'true') {
-        localStorage.setItem('tandaX_paid', 'true');
-        document.getElementById('pay-screen').style.display = 'none';
-        document.getElementById('mainAppSection').style.display = 'block';
-    }
-});
-
-async function mulaBayar() {
+function mulaBayar() {
+    // 1. Sediakan data
     const refNo = 'TX' + Date.now();
-    const details = new URLSearchParams({
-        userSecretKey: TOYYIB_SECRET,
-        categoryCode: TOYYIB_CATEGORY,
+    
+    // 2. Kita buat "Form" halimunan untuk hantar data ke ToyyibPay
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://toyyibpay.com/index.php/api/createBill';
+
+    const data = {
+        userSecretKey: 'ff0m68yg-4t3n-paxv-7a8j-c7akswxxa5tp',
+        categoryCode: 'mafshp4f',
         billName: 'Akses Tanda X Pro',
         billDescription: 'Bayaran Akses Penuh Tanda X',
         billPriceSetting: 1,
-        billAmount: 300, 
+        billAmount: 300, // RM3
         billReturnUrl: window.location.origin + window.location.pathname,
         billExternalReferenceNo: refNo
-    });
+    };
 
-    try {
-        // Guna Proxy untuk elakkan ralat CORS di GitHub Pages
-        const response = await fetch('https://cors-anywhere.herokuapp.com/https://toyyibpay.com/index.php/api/createBill', {
-            method: 'POST',
-            body: details
-        });
-
-        const result = await response.json();
-        if (result[0] && result[0].BillCode) {
-            window.location.href = `https://toyyibpay.com/${result[0].BillCode}`;
-        } else {
-            // Jika proxy belum diaktifkan
-            window.open('https://cors-anywhere.herokuapp.com/corsdemo', '_blank');
-            alert("Sila klik 'Request temporary access' di tab baru yang dibuka, kemudian cuba semula.");
-        }
-    } catch (e) {
-        window.open('https://cors-anywhere.herokuapp.com/corsdemo', '_blank');
-        alert("Sila aktifkan akses Proxy untuk meneruskan pembayaran.");
+    // 3. Masukkan semua data ke dalam form
+    for (const key in data) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = data[key];
+        form.appendChild(input);
     }
-}
-// --- TAMAT SISTEM PEMBAYARAN ---
 
-// Kod asal script.js anda bermula di bawah ini...
-document.addEventListener('DOMContentLoaded', function(){
+    // 4. Hantar form tersebut
+    document.body.appendChild(form);
+    form.submit();
+}
 
   // ----- Word Images -----
   const wordImages = {
@@ -681,4 +661,5 @@ bersemuka: "https://i.ibb.co/9H23sGNB/Bersemuka-e1d19d9efd57e173aae5.jpg", // Be
   });
 
 });
+
 
