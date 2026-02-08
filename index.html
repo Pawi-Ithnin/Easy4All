@@ -100,8 +100,8 @@
 </main>
 
 <script>
-  // CONFIGURASI KOD (Tukar di sini)
-  const KOD_HARIAN = "TANDAX0";  // Kod untuk RM3
+  // CONFIGURASI KOD (Apabila anda tukar kod di sini, user automatik Logout)
+  const KOD_HARIAN = "TANDAX0";   // Kod untuk RM3
   const KOD_BULANAN = "TANDAX98"; // Kod untuk RM35
 
   function hantarResit(pakej) {
@@ -122,12 +122,15 @@
 
     if (duration > 0) {
       const expiryTime = new Date().getTime() + duration;
+      // Simpan status, masa tamat, dan kod yang digunakan
       localStorage.setItem('tandaX_expiry', expiryTime);
       localStorage.setItem('tandaX_paid', 'true');
+      localStorage.setItem('tandaX_saved_key', kodInput); 
+      
       alert(`Aktivasi Berjaya! Sah sehingga: ${new Date(expiryTime).toLocaleString()}`);
       bukaAplikasi();
     } else {
-      alert("Kod tidak sah atau telah tamat tempoh!");
+      alert("Kod tidak sah!");
     }
   }
 
@@ -139,13 +142,25 @@
   window.onload = () => {
     const expiry = localStorage.getItem('tandaX_expiry');
     const isPaid = localStorage.getItem('tandaX_paid');
+    const savedKey = localStorage.getItem('tandaX_saved_key');
     const currentTime = new Date().getTime();
 
-    if (isPaid === 'true' && expiry && currentTime < parseInt(expiry)) {
+    // SEMAKAN UTAMA:
+    // 1. Adakah status isPaid 'true'?
+    // 2. Adakah kod yang disimpan sama dengan kod dalam skrip sekarang?
+    // 3. Adakah masa belum tamat?
+    const kodMasihAktif = (savedKey === KOD_HARIAN || savedKey === KOD_BULANAN);
+
+    if (isPaid === 'true' && kodMasihAktif && expiry && currentTime < parseInt(expiry)) {
       bukaAplikasi();
     } else {
+      // Jika salah satu syarat gagal (termasuk jika anda tukar password), automatik logout
+      if(isPaid === 'true' && !kodMasihAktif) {
+        console.log("Kod telah ditukar oleh Admin. Sila masukkan kod baru.");
+      }
       localStorage.clear();
       document.getElementById('pay-screen').style.display = 'block';
+      document.getElementById('mainAppSection').style.display = 'none';
     }
   };
 
