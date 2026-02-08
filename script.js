@@ -527,6 +527,20 @@ dendam: "https://i.ibb.co/C5vkdhzb/Dendam-366067bd6be7943c2d6c-1.jpg", // Dendam
 kecewa: "https://i.ibb.co/8nCKkGGT/Kecewa-2e845cc0ab6a7b8ae24c.jpg", // Kecewa
 letih: "https://i.ibb.co/mFrv7WRj/Letih-c3f167daa801aee71591-1.jpg", // Letih
 bersemuka: "https://i.ibb.co/9H23sGNB/Bersemuka-e1d19d9efd57e173aae5.jpg", // Bersemuka
+bebel: "https://i.ibb.co/W4SygXTW/Bebel-a0e8232b9113af6a994d.jpg",
+berjalan: "https://i.ibb.co/N26HRKFw/Berjalan-43024d3d67e775b3d914-2.jpg" ,
+bisik: "https://i.ibb.co/3yCvFx1B/Bisik-676bd4ca2814a5252778-1.jpg",
+cerita: "https://i.ibb.co/v4NwL7WS/Cerita-43dc93fee887cc37ad7d-1.jpg",
+guna: "https://i.ibb.co/q347PmGN/Guna-98992022527c929b4f6b.jpg",
+periksa: "https://i.ibb.co/rRLYhWNy/Periksa-bc66ab4f563b4102b35d.jpg", 
+tidur: "https://i.ibb.co/hxndWm25/Tidur-cd5c71cae6ac9a187d0e-1.jpg",
+berani: "https://i.ibb.co/HTHrFMFC/Berani-ddeac265ebd8fff84da1.jpg", 
+biasa: "https://i.ibb.co/qM2vjwC0/Biasa-aae81c3dc30d98f610d9.jpg",
+busuk: "https://i.ibb.co/SXfMYy1N/Busuk-2d535138933dd1500d40.jpg", 
+cepat: "https://i.ibb.co/93b5TwhG/Cepat-I-cfd75e83f6444ee56880.jpg",
+gelap: "https://i.ibb.co/CpqVDMnn/Gelap-c93ef9825014fde19188.jpg",
+malas: "https://i.ibb.co/1YqsZRFb/Malas-457ce82e7a31a822ef4d.jpg", 
+        
  };
 
     // ----- LOGIK YOUTUBE -----
@@ -633,3 +647,4 @@ bersemuka: "https://i.ibb.co/9H23sGNB/Bersemuka-e1d19d9efd57e173aae5.jpg", // Be
 
     document.getElementById('btnReset').onclick = () => location.reload();
 });
+
