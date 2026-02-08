@@ -1,4 +1,5 @@
- // ----- Word Images -----
+document.addEventListener('DOMContentLoaded', function(){
+// ----- Word Images -----
   const wordImages = {
     kami:"https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
     saya:"https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
@@ -627,6 +628,7 @@ bersemuka: "https://i.ibb.co/9H23sGNB/Bersemuka-e1d19d9efd57e173aae5.jpg", // Be
   });
 
 });
+
 
 
 
