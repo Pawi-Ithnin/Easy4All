@@ -5,24 +5,74 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tanda X 1.0 - Pro</title>
 <style>
-  /* CSS Kekal Sama Seperti Asal Anda */
-  body { font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center; background: #f4f4f4; }
-  header { padding: 10px; background: #fff; border-bottom: 2px solid #d32f2f; }
-  header h1 { font-size: 28px; color: #d32f2f; margin: 10px 0; }
-  #pay-screen { text-align: center; padding: 40px 20px; background: white; margin: 20px auto; max-width: 500px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; text-align: center; background: #f0f2f5; }
+  header { padding: 15px; background: #fff; border-bottom: 3px solid #d32f2f; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+  header h1 { font-size: 32px; color: #d32f2f; margin: 0; }
+
+  /* Skrin Pembayaran */
+  #pay-screen { text-align: center; padding: 40px 20px; background: white; margin: 40px auto; max-width: 500px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
   .bank-info { background: #f0f7ff; padding: 20px; border-radius: 12px; margin: 20px 0; border: 2px solid #0055ab; }
-  .qr-image { width: 250px; height: auto; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 5px solid white; }
-  .btn-pay { background: #25d366; color: white; padding: 15px 30px; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; margin-top: 10px; text-decoration: none; display: inline-block; }
-  .btn-pay:hover { background: #128c7e; transform: scale(1.02); }
-  .activation-box { margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; }
-  input[type="password"], input[type="text"] { padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px; text-align: center; }
-  .btn-verify, #btnLoad { padding: 12px 25px; background: #333; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+  .qr-image { width: 250px; height: auto; border-radius: 10px; margin-bottom: 15px; border: 5px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+  .btn-pay { background: #25d366; color: white; padding: 15px 30px; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; text-decoration: none; display: inline-block; }
   .price-tag { font-size: 2.2rem; font-weight: bold; color: #2ed573; margin: 10px 0; }
-  .control-panel button { padding: 10px; margin: 5px; cursor: pointer; border-radius: 5px; border: none; font-weight: bold; color: white; }
+  
+  /* Panel Kawalan */
+  .control-panel { margin: 20px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+  .control-panel button { padding: 12px 20px; border: none; border-radius: 8px; font-weight: bold; color: white; cursor: pointer; transition: 0.2s; }
   #btnStart { background: #2ecc71; } #btnStop { background: #e74c3c; } #btnYT { background: #3498db; } #btnSign { background: #f39c12; } #btnReset { background: #95a5a6; }
-  #youtubeSection, #signLanguageSection { margin: 20px; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: none; }
-  #player { margin-top: 15px; width: 100%; max-width: 640px; }
-  #signImage { max-width: 300px; height: auto; border: 2px dashed #d32f2f; padding: 10px; margin-top: 10px; }
+  .control-panel button:hover { opacity: 0.8; transform: translateY(-2px); }
+
+  /* SUSUNAN UTAMA: KIRI & KANAN */
+  .main-content { 
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: nowrap; 
+    gap: 20px; 
+    padding: 20px; 
+    max-width: 1400px; 
+    margin: auto; 
+    align-items: flex-start;
+  }
+
+  /* Bahagian Video (Kiri) */
+  #youtubeSection { 
+    flex: 2; /* Mengambil ruang lebih besar */
+    background: white; 
+    padding: 20px; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+    display: none; 
+    text-align: left;
+  }
+  .yt-controls { display: flex; gap: 10px; margin-bottom: 15px; }
+  #youtubeUrl { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
+  #btnLoad { background: #333; color: white; border: none; padding: 0 20px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+
+  #player { width: 100% !important; aspect-ratio: 16/9; border-radius: 10px; background: #000; }
+
+  /* Bahagian Isyarat (Kanan) */
+  #signLanguageSection { 
+    flex: 1; /* Mengambil ruang lebih kecil di tepi */
+    background: white; 
+    padding: 20px; 
+    border: 3px dashed #d32f2f; 
+    border-radius: 15px; 
+    display: none; 
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #signImage { width: 100%; max-width: 300px; height: auto; border-radius: 10px; margin-top: 15px; }
+  #transcriptDisplay { margin-top: 15px; font-size: 1.2rem; font-weight: bold; color: #d32f2f; min-height: 1.5em; }
+
+  /* Responsif untuk Telefon */
+  @media (max-width: 900px) {
+    .main-content { flex-direction: column; }
+    #youtubeSection, #signLanguageSection { width: 100%; flex: none; }
+  }
 </style>
 </head>
 <body>
@@ -34,7 +84,7 @@
 <main>
   <section id="pay-screen">
     <h2>Aktifkan Akses Pro 🤟</h2>
-    <p>Sila imbas QR TNG di bawah untuk bayaran:</p>
+    <p>Sila imbas QR TNG di bawah untuk bayaran RM3:</p>
     <div class="bank-info">
       <img src="https://i.ibb.co/8n5MbgjF/photo-6070863400645889743-y.jpg" alt="QR TNG" class="qr-image">
       <p style="margin: 0; color: #666;">Nama Akaun:</p>
@@ -43,14 +93,15 @@
     </div>
     <button class="btn-pay" onclick="hantarResit()">HANTAR RESIT (WHATSAPP)</button>
     <div class="activation-box">
-      <input type="password" id="adminKey" placeholder="Kod rahsia dari Admin">
+      <p style="font-size: 0.9rem; color: #666;">Dah bayar? Masukkan kod aktivasi:</p>
+      <input type="password" id="adminKey" placeholder="Kod dari Admin">
       <button class="btn-verify" onclick="semakKod()">Sahkan Kod</button>
     </div>
   </section>
 
   <div id="mainAppSection" style="display:none;">
     <section id="statusContainer">
-      <div id="status" class="status-text" style="font-weight:bold; margin: 15px;">Sedia untuk beraksi...</div>
+      <div id="status" style="font-weight:bold; margin-top: 20px; color: #555;">Sedia untuk beraksi...</div>
       <div class="control-panel">
         <button id="btnStart">🎤 Mula Suara</button>
         <button id="btnStop">⏹ Henti Suara</button>
@@ -63,27 +114,26 @@
     <div class="main-content">
       <section id="youtubeSection">
         <div class="yt-controls">
-          <input type="text" id="youtubeUrl" style="width:70%;" placeholder="Tampal link YouTube...">
+          <input type="text" id="youtubeUrl" placeholder="Tampal link YouTube...">
           <button id="btnLoad">Muat</button>
         </div>
         <div id="player"></div>
-        <h2 id="transcriptDisplay" style="color:#d32f2f;"></h2>
+        <div id="transcriptDisplay"></div>
       </section>
 
       <section id="signLanguageSection">
-        <p id="output">Visual Terjemahan:</p>
-        <img id="signImage" src="https://via.placeholder.com/300?text=Paparan+Isyarat" alt="Paparan Isyarat">
+        <p id="output" style="font-weight: bold; color: #333;">Visual Terjemahan:</p>
+        <img id="signImage" src="https://via.placeholder.com/300?text=Sedia..." alt="Paparan Isyarat">
       </section>
     </div>
   </div>
 </main>
 
 <script>
-  // Logik Aktivasi Pro
   const kodRahsiaSemasa = "TANDAX99";
 
   function hantarResit() {
-    window.open(`https://wa.me/60102857165?text=Salam%20Admin,%20saya%20dah%20bayar%20RM3%20untuk%20Tanda%20X%20Pro`, '_blank');
+    window.open(`https://wa.me/60102857165?text=Salam%20Admin,%20saya%20dah%20bayar%20RM3%20untuk%20Tanda%20X%20Pro.`, '_blank');
   }
 
   function semakKod() {
