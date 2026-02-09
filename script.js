@@ -540,6 +540,13 @@ busuk: "https://i.ibb.co/SXfMYy1N/Busuk-2d535138933dd1500d40.jpg",
 cepat: "https://i.ibb.co/93b5TwhG/Cepat-I-cfd75e83f6444ee56880.jpg",
 gelap: "https://i.ibb.co/CpqVDMnn/Gelap-c93ef9825014fde19188.jpg",
 malas: "https://i.ibb.co/1YqsZRFb/Malas-457ce82e7a31a822ef4d.jpg", 
+pelancong: "https://i.ibb.co/Kpx3tSPc/Pelancong-3d4787f77a687f235ef4-1.jpg", 
+remaja: "https://i.ibb.co/2YRsvcfx/Remaja-d87fe04c744f5bd2ea1c-1.jpg",
+wanita: "https://i.ibb.co/gMGcgwJr/Wanita-c9a1c55a221875cf5288.jpg",
+ansuran: "https://i.ibb.co/SDcVbdrq/Ansuran-0bbc5d6c011dfb1279ca-1.jpg",
+maybank: "https://i.ibb.co/ycHtnrj1/Maybank-3717c780f459dd5c7d39.jpg", 
+publicbank: "https://i.ibb.co/FvhZMP3/Public-Bank-00c4bc92ccfea4184c81.jpg",
+yuran: "https://i.ibb.co/JFdsKTNv/Yuran-1ae4768f6ec5ac9f8483-1.jpg",
         
  };
 
@@ -647,4 +654,5 @@ malas: "https://i.ibb.co/1YqsZRFb/Malas-457ce82e7a31a822ef4d.jpg",
 
     document.getElementById('btnReset').onclick = () => location.reload();
 });
+
 
