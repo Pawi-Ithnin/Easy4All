@@ -573,7 +573,25 @@ operasi: "https://i.ibb.co/dw0Q4p7j/Operasi-647eb1b7267ab7632be6.jpg",
 peribadi: "https://i.ibb.co/d4XLtjQW/Peribadi-b33e05a2684fc771ce6a.jpg", 
 syarat: "https://i.ibb.co/j9V0y9qG/Syarat-20c385b99a1b0ad9dc27-1.jpg", 
 usaha: "https://i.ibb.co/3mqvQ2rG/Usaha-a5e9e011576c07e3134e-1.jpg", 
-        
+tarikhluput: "https://i.ibb.co/kV8WLdvs/Tarikh-luput-4c43221cb2a78294b67a.jpg",
+sakitjatung: "https://i.ibb.co/J1Cr56G/Sakit-Jantung-ec5a971bc586a4914723.jpg",
+ulangtahun: "https://i.ibb.co/BVFNgyMR/Ulang-tahun-db3d48e71a116cf4581e.jpg",
+orientasi: "https://i.ibb.co/3ymkGFGz/Orientasi-7bdd75feab81332ea6b5.jpg",
+ketawa: "https://i.ibb.co/qX28htz/Ketawa-8933af8845e88bafac8c.jpg",
+ketawa: "https://i.ibb.co/qX28htz/Ketawa-8933af8845e88bafac8c.jpg",
+spekulasi: "https://i.ibb.co/fVLct5mZ/Spekulasi-dae32054e24e38bd9864.jpg",
+kreatif: "https://i.ibb.co/bg9RFrxp/Kreatif-c7905e1ee2884228fbaf-1.jpg",
+hidu: "https://i.ibb.co/3YWCfpY3/Hidu-8b016492a37ad3d320c9.jpg",
+proses: "https://i.ibb.co/k2QR18xK/Proses-2b51cab46e487a938b5f.jpg",
+amatjelas: "https://i.ibb.co/KjZ0VgFS/Amat-jelas-04c27b0e4749cbcddce2.jpg",
+bernasibbaik: "https://i.ibb.co/chZ6dSXg/Bernasib-baik-7a52e468caa77b61cc7a.jpg",
+buatapa:"https://i.ibb.co/mV1D32nL/Buat-apa-b9a873b18a5508cdc1a9.jpg",
+cabutlari: "https://i.ibb.co/v46n7yFC/Cabut-lari-731126b919219367732.jpg",
+bukarahsia: "https://i.ibb.co/XZpBD3nV/Buka-rahsia-541b6a23bc34d55ef289.jpg",
+ingintahu: "https://i.ibb.co/pty8mMX/Ingin-tahu-9e7c9af06e8c52ecab85.jpg",
+lepastangan: "https://i.ibb.co/Q32HBxD6/Lepas-tangan-18547cc740f6df9b39cf.jpg",
+lupakansaja: "https://i.ibb.co/1Y14MZT0/Lupakan-saja-9d8f6677627dfd0dac14.jpg",
+
 };
 
     // ----- LOGIK YOUTUBE -----
@@ -680,6 +698,7 @@ usaha: "https://i.ibb.co/3mqvQ2rG/Usaha-a5e9e011576c07e3134e-1.jpg",
 
     document.getElementById('btnReset').onclick = () => location.reload();
 });
+
 
 
 
