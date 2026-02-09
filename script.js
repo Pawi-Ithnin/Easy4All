@@ -547,6 +547,12 @@ ansuran: "https://i.ibb.co/SDcVbdrq/Ansuran-0bbc5d6c011dfb1279ca-1.jpg",
 maybank: "https://i.ibb.co/ycHtnrj1/Maybank-3717c780f459dd5c7d39.jpg", 
 publicbank: "https://i.ibb.co/FvhZMP3/Public-Bank-00c4bc92ccfea4184c81.jpg",
 yuran: "https://i.ibb.co/JFdsKTNv/Yuran-1ae4768f6ec5ac9f8483-1.jpg",
+andai: "https://i.ibb.co/jksp83Wc/Andai-f95cf360986757f0fbbe-1.jpg",
+bantah: "https://i.ibb.co/Y7gmXPtY/Bantah-158057068c160097cce1-1.jpg",
+menyalahkan: "https://i.ibb.co/Pbx5VXn/Menyalahkan-ae9103a98a4e8a647bc7-1.jpg",
+tuduh: "https://i.ibb.co/twZSHckr/Tuduh-3154156b682ce1008f5e-1.jpg",
+keputusan: "https://i.ibb.co/ZRnRKYxG/Keputusan-2d9174b433d265d32a70.jpg",
+kuasa: "https://i.ibb.co/SwSbC8fW/Kuasa-933913cbfee56a639f58.jpg", 
         
  };
 
@@ -654,5 +660,6 @@ yuran: "https://i.ibb.co/JFdsKTNv/Yuran-1ae4768f6ec5ac9f8483-1.jpg",
 
     document.getElementById('btnReset').onclick = () => location.reload();
 });
+
 
 
