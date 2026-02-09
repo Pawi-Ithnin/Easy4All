@@ -553,7 +553,7 @@ menyalahkan: "https://i.ibb.co/Pbx5VXn/Menyalahkan-ae9103a98a4e8a647bc7-1.jpg",
 tuduh: "https://i.ibb.co/twZSHckr/Tuduh-3154156b682ce1008f5e-1.jpg",
 keputusan: "https://i.ibb.co/ZRnRKYxG/Keputusan-2d9174b433d265d32a70.jpg",
 kuasa: "https://i.ibb.co/SwSbC8fW/Kuasa-933913cbfee56a639f58.jpg", 
-tdud: "https://i.ibb.co/twZSHckr/Tuduh-3154156b682ce1008f5e-1.jpg",
+tudud: "https://i.ibb.co/twZSHckr/Tuduh-3154156b682ce1008f5e-1.jpg",
 keputusan: "https://i.ibb.co/ZRnRKYxG/Keputusan-2d9174b433d265d32a70.jpg",
 kuasa: "https://i.ibb.co/SwSbC8fW/Kuasa-933913cbfee56a639f58.jpg", 
 curang: "https://i.ibb.co/4ZxtvPVL/Curang-622c67c0f6420301224a.jpg",
@@ -564,6 +564,15 @@ khalwat: "https://i.ibb.co/JFr14qwf/Khalwat-7bc480963f528a968ed8.jpg",
 maksiat: "https://i.ibb.co/nNDQcd21/Maksiat-60e12dec16fc14cfd7fc.jpg",
 rasuah: "https://i.ibb.co/jPr15YnD/Rasuah-bdbd6974a824425f37a3.jpg", 
 zina: "https://i.ibb.co/4ZqFz91N/Zina-b23b5fa21ffaec88a545.jpg",
+arahan: "https://i.ibb.co/zVKJVXG0/Arahan-c5a950c4cf445d9ee225.jpg", 
+cara: "https://i.ibb.co/PZ0JTT1M/Cara-a4b5073b5979196d9e88-1.jpg",
+denda: "https://i.ibb.co/HLGs850V/Denda-7eb6294cbb571a3b4aa8-1.jpg",
+fungsi: "https://i.ibb.co/PGfYJVsP/Fungsi-930b7565c8a981b484ba-1.jpg",
+kerjasama: "https://i.ibb.co/L483ngf/Kerjasama-f0b774114c276e795803-1.jpg",
+operasi: "https://i.ibb.co/dw0Q4p7j/Operasi-647eb1b7267ab7632be6.jpg", 
+peribadi: "https://i.ibb.co/d4XLtjQW/Peribadi-b33e05a2684fc771ce6a.jpg", 
+syarat: "https://i.ibb.co/j9V0y9qG/Syarat-20c385b99a1b0ad9dc27-1.jpg", 
+usaha: "https://i.ibb.co/3mqvQ2rG/Usaha-a5e9e011576c07e3134e-1.jpg", 
         
 };
 
@@ -671,6 +680,7 @@ zina: "https://i.ibb.co/4ZqFz91N/Zina-b23b5fa21ffaec88a545.jpg",
 
     document.getElementById('btnReset').onclick = () => location.reload();
 });
+
 
 
 
