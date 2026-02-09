@@ -553,8 +553,19 @@ menyalahkan: "https://i.ibb.co/Pbx5VXn/Menyalahkan-ae9103a98a4e8a647bc7-1.jpg",
 tuduh: "https://i.ibb.co/twZSHckr/Tuduh-3154156b682ce1008f5e-1.jpg",
 keputusan: "https://i.ibb.co/ZRnRKYxG/Keputusan-2d9174b433d265d32a70.jpg",
 kuasa: "https://i.ibb.co/SwSbC8fW/Kuasa-933913cbfee56a639f58.jpg", 
+tdud: "https://i.ibb.co/twZSHckr/Tuduh-3154156b682ce1008f5e-1.jpg",
+keputusan: "https://i.ibb.co/ZRnRKYxG/Keputusan-2d9174b433d265d32a70.jpg",
+kuasa: "https://i.ibb.co/SwSbC8fW/Kuasa-933913cbfee56a639f58.jpg", 
+curang: "https://i.ibb.co/4ZxtvPVL/Curang-622c67c0f6420301224a.jpg",
+dadah: "https://i.ibb.co/nsrwCmCk/Dadah-2f35d71217d4cab9529b.jpg",
+fitnah: "https://i.ibb.co/bjCvNvzj/Fitnah-f65e6ef0dcb7e66bf9b6.jpg", 
+kemalangan: "https://i.ibb.co/4g32tBWk/Kemalangan-862e3e72c86febfa2b52.jpg", 
+khalwat: "https://i.ibb.co/JFr14qwf/Khalwat-7bc480963f528a968ed8.jpg",
+maksiat: "https://i.ibb.co/nNDQcd21/Maksiat-60e12dec16fc14cfd7fc.jpg",
+rasuah: "https://i.ibb.co/jPr15YnD/Rasuah-bdbd6974a824425f37a3.jpg", 
+zina: "https://i.ibb.co/4ZqFz91N/Zina-b23b5fa21ffaec88a545.jpg",
         
- };
+};
 
     // ----- LOGIK YOUTUBE -----
     function extractVideoID(url){
@@ -660,6 +671,7 @@ kuasa: "https://i.ibb.co/SwSbC8fW/Kuasa-933913cbfee56a639f58.jpg",
 
     document.getElementById('btnReset').onclick = () => location.reload();
 });
+
 
 
 
