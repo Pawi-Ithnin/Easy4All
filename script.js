@@ -591,6 +591,13 @@ bukarahsia: "https://i.ibb.co/XZpBD3nV/Buka-rahsia-541b6a23bc34d55ef289.jpg",
 ingintahu: "https://i.ibb.co/pty8mMX/Ingin-tahu-9e7c9af06e8c52ecab85.jpg",
 lepastangan: "https://i.ibb.co/Q32HBxD6/Lepas-tangan-18547cc740f6df9b39cf.jpg",
 lupakansaja: "https://i.ibb.co/1Y14MZT0/Lupakan-saja-9d8f6677627dfd0dac14.jpg",
+niat: "https://i.ibb.co/bgBmLBfq/Niat-a98db66e2286da582a35-1.jpg",
+islam: "https://i.ibb.co/qMKhLVz9/Islam-d840c33817645784cd24-1.jpg",
+bukapuasa: "https://i.ibb.co/TxPqBqPK/Buka-puasa-c1017bc39c5302ce48d5-1.jpg",
+terimakasih: "https://i.ibb.co/YBPw7PrL/Terima-Kasih-85e1ad02276e860bc82b-1.jpg",
+assalammulaikum: "https://i.ibb.co/NQJvWQf/Assalamualaikum-4c7b028ea9b6b25d2054-1.jpg", 
+salin: "https://i.ibb.co/CKxfJCfd/Salin-1a98c6963740615e12bc.jpg",
+keju: "https://i.ibb.co/TBZgmzMK/Keju-49c270459c23f1da1680-1.jpg",
 
 };
 
@@ -698,6 +705,7 @@ lupakansaja: "https://i.ibb.co/1Y14MZT0/Lupakan-saja-9d8f6677627dfd0dac14.jpg",
 
     document.getElementById('btnReset').onclick = () => location.reload();
 });
+
 
 
 
