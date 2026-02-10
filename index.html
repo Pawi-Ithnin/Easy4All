@@ -105,7 +105,7 @@
   const KOD_BULANAN = "TANDAX98"; // Kod untuk RM35
 
   function hantarResit(pakej) {
-    const harga = (pakej === 'Harian') ? 'RM3' : 'RM35';
+    const harga = (pakej === 'Harian') ? 'RM3' : 'RM30';
     const mesej = `Salam Admin, saya dah bayar ${harga} untuk langganan Tanda X Pro (${pakej}). Mohon kod aktivasi.`;
     window.open(`https://wa.me/60102857165?text=${encodeURIComponent(mesej)}`, '_blank');
   }
@@ -174,3 +174,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
