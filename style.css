@@ -1,24 +1,25 @@
 body { 
-    font-family: Arial, sans-serif; 
+    font-family: 'Segoe UI', Arial, sans-serif; 
     margin: 0; padding: 0; 
     text-align: center; 
     background: #fdfdfd; 
+    overflow-x: hidden; /* Elakkan skrin goyang ke kiri kanan */
 }
 
-/* Bekas Utama: Menggunakan Flexbox untuk susunan Kiri & Kanan */
+/* Bekas Utama */
 .main-content { 
     display: flex; 
-    flex-direction: row; /* Wajib untuk susunan tepi ke tepi */
-    flex-wrap: nowrap; /* Elakkan kotak jatuh ke bawah pada skrin besar */
+    flex-direction: row; 
+    flex-wrap: nowrap; 
     gap: 20px; 
-    padding: 20px; 
+    padding: 15px; 
     max-width: 1300px; 
     margin: auto; 
     align-items: flex-start;
 }
 
 #youtubeSection { 
-    flex: 2; /* Video ambil ruang 65-70% */
+    flex: 2; 
     background: #f9f9f9; 
     padding: 15px; 
     border-radius: 12px; 
@@ -26,40 +27,62 @@ body {
     display: none; 
 }
 
+/* Section Isyarat - Ditambah transisi supaya nampak smooth */
 #signLanguageSection { 
-    flex: 1; /* Isyarat ambil ruang 30-35% di sebelah kanan */
-    min-height: 400px; /* Pastikan kotak ada ketinggian minimum */
+    flex: 1; 
+    min-height: 400px; 
     background: #fff; 
     padding: 20px; 
-    border: 2px dashed #d32f2f; 
+    border: 3px dashed #d32f2f; 
     border-radius: 12px; 
-    display: none; 
+    display: none; /* Akan ditukar oleh JS */
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 #player { 
     width: 100% !important; 
     aspect-ratio: 16/9; 
     border-radius: 8px; 
+    background: #000;
 }
 
 #signImage { 
     width: 100%; 
     max-width: 280px; 
+    height: auto;
     margin: 15px auto; 
     border-radius: 8px;
-    display: none; 
+    display: block; /* Biar block supaya senang JS kawal src */
 }
 
-/* Media Query untuk Mobile */
+/* --- SESUAIKAN UNTUK MOBILE (BAWAH 992PX) --- */
 @media (max-width: 992px) { 
     .main-content { 
-        flex-direction: column; /* Tukar ke susunan atas-bawah untuk skrin kecil */
+        flex-direction: column; /* Susun atas-bawah */
+        padding: 10px;
+        gap: 10px;
     } 
+    
     #youtubeSection, #signLanguageSection { 
         width: 100%; 
+        box-sizing: border-box; /* Pastikan padding tak buat kotak terkeluar skrin */
         flex: none; 
-    } 
-}
+    }
+
+    #signLanguageSection {
+        min-height: 300px; /* Kurangkan sikit tinggi untuk phone */
+        padding: 15px;
+        /* Penting: Pastikan section ini sentiasa nampak bila aktif */
+        display: flex !important; 
+    }
+
+    #signImage {
+        max-width: 200px; /* Kecilkan sikit supaya tak penuh skrin phone */
+    }
+
+    h1 {
+        font-size: 24px; /* Kecilkan tajuk sikit kat phone */
+    }
