@@ -11,7 +11,7 @@ function onYouTubeIframeAPIReady() {
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-    // Pangkalan Data Imej Isyarat (Kekalkan senarai awak)
+    // PANGKALAN DATA IMEJ (Mesti di dalam DOMContentLoaded)
     const wordImages = {
         kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
         saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
@@ -634,6 +634,8 @@ cermin: "https://i.ibb.co/9mLsWhVW/Cermin-a011bddc13e2a2f09897.jpg",
 gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
     };
 
+     };
+
     function extractVideoID(url){
         var regExp=/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
         var match=url.match(regExp);
@@ -660,7 +662,7 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
                 width: '100%',
                 videoId: videoId,
                 playerVars: { 
-                    'playsinline': 1, // Penting untuk mobile
+                    'playsinline': 1, 
                     'cc_load_policy': 1 
                 },
                 events: {
@@ -672,7 +674,7 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
         }
     };
 
-    // ----- Speech Recognition (Diperbaiki untuk Mobile) -----
+    // ----- Speech Recognition -----
     const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recognition;
     
@@ -689,7 +691,6 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
             return;
         }
 
-        // Paksa AudioContext resume (Trik untuk mobile)
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         if (AudioContext) {
             const ctx = new AudioContext();
@@ -700,14 +701,8 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
             recognition.start();
             document.getElementById('status').innerText="Mendengar audio...";
         } catch (e) {
-            console.log("Mic sudah aktif.");
+            console.log("Mic aktif.");
         }
-    }
-
-    function stopRecognition(){
-        if(!recognition) return;
-        recognition.stop();
-        document.getElementById('status').innerText="Suara dihenti.";
     }
 
     if(recognition){
@@ -717,24 +712,18 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
             let words = transcript.split(/\s+/);
             displaySign(words[words.length-1]);
         };
-
-        recognition.onerror = (event) => {
-            console.error("Ralat Mic: ", event.error);
-            if(event.error === 'not-allowed') {
-                alert("Sila benarkan akses mikrofon di tetapan telefon anda.");
-            }
-        };
     }
 
     function displaySign(word){
-        let clean = word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+        let clean = word.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").trim();
         const img = document.getElementById('signImage');
         const out = document.getElementById('output');
 
         if(wordImages[clean]){
+            // Trik Mobile: Paksa imej muncul semula
             img.src = wordImages[clean];
             img.style.display = "block";
-            out.innerText = "Isyarat: " + clean;
+            out.innerText = "Isyarat: " + clean.toUpperCase();
         } else {
             fingerspell(clean);
         }
@@ -747,23 +736,19 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
             if(i < letters.length){
                 let char = letters[i];
                 document.getElementById('output').innerText="Mengeja: " + char.toUpperCase();
-                // Sini awak boleh letak imej A-Z jika ada URL-nya
                 i++; setTimeout(showLetter, 600);
             }
         }
         showLetter();
     }
 
-    // ----- Event Listeners (Tukar 'block' ke 'flex' untuk CSS baru) -----
+    // ----- Event Listeners -----
     document.getElementById('btnStart').onclick = startRecognition;
-    document.getElementById('btnStop').onclick = stopRecognition;
+    document.getElementById('btnStop').onclick = () => { if(recognition) recognition.stop(); };
     document.getElementById('btnLoad').onclick = window.loadYoutubeVideo;
-
     document.getElementById('btnYT').onclick = function(){
         document.getElementById('youtubeSection').style.display="block";
-        document.getElementById('signLanguageSection').style.display="flex"; // Serasi dengan CSS Flexbox
-        document.getElementById('status').innerText="Mod YouTube Aktif";
+        document.getElementById('signLanguageSection').style.display="flex";
     };
-
     document.getElementById('btnReset').onclick = () => location.reload();
 });
