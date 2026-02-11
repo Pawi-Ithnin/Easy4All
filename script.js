@@ -598,7 +598,24 @@ terimakasih: "https://i.ibb.co/YBPw7PrL/Terima-Kasih-85e1ad02276e860bc82b-1.jpg"
 assalammulaikum: "https://i.ibb.co/NQJvWQf/Assalamualaikum-4c7b028ea9b6b25d2054-1.jpg", 
 salin: "https://i.ibb.co/CKxfJCfd/Salin-1a98c6963740615e12bc.jpg",
 keju: "https://i.ibb.co/TBZgmzMK/Keju-49c270459c23f1da1680-1.jpg",
-
+buahbuahan: "https://i.ibb.co/7tYJcsbx/Buah-buahan-7e91f5c460c42d9fa386.jpg",
+betik: "https://i.ibb.co/Jjmwx3X9/Betik-19c46c4aa3e8f46e62c3-1.jpg",
+durian: "https://i.ibb.co/PsWw5hks/Durian-9715d720b41ee4cfe369.jpg", 
+kelapa: "https://i.ibb.co/YmDRx2d/Kelapa-ed1e2e81a381044663e6-1.jpg",
+pisang: "https://i.ibb.co/jvW2wrvr/Pisang-cd58d73313edadac9d76-1.jpg",
+tembikai: "https://i.ibb.co/6R7YT0G4/Tembikai-2fb65d6544e3bb17004a-1.jpg",
+suara: "https://i.ibb.co/39RLZRBF/Suara-69b6f9fec6d3c24e99a5-1.jpg" ,
+pekak: "https://i.ibb.co/DHmL63HD/Pekak-c3279d45d4015ab00b5f.jpg",
+normal: "https://i.ibb.co/LzP85fss/Normal-aa39a5930697e8b36b65-1.jpg",
+cacat: "https://i.ibb.co/2Ykqff3f/Cacat-f2d2b78e533fbb9dde98-1.jpg",
+badan: "https://i.ibb.co/4ZSqsWZv/Badan-87f34d5ee3cc8b2cdbed-2.jpg",
+bulu: "https://i.ibb.co/G3FNQmhY/Bulu-fb1e80ce8bc300876c96-1.jpg" ,
+wartawan: "https://i.ibb.co/23tdq2K9/Wartawan-8b142b96eb3b00a02e3a.jpg",
+temuduga: "https://i.ibb.co/yFd6fbFC/Temuduga-387ba83c1aa7874b78ff-1.jpg",
+polis: "https://i.ibb.co/67MZHCM7/Polis-3fa95d7b38ba3020ef42-1.jpg",
+pelakon: "https://i.ibb.co/ccd2YVnL/Pelakon-45ef6055f24fe3c25792.jpg", 
+majikan: "https://i.ibb.co/qFdQR7BM/Majikan-5e6844bb52674cda07d3-1.jpg", 
+jurutera: "https://i.ibb.co/S7VMxfs4/Jurutera-336c1f318f2bd98d0a2d-1.jpg",
 };
 
     // ----- LOGIK YOUTUBE -----
@@ -705,6 +722,7 @@ keju: "https://i.ibb.co/TBZgmzMK/Keju-49c270459c23f1da1680-1.jpg",
 
     document.getElementById('btnReset').onclick = () => location.reload();
 });
+
 
 
 
