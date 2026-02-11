@@ -616,6 +616,24 @@ polis: "https://i.ibb.co/67MZHCM7/Polis-3fa95d7b38ba3020ef42-1.jpg",
 pelakon: "https://i.ibb.co/ccd2YVnL/Pelakon-45ef6055f24fe3c25792.jpg", 
 majikan: "https://i.ibb.co/qFdQR7BM/Majikan-5e6844bb52674cda07d3-1.jpg", 
 jurutera: "https://i.ibb.co/S7VMxfs4/Jurutera-336c1f318f2bd98d0a2d-1.jpg",
+suhu: "https://i.ibb.co/jPc5yktK/Suhu-4fb6639d1b0796848e34-2.jpg", 
+kaca: "https://i.ibb.co/SD32k3WB/Kaca-f6e099b721f61c4063a8-1.jpg" ,
+timah: "https://i.ibb.co/BKqZBN6Y/Timah-24328b129e2398b029aa-1.jpg",
+trak: "https://i.ibb.co/hFt9ypdy/Trak-dd58050abdd8a205f790-1.jpg",
+tayar: "https://i.ibb.co/JFWhYwCs/Tayar-cb7ec6236ed68a6a53c4-1.jpg",
+roket: "https://i.ibb.co/zh1zHKjN/Roket-d8e95d6e74f0feace5d1.jpg",
+petrol: "https://i.ibb.co/fVD2bbzG/Petrol-6e54eadd75d45cafe998.jpg",
+pengangkutan: "https://i.ibb.co/WWW38SsV/Pengangkutan-fa3d40265f9dc1004350-1.jpg",
+LRT: "https://i.ibb.co/yBy0HzMR/LRT-fc790a3ba8d4a87021a5.jpg",
+jambatan: "https://i.ibb.co/fGP38mvq/Jambatan-9c0a955777c49652cc29-1.jpg",
+ERL: "https://i.ibb.co/wr31VvLt/ERL-f193cfe3e27871210a9f-1.jpg",
+tudung: "https://i.ibb.co/SwG9zWZX/Tudung-11b1c5672322fc428532-1.jpg",
+sikat: "https://i.ibb.co/Fq6Mn4Fm/Sikat-e050e294b692385aee22.jpg",
+sari: "https://i.ibb.co/xK1Bg96Q/Sari-db32d813b8a184e2c5ea.jpg",
+cheongsam: "https://i.ibb.co/yFyX2kcF/Cheong-Sam-bb768bb2bbea9a7d97b2.jpg",
+cermin: "https://i.ibb.co/9mLsWhVW/Cermin-a011bddc13e2a2f09897.jpg",
+gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
+    
 };
 
     // ----- LOGIK YOUTUBE -----
@@ -722,6 +740,7 @@ jurutera: "https://i.ibb.co/S7VMxfs4/Jurutera-336c1f318f2bd98d0a2d-1.jpg",
 
     document.getElementById('btnReset').onclick = () => location.reload();
 });
+
 
 
 
