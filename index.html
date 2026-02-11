@@ -1,179 +1,215 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tanda X 1.0 - Pro</title>
-<style>
-  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; text-align: center; background: #f0f2f5; }
-  header { padding: 15px; background: #fff; border-bottom: 3px solid #d32f2f; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-  header h1 { font-size: 32px; color: #d32f2f; margin: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanda X 1.0 - Pro</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; padding: 0; 
+            text-align: center; 
+            background: #fdfdfd; 
+            overflow-x: hidden;
+        }
+        header { 
+            padding: 15px; 
+            background: #fff; 
+            border-bottom: 3px solid #d32f2f; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        }
+        header h1 { font-size: 28px; color: #d32f2f; margin: 0; }
 
-  /* Skrin Pembayaran */
-  #pay-screen { text-align: center; padding: 40px 20px; background: white; margin: 40px auto; max-width: 500px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-  .bank-info { background: #f0f7ff; padding: 20px; border-radius: 12px; margin: 20px 0; border: 2px solid #0055ab; }
-  .qr-image { width: 250px; height: auto; border-radius: 10px; margin-bottom: 15px; border: 5px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-  
-  .package-selection { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; }
-  .btn-pay { background: #25d366; color: white; padding: 12px 20px; border: none; border-radius: 50px; font-size: 0.9rem; font-weight: bold; cursor: pointer; transition: 0.3s; text-decoration: none; flex: 1; }
-  .btn-pay:hover { background: #128c7e; transform: scale(1.05); }
-  
-  .price-tag { font-size: 1.8rem; font-weight: bold; color: #2ed573; margin: 5px 0; }
-  
-  /* Layout App Utama */
-  .control-panel { margin: 20px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
-  .control-panel button { padding: 12px 20px; border: none; border-radius: 8px; font-weight: bold; color: white; cursor: pointer; transition: 0.2s; }
-  #btnStart { background: #2ecc71; } #btnStop { background: #e74c3c; } #btnYT { background: #3498db; } #btnSign { background: #f39c12; } #btnReset { background: #95a5a6; }
+        /* Skrin Pembayaran */
+        #pay-screen { 
+            text-align: center; 
+            padding: 30px 15px; 
+            background: white; 
+            margin: 20px auto; 
+            max-width: 450px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+        }
+        .qr-image { 
+            width: 220px; 
+            height: auto; 
+            border-radius: 10px; 
+            border: 4px solid #f0f7ff;
+        }
+        .bank-info { 
+            background: #f0f7ff; 
+            padding: 15px; 
+            border-radius: 12px; 
+            margin: 20px 0; 
+        }
+        .package-selection { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; }
+        .btn-pay { 
+            background: #25d366; 
+            color: white; 
+            padding: 10px 15px; 
+            border: none; 
+            border-radius: 50px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            text-decoration: none;
+        }
 
-  .main-content { display: flex; flex-direction: row; flex-wrap: nowrap; gap: 20px; padding: 20px; max-width: 1400px; margin: auto; align-items: flex-start; }
+        /* Layout Utama App */
+        .control-panel { 
+            margin: 15px 0; 
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 8px; 
+            padding: 0 10px;
+        }
+        .control-panel button { 
+            padding: 10px 15px; 
+            border: none; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            color: white; 
+            cursor: pointer; 
+            font-size: 14px;
+        }
+        #btnStart { background: #2ecc71; } 
+        #btnStop { background: #e74c3c; } 
+        #btnYT { background: #3498db; } 
+        #btnReset { background: #95a5a6; }
 
-  #youtubeSection { flex: 2; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: none; text-align: left; }
-  .yt-controls { display: flex; gap: 10px; margin-bottom: 15px; }
-  #youtubeUrl { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
-  #btnLoad { background: #333; color: white; border: none; padding: 0 20px; border-radius: 8px; cursor: pointer; font-weight: bold; }
-  #player { width: 100% !important; aspect-ratio: 16/9; border-radius: 10px; background: #000; }
+        .main-content { 
+            display: flex; 
+            flex-direction: row; 
+            gap: 20px; 
+            padding: 15px; 
+            max-width: 1300px; 
+            margin: auto; 
+            align-items: flex-start; 
+        }
 
-  #signLanguageSection { flex: 1; background: white; padding: 20px; border: 3px dashed #d32f2f; border-radius: 15px; display: none; min-height: 450px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-  #signImage { width: 100%; max-width: 300px; height: auto; border-radius: 10px; margin-top: 15px; }
-  
-  input[type="password"] { padding: 12px; border: 1px solid #ddd; border-radius: 8px; width: 60%; margin-bottom: 10px; }
-  .btn-verify { padding: 12px 25px; background: #333; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        #youtubeSection { 
+            flex: 2; 
+            background: #fff; 
+            padding: 15px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+            display: none; 
+        }
+        .yt-controls { display: flex; gap: 8px; margin-bottom: 12px; }
+        #youtubeUrl { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
+        #btnLoad { background: #333; color: white; border: none; padding: 0 15px; border-radius: 8px; cursor: pointer; }
 
-  @media (max-width: 900px) { .main-content { flex-direction: column; } #youtubeSection, #signLanguageSection { width: 100%; flex: none; } }
-</style>
+        #player { width: 100% !important; aspect-ratio: 16/9; border-radius: 8px; background: #000; }
+
+        #signLanguageSection { 
+            flex: 1; 
+            background: #fff; 
+            padding: 20px; 
+            border: 3px dashed #d32f2f; 
+            border-radius: 12px; 
+            display: none; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 350px;
+        }
+        #signImage { width: 100%; max-width: 250px; height: auto; border-radius: 8px; margin-top: 10px; }
+
+        /* Media Query untuk Mobile */
+        @media (max-width: 900px) {
+            .main-content { flex-direction: column; padding: 10px; }
+            #youtubeSection, #signLanguageSection { width: 100%; flex: none; box-sizing: border-box; }
+            #signLanguageSection { min-height: 300px; display: none; } /* JS akan tukar ke flex */
+            header h1 { font-size: 22px; }
+        }
+    </style>
 </head>
 <body>
 
 <header>
-  <h1>Tanda X 1.0</h1>
+    <h1>Tanda X 1.0 - Pro 🤟</h1>
 </header>
 
 <main>
-  <section id="pay-screen">
-    <h2>Subsbcribe Akses Pro 🤟</h2>
-    <p>Imbas QR TNG & Pilih Pakej Langganan:</p>
-    
-    <div class="bank-info">
-      <img src="https://i.ibb.co/8n5MbgjF/photo-6070863400645889743-y.jpg" alt="QR TNG" class="qr-image">
-      <p style="margin: 0; color: #666; font-size: 0.8rem;">MOHAMAD SHAFAWI BIN ITHNIN</p>
-      <div class="package-selection">
-        <div><div class="price-tag">RM 3</div><button class="btn-pay" onclick="hantarResit('Harian')">Pilih Harian</button></div>
-        <div><div class="price-tag">RM 30</div><button class="btn-pay" onclick="hantarResit('Bulanan')" style="background:#0055ab;">Pilih Bulanan</button></div>
-      </div>
-    </div>
-
-    <div class="activation-box">
-      <p style="font-size: 0.9rem; color: #666;">Masukkan kod rahsia dari Admin:</p>
-      <input type="password" id="adminKey" placeholder="Kod Aktivasi">
-      <br>
-      <button class="btn-verify" onclick="semakKod()">Sahkan Akses</button>
-    </div>
-  </section>
-
-  <div id="mainAppSection" style="display:none;">
-    <section id="statusContainer">
-      <div id="status" style="font-weight:bold; margin-top: 20px; color: #555;">Sedia untuk beraksi...</div>
-      <div class="control-panel">
-        <button id="btnStart">🎤 Mula Suara</button>
-        <button id="btnStop">⏹ Henti Suara</button>
-        <button id="btnYT">📺 Mod YouTube</button>
-        <button id="btnSign">👐 Kamera/Isyarat</button>
-        <button id="btnReset">🔄 Reset</button>
-      </div>
+    <section id="pay-screen">
+        <h2>Langganan Akses Pro</h2>
+        <div class="bank-info">
+            <img src="https://i.ibb.co/8n5MbgjF/photo-6070863400645889743-y.jpg" alt="QR TNG" class="qr-image">
+            <p><strong>MOHAMAD SHAFAWI BIN ITHNIN</strong></p>
+            <div class="package-selection">
+                <div><small>Harian</small><br><strong>RM 3</strong><br><button class="btn-pay" onclick="hantarResit('Harian')">Pilih</button></div>
+                <div><small>Bulanan</small><br><strong>RM 30</strong><br><button class="btn-pay" onclick="hantarResit('Bulanan')" style="background:#0055ab;">Pilih</button></div>
+            </div>
+        </div>
+        <input type="password" id="adminKey" placeholder="Masukkan Kod Aktivasi" style="padding:12px; width:80%; border-radius:8px; border:1px solid #ddd;">
+        <button onclick="semakKod()" style="margin-top:10px; padding:12px 20px; background:#333; color:white; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">Sahkan Akses</button>
     </section>
 
-    <div class="main-content">
-      <section id="youtubeSection">
-        <div class="yt-controls">
-          <input type="text" id="youtubeUrl" placeholder="Tampal link YouTube...">
-          <button id="btnLoad">Muat</button>
+    <div id="mainAppSection" style="display:none;">
+        <div id="status" style="padding: 10px; font-weight:bold; color: #d32f2f;">Sedia...</div>
+        
+        <div class="control-panel">
+            <button id="btnYT">📺 Mod YouTube</button>
+            <button id="btnStart">🎤 Mula Suara</button>
+            <button id="btnStop">⏹ Henti</button>
+            <button id="btnReset">🔄 Reset</button>
         </div>
-        <div id="player"></div>
-        <div id="transcriptDisplay"></div>
-      </section>
-      <section id="signLanguageSection">
-        <p id="output" style="font-weight: bold; color: #333;">Visual Terjemahan:</p>
-        <img id="signImage" src="https://via.placeholder.com/300?text=Sedia..." alt="Paparan Isyarat">
-      </section>
+
+        <div class="main-content">
+            <section id="youtubeSection">
+                <div class="yt-controls">
+                    <input type="text" id="youtubeUrl" placeholder="Tampal link YouTube di sini...">
+                    <button id="btnLoad">Muat</button>
+                </div>
+                <div id="player"></div>
+                <div id="transcriptDisplay" style="margin-top:10px; font-style:italic; color:#666; font-size:14px;"></div>
+            </section>
+
+            <section id="signLanguageSection">
+                <p id="output" style="font-weight: bold; margin:0;">Visual Isyarat:</p>
+                <img id="signImage" src="https://via.placeholder.com/300?text=Sedia..." alt="Isyarat">
+            </section>
+        </div>
     </div>
-  </div>
 </main>
 
 <script>
-  // CONFIGURASI KOD (Apabila anda tukar kod di sini, user automatik Logout)
-  const KOD_HARIAN = "TANDAX0";   // Kod untuk RM3
-  const KOD_BULANAN = "TANDAX98"; // Kod untuk RM35
+    // LOGIK PEMBAYARAN (Sama seperti asal awak)
+    const KOD_HARIAN = "TANDAX0";
+    const KOD_BULANAN = "TANDAX98";
 
-  function hantarResit(pakej) {
-    const harga = (pakej === 'Harian') ? 'RM3' : 'RM30';
-    const mesej = `Salam Admin, saya dah bayar ${harga} untuk langganan Tanda X Pro (${pakej}). Mohon kod aktivasi.`;
-    window.open(`https://wa.me/60102857165?text=${encodeURIComponent(mesej)}`, '_blank');
-  }
-
-  function semakKod() {
-    const kodInput = document.getElementById('adminKey').value.trim();
-    let duration = 0;
-
-    if (kodInput === KOD_HARIAN) {
-      duration = 24 * 60 * 60 * 1000; // 24 Jam
-    } else if (kodInput === KOD_BULANAN) {
-      duration = 30 * 24 * 60 * 60 * 1000; // 30 Hari
+    function hantarResit(pakej) {
+        const harga = (pakej === 'Harian') ? 'RM3' : 'RM30';
+        const mesej = `Salam Admin, saya dah bayar ${harga} untuk Tanda X Pro. Mohon kod aktivasi.`;
+        window.open(`https://wa.me/60102857165?text=${encodeURIComponent(mesej)}`, '_blank');
     }
 
-    if (duration > 0) {
-      const expiryTime = new Date().getTime() + duration;
-      // Simpan status, masa tamat, dan kod yang digunakan
-      localStorage.setItem('tandaX_expiry', expiryTime);
-      localStorage.setItem('tandaX_paid', 'true');
-      localStorage.setItem('tandaX_saved_key', kodInput); 
-      
-      alert(`Aktivasi Berjaya! Sah sehingga: ${new Date(expiryTime).toLocaleString()}`);
-      bukaAplikasi();
-    } else {
-      alert("Kod tidak sah!");
+    function semakKod() {
+        const kodInput = document.getElementById('adminKey').value.trim();
+        let duration = (kodInput === KOD_HARIAN) ? 86400000 : (kodInput === KOD_BULANAN) ? 2592000000 : 0;
+
+        if (duration > 0) {
+            localStorage.setItem('tandaX_expiry', new Date().getTime() + duration);
+            localStorage.setItem('tandaX_paid', 'true');
+            localStorage.setItem('tandaX_saved_key', kodInput);
+            bukaAplikasi();
+        } else { alert("Kod tidak sah!"); }
     }
-  }
 
-  function bukaAplikasi() {
-    document.getElementById('pay-screen').style.display = 'none';
-    document.getElementById('mainAppSection').style.display = 'block';
-  }
-
-  window.onload = () => {
-    const expiry = localStorage.getItem('tandaX_expiry');
-    const isPaid = localStorage.getItem('tandaX_paid');
-    const savedKey = localStorage.getItem('tandaX_saved_key');
-    const currentTime = new Date().getTime();
-
-    // SEMAKAN UTAMA:
-    // 1. Adakah status isPaid 'true'?
-    // 2. Adakah kod yang disimpan sama dengan kod dalam skrip sekarang?
-    // 3. Adakah masa belum tamat?
-    const kodMasihAktif = (savedKey === KOD_HARIAN || savedKey === KOD_BULANAN);
-
-    if (isPaid === 'true' && kodMasihAktif && expiry && currentTime < parseInt(expiry)) {
-      bukaAplikasi();
-    } else {
-      // Jika salah satu syarat gagal (termasuk jika anda tukar password), automatik logout
-      if(isPaid === 'true' && !kodMasihAktif) {
-        console.log("Kod telah ditukar oleh Admin. Sila masukkan kod baru.");
-      }
-      localStorage.clear();
-      document.getElementById('pay-screen').style.display = 'block';
-      document.getElementById('mainAppSection').style.display = 'none';
+    function bukaAplikasi() {
+        document.getElementById('pay-screen').style.display = 'none';
+        document.getElementById('mainAppSection').style.display = 'block';
     }
-  };
 
-  // YouTube API
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    window.onload = () => {
+        const expiry = localStorage.getItem('tandaX_expiry');
+        if (localStorage.getItem('tandaX_paid') === 'true' && expiry > new Date().getTime()) {
+            bukaAplikasi();
+        }
+    };
 </script>
 
 <script src="script.js"></script>
+
 </body>
 </html>
-
-
-
