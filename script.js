@@ -1,18 +1,17 @@
-// 1. Muat turun API YouTube secara dinamik (Mesti di luar DOMContentLoaded)
+// 1. Muat turun API YouTube secara dinamik
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-let player; // Variabel global untuk YouTube Player
+let player; 
 
-// Fungsi ini dipanggil secara automatik oleh API YouTube
 function onYouTubeIframeAPIReady() {
     console.log("YouTube API Ready");
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-    // Senarai Imej Isyarat
+    // Pangkalan Data Imej Isyarat (Kekalkan senarai awak)
     const wordImages = {
         kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
         saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
@@ -633,10 +632,8 @@ sari: "https://i.ibb.co/xK1Bg96Q/Sari-db32d813b8a184e2c5ea.jpg",
 cheongsam: "https://i.ibb.co/yFyX2kcF/Cheong-Sam-bb768bb2bbea9a7d97b2.jpg",
 cermin: "https://i.ibb.co/9mLsWhVW/Cermin-a011bddc13e2a2f09897.jpg",
 gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
-    
-};
+    };
 
-    // ----- LOGIK YOUTUBE -----
     function extractVideoID(url){
         var regExp=/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
         var match=url.match(regExp);
@@ -653,21 +650,29 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
         }
 
         if(player && typeof player.loadVideoById === 'function'){
-            player.loadVideoById(videoId);
+            player.loadVideoById({
+                videoId: videoId,
+                playerVars: { 'playsinline': 1 }
+            });
         } else {
             player = new YT.Player('player', {
                 height: '360',
                 width: '100%',
                 videoId: videoId,
+                playerVars: { 
+                    'playsinline': 1, // Penting untuk mobile
+                    'cc_load_policy': 1 
+                },
                 events: {
-                    'onReady': () => { console.log("Video sedia."); }
+                    'onReady': () => { 
+                        document.getElementById('status').innerText="Video sedia. Klik 'Mula Suara'.";
+                    }
                 }
             });
         }
-        document.getElementById('status').innerText="Video sedia. Klik 'Mula Suara'.";
     };
 
-    // ----- Speech Recognition -----
+    // ----- Speech Recognition (Diperbaiki untuk Mobile) -----
     const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recognition;
     
@@ -678,10 +683,25 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
         recognition.interimResults = true;
     }
 
-    function startRecognition(){
-        if(!recognition) return;
-        recognition.start();
-        document.getElementById('status').innerText="Mendengar audio...";
+    async function startRecognition(){
+        if(!recognition) {
+            alert("Pelayar anda tidak menyokong pengecaman suara.");
+            return;
+        }
+
+        // Paksa AudioContext resume (Trik untuk mobile)
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) {
+            const ctx = new AudioContext();
+            if (ctx.state === 'suspended') await ctx.resume();
+        }
+
+        try {
+            recognition.start();
+            document.getElementById('status').innerText="Mendengar audio...";
+        } catch (e) {
+            console.log("Mic sudah aktif.");
+        }
     }
 
     function stopRecognition(){
@@ -696,6 +716,13 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
             document.getElementById('transcriptDisplay').innerText = transcript;
             let words = transcript.split(/\s+/);
             displaySign(words[words.length-1]);
+        };
+
+        recognition.onerror = (event) => {
+            console.error("Ralat Mic: ", event.error);
+            if(event.error === 'not-allowed') {
+                alert("Sila benarkan akses mikrofon di tetapan telefon anda.");
+            }
         };
     }
 
@@ -719,33 +746,24 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
         function showLetter(){
             if(i < letters.length){
                 let char = letters[i];
-                // Anda boleh tambah link imej A-Z di sini jika mahu
                 document.getElementById('output').innerText="Mengeja: " + char.toUpperCase();
+                // Sini awak boleh letak imej A-Z jika ada URL-nya
                 i++; setTimeout(showLetter, 600);
             }
         }
         showLetter();
     }
 
-    // ----- Event Listeners -----
+    // ----- Event Listeners (Tukar 'block' ke 'flex' untuk CSS baru) -----
     document.getElementById('btnStart').onclick = startRecognition;
     document.getElementById('btnStop').onclick = stopRecognition;
     document.getElementById('btnLoad').onclick = window.loadYoutubeVideo;
 
     document.getElementById('btnYT').onclick = function(){
         document.getElementById('youtubeSection').style.display="block";
-        document.getElementById('signLanguageSection').style.display="block";
+        document.getElementById('signLanguageSection').style.display="flex"; // Serasi dengan CSS Flexbox
         document.getElementById('status').innerText="Mod YouTube Aktif";
     };
 
     document.getElementById('btnReset').onclick = () => location.reload();
 });
-
-
-
-
-
-
-
-
-
