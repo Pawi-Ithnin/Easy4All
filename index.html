@@ -29,6 +29,7 @@
             max-width: 450px; 
             border-radius: 15px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            display: block; /* Papar secara asal */
         }
         .qr-image { 
             width: 220px; 
@@ -115,11 +116,9 @@
         }
         #signImage { width: 100%; max-width: 250px; height: auto; border-radius: 8px; margin-top: 10px; }
 
-        /* Media Query untuk Mobile */
         @media (max-width: 900px) {
             .main-content { flex-direction: column; padding: 10px; }
             #youtubeSection, #signLanguageSection { width: 100%; flex: none; box-sizing: border-box; }
-            #signLanguageSection { min-height: 300px; display: none; } /* JS akan tukar ke flex */
             header h1 { font-size: 22px; }
         }
     </style>
@@ -138,14 +137,14 @@
             <p><strong>MOHAMAD SHAFAWI BIN ITHNIN</strong></p>
             <div class="package-selection">
                 <div><small>Harian</small><br><strong>RM 3</strong><br><button class="btn-pay" onclick="hantarResit('Harian')">Pilih</button></div>
-                <div><small>Bulanan</small><br><strong>RM 30 LEBIH JIMAT </strong><br><button class="btn-pay" onclick="hantarResit('Bulanan')" style="background:#0055ab;">Pilih</button></div>
+                <div><small>Bulanan</small><br><strong>RM 30</strong><br><button class="btn-pay" onclick="hantarResit('Bulanan')" style="background:#0055ab;">Pilih</button></div>
             </div>
         </div>
         <input type="password" id="adminKey" placeholder="Masukkan Kod Aktivasi" style="padding:12px; width:80%; border-radius:8px; border:1px solid #ddd;">
         <button onclick="semakKod()" style="margin-top:10px; padding:12px 20px; background:#333; color:white; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">Sahkan Akses</button>
     </section>
 
-    <div id="mainAppSection" style="display:none;">
+    <div id="mainAppSection" style="display:none !important;">
         <div id="status" style="padding: 10px; font-weight:bold; color: #d32f2f;">Sedia...</div>
         
         <div class="control-panel">
@@ -153,6 +152,7 @@
             <button id="btnStart">🎤 Mula Suara</button>
             <button id="btnStop">⏹ Henti</button>
             <button id="btnReset">🔄 Reset</button>
+            <button onclick="logKeluar()" style="background:#333;">🔒 Keluar</button>
         </div>
 
         <div class="main-content">
@@ -174,9 +174,24 @@
 </main>
 
 <script>
-    // LOGIK PEMBAYARAN (Sama seperti asal awak)
     const KOD_HARIAN = "TANDAX22";
     const KOD_BULANAN = "TANDAX35";
+
+    // Fungsi untuk memaparkan aplikasi
+    function bukaAplikasi() {
+        document.getElementById('pay-screen').style.display = 'none';
+        const mainApp = document.getElementById('mainAppSection');
+        mainApp.style.setProperty('display', 'block', 'important');
+    }
+
+    // Fungsi untuk mengunci aplikasi
+    function kunciAplikasi() {
+        document.getElementById('pay-screen').style.display = 'block';
+        const mainApp = document.getElementById('mainAppSection');
+        mainApp.style.setProperty('display', 'none', 'important');
+        localStorage.removeItem('tandaX_paid');
+        localStorage.removeItem('tandaX_expiry');
+    }
 
     function hantarResit(pakej) {
         const harga = (pakej === 'Harian') ? 'RM3' : 'RM30';
@@ -189,22 +204,32 @@
         let duration = (kodInput === KOD_HARIAN) ? 86400000 : (kodInput === KOD_BULANAN) ? 2592000000 : 0;
 
         if (duration > 0) {
-            localStorage.setItem('tandaX_expiry', new Date().getTime() + duration);
+            const expiryTime = new Date().getTime() + duration;
+            localStorage.setItem('tandaX_expiry', expiryTime);
             localStorage.setItem('tandaX_paid', 'true');
-            localStorage.setItem('tandaX_saved_key', kodInput);
             bukaAplikasi();
-        } else { alert("Kod tidak sah!"); }
+        } else { 
+            alert("Kod tidak sah!"); 
+        }
     }
 
-    function bukaAplikasi() {
-        document.getElementById('pay-screen').style.display = 'none';
-        document.getElementById('mainAppSection').style.display = 'block';
+    function logKeluar() {
+        if(confirm("Adakah anda ingin keluar? Anda perlu masukkan kod semula nanti.")) {
+            kunciAplikasi();
+            location.reload();
+        }
     }
 
+    // SEMAKAN AUTOMATIK SEMASA HALAMAN DIBUKA
     window.onload = () => {
         const expiry = localStorage.getItem('tandaX_expiry');
-        if (localStorage.getItem('tandaX_paid') === 'true' && expiry > new Date().getTime()) {
+        const isPaid = localStorage.getItem('tandaX_paid');
+        const currentTime = new Date().getTime();
+
+        if (isPaid === 'true' && expiry && currentTime < parseInt(expiry)) {
             bukaAplikasi();
+        } else {
+            kunciAplikasi();
         }
     };
 </script>
@@ -213,6 +238,3 @@
 
 </body>
 </html>
-
-
-
