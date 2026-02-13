@@ -1,4 +1,29 @@
-// 1. Muat turun API YouTube secara dinamik
+// 1. Logik Keselamatan (Security Guard)
+// Ini akan memastikan jika orang cuba buka direct link, dia akan ditendang keluar
+function semakStatusAkses() {
+    const expiry = localStorage.getItem('tandaX_expiry');
+    const isPaid = localStorage.getItem('tandaX_paid');
+    const currentTime = new Date().getTime();
+
+    if (isPaid === 'true' && expiry && currentTime < parseInt(expiry)) {
+        // Benarkan masuk
+        if(document.getElementById('pay-screen')) document.getElementById('pay-screen').style.display = 'none';
+        const mainApp = document.getElementById('mainAppSection');
+        if(mainApp) mainApp.style.setProperty('display', 'block', 'important');
+    } else {
+        // Kunci akses
+        localStorage.removeItem('tandaX_paid');
+        localStorage.removeItem('tandaX_expiry');
+        if(document.getElementById('pay-screen')) document.getElementById('pay-screen').style.display = 'block';
+        const mainApp = document.getElementById('mainAppSection');
+        if(mainApp) mainApp.style.setProperty('display', 'none', 'important');
+    }
+}
+
+// Jalankan semakan setiap kali script di-load
+semakStatusAkses();
+
+// 2. Muat turun API YouTube secara dinamik
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -11,13 +36,14 @@ function onYouTubeIframeAPIReady() {
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-    // PANGKALAN DATA IMEJ (Mesti di dalam DOMContentLoaded)
+    
+    // PANGKALAN DATA IMEJ
     const wordImages = {
         kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
         saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
         makan: "https://i.ibb.co/pd6WB8L/Makan-Makanan-358171f7a0d456b53998.jpg",
         makanan: "https://i.ibb.co/pd6WB8L/Makan-Makanan-358171f7a0d456b53998.jpg",
-        mandi: "https://i.ibb.co/RT8bLtZ/Mandi-36a248a7c1e9603e8ad9.jpg",
+         mandi: "https://i.ibb.co/RT8bLtZ/Mandi-36a248a7c1e9603e8ad9.jpg",
         baca: "https://i.ibb.co/WfqmLPZ/Baca-4f6dce926d7cb25e66a3-1.jpg",
         angkat: "https://i.ibb.co/CKyDRtL/Angkat-5a39a6cc3f28b66e33d5-1.jpg",
         hantar: "https://i.ibb.co/zSGdVZ1/Hantar-a700122bd4d677f6426f.jpg",
@@ -642,6 +668,8 @@ sari: "https://i.ibb.co/xK1Bg96Q/Sari-db32d813b8a184e2c5ea.jpg",
 cheongsam: "https://i.ibb.co/yFyX2kcF/Cheong-Sam-bb768bb2bbea9a7d97b2.jpg",
 cermin: "https://i.ibb.co/9mLsWhVW/Cermin-a011bddc13e2a2f09897.jpg",
 gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
+ };
+
     };
 
     function extractVideoID(url){
@@ -709,7 +737,7 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
             recognition.start();
             document.getElementById('status').innerText="Mendengar audio...";
         } catch (e) {
-            console.log("Mic aktif.");
+            console.log("Mic sudah aktif.");
         }
     }
 
@@ -728,7 +756,6 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
         const out = document.getElementById('output');
 
         if(wordImages[clean]){
-            // Trik Mobile: Paksa imej muncul semula
             img.src = wordImages[clean];
             img.style.display = "block";
             out.innerText = "Isyarat: " + clean.toUpperCase();
@@ -752,11 +779,15 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
 
     // ----- Event Listeners -----
     document.getElementById('btnStart').onclick = startRecognition;
-    document.getElementById('btnStop').onclick = () => { if(recognition) recognition.stop(); };
+    document.getElementById('btnStop').onclick = () => { if(recognition) recognition.stop(); document.getElementById('status').innerText="Berhenti."; };
     document.getElementById('btnLoad').onclick = window.loadYoutubeVideo;
+    
     document.getElementById('btnYT').onclick = function(){
         document.getElementById('youtubeSection').style.display="block";
         document.getElementById('signLanguageSection').style.display="flex";
     };
-    document.getElementById('btnReset').onclick = () => location.reload();
+    
+    document.getElementById('btnReset').onclick = () => {
+        if(confirm("Reset aplikasi?")) location.reload();
+    };
 });
