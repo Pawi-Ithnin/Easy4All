@@ -1,137 +1,24 @@
 <!DOCTYPE html>
-<html lang="ms">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tanda X Pro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanda X 1.0 - Pro</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; padding: 0; 
+            text-align: center; 
+            background: #fdfdfd; 
+            overflow-x: hidden;
+        }
+        header { 
+            padding: 15px; 
+            background: #fff; 
+            border-bottom: 3px solid #d32f2f; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        }
+        header h1 { font-size: 28px; color: #d32f2f; margin: 0; }
 
-<!-- YouTube API -->
-<script src="https://www.youtube.com/iframe_api"></script>
-
-<style>
-body{font-family:Segoe UI;margin:0;text-align:center;background:#fdfdfd}
-header{padding:15px;background:#fff;border-bottom:3px solid #d32f2f}
-header h1{margin:0;color:#d32f2f}
-
-#pay{padding:30px;margin:20px auto;max-width:420px;background:white;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,.1)}
-input{padding:12px;width:80%;border-radius:8px;border:1px solid #ddd}
-
-button{padding:10px 15px;border:none;border-radius:8px;font-weight:bold;color:#fff;cursor:pointer}
-#enter{background:#333}
-#btnYT{background:#3498db}
-#btnLoad{background:#333;margin-top:8px}
-#logout{background:#333}
-
-.panel{margin:15px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-
-.main{display:flex;gap:20px;padding:15px;max-width:1100px;margin:auto}
-.box{background:white;padding:15px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.05)}
-#ytBox{flex:2;display:none}
-#signBox{flex:1;display:none;border:3px dashed #d32f2f}
-
-#player{width:100%;aspect-ratio:16/9;background:#000;border-radius:8px}
-</style>
-</head>
-
-<body>
-
-<header>
-<h1>Tanda X Pro 🤟</h1>
-</header>
-
-<!-- LOGIN -->
-<div id="pay">
-<h2>Akses Pro</h2>
-<input type="password" id="kod" placeholder="Masukkan Kod Aktivasi"><br><br>
-<button id="enter" onclick="login()">Sahkan</button>
-</div>
-
-<!-- APP -->
-<div id="app" style="display:none">
-
-<div id="status" style="padding:10px;font-weight:bold;color:#d32f2f">Sedia...</div>
-
-<div class="panel">
-<button id="btnYT">📺 Mod YouTube</button>
-<button id="logout" onclick="logout()">Keluar</button>
-</div>
-
-<div class="main">
-
-<div id="ytBox" class="box">
-<input id="url" placeholder="Tampal link YouTube di sini">
-<br>
-<button id="btnLoad">Muat Video</button>
-<div id="player"></div>
-</div>
-
-<div id="signBox" class="box">
-<b>Visual Isyarat</b>
-<img src="https://via.placeholder.com/300?text=Sedia..." width="100%">
-</div>
-
-</div>
-</div>
-
-<script>
-const KOD="TANDAX22";
-
-function login(){
-let k=document.getElementById("kod").value.trim();
-if(k===KOD){
-localStorage.setItem("ok","1");
-showApp();
-}else alert("Kod salah");
-}
-
-function logout(){
-localStorage.removeItem("ok");
-location.reload();
-}
-
-function showApp(){
-document.getElementById("pay").style.display="none";
-document.getElementById("app").style.display="block";
-}
-
-window.onload=()=>{
-if(localStorage.getItem("ok")) showApp();
-};
-
-// ======================
-// YOUTUBE SYSTEM
-// ======================
-let player;
-
-document.getElementById("btnYT").onclick=()=>{
-document.getElementById("ytBox").style.display="block";
-document.getElementById("signBox").style.display="block";
-document.getElementById("status").innerText="Mod YouTube aktif";
-};
-
-document.getElementById("btnLoad").onclick=()=>{
-let url=document.getElementById("url").value;
-let id=getID(url);
-if(!id){alert("Link tak sah");return;}
-
-if(player){player.loadVideoById(id);}
-else{
-player=new YT.Player('player',{videoId:id});
-}
-};
-
-function getID(url){
-let r=/v=([^&]+)/;
-let m=url.match(r);
-if(m)return m[1];
-
-r=/youtu\.be\/([^?]+)/;
-m=url.match(r);
-if(m)return m[1];
-
-return null;
-}
-</script>
-
-</body>
-</html>
+        /* Skrin Pembayaran */
+        #pay-screen { 
+            text-align: center; 
