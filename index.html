@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="ms">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,11 +42,6 @@
             border-radius: 12px; 
             margin: 20px 0; 
         }
-         background: #f0f7ff; 
-            padding: 15px; 
-            border-radius: 12px; 
-            margin: 20px 0; 
-        }
         .package-selection { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; }
         .btn-pay { 
             background: #25d366; 
@@ -58,5 +54,162 @@
             text-decoration: none;
         }
 
+        /* Layout Utama App */
+        .control-panel { 
+            margin: 15px 0; 
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 8px; 
+            padding: 0 10px;
+        }
+        .control-panel button { 
+            padding: 10px 15px; 
+            border: none; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            color: white; 
+            cursor: pointer; 
+            font-size: 14px;
+        }
+        #btnStart { background: #2ecc71; } 
+        #btnStop { background: #e74c3c; } 
+        #btnYT { background: #3498db; } 
+        #btnReset { background: #95a5a6; }
 
+        .main-content { 
+            display: flex; 
+            flex-direction: row; 
+            gap: 20px; 
+            padding: 15px; 
+            max-width: 1300px; 
+            margin: auto; 
+            align-items: flex-start; 
+        }
 
+        #youtubeSection { 
+            flex: 2; 
+            background: #fff; 
+            padding: 15px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+            display: none; 
+        }
+        .yt-controls { display: flex; gap: 8px; margin-bottom: 12px; }
+        #youtubeUrl { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
+        #btnLoad { background: #333; color: white; border: none; padding: 0 15px; border-radius: 8px; cursor: pointer; }
+
+        #player { width: 100% !important; aspect-ratio: 16/9; border-radius: 8px; background: #000; }
+
+        #signLanguageSection { 
+            flex: 1; 
+            background: #fff; 
+            padding: 20px; 
+            border: 3px dashed #d32f2f; 
+            border-radius: 12px; 
+            display: none; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 350px;
+        }
+        #signImage { width: 100%; max-width: 250px; height: auto; border-radius: 8px; margin-top: 10px; }
+
+        /* Media Query untuk Mobile */
+        @media (max-width: 900px) {
+            .main-content { flex-direction: column; padding: 10px; }
+            #youtubeSection, #signLanguageSection { width: 100%; flex: none; box-sizing: border-box; }
+            #signLanguageSection { min-height: 300px; display: none; } /* JS akan tukar ke flex */
+            header h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Tanda X 1.0 - Pro 🤟</h1>
+</header>
+
+<main>
+    <section id="pay-screen">
+        <h2>Langganan Akses Pro</h2>
+        <div class="bank-info">
+            <img src="https://i.ibb.co/8n5MbgjF/photo-6070863400645889743-y.jpg" alt="QR TNG" class="qr-image">
+            <p><strong>MOHAMAD SHAFAWI BIN ITHNIN</strong></p>
+            <div class="package-selection">
+                <div><small>Harian</small><br><strong>RM 3</strong><br><button class="btn-pay" onclick="hantarResit('Harian')">Pilih</button></div>
+                <div><small>Bulanan</small><br><strong>RM 30</strong><br><button class="btn-pay" onclick="hantarResit('Bulanan')" style="background:#0055ab;">Pilih</button></div>
+            </div>
+        </div>
+        <input type="password" id="adminKey" placeholder="Masukkan Kod Aktivasi" style="padding:12px; width:80%; border-radius:8px; border:1px solid #ddd;">
+        <button onclick="semakKod()" style="margin-top:10px; padding:12px 20px; background:#333; color:white; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">Sahkan Akses</button>
+    </section>
+
+    <div id="mainAppSection" style="display:none;">
+        <div id="status" style="padding: 10px; font-weight:bold; color: #d32f2f;">Sedia...</div>
+        
+        <div class="control-panel">
+            <button id="btnYT">📺 Mod YouTube</button>
+            <button id="btnStart">🎤 Mula Suara</button>
+            <button id="btnStop">⏹ Henti</button>
+            <button id="btnReset">🔄 Reset</button>
+        </div>
+
+        <div class="main-content">
+            <section id="youtubeSection">
+                <div class="yt-controls">
+                    <input type="text" id="youtubeUrl" placeholder="Tampal link YouTube di sini...">
+                    <button id="btnLoad">Muat</button>
+                </div>
+                <div id="player"></div>
+                <div id="transcriptDisplay" style="margin-top:10px; font-style:italic; color:#666; font-size:14px;"></div>
+            </section>
+
+            <section id="signLanguageSection">
+                <p id="output" style="font-weight: bold; margin:0;">Visual Isyarat:</p>
+                <img id="signImage" src="https://via.placeholder.com/300?text=Sedia..." alt="Isyarat">
+            </section>
+        </div>
+    </div>
+</main>
+
+<script>
+    // LOGIK PEMBAYARAN (Sama seperti asal awak)
+    const KOD_HARIAN = "TANDAX0";
+    const KOD_BULANAN = "TANDAX98";
+
+    function hantarResit(pakej) {
+        const harga = (pakej === 'Harian') ? 'RM3' : 'RM30';
+        const mesej = `Salam Admin, saya dah bayar ${harga} untuk Tanda X Pro. Mohon kod aktivasi.`;
+        window.open(`https://wa.me/60102857165?text=${encodeURIComponent(mesej)}`, '_blank');
+    }
+
+    function semakKod() {
+        const kodInput = document.getElementById('adminKey').value.trim();
+        let duration = (kodInput === KOD_HARIAN) ? 86400000 : (kodInput === KOD_BULANAN) ? 2592000000 : 0;
+
+        if (duration > 0) {
+            localStorage.setItem('tandaX_expiry', new Date().getTime() + duration);
+            localStorage.setItem('tandaX_paid', 'true');
+            localStorage.setItem('tandaX_saved_key', kodInput);
+            bukaAplikasi();
+        } else { alert("Kod tidak sah!"); }
+    }
+
+    function bukaAplikasi() {
+        document.getElementById('pay-screen').style.display = 'none';
+        document.getElementById('mainAppSection').style.display = 'block';
+    }
+
+    window.onload = () => {
+        const expiry = localStorage.getItem('tandaX_expiry');
+        if (localStorage.getItem('tandaX_paid') === 'true' && expiry > new Date().getTime()) {
+            bukaAplikasi();
+        }
+    };
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
