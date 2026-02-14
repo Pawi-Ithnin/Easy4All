@@ -138,7 +138,7 @@
             <p><strong>MOHAMAD SHAFAWI BIN ITHNIN</strong></p>
             <div class="package-selection">
                 <div><small>Harian</small><br><strong>RM 3</strong><br><button class="btn-pay" onclick="hantarResit('Harian')">Pilih</button></div>
-                <div><small>Bulanan</small><br><strong>RM 30</strong><br><button class="btn-pay" onclick="hantarResit('Bulanan')" style="background:#0055ab;">Pilih</button></div>
+                <div><small>Bulanan</small><br><strong>RM 25</strong><br><button class="btn-pay" onclick="hantarResit('Bulanan')" style="background:#0055ab;">Pilih</button></div>
             </div>
         </div>
         <input type="password" id="adminKey" placeholder="Masukkan Kod Aktivasi" style="padding:12px; width:80%; border-radius:8px; border:1px solid #ddd;">
@@ -179,7 +179,7 @@
     const KOD_BULANAN = "TANDAX98";
 
     function hantarResit(pakej) {
-        const harga = (pakej === 'Harian') ? 'RM3' : 'RM30';
+        const harga = (pakej === 'Harian') ? 'RM3' : 'RM25';
         const mesej = `Salam Admin, saya dah bayar ${harga} untuk Tanda X Pro. Mohon kod aktivasi.`;
         window.open(`https://wa.me/60102857165?text=${encodeURIComponent(mesej)}`, '_blank');
     }
@@ -213,3 +213,4 @@
 
 </body>
 </html>
+
