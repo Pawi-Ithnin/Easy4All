@@ -670,8 +670,6 @@ cermin: "https://i.ibb.co/9mLsWhVW/Cermin-a011bddc13e2a2f09897.jpg",
 gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
  };
 
-    };
-
     function extractVideoID(url){
         var regExp=/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
         var match=url.match(regExp);
@@ -791,3 +789,4 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
         if(confirm("Reset aplikasi?")) location.reload();
     };
 });
+
