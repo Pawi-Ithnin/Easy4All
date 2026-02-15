@@ -1,43 +1,26 @@
-// 1. Logik Keselamatan (Security Guard)
-// Ini akan memastikan jika orang cuba buka direct link, dia akan ditendang keluar
-function semakStatusAkses() {
-    const expiry = localStorage.getItem('tandaX_expiry');
-    const isPaid = localStorage.getItem('tandaX_paid');
-    const currentTime = new Date().getTime();
+/**
+ * Tanda X 1.0 - PRO (GITHUB VERSION)
+ */
 
-    if (isPaid === 'true' && expiry && currentTime < parseInt(expiry)) {
-        // Benarkan masuk
-        if(document.getElementById('pay-screen')) document.getElementById('pay-screen').style.display = 'none';
-        const mainApp = document.getElementById('mainAppSection');
-        if(mainApp) mainApp.style.setProperty('display', 'block', 'important');
-    } else {
-        // Kunci akses
-        localStorage.removeItem('tandaX_paid');
-        localStorage.removeItem('tandaX_expiry');
-        if(document.getElementById('pay-screen')) document.getElementById('pay-screen').style.display = 'block';
-        const mainApp = document.getElementById('mainAppSection');
-        if(mainApp) mainApp.style.setProperty('display', 'none', 'important');
-    }
-}
+// --- KONFIGURASI TELEGRAM ---
+const TELEGRAM_TOKEN = "8362133596:AAG0FzCOuspjxIrZT6dl2CFAC0pwBanf-yE"; 
+const TELEGRAM_CHAT_ID = "1460830899";
 
-// Jalankan semakan setiap kali script di-load
-semakStatusAkses();
+// --- DATABASE LOKAL ---
+let databasePengguna = JSON.parse(localStorage.getItem('tandaX_db')) || [{ user: "admin", pass: "1234", phone: "N/A", pakej: "N/A", status: "active" }];
+const updateDB = () => localStorage.setItem('tandaX_db', JSON.stringify(databasePengguna));
 
-// 2. Muat turun API YouTube secara dinamik
+// --- YOUTUBE API ---
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+let player;
 
-let player; 
+window.onYouTubeIframeAPIReady = () => console.log("YouTube API Sedia.");
 
-function onYouTubeIframeAPIReady() {
-    console.log("YouTube API Ready");
-}
-
-document.addEventListener('DOMContentLoaded', function(){
-    
-    // PANGKALAN DATA IMEJ
+// --- PANGKALAN DATA IMEJ ISYARAT ---
+const wordImages = {
     const wordImages = {
         kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
         saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
@@ -668,125 +651,131 @@ sari: "https://i.ibb.co/xK1Bg96Q/Sari-db32d813b8a184e2c5ea.jpg",
 cheongsam: "https://i.ibb.co/yFyX2kcF/Cheong-Sam-bb768bb2bbea9a7d97b2.jpg",
 cermin: "https://i.ibb.co/9mLsWhVW/Cermin-a011bddc13e2a2f09897.jpg",
 gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
- };
+};
 
-    function extractVideoID(url){
-        var regExp=/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-        var match=url.match(regExp);
-        return (match && match[2].length==11)?match[2]:null;
-    }
+// --- FUNGSI NAVIGASI ---
+window.showRegister = () => { document.getElementById('login-box').style.display='none'; document.getElementById('register-box').style.display='block'; };
+window.showLogin = () => { document.getElementById('login-box').style.display='block'; document.getElementById('register-box').style.display='none'; };
 
-    window.loadYoutubeVideo = function(){
-        const url = document.getElementById('youtubeUrl').value;
-        const videoId = extractVideoID(url);
-        
-        if(!videoId){
-            alert("Pautan tidak sah!"); 
-            return;
-        }
+// --- FUNGSI DAFTAR & TELEGRAM ---
+window.prosesDaftar = () => {
+    const u = document.getElementById('regUser').value.trim();
+    const p = document.getElementById('regPass').value.trim();
+    const ph = document.getElementById('regPhone').value.trim();
+    const pkg = document.getElementById('regPackage').value;
 
-        if(player && typeof player.loadVideoById === 'function'){
-            player.loadVideoById({
-                videoId: videoId,
-                playerVars: { 'playsinline': 1 }
-            });
-        } else {
-            player = new YT.Player('player', {
-                height: '360',
-                width: '100%',
-                videoId: videoId,
-                playerVars: { 
-                    'playsinline': 1, 
-                    'cc_load_policy': 1 
-                },
-                events: {
-                    'onReady': () => { 
-                        document.getElementById('status').innerText="Video sedia. Klik 'Mula Suara'.";
-                    }
-                }
-            });
-        }
-    };
-
-    // ----- Speech Recognition -----
-    const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    let recognition;
+    if(!u || !p || !ph) return alert("Sila isi semua maklumat!");
     
-    if(Recognition){
-        recognition = new Recognition();
-        recognition.lang = 'ms-MY';
-        recognition.continuous = true;
-        recognition.interimResults = true;
-    }
+    databasePengguna.push({ user: u, pass: p, phone: ph, pakej: pkg, status: "pending" });
+    updateDB();
 
-    async function startRecognition(){
-        if(!recognition) {
-            alert("Pelayar anda tidak menyokong pengecaman suara.");
-            return;
-        }
+    const mesej = `🔔 *PENDAFTARAN BARU*\n👤 User: ${u}\n🔑 Pass: ${p}\n📞 Phone: ${ph}\n📦 Pakej: ${pkg}`;
+    const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(mesej)}&parse_mode=Markdown`;
 
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        if (AudioContext) {
-            const ctx = new AudioContext();
-            if (ctx.state === 'suspended') await ctx.resume();
-        }
+    fetch(url).then(() => { 
+        alert("Berjaya! Admin akan hubungi anda untuk pengaktifan pakej " + pkg); 
+        window.showLogin(); 
+    });
+};
 
-        try {
-            recognition.start();
-            document.getElementById('status').innerText="Mendengar audio...";
-        } catch (e) {
-            console.log("Mic sudah aktif.");
-        }
-    }
+// --- FUNGSI LOGIN ---
+window.prosesLogin = () => {
+    const u = document.getElementById('userInput').value.trim();
+    const p = document.getElementById('passInput').value.trim();
 
-    if(recognition){
-        recognition.onresult = function(event){
-            let transcript = event.results[event.results.length-1][0].transcript.toLowerCase().trim();
-            document.getElementById('transcriptDisplay').innerText = transcript;
-            let words = transcript.split(/\s+/);
-            displaySign(words[words.length-1]);
-        };
-    }
+    if (u === "admin" && p === "1234") return bukaDashboard();
 
-    function displaySign(word){
-        let clean = word.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").trim();
-        const img = document.getElementById('signImage');
-        const out = document.getElementById('output');
+    const user = databasePengguna.find(x => x.user === u && x.pass === p);
+    if (user) {
+        if (user.status === "pending") return alert("Akaun belum aktif. Hubungi Admin!");
+        localStorage.setItem('tandaX_logged', 'true');
+        localStorage.setItem('tandaX_user', u);
+        bukaAplikasi();
+    } else { alert("Maklumat salah!"); }
+};
 
-        if(wordImages[clean]){
-            img.src = wordImages[clean];
-            img.style.display = "block";
-            out.innerText = "Isyarat: " + clean.toUpperCase();
+// --- DASHBOARD ADMIN ---
+function bukaDashboard() {
+    document.getElementById('pay-screen').style.display = 'none';
+    document.getElementById('adminDashboard').style.display = 'block';
+    renderTable();
+}
+
+function renderTable() {
+    const tbody = document.getElementById('userTableBody');
+    tbody.innerHTML = "";
+    databasePengguna.forEach((user, index) => {
+        if(user.user === 'admin') return;
+        const waLink = `https://wa.me/${user.phone.replace(/[^0-9]/g, '')}`;
+        tbody.innerHTML += `<tr>
+            <td>${user.user}</td>
+            <td>${user.phone}</td>
+            <td>${user.pakej}</td>
+            <td><strong>${user.status.toUpperCase()}</strong></td>
+            <td>
+                ${user.status === 'pending' ? `<button onclick="ubahStatus(${index},'active')" class="btn-action" style="background:green">Aktif</button>` : ''}
+                <a href="${waLink}" target="_blank" class="btn-action" style="background:#25D366">WhatsApp</a>
+                <button onclick="padamUser(${index})" class="btn-action" style="background:red">Padam</button>
+            </td>
+        </tr>`;
+    });
+}
+
+window.ubahStatus = (idx, s) => { databasePengguna[idx].status = s; updateDB(); renderTable(); };
+window.padamUser = (idx) => { if(confirm("Padam?")) { databasePengguna.splice(idx,1); updateDB(); renderTable(); } };
+window.logKeluarAdmin = () => location.reload();
+
+// --- MAIN APPLICATION LOGIC ---
+function bukaAplikasi() {
+    document.getElementById('pay-screen').style.display = 'none';
+    document.getElementById('mainAppSection').style.display = 'block';
+    document.getElementById('status').innerText = "Akaun: " + localStorage.getItem('tandaX_user');
+}
+
+window.logKeluar = () => { localStorage.removeItem('tandaX_logged'); location.reload(); };
+
+// YouTube Control
+document.getElementById('btnLoad').onclick = () => {
+    const url = document.getElementById('youtubeUrl').value;
+    const videoId = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]{11})/)?.[1];
+    if (player) player.loadVideoById(videoId);
+    else player = new YT.Player('player', { height: '360', width: '100%', videoId: videoId });
+};
+
+// Speech Recognition
+const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (Recognition) {
+    const rec = new Recognition();
+    rec.lang = 'ms-MY'; rec.continuous = true;
+    document.getElementById('btnStart').onclick = () => { rec.start(); document.getElementById('status').innerText = "🎤 Mendengar..."; };
+    document.getElementById('btnStop').onclick = () => { rec.stop(); document.getElementById('status').innerText = "Berhenti."; };
+    rec.onresult = (e) => {
+        const t = e.results[e.results.length-1][0].transcript.toLowerCase().trim();
+        document.getElementById('transcriptDisplay').innerText = t;
+        const word = t.split(" ").pop();
+        const clean = word.replace(/[^\w]/g, '');
+        if (wordImages[clean]) {
+            document.getElementById('signImage').src = wordImages[clean];
+            document.getElementById('output').innerText = "Isyarat: " + clean.toUpperCase();
         } else {
             fingerspell(clean);
         }
-    }
-
-    function fingerspell(word){
-        const letters = word.split("");
-        let i=0;
-        function showLetter(){
-            if(i < letters.length){
-                let char = letters[i];
-                document.getElementById('output').innerText="Mengeja: " + char.toUpperCase();
-                i++; setTimeout(showLetter, 600);
-            }
-        }
-        showLetter();
-    }
-
-    // ----- Event Listeners -----
-    document.getElementById('btnStart').onclick = startRecognition;
-    document.getElementById('btnStop').onclick = () => { if(recognition) recognition.stop(); document.getElementById('status').innerText="Berhenti."; };
-    document.getElementById('btnLoad').onclick = window.loadYoutubeVideo;
-    
-    document.getElementById('btnYT').onclick = function(){
-        document.getElementById('youtubeSection').style.display="block";
-        document.getElementById('signLanguageSection').style.display="flex";
     };
-    
-    document.getElementById('btnReset').onclick = () => {
-        if(confirm("Reset aplikasi?")) location.reload();
-    };
-});
+}
 
+function fingerspell(w) {
+    let i = 0;
+    const interval = setInterval(() => {
+        if(i >= w.length) return clearInterval(interval);
+        document.getElementById('signImage').src = `https://via.placeholder.com/300?text=${w[i].toUpperCase()}`;
+        document.getElementById('output').innerText = "Mengeja: " + w[i].toUpperCase();
+        i++;
+    }, 700);
+}
+
+document.getElementById('btnYT').onclick = () => {
+    document.getElementById('youtubeSection').style.display = "block";
+    document.getElementById('signLanguageSection').style.display = "flex";
+};
+
+window.onload = () => { if(localStorage.getItem('tandaX_logged') === 'true') bukaAplikasi(); };
