@@ -3,126 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanda X 1.0 - Pro</title>
-    <style>
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; padding: 0; 
-            text-align: center; 
-            background: #fdfdfd; 
-            overflow-x: hidden;
-        }
-        header { 
-            padding: 15px; 
-            background: #fff; 
-            border-bottom: 3px solid #d32f2f; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
-        }
-        header h1 { font-size: 28px; color: #d32f2f; margin: 0; }
-
-        /* Skrin Pembayaran */
-        #pay-screen { 
-            text-align: center; 
-            padding: 30px 15px; 
-            background: white; 
-            margin: 20px auto; 
-            max-width: 450px; 
-            border-radius: 15px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-        }
-        .qr-image { 
-            width: 220px; 
-            height: auto; 
-            border-radius: 10px; 
-            border: 4px solid #f0f7ff;
-        }
-        .bank-info { 
-            background: #f0f7ff; 
-            padding: 15px; 
-            border-radius: 12px; 
-            margin: 20px 0; 
-        }
-        .package-selection { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; }
-        .btn-pay { 
-            background: #25d366; 
-            color: white; 
-            padding: 10px 15px; 
-            border: none; 
-            border-radius: 50px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            text-decoration: none;
-        }
-
-        /* Layout Utama App */
-        .control-panel { 
-            margin: 15px 0; 
-            display: flex; 
-            justify-content: center; 
-            flex-wrap: wrap; 
-            gap: 8px; 
-            padding: 0 10px;
-        }
-        .control-panel button { 
-            padding: 10px 15px; 
-            border: none; 
-            border-radius: 8px; 
-            font-weight: bold; 
-            color: white; 
-            cursor: pointer; 
-            font-size: 14px;
-        }
-        #btnStart { background: #2ecc71; } 
-        #btnStop { background: #e74c3c; } 
-        #btnYT { background: #3498db; } 
-        #btnReset { background: #95a5a6; }
-
-        .main-content { 
-            display: flex; 
-            flex-direction: row; 
-            gap: 20px; 
-            padding: 15px; 
-            max-width: 1300px; 
-            margin: auto; 
-            align-items: flex-start; 
-        }
-
-        #youtubeSection { 
-            flex: 2; 
-            background: #fff; 
-            padding: 15px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
-            display: none; 
-        }
-        .yt-controls { display: flex; gap: 8px; margin-bottom: 12px; }
-        #youtubeUrl { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
-        #btnLoad { background: #333; color: white; border: none; padding: 0 15px; border-radius: 8px; cursor: pointer; }
-
-        #player { width: 100% !important; aspect-ratio: 16/9; border-radius: 8px; background: #000; }
-
-        #signLanguageSection { 
-            flex: 1; 
-            background: #fff; 
-            padding: 20px; 
-            border: 3px dashed #d32f2f; 
-            border-radius: 12px; 
-            display: none; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            min-height: 350px;
-        }
-        #signImage { width: 100%; max-width: 250px; height: auto; border-radius: 8px; margin-top: 10px; }
-
-        /* Media Query untuk Mobile */
-        @media (max-width: 900px) {
-            .main-content { flex-direction: column; padding: 10px; }
-            #youtubeSection, #signLanguageSection { width: 100%; flex: none; box-sizing: border-box; }
-            #signLanguageSection { min-height: 300px; display: none; } /* JS akan tukar ke flex */
-            header h1 { font-size: 22px; }
-        }
-    </style>
+    <title>Tanda X 1.0 - Pro | Isyarat Visual</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -132,85 +14,89 @@
 
 <main>
     <section id="pay-screen">
-        <h2>Langganan Akses Pro</h2>
-        <div class="bank-info">
-            <img src="https://i.ibb.co/8n5MbgjF/photo-6070863400645889743-y.jpg" alt="QR TNG" class="qr-image">
-            <p><strong>MOHAMAD SHAFAWI BIN ITHNIN</strong></p>
-            <div class="package-selection">
-                <div><small>Harian</small><br><strong>RM 3</strong><br><button class="btn-pay" onclick="hantarResit('Harian')">Pilih</button></div>
-                <div><small>Bulanan</small><br><strong>RM 25</strong><br><button class="btn-pay" onclick="hantarResit('Bulanan')" style="background:#0055ab;">Pilih</button></div>
-            </div>
+        <div id="login-box">
+            <h2>Log Masuk Pro</h2>
+            <input type="text" id="userInput" class="login-input" placeholder="Username">
+            <input type="password" id="passInput" class="login-input" placeholder="Password">
+            <button onclick="prosesLogin()" class="btn-main">Masuk Sekarang</button>
+            <p style="font-size:13px;">Belum ada akaun? <a href="#" onclick="showRegister()">Daftar Di Sini</a></p>
         </div>
-        <input type="password" id="adminKey" placeholder="Masukkan Kod Aktivasi" style="padding:12px; width:80%; border-radius:8px; border:1px solid #ddd;">
-        <button onclick="semakKod()" style="margin-top:10px; padding:12px 20px; background:#333; color:white; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">Sahkan Akses</button>
+
+        <div id="register-box" style="display:none;">
+            <h2>Pilih Pakej & Daftar</h2>
+            <div class="price-container">
+                <div class="price-card harian">
+                    <h4 style="margin:0; color:#e65100;">HARIAN</h4>
+                    <p style="font-size:22px; font-weight:bold; margin:5px 0;">RM 3</p>
+                    <span style="font-size:11px;">Akses 24 Jam</span>
+                </div>
+                <div class="price-card bulanan">
+                    <div class="tag-jimat">JIMAT!</div>
+                    <h4 style="margin:0; color:#1b5e20;">BULANAN</h4>
+                    <p style="font-size:22px; font-weight:bold; margin:5px 0;">RM 25</p>
+                    <span style="font-size:11px;">Akses 30 Hari</span>
+                </div>
+            </div>
+            <input type="text" id="regUser" class="login-input" placeholder="Username Pilihan">
+            <input type="password" id="regPass" class="login-input" placeholder="Password Pilihan">
+            <input type="tel" id="regPhone" class="login-input" placeholder="No. Telefon (WhatsApp)">
+            <select id="regPackage" class="login-input" style="width: 92%; background:white;">
+                <option value="Harian (RM3)">Pakej Harian - RM 3</option>
+                <option value="Bulanan (RM25)">Pakej Bulanan - RM 25</option>
+            </select>
+            <button onclick="prosesDaftar()" class="btn-main btn-reg">Hantar Pendaftaran</button>
+            <p style="font-size:13px;"><a href="#" onclick="showLogin()">Kembali ke Log Masuk</a></p>
+        </div>
     </section>
 
-    <div id="mainAppSection" style="display:none;">
-        <div id="status" style="padding: 10px; font-weight:bold; color: #d32f2f;">Sedia...</div>
-        
+    <section id="adminDashboard" style="display:none;">
+        <div class="admin-header">
+            <h2>📊 Dashboard Admin</h2>
+            <button onclick="logKeluarAdmin()" class="btn-dark">🚪 Keluar Admin</button>
+        </div>
+        <div style="overflow-x: auto;">
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>No. Telefon</th>
+                        <th>Pakej</th>
+                        <th>Status</th>
+                        <th>Tindakan</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="mainAppSection" style="display:none;">
+        <div id="status">Sedia...</div>
         <div class="control-panel">
-            <button id="btnYT">📺 Mod YouTube</button>
-            <button id="btnStart">🎤 Mula Suara</button>
-            <button id="btnStop">⏹ Henti</button>
-            <button id="btnReset">🔄 Reset</button>
+            <button id="btnYT" class="btn-blue">📺 Mod YouTube</button>
+            <button id="btnStart" class="btn-green">🎤 Mula Suara</button>
+            <button id="btnStop" class="btn-red">⏹ Henti</button>
+            <button onclick="logKeluar()" class="btn-dark">🚪 Keluar</button>
         </div>
 
         <div class="main-content">
-            <section id="youtubeSection">
-                <div class="yt-controls">
-                    <input type="text" id="youtubeUrl" placeholder="Tampal link YouTube di sini...">
+            <div id="youtubeSection">
+                <div class="yt-input-group">
+                    <input type="text" id="youtubeUrl" placeholder="Tampal link YouTube...">
                     <button id="btnLoad">Muat</button>
                 </div>
                 <div id="player"></div>
-                <div id="transcriptDisplay" style="margin-top:10px; font-style:italic; color:#666; font-size:14px;"></div>
-            </section>
+                <div id="transcriptDisplay"></div>
+            </div>
 
-            <section id="signLanguageSection">
-                <p id="output" style="font-weight: bold; margin:0;">Visual Isyarat:</p>
+            <div id="signLanguageSection">
+                <p id="output">Visual Isyarat:</p>
                 <img id="signImage" src="https://via.placeholder.com/300?text=Sedia..." alt="Isyarat">
-            </section>
+            </div>
         </div>
-    </div>
+    </section>
 </main>
 
-<script>
-    // LOGIK PEMBAYARAN (Sama seperti asal awak)
-    const KOD_HARIAN = "TANDAX0";
-    const KOD_BULANAN = "TANDAX98";
-
-    function hantarResit(pakej) {
-        const harga = (pakej === 'Harian') ? 'RM3' : 'RM25';
-        const mesej = `Salam Admin, saya dah bayar ${harga} untuk Tanda X Pro. Mohon kod aktivasi.`;
-        window.open(`https://wa.me/60102857165?text=${encodeURIComponent(mesej)}`, '_blank');
-    }
-
-    function semakKod() {
-        const kodInput = document.getElementById('adminKey').value.trim();
-        let duration = (kodInput === KOD_HARIAN) ? 86400000 : (kodInput === KOD_BULANAN) ? 2592000000 : 0;
-
-        if (duration > 0) {
-            localStorage.setItem('tandaX_expiry', new Date().getTime() + duration);
-            localStorage.setItem('tandaX_paid', 'true');
-            localStorage.setItem('tandaX_saved_key', kodInput);
-            bukaAplikasi();
-        } else { alert("Kod tidak sah!"); }
-    }
-
-    function bukaAplikasi() {
-        document.getElementById('pay-screen').style.display = 'none';
-        document.getElementById('mainAppSection').style.display = 'block';
-    }
-
-    window.onload = () => {
-        const expiry = localStorage.getItem('tandaX_expiry');
-        if (localStorage.getItem('tandaX_paid') === 'true' && expiry > new Date().getTime()) {
-            bukaAplikasi();
-        }
-    };
-</script>
-
 <script src="script.js"></script>
-
 </body>
 </html>
-
