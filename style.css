@@ -1,88 +1,53 @@
+/* style.css */
 body { 
-    font-family: 'Segoe UI', Arial, sans-serif; 
+    font-family: 'Segoe UI', sans-serif; 
     margin: 0; padding: 0; 
-    text-align: center; 
-    background: #fdfdfd; 
-    overflow-x: hidden; /* Elakkan skrin goyang ke kiri kanan */
+    background: #fdfdfd; color: #333;
 }
-
-/* Bekas Utama */
-.main-content { 
-    display: flex; 
-    flex-direction: row; 
-    flex-wrap: nowrap; 
-    gap: 20px; 
-    padding: 15px; 
-    max-width: 1300px; 
-    margin: auto; 
-    align-items: flex-start;
+header { 
+    padding: 15px; background: #fff; 
+    border-bottom: 3px solid #d32f2f; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    text-align: center;
 }
-
-#youtubeSection { 
-    flex: 2; 
-    background: #f9f9f9; 
-    padding: 15px; 
-    border-radius: 12px; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-    display: none; 
+#pay-screen, #adminDashboard, #mainAppSection {
+    background: white; margin: 20px auto; 
+    max-width: 900px; border-radius: 15px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 20px;
 }
-
-/* Section Isyarat - Ditambah transisi supaya nampak smooth */
-#signLanguageSection { 
-    flex: 1; 
-    min-height: 400px; 
-    background: #fff; 
-    padding: 20px; 
-    border: 3px dashed #d32f2f; 
-    border-radius: 12px; 
-    display: none; /* Akan ditukar oleh JS */
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
+.login-input {
+    padding: 12px; width: 85%; border-radius: 8px; 
+    border: 1px solid #ddd; margin-bottom: 10px;
 }
+.btn-main { padding: 14px; background: #d32f2f; color: white; border: none; border-radius: 8px; cursor: pointer; width: 90%; font-weight: bold; }
+.btn-reg { background: #2ecc71; }
+.btn-dark { background: #333; color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; }
+.btn-blue { background: #3498db; }
+.btn-green { background: #2ecc71; }
+.btn-red { background: #e74c3c; }
 
-#player { 
-    width: 100% !important; 
-    aspect-ratio: 16/9; 
-    border-radius: 8px; 
-    background: #000;
-}
+/* Kad Harga */
+.price-container { display: flex; gap: 10px; margin-bottom: 20px; }
+.price-card { flex: 1; padding: 15px; border-radius: 10px; text-align: center; }
+.harian { background: #fff3e0; border: 2px solid #ff9800; }
+.bulanan { background: #e8f5e9; border: 2px solid #2e7d32; position: relative; }
+.tag-jimat { position: absolute; top: -10px; right: -5px; background: red; color: white; font-size: 10px; padding: 2px 8px; border-radius: 5px; font-weight: bold; }
 
-#signImage { 
-    width: 100%; 
-    max-width: 280px; 
-    height: auto;
-    margin: 15px auto; 
-    border-radius: 8px;
-    display: block; /* Biar block supaya senang JS kawal src */
-}
+/* Jadual Admin */
+.user-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+.user-table th { background: #f8f9fa; padding: 12px; border-bottom: 2px solid #d32f2f; text-align: left; }
+.user-table td { padding: 12px; border-bottom: 1px solid #eee; }
+.btn-action { padding: 5px 10px; border-radius: 4px; border: none; color: white; cursor: pointer; text-decoration: none; font-size: 12px; }
 
-/* --- SESUAIKAN UNTUK MOBILE (BAWAH 992PX) --- */
-@media (max-width: 992px) { 
-    .main-content { 
-        flex-direction: column; /* Susun atas-bawah */
-        padding: 10px;
-        gap: 10px;
-    } 
-    
-    #youtubeSection, #signLanguageSection { 
-        width: 100%; 
-        box-sizing: border-box; /* Pastikan padding tak buat kotak terkeluar skrin */
-        flex: none; 
-    }
+/* Main App Layout */
+.control-panel { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.main-content { display: flex; gap: 20px; }
+#youtubeSection { flex: 2; }
+#signLanguageSection { flex: 1; border: 3px dashed #d32f2f; display: flex; flex-direction: column; align-items: center; border-radius: 12px; padding: 15px; }
+#signImage { width: 100%; border-radius: 10px; }
+.yt-input-group { display: flex; gap: 5px; margin-bottom: 15px; }
+#youtubeUrl { flex: 1; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+#btnLoad { background: #333; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }
 
-    #signLanguageSection {
-        min-height: 300px; /* Kurangkan sikit tinggi untuk phone */
-        padding: 15px;
-        /* Penting: Pastikan section ini sentiasa nampak bila aktif */
-        display: flex !important; 
-    }
-
-    #signImage {
-        max-width: 200px; /* Kecilkan sikit supaya tak penuh skrin phone */
-    }
-
-    h1 {
-        font-size: 24px; /* Kecilkan tajuk sikit kat phone */
-    }
+@media (max-width: 768px) { .main-content { flex-direction: column; } .price-container { flex-direction: column; } }
