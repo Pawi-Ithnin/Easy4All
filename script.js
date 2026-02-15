@@ -119,7 +119,6 @@ document.getElementById('btnLoad').onclick = () => {
 };
 
 // Speech Recognition
-const wordImages = {
     const wordImages = {
         kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
         saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
@@ -789,3 +788,4 @@ document.getElementById('btnYT').onclick = () => {
 };
 
 window.onload = () => { if(localStorage.getItem('tandaX_logged') === 'true') bukaAplikasi(); };
+
