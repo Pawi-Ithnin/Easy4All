@@ -1,18 +1,20 @@
 /**
- * TANDA X 1.0 - PRO (FIXED GITHUB SCRIPT)
+ * TANDA X 1.0 - PRO (FINAL ONLINE VERSION)
  */
 
-// --- 1. KONFIGURASI TELEGRAM & DATABASE ---
+// --- 1. CONFIG FIREBASE ---
+// URL ini menghubungkan laptop dan telefon ke pangkalan data yang sama
+const firebaseConfig = {
+    databaseURL: "https://tanda-x-pro-default-rtdb.asia-southeast1.firebasedatabase.app/"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+// --- 2. CONFIG TELEGRAM ---
 const TELEGRAM_TOKEN = "8362133596:AAG0FzCOuspjxIrZT6dl2CFAC0pwBanf-yE"; 
 const TELEGRAM_CHAT_ID = "1460830899"; 
 
-let databasePengguna = JSON.parse(localStorage.getItem('tandaX_db')) || [
-    { user: "admin", pass: "1234", phone: "N/A", pakej: "N/A", status: "active" }
-];
-
-const updateDB = () => localStorage.setItem('tandaX_db', JSON.stringify(databasePengguna));
-
-// --- 2. LOGIK NAVIGASI ---
+// --- 3. LOGIK NAVIGASI ---
 window.showRegister = () => {
     document.getElementById('login-box').style.display = 'none';
     document.getElementById('register-box').style.display = 'block';
@@ -23,87 +25,113 @@ window.showLogin = () => {
     document.getElementById('register-box').style.display = 'none';
 };
 
-// --- 3. LOGIK PENDAFTARAN ---
+// --- 4. LOGIK PENDAFTARAN (ONLINE SYNC) ---
 window.prosesDaftar = () => {
-    const u = document.getElementById('regUser').value.trim();
+    const u = document.getElementById('regUser').value.trim().toLowerCase();
     const p = document.getElementById('regPass').value.trim();
     const ph = document.getElementById('regPhone').value.trim();
     const pkg = document.getElementById('regPackage').value;
 
     if(!u || !p || !ph) return alert("Sila isi semua maklumat!");
-    
-    databasePengguna.push({ user: u, pass: p, phone: ph, pakej: pkg, status: "pending" });
-    updateDB();
 
-    const mesej = `🔔 *PENDAFTARAN BARU*\n👤 User: ${u}\n🔑 Pass: ${p}\n📞 Phone: ${ph}\n📦 Pakej: ${pkg}`;
-    const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(mesej)}&parse_mode=Markdown`;
+    // Menyemak jika username sudah wujud di Firebase
+    db.ref('users/' + u).once('value', (snapshot) => {
+        if (snapshot.exists()) {
+            alert("Username ini sudah berdaftar!");
+        } else {
+            // Menyimpan data ke Firebase Cloud
+            db.ref('users/' + u).set({
+                user: u, 
+                pass: p, 
+                phone: ph, 
+                pakej: pkg, 
+                status: "pending"
+            }).then(() => {
+                // Notifikasi ke Telegram Admin
+                const mesej = `🔔 *DAFTAR BARU*\n👤 User: ${u}\n🔑 Pass: ${p}\n📞 Phone: ${ph}\n📦 Pakej: ${pkg}`;
+                const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(mesej)}&parse_mode=Markdown`;
+                fetch(url);
 
-    fetch(url).then(() => { 
-        alert("Pendaftaran dihantar! Admin akan hubungi anda."); 
-        window.showLogin(); 
+                alert("Pendaftaran berjaya! Tunggu admin aktifkan akaun anda.");
+                window.showLogin();
+            });
+        }
     });
 };
 
-// --- 4. LOGIK LOG MASUK ---
+// --- 5. LOGIK LOG MASUK (ONLINE SYNC) ---
 window.prosesLogin = () => {
-    const u = document.getElementById('userInput').value.trim();
+    const u = document.getElementById('userInput').value.trim().toLowerCase();
     const p = document.getElementById('passInput').value.trim();
 
+    // Log masuk Admin (Akaun tetap)
     if (u === "admin" && p === "1234") return bukaDashboard();
 
-    const user = databasePengguna.find(x => x.user === u && x.pass === p);
-    if (user) {
-        if (user.status === "pending") return alert("Akaun belum aktif. Hubungi Admin!");
-        localStorage.setItem('tandaX_logged', 'true');
-        localStorage.setItem('tandaX_user', u);
-        bukaAplikasi();
-    } else { 
-        alert("Username atau Password salah!"); 
-    }
+    // Menyemak data pengguna di Firebase
+    db.ref('users/' + u).once('value', (snapshot) => {
+        const userData = snapshot.val();
+        if (userData && userData.pass === p) {
+            if (userData.status === "pending") return alert("Akaun belum aktif. Sila hubungi Admin!");
+            
+            localStorage.setItem('tandaX_logged', 'true');
+            localStorage.setItem('tandaX_user', u);
+            bukaAplikasi();
+        } else {
+            alert("Username atau Password salah!");
+        }
+    });
 };
 
-// --- 5. ADMIN DASHBOARD ---
+// --- 6. ADMIN DASHBOARD (LIVE UPDATE) ---
 function bukaDashboard() {
     document.getElementById('pay-screen').style.display = 'none';
     document.getElementById('adminDashboard').style.display = 'block';
-    renderTable();
-}
-
-function renderTable() {
-    const tbody = document.getElementById('userTableBody');
-    if(!tbody) return;
-    tbody.innerHTML = "";
-    databasePengguna.forEach((user, index) => {
-        if(user.user === 'admin') return;
-        const waLink = `https://wa.me/${user.phone.replace(/[^0-9]/g, '')}`;
-        tbody.innerHTML += `<tr>
-            <td>${user.user}</td>
-            <td>${user.phone}</td>
-            <td>${user.pakej}</td>
-            <td><strong>${user.status.toUpperCase()}</strong></td>
-            <td>
-                ${user.status === 'pending' ? `<button onclick="ubahStatus(${index},'active')" class="btn-action" style="background:green; color:white;">Aktif</button>` : ''}
-                <a href="${waLink}" target="_blank" class="btn-action" style="background:#25D366; color:white; text-decoration:none;">WA</a>
-                <button onclick="padamUser(${index})" class="btn-action" style="background:red; color:white;">Padam</button>
-            </td>
-        </tr>`;
+    
+    // Memaparkan data pengguna secara real-time dari Firebase
+    db.ref('users').on('value', (snapshot) => {
+        const tbody = document.getElementById('userTableBody');
+        tbody.innerHTML = "";
+        snapshot.forEach((child) => {
+            const user = child.val();
+            const waLink = `https://wa.me/${user.phone.replace(/[^0-9]/g, '')}`;
+            tbody.innerHTML += `<tr>
+                <td>${user.user}</td>
+                <td>${user.phone}</td>
+                <td>${user.pakej}</td>
+                <td><strong>${user.status.toUpperCase()}</strong></td>
+                <td>
+                    ${user.status === 'pending' ? `<button onclick="ubahStatus('${user.user}','active')" style="background:green;color:white;border:none;padding:5px;border-radius:3px;cursor:pointer;">Aktif</button>` : ''}
+                    <button onclick="padamUser('${user.user}')" style="background:red;color:white;border:none;padding:5px;border-radius:3px;margin-left:5px;cursor:pointer;">Padam</button>
+                    <a href="${waLink}" target="_blank" style="background:#25D366;color:white;padding:5px;border-radius:3px;text-decoration:none;font-size:12px;margin-left:5px;">WA</a>
+                </td>
+            </tr>`;
+        });
     });
 }
 
-window.ubahStatus = (idx, s) => { databasePengguna[idx].status = s; updateDB(); renderTable(); };
-window.padamUser = (idx) => { if(confirm("Padam user ini?")) { databasePengguna.splice(idx,1); updateDB(); renderTable(); } };
-window.logKeluarAdmin = () => { localStorage.removeItem('tandaX_logged'); location.reload(); };
+window.ubahStatus = (username, s) => {
+    db.ref('users/' + username).update({ status: s });
+};
 
-// --- 6. LOGIK APLIKASI UTAMA ---
+window.padamUser = (username) => {
+    if(confirm("Padam user " + username + "?")) db.ref('users/' + username).remove();
+};
+
+window.logKeluarAdmin = () => { localStorage.clear(); location.reload(); };
+
+// --- 7. APLIKASI UTAMA ---
 function bukaAplikasi() {
     document.getElementById('pay-screen').style.display = 'none';
     document.getElementById('mainAppSection').style.display = 'block';
     document.getElementById('status').innerText = "Akaun: " + localStorage.getItem('tandaX_user');
 }
 
-window.logKeluar = () => { localStorage.removeItem('tandaX_logged'); location.reload(); };
+window.logKeluar = () => { 
+    localStorage.clear();
+    location.reload(); 
+};
 
-// YouTube API
+// --- 8. YOUTUBE API ---
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -119,7 +147,7 @@ document.getElementById('btnLoad').onclick = () => {
     }
 };
 
-// Speech Recognition & Images
+// --- 9. SPEECH RECOGNITION & VISUAL ---
 const wordImages = {
     kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
     saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
@@ -754,10 +782,19 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 if (Recognition) {
     const rec = new Recognition();
-    rec.lang = 'ms-MY'; rec.continuous = true;
-    document.getElementById('btnStart').onclick = () => { rec.start(); document.getElementById('status').innerText = "🎤 Mendengar..."; };
-    document.getElementById('btnStop').onclick = () => { rec.stop(); document.getElementById('status').innerText = "Berhenti."; };
-    
+    rec.lang = 'ms-MY'; 
+    rec.continuous = true;
+
+    document.getElementById('btnStart').onclick = () => { 
+        rec.start(); 
+        document.getElementById('status').innerText = "🎤 Mendengar..."; 
+    };
+
+    document.getElementById('btnStop').onclick = () => { 
+        rec.stop(); 
+        document.getElementById('status').innerText = "Berhenti."; 
+    };
+
     rec.onresult = (e) => {
         const t = e.results[e.results.length-1][0].transcript.toLowerCase().trim();
         document.getElementById('transcriptDisplay').innerText = t;
@@ -787,5 +824,9 @@ document.getElementById('btnYT').onclick = () => {
     document.getElementById('signLanguageSection').style.display = "flex";
 };
 
-window.onload = () => { if(localStorage.getItem('tandaX_logged') === 'true') bukaAplikasi(); };
-
+// Menyemak sesi log masuk sedia ada
+window.onload = () => { 
+    if(localStorage.getItem('tandaX_logged') === 'true') {
+        bukaAplikasi(); 
+    }
+};
