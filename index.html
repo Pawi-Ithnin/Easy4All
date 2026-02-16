@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tanda X 1.0 - Pro | Isyarat Visual</title>
     <link rel="stylesheet" href="style.css">
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </head>
 <body>
 
@@ -16,8 +19,8 @@
     <section id="pay-screen">
         <div id="login-box">
             <h2>Log Masuk Pro</h2>
-            <input type="text" id="userInput" class="login-input" placeholder="Username">
-            <input type="password" id="passInput" class="login-input" placeholder="Password">
+            <input type="text" id="userInput" class="login-input" placeholder="Username" autocapitalize="none" spellcheck="false">
+            <input type="password" id="passInput" class="login-input" placeholder="Password" autocapitalize="none">
             <button onclick="prosesLogin()" class="btn-main">Masuk Sekarang</button>
             <p style="font-size:13px;">Belum ada akaun? <a href="#" onclick="showRegister()">Daftar Di Sini</a></p>
         </div>
@@ -37,7 +40,7 @@
                     <span style="font-size:11px;">Akses 30 Hari</span>
                 </div>
             </div>
-            <input type="text" id="regUser" class="login-input" placeholder="Username Pilihan">
+            <input type="text" id="regUser" class="login-input" placeholder="Username Pilihan" autocapitalize="none" spellcheck="false">
             <input type="password" id="regPass" class="login-input" placeholder="Password Pilihan">
             <input type="tel" id="regPhone" class="login-input" placeholder="No. Telefon (WhatsApp)">
             <select id="regPackage" class="login-input" style="width: 92%; background:white;">
@@ -65,7 +68,8 @@
                         <th>Tindakan</th>
                     </tr>
                 </thead>
-                <tbody id="userTableBody"></tbody>
+                <tbody id="userTableBody">
+                    </tbody>
             </table>
         </div>
     </section>
@@ -80,7 +84,7 @@
         </div>
 
         <div class="main-content">
-            <div id="youtubeSection">
+            <div id="youtubeSection" style="display:none;">
                 <div class="yt-input-group">
                     <input type="text" id="youtubeUrl" placeholder="Tampal link YouTube...">
                     <button id="btnLoad">Muat</button>
@@ -98,5 +102,6 @@
 </main>
 
 <script src="script.js"></script>
+
 </body>
 </html>
