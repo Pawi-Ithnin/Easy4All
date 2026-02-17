@@ -3,7 +3,7 @@ const firebaseConfig = { databaseURL: "https://tanda-x-pro-default-rtdb.asia-sou
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// 2. KAMUS GAMBAR (WORD TO IMAGE)
+// 2. KAMUS GAMBAR (WORD TO IMAGE) - Tambah perkataan di sini
 const wordImages = {
     kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
     saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
@@ -645,7 +645,7 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
 tengok: "https://i.ibb.co/2S0LmmK/Lihat-Tengok-40c6f1eb831eb4fa42c4.jpg",
 };
 
-// 3. SPEECH RECOGNITION LOGIC
+// 3. SPEECH RECOGNITION LOGIC (Fokus: Terus keluar gambar)
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 let rec;
 
@@ -662,7 +662,7 @@ if (Recognition) {
         const words = t.split(" ");
         let found = false;
 
-        // Mencari perkataan terakhir dalam ayat yang sepadan dengan kamus
+        // Cari perkataan terakhir dalam ayat yang sepadan dengan kamus
         for (let i = words.length - 1; i >= 0; i--) {
             let cleanWord = words[i].replace(/[^\w]/g, '');
             if (wordImages[cleanWord]) {
@@ -675,7 +675,7 @@ if (Recognition) {
 
         if (!found) {
             document.getElementById('output').innerText = "Tiada Isyarat Ditemui";
-            document.getElementById('signImage').src = "https://via.placeholder.com/300?text=Tiada+Padanan";
+            document.getElementById('signImage').src = "https://via.placeholder.com/400x300?text=Tiada+Padanan";
         }
     };
 }
@@ -703,9 +703,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // YouTube Mod
+    // YouTube Mod - Toggle Ruang Tampal Link
     document.getElementById('btnYT').onclick = () => {
-        document.getElementById('youtubeSection').style.display = "block";
+        const inputArea = document.getElementById('youtubeInputArea');
+        if (inputArea.style.display === "none" || inputArea.style.display === "") {
+            inputArea.style.display = "block";
+        } else {
+            inputArea.style.display = "none";
+        }
     };
 
     // Load Video
@@ -714,15 +719,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
         const match = url.match(regex);
         if (match && match[1]) {
-            document.getElementById('player').innerHTML = `<iframe width="100%" height="360" src="https://www.youtube.com/embed/${match[1]}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
+            document.getElementById('player').innerHTML = `<iframe width="100%" height="400" src="https://www.youtube.com/embed/${match[1]}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
+        } else {
+            alert("Link YouTube tidak sah!");
         }
     };
 });
 
 // 5. AUTH FUNCTIONS
-window.showRegister = () => { document.getElementById('login-box').style.display='none'; document.getElementById('register-box').style.display='block'; };
-window.showLogin = () => { document.getElementById('login-box').style.display='block'; document.getElementById('register-box').style.display='none'; };
-
 window.prosesLogin = () => {
     const u = document.getElementById('userInput').value.trim().toLowerCase();
     const p = document.getElementById('passInput').value.trim();
