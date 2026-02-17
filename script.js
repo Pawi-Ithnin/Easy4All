@@ -1,9 +1,11 @@
 // 1. FIREBASE CONFIG
-const firebaseConfig = { databaseURL: "https://tanda-x-pro-default-rtdb.asia-southeast1.firebasedatabase.app/" };
+const firebaseConfig = { 
+    databaseURL: "https://tanda-x-pro-default-rtdb.asia-southeast1.firebasedatabase.app/" 
+};
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// 2. KAMUS GAMBAR (WORD TO IMAGE) - Tambah perkataan di sini
+// 2. KAMUS GAMBAR (WORD TO IMAGE) - Terus keluar gambar, bukan mengeja
 const wordImages = {
     kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
     saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
@@ -645,7 +647,7 @@ gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
 tengok: "https://i.ibb.co/2S0LmmK/Lihat-Tengok-40c6f1eb831eb4fa42c4.jpg",
 };
 
-// 3. SPEECH RECOGNITION LOGIC (Fokus: Terus keluar gambar)
+// 3. SPEECH RECOGNITION LOGIC
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 let rec;
 
@@ -662,7 +664,7 @@ if (Recognition) {
         const words = t.split(" ");
         let found = false;
 
-        // Cari perkataan terakhir dalam ayat yang sepadan dengan kamus
+        // Mencari perkataan dalam kamus (mula dari perkataan terakhir disebut)
         for (let i = words.length - 1; i >= 0; i--) {
             let cleanWord = words[i].replace(/[^\w]/g, '');
             if (wordImages[cleanWord]) {
@@ -674,18 +676,45 @@ if (Recognition) {
         }
 
         if (!found) {
-            document.getElementById('output').innerText = "Tiada Isyarat Ditemui";
-            document.getElementById('signImage').src = "https://via.placeholder.com/400x300?text=Tiada+Padanan";
+            document.getElementById('output').innerText = "Tiada Padanan";
+            document.getElementById('signImage').src = "https://via.placeholder.com/400x300?text=Tiada+Isyarat";
         }
     };
 }
 
-// 4. UI EVENT LISTENERS
+// 4. UI EVENT LISTENERS (YOUTUBE & BUTTONS)
 document.addEventListener('DOMContentLoaded', () => {
-    // Check Login Status
+    // Check status login
     if(localStorage.getItem('tandaX_logged') === 'true') bukaAplikasi();
 
-    // Start Button
+    // Tampilkan/Sembunyikan Ruang Paste Link YouTube
+    const btnYT = document.getElementById('btnYT');
+    const inputArea = document.getElementById('youtubeInputArea');
+    
+    btnYT.onclick = () => {
+        if (inputArea.style.display === "none" || inputArea.style.display === "") {
+            inputArea.style.display = "block";
+        } else {
+            inputArea.style.display = "none";
+        }
+    };
+
+    // Fungsi Load Video YouTube
+    document.getElementById('btnLoad').onclick = () => {
+        const url = document.getElementById('youtubeUrl').value.trim();
+        const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+        const match = url.match(regex);
+        
+        if (match && match[1]) {
+            document.getElementById('player').innerHTML = 
+                `<iframe src="https://www.youtube.com/embed/${match[1]}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
+            inputArea.style.display = "none"; // Sembunyi kotak link selepas muat video
+        } else {
+            alert("Link YouTube tidak sah! Pastikan link penuh dipaste.");
+        }
+    };
+
+    // Button Mula Suara
     document.getElementById('btnStart').onclick = () => {
         if (rec) {
             rec.start();
@@ -694,7 +723,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Stop Button
+    // Button Henti Suara
     document.getElementById('btnStop').onclick = () => {
         if (rec) {
             rec.stop();
@@ -702,31 +731,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('status').style.color = "red";
         }
     };
-
-    // YouTube Mod - Toggle Ruang Tampal Link
-    document.getElementById('btnYT').onclick = () => {
-        const inputArea = document.getElementById('youtubeInputArea');
-        if (inputArea.style.display === "none" || inputArea.style.display === "") {
-            inputArea.style.display = "block";
-        } else {
-            inputArea.style.display = "none";
-        }
-    };
-
-    // Load Video
-    document.getElementById('btnLoad').onclick = () => {
-        const url = document.getElementById('youtubeUrl').value.trim();
-        const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
-        const match = url.match(regex);
-        if (match && match[1]) {
-            document.getElementById('player').innerHTML = `<iframe width="100%" height="400" src="https://www.youtube.com/embed/${match[1]}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
-        } else {
-            alert("Link YouTube tidak sah!");
-        }
-    };
 });
 
-// 5. AUTH FUNCTIONS
+// 5. AUTH & NAVIGATION
 window.prosesLogin = () => {
     const u = document.getElementById('userInput').value.trim().toLowerCase();
     const p = document.getElementById('passInput').value.trim();
@@ -740,7 +747,7 @@ window.prosesLogin = () => {
             if (d && d.pass === p) {
                 localStorage.setItem('tandaX_logged', 'true');
                 bukaAplikasi();
-            } else { alert("Gagal Masuk!"); }
+            } else { alert("Gagal Masuk! Sila semak Username/Password."); }
         });
     }
 };
@@ -750,9 +757,12 @@ function bukaAplikasi() {
     document.getElementById('mainAppSection').style.display = 'block';
 }
 
-window.logKeluar = () => { localStorage.clear(); location.reload(); };
+window.logKeluar = () => {
+    localStorage.clear();
+    location.reload();
+};
 
-// 6. CNY ANIMATION
+// 6. ANIMASI CNY (HIASAN)
 setInterval(() => {
     const icons = ['🍊', '🧧', '🏮'];
     const icon = document.createElement('div');
