@@ -3,7 +3,6 @@
  */
 
 // --- 1. CONFIG FIREBASE ---
-// URL ini menghubungkan laptop dan telefon ke pangkalan data yang sama
 const firebaseConfig = {
     databaseURL: "https://tanda-x-pro-default-rtdb.asia-southeast1.firebasedatabase.app/"
 };
@@ -25,7 +24,7 @@ window.showLogin = () => {
     document.getElementById('register-box').style.display = 'none';
 };
 
-// --- 4. LOGIK PENDAFTARAN (ONLINE SYNC) ---
+// --- 4. LOGIK PENDAFTARAN ---
 window.prosesDaftar = () => {
     const u = document.getElementById('regUser').value.trim().toLowerCase();
     const p = document.getElementById('regPass').value.trim();
@@ -34,12 +33,10 @@ window.prosesDaftar = () => {
 
     if(!u || !p || !ph) return alert("Sila isi semua maklumat!");
 
-    // Menyemak jika username sudah wujud di Firebase
     db.ref('users/' + u).once('value', (snapshot) => {
         if (snapshot.exists()) {
             alert("Username ini sudah berdaftar!");
         } else {
-            // Menyimpan data ke Firebase Cloud
             db.ref('users/' + u).set({
                 user: u, 
                 pass: p, 
@@ -47,7 +44,6 @@ window.prosesDaftar = () => {
                 pakej: pkg, 
                 status: "pending"
             }).then(() => {
-                // Notifikasi ke Telegram Admin
                 const mesej = `🔔 *DAFTAR BARU*\n👤 User: ${u}\n🔑 Pass: ${p}\n📞 Phone: ${ph}\n📦 Pakej: ${pkg}`;
                 const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(mesej)}&parse_mode=Markdown`;
                 fetch(url);
@@ -59,15 +55,13 @@ window.prosesDaftar = () => {
     });
 };
 
-// --- 5. LOGIK LOG MASUK (ONLINE SYNC) ---
+// --- 5. LOGIK LOG MASUK ---
 window.prosesLogin = () => {
     const u = document.getElementById('userInput').value.trim().toLowerCase();
     const p = document.getElementById('passInput').value.trim();
 
-    // Log masuk Admin (Akaun tetap)
     if (u === "admin" && p === "1234") return bukaDashboard();
 
-    // Menyemak data pengguna di Firebase
     db.ref('users/' + u).once('value', (snapshot) => {
         const userData = snapshot.val();
         if (userData && userData.pass === p) {
@@ -82,12 +76,11 @@ window.prosesLogin = () => {
     });
 };
 
-// --- 6. ADMIN DASHBOARD (LIVE UPDATE) ---
+// --- 6. ADMIN DASHBOARD ---
 function bukaDashboard() {
     document.getElementById('pay-screen').style.display = 'none';
     document.getElementById('adminDashboard').style.display = 'block';
     
-    // Memaparkan data pengguna secara real-time dari Firebase
     db.ref('users').on('value', (snapshot) => {
         const tbody = document.getElementById('userTableBody');
         tbody.innerHTML = "";
@@ -109,14 +102,8 @@ function bukaDashboard() {
     });
 }
 
-window.ubahStatus = (username, s) => {
-    db.ref('users/' + username).update({ status: s });
-};
-
-window.padamUser = (username) => {
-    if(confirm("Padam user " + username + "?")) db.ref('users/' + username).remove();
-};
-
+window.ubahStatus = (username, s) => db.ref('users/' + username).update({ status: s });
+window.padamUser = (username) => { if(confirm("Padam user " + username + "?")) db.ref('users/' + username).remove(); };
 window.logKeluarAdmin = () => { localStorage.clear(); location.reload(); };
 
 // --- 7. APLIKASI UTAMA ---
@@ -126,28 +113,46 @@ function bukaAplikasi() {
     document.getElementById('status').innerText = "Akaun: " + localStorage.getItem('tandaX_user');
 }
 
-window.logKeluar = () => { 
-    localStorage.clear();
-    location.reload(); 
-};
+window.logKeluar = () => { localStorage.clear(); location.reload(); };
 
 // --- 8. YOUTUBE API ---
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 let player;
+// Fungsi ini dipanggil secara automatik oleh YT API
+window.onYouTubeIframeAPIReady = () => { console.log("YouTube API Ready"); };
 
-document.getElementById('btnLoad').onclick = () => {
-    const url = document.getElementById('youtubeUrl').value;
-    const videoId = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]{11})/)?.[1];
-    if (videoId) {
-        if (player) player.loadVideoById(videoId);
-        else player = new YT.Player('player', { height: '360', width: '100%', videoId: videoId });
-    }
-};
+// Pindahkan logik load ke dalam listener yang betul
+const btnLoad = document.getElementById('btnLoad');
+if(btnLoad) {
+    btnLoad.onclick = () => {
+        const url = document.getElementById('youtubeUrl').value;
+        const videoId = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]{11})/)?.[1];
+        if (videoId) {
+            if (player && typeof player.loadVideoById === 'function') {
+                player.loadVideoById(videoId);
+            } else {
+                player = new YT.Player('player', { 
+                    height: '360', 
+                    width: '100%', 
+                    videoId: videoId 
+                });
+            }
+        } else {
+            alert("Link YouTube tidak sah!");
+        }
+    };
+}
 
-// --- 9. SPEECH RECOGNITION & VISUAL ---
+// --- 9. SPEECH RECOGNITION ---
+const wordImages = {
+    kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
+    saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
+    makan: "https://i.ibb.co/pd6WB8L/Makan-Makanan-358171f7a0d456b53998.jpg",
+    mandi: "https://i.ibb.co/RT8bLtZ/Mandi-36a248a7c1e9603e8ad9.jpg",
+    baca: "https://i.ibb.co/WfqmLPZ/Baca-4f6dce926d7cb25e66a3-1.jpg",
+    angkat: "https://i.ibb.co/CKyDRtL/Angkat-5a39a6cc3f28b66e33d5-1.jpg",
+    hantar: "https://i.ibb.co/zSGdVZ1/Hantar-a700122bd4d677f6426f.jpg",
+    lihat: "https://i.ibb.co/2S0LmmK/Lihat-Tengok-40c6f1eb831eb4fa42c4.jpg",
+    tengok: "https://i.ibb.co/2S0LmmK/Lihat-Tengok-40c6f1eb831eb4fa42c4.jpg"
 const wordImages = {
     kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
     saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
@@ -777,6 +782,7 @@ sari: "https://i.ibb.co/xK1Bg96Q/Sari-db32d813b8a184e2c5ea.jpg",
 cheongsam: "https://i.ibb.co/yFyX2kcF/Cheong-Sam-bb768bb2bbea9a7d97b2.jpg",
 cermin: "https://i.ibb.co/9mLsWhVW/Cermin-a011bddc13e2a2f09897.jpg",
 gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
+tengok: "https://i.ibb.co/2S0LmmK/Lihat-Tengok-40c6f1eb831eb4fa42c4.jpg"
 };
 
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -785,21 +791,15 @@ if (Recognition) {
     rec.lang = 'ms-MY'; 
     rec.continuous = true;
 
-    document.getElementById('btnStart').onclick = () => { 
-        rec.start(); 
-        document.getElementById('status').innerText = "🎤 Mendengar..."; 
-    };
-
-    document.getElementById('btnStop').onclick = () => { 
-        rec.stop(); 
-        document.getElementById('status').innerText = "Berhenti."; 
-    };
+    document.getElementById('btnStart').onclick = () => { rec.start(); document.getElementById('status').innerText = "🎤 Mendengar..."; };
+    document.getElementById('btnStop').onclick = () => { rec.stop(); document.getElementById('status').innerText = "Berhenti."; };
 
     rec.onresult = (e) => {
         const t = e.results[e.results.length-1][0].transcript.toLowerCase().trim();
-        document.getElementById('transcriptDisplay').innerText = t;
-        const lastWord = t.split(" ").pop().replace(/[^\w]/g, '');
+        const transcriptDiv = document.getElementById('transcriptDisplay');
+        if(transcriptDiv) transcriptDiv.innerText = t;
         
+        const lastWord = t.split(" ").pop().replace(/[^\w]/g, '');
         if (wordImages[lastWord]) {
             document.getElementById('signImage').src = wordImages[lastWord];
             document.getElementById('output').innerText = "Isyarat: " + lastWord.toUpperCase();
@@ -813,8 +813,9 @@ function fingerspell(w) {
     let i = 0;
     const interval = setInterval(() => {
         if(i >= w.length) return clearInterval(interval);
-        document.getElementById('signImage').src = `https://via.placeholder.com/300?text=${w[i].toUpperCase()}`;
-        document.getElementById('output').innerText = "Mengeja: " + w[i].toUpperCase();
+        const char = w[i].toUpperCase();
+        document.getElementById('signImage').src = `https://via.placeholder.com/300?text=${char}`;
+        document.getElementById('output').innerText = "Mengeja: " + char;
         i++;
     }, 700);
 }
@@ -824,7 +825,6 @@ document.getElementById('btnYT').onclick = () => {
     document.getElementById('signLanguageSection').style.display = "flex";
 };
 
-// Menyemak sesi log masuk sedia ada
 window.onload = () => { 
     if(localStorage.getItem('tandaX_logged') === 'true') {
         bukaAplikasi(); 
