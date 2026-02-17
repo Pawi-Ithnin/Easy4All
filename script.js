@@ -782,6 +782,7 @@ cheongsam: "https://i.ibb.co/yFyX2kcF/Cheong-Sam-bb768bb2bbea9a7d97b2.jpg",
 cermin: "https://i.ibb.co/9mLsWhVW/Cermin-a011bddc13e2a2f09897.jpg",
 gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
 tengok: "https://i.ibb.co/2S0LmmK/Lihat-Tengok-40c6f1eb831eb4fa42c4.jpg",
+    
 };
 
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -831,3 +832,4 @@ window.onload = () => {
         bukaAplikasi(); 
     }
 };
+
