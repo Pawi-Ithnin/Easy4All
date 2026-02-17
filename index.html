@@ -8,39 +8,26 @@
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f7f6; }
         header { background: #1a1a1a; color: white; padding: 15px; text-align: center; }
         
-        /* Layout Flexbox */
-        .content-wrapper { 
-            display: flex; flex-direction: row; justify-content: center; 
-            align-items: flex-start; gap: 20px; padding: 20px; flex-wrap: wrap; 
-        }
+        /* Layout Login & Register */
+        .auth-container { max-width: 400px; margin: 50px auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: center; }
+        .login-input { width: 90%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        .btn-main { width: 95%; padding: 12px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 10px; }
+        .btn-green { background: #2e7d32; color: white; }
+        .btn-blue { background: #007bff; color: white; }
+        .game-promo { background: #fff3e0; padding: 10px; border-radius: 10px; border: 1px dashed #ff9800; margin-bottom: 20px; }
+        .switch-auth { margin-top: 15px; font-size: 0.9em; color: #555; }
+        .switch-auth span { color: #007bff; cursor: pointer; font-weight: bold; text-decoration: underline; }
 
-        /* BAHAGIAN YOUTUBE (Sembunyi secara default) */
-        #youtubeSection { 
-            flex: 1.5; min-width: 350px; display: none; /* Hanya keluar bila button ditekan */
-        }
-
-        /* BAHAGIAN ISYARAT (Kanan) */
-        .sign-box { 
-            flex: 1; min-width: 320px; text-align: center; background: white; 
-            border-radius: 15px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #ddd; 
-        }
-
-        #youtubeInputArea { 
-            background: #fff; padding: 15px; border-radius: 10px; 
-            margin-bottom: 15px; border: 3px solid #ff0000; text-align: center;
-        }
-
+        /* App Layout */
+        .content-wrapper { display: flex; flex-direction: row; justify-content: center; align-items: flex-start; gap: 20px; padding: 20px; flex-wrap: wrap; }
+        #youtubeSection { flex: 1.5; min-width: 350px; display: none; }
+        .sign-box { flex: 1; min-width: 320px; text-align: center; background: white; border-radius: 15px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #ddd; }
+        
         #player iframe { width: 100%; height: 400px; border-radius: 10px; background: #000; border: none; }
         #signImage { width: 100%; max-width: 400px; border-radius: 10px; }
-        
         .control-panel { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
-        button { cursor: pointer; border: none; font-weight: bold; padding: 12px; border-radius: 5px; }
-
-        /* Login & Admin */
-        .login-card, .admin-card { background: white; padding: 30px; border-radius: 15px; max-width: 450px; margin: 50px auto; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: center; }
-        .login-input { width: 90%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
-        .game-promo { background: #fff3e0; padding: 10px; border-radius: 10px; border: 1px dashed #ff9800; margin-bottom: 20px; }
         
+        /* Admin Table */
         table { width: 100%; border-collapse: collapse; margin-top: 15px; }
         th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
 
@@ -53,40 +40,51 @@
 <header><h1>Tanda X 1.0 - Pro 🤟</h1></header>
 
 <main>
-    <section id="pay-screen">
-        <div class="login-card">
+    <section id="login-screen">
+        <div class="auth-container">
             <div class="game-promo">
                 <p>🎮 Cuba versi percuma sekarang!</p>
                 <a href="https://pawi-ithnin.github.io/test/" target="_blank" style="background:#ff9800; color:white; padding:8px 15px; text-decoration:none; border-radius:5px; font-weight:bold;">GAME FREE</a>
             </div>
+            <h2>Log Masuk</h2>
             <input type="text" id="userInput" class="login-input" placeholder="Username">
             <input type="password" id="passInput" class="login-input" placeholder="Password">
-            <button onclick="prosesLogin()" style="width:95%; background:#2e7d32; color:white;">Masuk</button>
+            <button onclick="prosesLogin()" class="btn-main btn-green">LOG MASUK</button>
+            <div class="switch-auth">Tiada akaun? <span onclick="tukarKeRegister()">Daftar Sini</span></div>
+        </div>
+    </section>
+
+    <section id="register-screen" style="display:none;">
+        <div class="auth-container">
+            <h2>Daftar Akaun Baru</h2>
+            <input type="text" id="regUser" class="login-input" placeholder="Username Pilihan">
+            <input type="password" id="regPass" class="login-input" placeholder="Password">
+            <button onclick="prosesRegister()" class="btn-main btn-blue">DAFTAR SEKARANG</button>
+            <div class="switch-auth">Dah ada akaun? <span onclick="tukarKeLogin()">Log Masuk</span></div>
         </div>
     </section>
 
     <section id="adminSection" style="display:none;">
-        <div class="admin-card">
-            <h2>Panel Kawalan Admin</h2>
+        <div class="auth-container" style="max-width: 600px;">
+            <h2>Panel Admin (Pending Users)</h2>
             <div id="userList">Memuatkan data...</div>
-            <button onclick="logKeluar()" style="background:#333; color:white; margin-top:15px; width:100%;">Log Keluar</button>
+            <button onclick="logKeluar()" class="btn-main btn-blue" style="background:#333;">LOG KELUAR ADMIN</button>
         </div>
     </section>
 
     <section id="mainAppSection" style="display:none;">
         <div class="control-panel">
-            <button id="btnYT" style="background:#ff0000; color:white;">📺 MOD YOUTUBE</button>
-            <button id="btnStart" style="background:#4CAF50; color:white;">🎤 MULA SUARA</button>
-            <button id="btnStop" style="background:#f44336; color:white;">⏹ HENTI</button>
-            <button onclick="logKeluar()" style="background:#333; color:white;">🚪 KELUAR</button>
+            <button onclick="toggleYT()" style="background:#ff0000; color:white; padding:12px; border-radius:5px; font-weight:bold;">📺 MOD YOUTUBE</button>
+            <button id="btnStart" style="background:#4CAF50; color:white; padding:12px; border-radius:5px; font-weight:bold;">🎤 MULA SUARA</button>
+            <button id="btnStop" style="background:#f44336; color:white; padding:12px; border-radius:5px; font-weight:bold;">⏹ HENTI</button>
+            <button onclick="logKeluar()" style="background:#333; color:white; padding:12px; border-radius:5px; font-weight:bold;">🚪 KELUAR</button>
         </div>
 
         <div class="content-wrapper">
             <div id="youtubeSection">
-                <div id="youtubeInputArea">
-                    <p style="color:red; font-weight:bold; margin-top:0;">TAMPAL LINK YOUTUBE:</p>
-                    <input type="text" id="youtubeUrl" class="login-input" style="width:70%; margin:0;" placeholder="https://www.youtube.com/watch?v=...">
-                    <button id="btnLoad" style="background:#007bff; color:white; padding:12px 20px; vertical-align:top;">MUAT</button>
+                <div style="background:#fff; padding:15px; border-radius:10px; margin-bottom:15px; border:3px solid #ff0000; text-align:center;">
+                    <input type="text" id="youtubeUrl" class="login-input" style="width:70%; margin:0;" placeholder="Paste Link YouTube...">
+                    <button onclick="loadVideo()" style="background:#007bff; color:white; padding:12px; border-radius:5px; border:none; vertical-align:top;">MUAT</button>
                 </div>
                 <div id="player"></div>
             </div>
@@ -102,6 +100,97 @@
 
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-<script src="script.js"></script>
+
+<script>
+    // FIREBASE & CONFIG
+    const firebaseConfig = { databaseURL: "https://tanda-x-pro-default-rtdb.asia-southeast1.firebasedatabase.app/" };
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // UI NAVIGATION
+    function tukarKeRegister() { document.getElementById('login-screen').style.display='none'; document.getElementById('register-screen').style.display='block'; }
+    function tukarKeLogin() { document.getElementById('login-screen').style.display='block'; document.getElementById('register-screen').style.display='none'; }
+    function logKeluar() { location.reload(); }
+
+    // LOGIN PROCESS
+    function prosesLogin() {
+        const u = document.getElementById('userInput').value.trim().toLowerCase();
+        const p = document.getElementById('passInput').value.trim();
+        if(u === "admin" && p === "1234") return bukaAdmin();
+        
+        db.ref('users/' + u).once('value', (s) => {
+            const d = s.val();
+            if(d && d.pass === p) {
+                if(d.status === "active") bukaAplikasi();
+                else alert("Akaun belum aktif. Tunggu kelulusan admin.");
+            } else alert("Username/Password Salah!");
+        });
+    }
+
+    // REGISTER PROCESS
+    function prosesRegister() {
+        const u = document.getElementById('regUser').value.trim().toLowerCase();
+        const p = document.getElementById('regPass').value.trim();
+        if(!u || !p) return alert("Isi semua ruang!");
+        
+        db.ref('users/' + u).set({ pass: p, status: "pending" })
+        .then(() => { alert("Daftar berjaya! Sila minta admin aktifkan akaun."); tukarKeLogin(); });
+    }
+
+    // ADMIN FUNCTIONS
+    function bukaAdmin() {
+        document.getElementById('login-screen').style.display='none';
+        document.getElementById('adminSection').style.display='block';
+        db.ref('users').on('value', (snapshot) => {
+            const users = snapshot.val();
+            let html = '<table><tr><th>User</th><th>Aksi</th></tr>';
+            for(let id in users) {
+                if(users[id].status === "pending") {
+                    html += `<tr><td>${id}</td><td><button onclick="approveUser('${id}')" style="background:green;color:white;border:none;padding:5px;cursor:pointer;">LULUS</button></td></tr>`;
+                }
+            }
+            html += '</table>';
+            document.getElementById('userList').innerHTML = html;
+        });
+    }
+    function approveUser(id) { db.ref('users/' + id).update({ status: "active" }); }
+
+    function bukaAplikasi() {
+        document.getElementById('login-screen').style.display='none';
+        document.getElementById('mainAppSection').style.display='block';
+    }
+
+    // YOUTUBE & VOICE
+    function toggleYT() {
+        const yt = document.getElementById('youtubeSection');
+        yt.style.display = (yt.style.display === "none" || yt.style.display === "") ? "block" : "none";
+    }
+    function loadVideo() {
+        const url = document.getElementById('youtubeUrl').value;
+        const match = url.match(/(?:v=|youtu\.be\/)([^"&?\/\s]{11})/);
+        if(match) document.getElementById('player').innerHTML = `<iframe src="https://www.youtube.com/embed/${match[1]}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
+    }
+
+    // SPEECH (Direct Image)
+    const wordImages = { "kami": "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg", "saya": "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg" };
+    const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (Recognition) {
+        const rec = new Recognition(); rec.lang = 'ms-MY'; rec.continuous = true;
+        rec.onresult = (e) => {
+            const t = e.results[e.results.length - 1][0].transcript.toLowerCase().trim();
+            document.getElementById('transcriptDisplay').innerText = `"${t}"`;
+            const words = t.split(" ");
+            for(let i = words.length-1; i>=0; i--) {
+                if(wordImages[words[i]]) {
+                    document.getElementById('signImage').src = wordImages[words[i]];
+                    document.getElementById('output').innerText = words[i].toUpperCase();
+                    break;
+                }
+            }
+        };
+        document.getElementById('btnStart').onclick = () => rec.start();
+        document.getElementById('btnStop').onclick = () => rec.stop();
+    }
+</script>
 </body>
 </html>
