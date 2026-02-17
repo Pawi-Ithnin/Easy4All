@@ -3,135 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanda X 1.0 - Pro | Isyarat Visual</title>
+    <title>Tanda X 1.0 - Pro</title>
     <link rel="stylesheet" href="style.css">
-    
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </head>
 <body>
+    <header><h1>Tanda X 1.0 - Pro 🤟</h1></header>
 
-<header>
-    <h1>Tanda X 1.0 - Pro 🤟</h1>
-</header>
-
-<main>
-    <section id="pay-screen">
+    <main>
         <div id="login-box">
             <h2>Log Masuk Pro</h2>
-            <input type="text" id="userInput" class="login-input" placeholder="Username" autocapitalize="none" spellcheck="false">
-            <input type="password" id="passInput" class="login-input" placeholder="Password" autocapitalize="none">
-            <button onclick="prosesLogin()" class="btn-main">Masuk Sekarang</button>
-            <p style="font-size:13px;">Belum ada akaun? <a href="#" onclick="showRegister()">Daftar Di Sini</a></p>
-        </div>
 
-        <div id="register-box" style="display:none;">
-            <h2>Pilih Pakej & Daftar</h2>
-            <div class="price-container">
-                <div class="price-card harian">
-                    <h4 style="margin:0; color:#e65100;">HARIAN</h4>
-                    <p style="font-size:22px; font-weight:bold; margin:5px 0;">RM 3</p>
-                    <span style="font-size:11px;">Akses 24 Jam</span>
-                </div>
-                <div class="price-card bulanan">
-                    <div class="tag-jimat">JIMAT!</div>
-                    <h4 style="margin:0; color:#1b5e20;">BULANAN</h4>
-                    <p style="font-size:22px; font-weight:bold; margin:5px 0;">RM 25</p>
-                    <span style="font-size:11px;">Akses 30 Hari</span>
-                </div>
-            </div>
-            <input type="text" id="regUser" class="login-input" placeholder="Username Pilihan" autocapitalize="none" spellcheck="false">
-            <input type="password" id="regPass" class="login-input" placeholder="Password Pilihan">
-            <input type="tel" id="regPhone" class="login-input" placeholder="No. Telefon (WhatsApp)">
-            <select id="regPackage" class="login-input" style="width: 92%; background:white;">
-                <option value="Harian (RM3)">Pakej Harian - RM 3</option>
-                <option value="Bulanan (RM25)">Pakej Bulanan - RM 25</option>
-            </select>
-            <button onclick="prosesDaftar()" class="btn-main btn-reg">Hantar Pendaftaran</button>
-            <p style="font-size:13px;"><a href="#" onclick="showLogin()">Kembali ke Log Masuk</a></p>
-        </div>
-    </section>
-
-    <section id="adminDashboard" style="display:none;">
-        <div class="admin-header">
-            <h2>📊 Dashboard Admin</h2>
-            <button onclick="logKeluarAdmin()" class="btn-dark">🚪 Keluar Admin</button>
-        </div>
-        <div style="overflow-x: auto;">
-            <table class="user-table">
-                <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>No. Telefon</th>
-                        <th>Pakej</th>
-                        <th>Status</th>
-                        <th>Tindakan</th>
-                    </tr>
-                </thead>
-                <tbody id="userTableBody">
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <section id="mainAppSection" style="display:none;">
-        <div id="status">Sedia...</div>
-        <div class="control-panel">
-            <button id="btnYT" class="btn-blue">📺 Mod YouTube</button>
-            <button id="btnStart" class="btn-green">🎤 Mula Suara</button>
-            <button id="btnStop" class="btn-red">⏹ Henti</button>
-            <button onclick="logKeluar()" class="btn-dark">🚪 Keluar</button>
-        </div>
-
-        <div class="main-content">
-            <div id="youtubeSection" style="display:none;">
-                <div class="yt-input-group">
-                    <input type="text" id="youtubeUrl" placeholder="Tampal link YouTube...">
-                    <button id="btnLoad">Muat</button>
-                </div>
-                <div id="player"></div>
-                <div id="transcriptDisplay"></div>
+            <div class="game-promo">
+                <p>🎮 Cuba versi percuma sekarang!</p>
+                <a href="https://pawi-ithnin.github.io/test/" target="_blank" class="btn-game-free">GAME FREE</a>
             </div>
 
-            <div id="signLanguageSection">
-                <p id="output">Visual Isyarat:</p>
-                <img id="signImage" src="https://via.placeholder.com/300?text=Sedia..." alt="Isyarat">
-            </div>
+            <div class="divider"><span>ATAU LOG MASUK</span></div>
+
+            <input type="text" class="login-input" placeholder="Username">
+            <input type="password" class="login-input" placeholder="Password">
+            <button class="btn-main">Masuk Sekarang</button>
+            <p style="font-size:13px;">Belum ada akaun? <a href="#">Daftar Di Sini</a></p>
         </div>
-    </section>
-</main>
+    </main>
 
-<script src="script.js"></script>
-
-<script>
-  function createCNYIcon() {
-    const icons = ['🍊', '🐉', '🧧', '🏮', '✨'];
-    const iconElement = document.createElement('div');
-    
-    // Gunakan class yang kita dah buat dalam style.css
-    iconElement.classList.add('cny-icon');
-    iconElement.innerText = icons[Math.floor(Math.random() * icons.length)];
-    
-    // Posisi kiri ke kanan secara rawak
-    iconElement.style.left = Math.random() * 100 + "vw";
-    
-    // Saiz rawak
-    iconElement.style.fontSize = Math.random() * 20 + 20 + "px";
-    
-    // Masa jatuh (4 hingga 8 saat)
-    const duration = Math.random() * 4 + 4;
-    iconElement.style.animationDuration = duration + "s";
-    
-    document.body.appendChild(iconElement);
-
-    // Buang elemen selepas jatuh supaya web tak berat
-    setTimeout(() => {
-      iconElement.remove();
-    }, duration * 1000);
-  }
-
-  // Lancarkan ikon setiap 500ms
-  setInterval(createCNYIcon, 500);
-</script>
+    <script>
+        // Animasi CNY (Dikekalkan)
+        function createCNYIcon() {
+            const icons = ['🍊', '🧧', '🏮'];
+            const icon = document.createElement('div');
+            icon.className = 'cny-icon';
+            icon.innerText = icons[Math.floor(Math.random() * icons.length)];
+            icon.style.left = Math.random() * 100 + "vw";
+            const duration = Math.random() * 3 + 4;
+            icon.style.animationDuration = duration + "s";
+            document.body.appendChild(icon);
+            setTimeout(() => icon.remove(), duration * 1000);
+        }
+        setInterval(createCNYIcon, 600);
+    </script>
 </body>
 </html>
