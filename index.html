@@ -9,6 +9,9 @@
         /* Animasi tambahan untuk ikon CNY */
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
         .cny-icon { position: fixed; top: -50px; z-index: 9999; pointer-events: none; }
+        
+        /* Gaya tambahan untuk status */
+        #status { font-weight: bold; margin-bottom: 10px; transition: color 0.3s; }
     </style>
 </head>
 <body>
@@ -97,24 +100,76 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     
     <script>
-        // --- CONFIG FIREBASE ---
+        // --- 1. CONFIG FIREBASE & TELEGRAM ---
         const firebaseConfig = { databaseURL: "https://tanda-x-pro-default-rtdb.asia-southeast1.firebasedatabase.app/" };
-        firebase.initializeApp(firebaseConfig);
+        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
-        // --- NAVIGASI ---
+        const TELEGRAM_TOKEN = "8362133596:AAG0FzCOuspjxIrZT6dl2CFAC0pwBanf-yE"; 
+        const TELEGRAM_CHAT_ID = "1460830899"; 
+
+        // --- 2. DICTIONARY ISYARAT ---
+        const wordImages = {
+            kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
+            saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
+            makan: "https://i.ibb.co/pd6WB8L/Makan-Makanan-358171f7a0d456b53998.jpg",
+            mandi: "https://i.ibb.co/RT8bLtZ/Mandi-36a248a7c1e9603e8ad9.jpg",
+            baca: "https://i.ibb.co/WfqmLPZ/Baca-4f6dce926d7cb25e66a3-1.jpg",
+            lihat: "https://i.ibb.co/2S0LmmK/Lihat-Tengok-40c6f1eb831eb4fa42c4.jpg"
+        };
+
+        // --- 3. SPEECH RECOGNITION SETUP ---
+        let spellTimer;
+        const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        let rec;
+
+        if (Recognition) {
+            rec = new Recognition();
+            rec.lang = 'ms-MY';
+            rec.continuous = true;
+            rec.onresult = (e) => {
+                const t = e.results[e.results.length - 1][0].transcript.toLowerCase().trim();
+                document.getElementById('transcriptDisplay').innerText = t;
+                const lastWord = t.split(" ").pop().replace(/[^\w]/g, '');
+
+                if (wordImages[lastWord]) {
+                    document.getElementById('signImage').src = wordImages[lastWord];
+                    document.getElementById('output').innerText = "Isyarat: " + lastWord.toUpperCase();
+                } else {
+                    fingerspell(lastWord);
+                }
+            };
+        }
+
+        function fingerspell(w) {
+            clearInterval(spellTimer);
+            let i = 0;
+            spellTimer = setInterval(() => {
+                if (i >= w.length) return clearInterval(spellTimer);
+                document.getElementById('signImage').src = `https://via.placeholder.com/300?text=${w[i].toUpperCase()}`;
+                document.getElementById('output').innerText = "Mengeja: " + w[i].toUpperCase();
+                i++;
+            }, 700);
+        }
+
+        // --- 4. LOGIK NAVIGASI & AUTH ---
         window.showRegister = () => { document.getElementById('login-box').style.display = 'none'; document.getElementById('register-box').style.display = 'block'; };
         window.showLogin = () => { document.getElementById('login-box').style.display = 'block'; document.getElementById('register-box').style.display = 'none'; };
 
-        // --- DAFTAR & LOGIN ---
         window.prosesDaftar = () => {
             const u = document.getElementById('regUser').value.trim().toLowerCase();
             const p = document.getElementById('regPass').value.trim();
             const ph = document.getElementById('regPhone').value.trim();
             const pkg = document.getElementById('regPackage').value;
             if(!u || !p || !ph) return alert("Isi semua maklumat!");
+
             db.ref('users/' + u).set({ user: u, pass: p, phone: ph, pakej: pkg, status: "pending" })
-            .then(() => { alert("Pendaftaran berjaya!"); window.showLogin(); });
+            .then(() => {
+                const mesej = `🔔 *DAFTAR BARU*\n👤 User: ${u}\n📞 Phone: ${ph}\n📦 Pakej: ${pkg}`;
+                fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(mesej)}&parse_mode=Markdown`);
+                alert("Pendaftaran berjaya! Tunggu admin aktifkan.");
+                window.showLogin();
+            });
         };
 
         window.prosesLogin = () => {
@@ -128,7 +183,7 @@
                     localStorage.setItem('tandaX_logged', 'true');
                     localStorage.setItem('tandaX_user', u);
                     bukaAplikasi();
-                } else { alert("Login Gagal!"); }
+                } else { alert("Gagal!"); }
             });
         };
 
@@ -152,24 +207,48 @@
             });
         }
 
-        // --- MOD YOUTUBE (PEMBETULAN REGEX DI SINI) ---
-        document.getElementById('btnYT').onclick = () => {
-            document.getElementById('youtubeSection').style.display = "block";
-        };
+        // --- 5. EVENT LISTENERS (YOUTUBE & SUARA) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            if(localStorage.getItem('tandaX_logged') === 'true') bukaAplikasi();
 
-        document.getElementById('btnLoad').onclick = () => {
-            const url = document.getElementById('youtubeUrl').value;
-            // Regex yang lebih fleksibel untuk menangkap ID 11 aksara walaupun ada parameter ?si=
-            const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
-            const match = url.match(regex);
+            const statusDiv = document.getElementById('status');
 
-            if (match && match[1]) {
-                const videoId = match[1];
-                document.getElementById('player').innerHTML = `<iframe width="100%" height="360" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
-            } else {
-                alert("Link YouTube tidak sah!");
-            }
-        };
+            // Mula Suara
+            document.getElementById('btnStart').onclick = () => {
+                if (rec) {
+                    rec.start();
+                    statusDiv.innerText = "Nota: Suara Mula... (Sila bercakap)";
+                    statusDiv.style.color = "#4CAF50";
+                }
+            };
+
+            // Berhenti Suara
+            document.getElementById('btnStop').onclick = () => {
+                if (rec) {
+                    rec.stop();
+                    statusDiv.innerText = "Nota: Berhenti.";
+                    statusDiv.style.color = "#f44336";
+                }
+            };
+
+            // YouTube Mod
+            document.getElementById('btnYT').onclick = () => {
+                document.getElementById('youtubeSection').style.display = "block";
+            };
+
+            // Load Video YouTube
+            document.getElementById('btnLoad').onclick = () => {
+                const url = document.getElementById('youtubeUrl').value.trim();
+                const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+                const match = url.match(regex);
+                if (match && match[1]) {
+                    document.getElementById('player').innerHTML = `<iframe width="100%" height="360" src="https://www.youtube.com/embed/${match[1]}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
+                    statusDiv.innerText = "Nota: Video Berjaya Dimuatkan";
+                } else {
+                    alert("Link tidak sah!");
+                }
+            };
+        });
 
         // --- ANIMASI CNY ---
         function createCNYIcon() {
@@ -185,10 +264,8 @@
         }
         setInterval(createCNYIcon, 800);
 
-        window.onload = () => { if(localStorage.getItem('tandaX_logged') === 'true') bukaAplikasi(); };
         window.logKeluar = () => { localStorage.clear(); location.reload(); };
         window.logKeluarAdmin = () => { location.reload(); };
     </script>
 </body>
 </html>
-
