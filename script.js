@@ -115,34 +115,34 @@ function bukaAplikasi() {
 
 window.logKeluar = () => { localStorage.clear(); location.reload(); };
 
-// --- 8. YOUTUBE API ---
-let player;
-// Fungsi ini dipanggil secara automatik oleh YT API
-window.onYouTubeIframeAPIReady = () => { console.log("YouTube API Ready"); };
+// --- 8. YOUTUBE LOGIC (PENYESUAIAN BARU) ---
+document.getElementById('btnYT').onclick = () => {
+    document.getElementById('youtubeSection').style.display = "block";
+};
 
-// Pindahkan logik load ke dalam listener yang betul
-const btnLoad = document.getElementById('btnLoad');
-if(btnLoad) {
-    btnLoad.onclick = () => {
-        const url = document.getElementById('youtubeUrl').value;
-        const videoId = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]{11})/)?.[1];
-        if (videoId) {
-            if (player && typeof player.loadVideoById === 'function') {
-                player.loadVideoById(videoId);
-            } else {
-                player = new YT.Player('player', { 
-                    height: '360', 
-                    width: '100%', 
-                    videoId: videoId 
-                });
-            }
-        } else {
-            alert("Link YouTube tidak sah!");
-        }
-    };
-}
+document.getElementById('btnLoad').onclick = () => {
+    const url = document.getElementById('youtubeUrl').value.trim();
+    // Regex diperkukuh untuk menyokong pelbagai jenis link YouTube
+    const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+    const match = url.match(regex);
 
-// --- 9. SPEECH RECOGNITION ---
+    if (match && match[1]) {
+        const videoId = match[1];
+        const playerDiv = document.getElementById('player');
+        
+        // Menggunakan iframe secara terus untuk kestabilan maksimum
+        playerDiv.innerHTML = `<iframe width="100%" height="360" 
+            src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen 
+            style="border-radius:10px; border: 2px solid #ddd;"></iframe>`;
+            
+        document.getElementById('status').innerText = "Video Dimuatkan: " + videoId;
+    } else {
+        alert("Pautan YouTube tidak sah!");
+    }
+};
+
+// --- 9. SPEECH RECOGNITION & DICTIONARY ---
 const wordImages = {
     kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
     saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
@@ -798,7 +798,9 @@ if (Recognition) {
         const transcriptDiv = document.getElementById('transcriptDisplay');
         if(transcriptDiv) transcriptDiv.innerText = t;
         
-        const lastWord = t.split(" ").pop().replace(/[^\w]/g, '');
+        const words = t.split(" ");
+        const lastWord = words[words.length - 1].replace(/[^\w]/g, '');
+
         if (wordImages[lastWord]) {
             document.getElementById('signImage').src = wordImages[lastWord];
             document.getElementById('output').innerText = "Isyarat: " + lastWord.toUpperCase();
@@ -808,10 +810,15 @@ if (Recognition) {
     };
 }
 
+let spellTimer;
 function fingerspell(w) {
+    clearInterval(spellTimer); // Henti timer lama sebelum mula baru
     let i = 0;
-    const interval = setInterval(() => {
-        if(i >= w.length) return clearInterval(interval);
+    spellTimer = setInterval(() => {
+        if(i >= w.length) {
+            clearInterval(spellTimer);
+            return;
+        }
         const char = w[i].toUpperCase();
         document.getElementById('signImage').src = `https://via.placeholder.com/300?text=${char}`;
         document.getElementById('output').innerText = "Mengeja: " + char;
@@ -819,14 +826,8 @@ function fingerspell(w) {
     }, 700);
 }
 
-document.getElementById('btnYT').onclick = () => {
-    document.getElementById('youtubeSection').style.display = "block";
-    document.getElementById('signLanguageSection').style.display = "flex";
-};
-
 window.onload = () => { 
     if(localStorage.getItem('tandaX_logged') === 'true') {
         bukaAplikasi(); 
     }
 };
-
