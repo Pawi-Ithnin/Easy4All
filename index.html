@@ -13,6 +13,12 @@
         .display-area { text-align: center; margin-top: 20px; }
         #signImage { max-width: 80%; border-radius: 15px; border: 2px solid #ddd; }
         #output { font-weight: bold; font-size: 1.8em; color: #2e7d32; margin: 10px 0; }
+        
+        /* Gaya untuk butang Game Free */
+        .game-promo { background: #fff3e0; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px dashed #ff9800; }
+        .btn-game-free { display: inline-block; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 10px; }
+        .divider { margin: 20px 0; border-top: 1px solid #eee; position: relative; }
+        .divider span { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: white; padding: 0 10px; color: #999; font-size: 12px; }
     </style>
 </head>
 <body>
@@ -25,9 +31,17 @@
         <section id="pay-screen">
             <div id="login-box" style="text-align:center; padding: 20px; border: 1px solid #ccc; border-radius: 10px; max-width: 400px; margin: auto;">
                 <h2>Log Masuk Pro</h2>
+
+                <div class="game-promo">
+                    <p>🎮 Cuba versi percuma sekarang!</p>
+                    <a href="https://pawi-ithnin.github.io/test/" target="_blank" class="btn-game-free">GAME FREE</a>
+                </div>
+
+                <div class="divider"><span>ATAU LOG MASUK</span></div>
+
                 <input type="text" id="userInput" class="login-input" placeholder="Username" style="width: 80%; padding: 10px; margin: 5px;">
                 <input type="password" id="passInput" class="login-input" placeholder="Password" style="width: 80%; padding: 10px; margin: 5px;">
-                <button onclick="prosesLogin()" class="btn-main">Masuk Sekarang</button>
+                <button onclick="prosesLogin()" class="btn-main" style="width: 85%; padding: 10px; background: #2e7d32; color: white; border: none; border-radius: 5px; cursor: pointer;">Masuk Sekarang</button>
                 <p>Belum ada akaun? <a href="#" onclick="showRegister()">Daftar</a></p>
             </div>
 
