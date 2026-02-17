@@ -8,41 +8,22 @@
         body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
         header { background: #222; color: white; padding: 10px 0; text-align: center; }
         
-        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
-        .cny-icon { position: fixed; top: -50px; z-index: 9999; pointer-events: none; }
-
+        /* Layout Sebelah-menyebelah */
         .content-wrapper { 
-            display: flex; 
-            flex-direction: row; 
-            justify-content: center; 
-            align-items: flex-start; 
-            gap: 20px; 
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-            flex-wrap: wrap;
+            display: flex; flex-direction: row; justify-content: center; 
+            align-items: flex-start; gap: 20px; padding: 20px; max-width: 1200px; margin: auto; flex-wrap: wrap; 
         }
 
         .video-box { flex: 1.5; min-width: 350px; text-align: center; }
         .sign-box { 
-            flex: 1; 
-            min-width: 300px; 
-            text-align: center; 
-            background: white; 
-            border-radius: 15px; 
-            padding: 20px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            border: 1px solid #ddd;
+            flex: 1; min-width: 300px; text-align: center; background: white; 
+            border-radius: 15px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #ddd; 
         }
 
-        /* Ruang Input Link YouTube */
+        /* RUANG PASTE LINK (DIBETULKAN) */
         #youtubeInputArea { 
-            background: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            border: 2px solid #ff0000;
-            display: none; /* Akan muncul bila tekan butang YouTube */
+            background: #ffffff; padding: 15px; border-radius: 10px; 
+            margin-bottom: 15px; border: 3px solid #ff0000; display: none; 
         }
 
         iframe { width: 100%; height: 400px; border-radius: 10px; border: none; }
@@ -51,7 +32,8 @@
         .control-panel { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
         button { cursor: pointer; border: none; font-weight: bold; padding: 12px; border-radius: 5px; }
 
-        .login-card { background: white; padding: 25px; border-radius: 10px; max-width: 400px; margin: 100px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
+        /* Login & Promo */
+        .login-card { background: white; padding: 25px; border-radius: 10px; max-width: 400px; margin: 50px auto; text-align: center; }
         .game-promo { background: #fff3e0; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px dashed #ff9800; }
         .btn-game-free { display: inline-block; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; }
         .login-input { width: 90%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
@@ -70,14 +52,14 @@
                 </div>
                 <input type="text" id="userInput" class="login-input" placeholder="Username">
                 <input type="password" id="passInput" class="login-input" placeholder="Password">
-                <button onclick="prosesLogin()" style="width: 95%; background: #2e7d32; color: white;">Masuk</button>
+                <button onclick="prosesLogin()" style="width: 95%; background: #2e7d32; color: white;">Masuk Sekarang</button>
             </div>
         </section>
 
         <section id="mainAppSection" style="display:none;">
             <div class="control-panel">
                 <button id="btnYT" style="background:#ff0000; color:white;">📺 YouTube</button>
-                <button id="btnStart" style="background:#4CAF50; color:white;">🎤 Mula</button>
+                <button id="btnStart" style="background:#4CAF50; color:white;">🎤 Mula Suara</button>
                 <button id="btnStop" style="background:#f44336; color:white;">⏹ Henti</button>
                 <button onclick="logKeluar()" style="background:#333; color:white;">🚪 Keluar</button>
             </div>
@@ -85,21 +67,21 @@
             <div class="content-wrapper">
                 <div class="video-box">
                     <div id="youtubeInputArea">
-                        <p style="margin-top:0; font-weight:bold; color:#ff0000;">Tampal Link Video Di Sini:</p>
-                        <input type="text" id="youtubeUrl" class="login-input" style="width:70%; margin:0;" placeholder="https://www.youtube.com/watch?v=...">
-                        <button id="btnLoad" style="background:#007bff; color:white; padding:12px 20px; vertical-align: top;">Muat</button>
+                        <p style="margin: 0 0 10px 0; font-weight: bold; color: #ff0000;">TAMPAL LINK YOUTUBE DI BAWAH:</p>
+                        <input type="text" id="youtubeUrl" class="login-input" style="width: 70%; margin: 0;" placeholder="https://www.youtube.com/watch?v=...">
+                        <button id="btnLoad" style="background: #007bff; color: white; padding: 12px 20px; vertical-align: top;">MUAT</button>
                     </div>
 
                     <div id="player">
                         <div style="height:400px; background:#ddd; display:flex; align-items:center; justify-content:center; border-radius:10px;">
-                            Sila tekan butang YouTube dan tampal link
+                            Tekan butang YouTube (Merah) untuk masukkan link
                         </div>
                     </div>
                 </div>
 
                 <div class="sign-box">
                     <div id="transcriptDisplay">Sebut sesuatu...</div>
-                    <img id="signImage" src="https://via.placeholder.com/400x300?text=Sedia..." alt="Imej Isyarat">
+                    <img id="signImage" src="https://via.placeholder.com/400x300?text=Sedia..." alt="Isyarat">
                     <p id="output"></p>
                 </div>
             </div>
