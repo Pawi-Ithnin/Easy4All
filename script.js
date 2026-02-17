@@ -1,148 +1,21 @@
 /**
- * TANDA X 1.0 - PRO (FINAL ONLINE VERSION)
+ * TANDA X 1.0 - PRO (FULL STABLE VERSION)
  */
 
 // --- 1. CONFIG FIREBASE ---
 const firebaseConfig = {
     databaseURL: "https://tanda-x-pro-default-rtdb.asia-southeast1.firebasedatabase.app/"
 };
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
 const db = firebase.database();
 
 // --- 2. CONFIG TELEGRAM ---
 const TELEGRAM_TOKEN = "8362133596:AAG0FzCOuspjxIrZT6dl2CFAC0pwBanf-yE"; 
 const TELEGRAM_CHAT_ID = "1460830899"; 
 
-// --- 3. LOGIK NAVIGASI ---
-window.showRegister = () => {
-    document.getElementById('login-box').style.display = 'none';
-    document.getElementById('register-box').style.display = 'block';
-};
-
-window.showLogin = () => {
-    document.getElementById('login-box').style.display = 'block';
-    document.getElementById('register-box').style.display = 'none';
-};
-
-// --- 4. LOGIK PENDAFTARAN ---
-window.prosesDaftar = () => {
-    const u = document.getElementById('regUser').value.trim().toLowerCase();
-    const p = document.getElementById('regPass').value.trim();
-    const ph = document.getElementById('regPhone').value.trim();
-    const pkg = document.getElementById('regPackage').value;
-
-    if(!u || !p || !ph) return alert("Sila isi semua maklumat!");
-
-    db.ref('users/' + u).once('value', (snapshot) => {
-        if (snapshot.exists()) {
-            alert("Username ini sudah berdaftar!");
-        } else {
-            db.ref('users/' + u).set({
-                user: u, 
-                pass: p, 
-                phone: ph, 
-                pakej: pkg, 
-                status: "pending"
-            }).then(() => {
-                const mesej = `🔔 *DAFTAR BARU*\n👤 User: ${u}\n🔑 Pass: ${p}\n📞 Phone: ${ph}\n📦 Pakej: ${pkg}`;
-                const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(mesej)}&parse_mode=Markdown`;
-                fetch(url);
-
-                alert("Pendaftaran berjaya! Tunggu admin aktifkan akaun anda.");
-                window.showLogin();
-            });
-        }
-    });
-};
-
-// --- 5. LOGIK LOG MASUK ---
-window.prosesLogin = () => {
-    const u = document.getElementById('userInput').value.trim().toLowerCase();
-    const p = document.getElementById('passInput').value.trim();
-
-    if (u === "admin" && p === "1234") return bukaDashboard();
-
-    db.ref('users/' + u).once('value', (snapshot) => {
-        const userData = snapshot.val();
-        if (userData && userData.pass === p) {
-            if (userData.status === "pending") return alert("Akaun belum aktif. Sila hubungi Admin!");
-            
-            localStorage.setItem('tandaX_logged', 'true');
-            localStorage.setItem('tandaX_user', u);
-            bukaAplikasi();
-        } else {
-            alert("Username atau Password salah!");
-        }
-    });
-};
-
-// --- 6. ADMIN DASHBOARD ---
-function bukaDashboard() {
-    document.getElementById('pay-screen').style.display = 'none';
-    document.getElementById('adminDashboard').style.display = 'block';
-    
-    db.ref('users').on('value', (snapshot) => {
-        const tbody = document.getElementById('userTableBody');
-        tbody.innerHTML = "";
-        snapshot.forEach((child) => {
-            const user = child.val();
-            const waLink = `https://wa.me/${user.phone.replace(/[^0-9]/g, '')}`;
-            tbody.innerHTML += `<tr>
-                <td>${user.user}</td>
-                <td>${user.phone}</td>
-                <td>${user.pakej}</td>
-                <td><strong>${user.status.toUpperCase()}</strong></td>
-                <td>
-                    ${user.status === 'pending' ? `<button onclick="ubahStatus('${user.user}','active')" style="background:green;color:white;border:none;padding:5px;border-radius:3px;cursor:pointer;">Aktif</button>` : ''}
-                    <button onclick="padamUser('${user.user}')" style="background:red;color:white;border:none;padding:5px;border-radius:3px;margin-left:5px;cursor:pointer;">Padam</button>
-                    <a href="${waLink}" target="_blank" style="background:#25D366;color:white;padding:5px;border-radius:3px;text-decoration:none;font-size:12px;margin-left:5px;">WA</a>
-                </td>
-            </tr>`;
-        });
-    });
-}
-
-window.ubahStatus = (username, s) => db.ref('users/' + username).update({ status: s });
-window.padamUser = (username) => { if(confirm("Padam user " + username + "?")) db.ref('users/' + username).remove(); };
-window.logKeluarAdmin = () => { localStorage.clear(); location.reload(); };
-
-// --- 7. APLIKASI UTAMA ---
-function bukaAplikasi() {
-    document.getElementById('pay-screen').style.display = 'none';
-    document.getElementById('mainAppSection').style.display = 'block';
-    document.getElementById('status').innerText = "Akaun: " + localStorage.getItem('tandaX_user');
-}
-
-window.logKeluar = () => { localStorage.clear(); location.reload(); };
-
-// --- 8. YOUTUBE LOGIC (PENYESUAIAN BARU) ---
-document.getElementById('btnYT').onclick = () => {
-    document.getElementById('youtubeSection').style.display = "block";
-};
-
-document.getElementById('btnLoad').onclick = () => {
-    const url = document.getElementById('youtubeUrl').value.trim();
-    // Regex diperkukuh untuk menyokong pelbagai jenis link YouTube
-    const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
-    const match = url.match(regex);
-
-    if (match && match[1]) {
-        const videoId = match[1];
-        const playerDiv = document.getElementById('player');
-        
-        // Menggunakan iframe secara terus untuk kestabilan maksimum
-        playerDiv.innerHTML = `<iframe width="100%" height="360" 
-            src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
-            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen 
-            style="border-radius:10px; border: 2px solid #ddd;"></iframe>`;
-            
-        document.getElementById('status').innerText = "Video Dimuatkan: " + videoId;
-    } else {
-        alert("Pautan YouTube tidak sah!");
-    }
-};
-
-// --- 9. SPEECH RECOGNITION & DICTIONARY ---
+// --- 3. DICTIONARY (IMEJ ISYARAT) ---
 const wordImages = {
     kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
     saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
@@ -785,19 +658,21 @@ tengok: "https://i.ibb.co/2S0LmmK/Lihat-Tengok-40c6f1eb831eb4fa42c4.jpg",
     
 };
 
+// --- 4. GLOBAL VARIABLES ---
+let spellTimer;
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-if (Recognition) {
-    const rec = new Recognition();
-    rec.lang = 'ms-MY'; 
-    rec.continuous = true;
+let rec;
 
-    document.getElementById('btnStart').onclick = () => { rec.start(); document.getElementById('status').innerText = "🎤 Mendengar..."; };
-    document.getElementById('btnStop').onclick = () => { rec.stop(); document.getElementById('status').innerText = "Berhenti."; };
+if (Recognition) {
+    rec = new Recognition();
+    rec.lang = 'ms-MY';
+    rec.continuous = true;
+    rec.interimResults = false;
 
     rec.onresult = (e) => {
-        const t = e.results[e.results.length-1][0].transcript.toLowerCase().trim();
-        const transcriptDiv = document.getElementById('transcriptDisplay');
-        if(transcriptDiv) transcriptDiv.innerText = t;
+        const t = e.results[e.results.length - 1][0].transcript.toLowerCase().trim();
+        const transcriptDisplay = document.getElementById('transcriptDisplay');
+        if(transcriptDisplay) transcriptDisplay.innerText = t;
         
         const words = t.split(" ");
         const lastWord = words[words.length - 1].replace(/[^\w]/g, '');
@@ -809,17 +684,20 @@ if (Recognition) {
             fingerspell(lastWord);
         }
     };
+
+    rec.onerror = (err) => {
+        console.error("Ralat Mic:", err.error);
+        if(err.error === 'not-allowed') alert("Akses Mikrofon Disekat! Sila 'Allow' di bar alamat.");
+    };
 }
 
-let spellTimer;
+// --- 5. FUNGSI UTAMA ---
+
 function fingerspell(w) {
-    clearInterval(spellTimer); // Henti timer lama sebelum mula baru
+    clearInterval(spellTimer);
     let i = 0;
     spellTimer = setInterval(() => {
-        if(i >= w.length) {
-            clearInterval(spellTimer);
-            return;
-        }
+        if (i >= w.length) return clearInterval(spellTimer);
         const char = w[i].toUpperCase();
         document.getElementById('signImage').src = `https://via.placeholder.com/300?text=${char}`;
         document.getElementById('output').innerText = "Mengeja: " + char;
@@ -827,9 +705,141 @@ function fingerspell(w) {
     }, 700);
 }
 
-window.onload = () => { 
-    if(localStorage.getItem('tandaX_logged') === 'true') {
-        bukaAplikasi(); 
-    }
+// --- 6. LOGIK LOGIN & PENDAFTARAN ---
+
+window.prosesLogin = () => {
+    const u = document.getElementById('userInput').value.trim().toLowerCase();
+    const p = document.getElementById('passInput').value.trim();
+    if (u === "admin" && p === "1234") return bukaDashboard();
+
+    db.ref('users/' + u).once('value', (s) => {
+        const d = s.val();
+        if (d && d.pass === p) {
+            if (d.status === "pending") return alert("Akaun Belum Aktif!");
+            localStorage.setItem('tandaX_logged', 'true');
+            localStorage.setItem('tandaX_user', u);
+            bukaAplikasi();
+        } else { alert("User/Pass Salah!"); }
+    });
 };
 
+window.prosesDaftar = () => {
+    const u = document.getElementById('regUser').value.trim().toLowerCase();
+    const p = document.getElementById('regPass').value.trim();
+    const ph = document.getElementById('regPhone').value.trim();
+    const pkg = document.getElementById('regPackage').value;
+
+    if(!u || !p || !ph) return alert("Sila isi semua maklumat!");
+
+    db.ref('users/' + u).set({
+        user: u, pass: p, phone: ph, pakej: pkg, status: "pending"
+    }).then(() => {
+        const mesej = `🔔 *DAFTAR BARU*\n👤 User: ${u}\n🔑 Pass: ${p}\n📞 Phone: ${ph}\n📦 Pakej: ${pkg}`;
+        const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(mesej)}&parse_mode=Markdown`;
+        fetch(url);
+        alert("Pendaftaran berjaya! Tunggu admin aktifkan akaun.");
+        window.showLogin();
+    });
+};
+
+function bukaAplikasi() {
+    document.getElementById('pay-screen').style.display = 'none';
+    document.getElementById('mainAppSection').style.display = 'block';
+    document.getElementById('status').innerText = "Akaun Aktif: " + localStorage.getItem('tandaX_user');
+}
+
+function bukaDashboard() {
+    document.getElementById('pay-screen').style.display = 'none';
+    document.getElementById('adminDashboard').style.display = 'block';
+    db.ref('users').on('value', (snapshot) => {
+        const tbody = document.getElementById('userTableBody');
+        tbody.innerHTML = "";
+        snapshot.forEach((child) => {
+            const user = child.val();
+            tbody.innerHTML += `<tr>
+                <td>${user.user}</td>
+                <td>${user.phone}</td>
+                <td>${user.pakej}</td>
+                <td><strong>${user.status.toUpperCase()}</strong></td>
+                <td>
+                    <button onclick="ubahStatus('${user.user}','active')">Aktif</button>
+                    <button onclick="padamUser('${user.user}')">Padam</button>
+                </td>
+            </tr>`;
+        });
+    });
+}
+
+window.ubahStatus = (username, s) => db.ref('users/' + username).update({ status: s });
+window.padamUser = (username) => { if(confirm("Padam user?")) db.ref('users/' + username).remove(); };
+
+// --- 7. EVENT LISTENERS (LOGIK BUTANG) ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Semak status login
+    if(localStorage.getItem('tandaX_logged') === 'true') bukaAplikasi();
+
+    const statusDiv = document.getElementById('status');
+
+    // Butang Mula Suara (DENGAN NOTA)
+    const btnStart = document.getElementById('btnStart');
+    if (btnStart) {
+        btnStart.onclick = () => {
+            if (rec) {
+                try {
+                    rec.start();
+                    statusDiv.innerText = "Nota: Suara Mula... (Sila bercakap)";
+                    statusDiv.style.color = "#4CAF50";
+                    statusDiv.style.fontWeight = "bold";
+                } catch (e) { console.log("Mic sedia aktif"); }
+            } else { alert("Browser tidak menyokong fungsi suara!"); }
+        };
+    }
+
+    // Butang Stop Suara (DENGAN NOTA)
+    const btnStop = document.getElementById('btnStop');
+    if (btnStop) {
+        btnStop.onclick = () => {
+            if (rec) {
+                rec.stop();
+                statusDiv.innerText = "Nota: Berhenti.";
+                statusDiv.style.color = "#f44336";
+                statusDiv.style.fontWeight = "bold";
+            }
+        };
+    }
+
+    // Butang Mod YouTube
+    const btnYT = document.getElementById('btnYT');
+    if (btnYT) {
+        btnYT.onclick = () => {
+            document.getElementById('youtubeSection').style.display = "block";
+        };
+    }
+
+    // Load Video YouTube (FIXED REGEX)
+    const btnLoad = document.getElementById('btnLoad');
+    if (btnLoad) {
+        btnLoad.onclick = () => {
+            const url = document.getElementById('youtubeUrl').value.trim();
+            // Regex diperkukuh untuk menyokong youtu.be/ID?si=...
+            const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+            const match = url.match(regex);
+
+            if (match && match[1]) {
+                const videoId = match[1];
+                document.getElementById('player').innerHTML = `<iframe width="100%" height="360" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="border-radius:10px;"></iframe>`;
+                statusDiv.innerText = "Nota: Video Berjaya Dimuatkan";
+                statusDiv.style.color = "#007bff";
+            } else {
+                alert("Pautan YouTube tidak sah!");
+            }
+        };
+    }
+});
+
+// Fungsi Navigasi & Keluar
+window.showRegister = () => { document.getElementById('login-box').style.display = 'none'; document.getElementById('register-box').style.display = 'block'; };
+window.showLogin = () => { document.getElementById('login-box').style.display = 'block'; document.getElementById('register-box').style.display = 'none'; };
+window.logKeluar = () => { localStorage.clear(); location.reload(); };
+window.logKeluarAdmin = () => { location.reload(); };
