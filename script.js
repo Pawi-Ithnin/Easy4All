@@ -1,11 +1,8 @@
-// 1. FIREBASE CONFIG
-const firebaseConfig = { 
-    databaseURL: "https://tanda-x-pro-default-rtdb.asia-southeast1.firebasedatabase.app/" 
-};
+// CONFIG FIREBASE
+const firebaseConfig = { databaseURL: "https://tanda-x-pro-default-rtdb.asia-southeast1.firebasedatabase.app/" };
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// 2. KAMUS GAMBAR (WORD TO IMAGE) - Terus keluar gambar, bukan mengeja
 const wordImages = {
     kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
     saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
@@ -773,3 +770,4 @@ setInterval(() => {
     document.body.appendChild(icon);
     setTimeout(() => icon.remove(), 5000);
 }, 1000);
+
