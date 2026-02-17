@@ -643,110 +643,44 @@ cermin: "https://i.ibb.co/9mLsWhVW/Cermin-a011bddc13e2a2f09897.jpg",
 gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
 tengok: "https://i.ibb.co/2S0LmmK/Lihat-Tengok-40c6f1eb831eb4fa42c4.jpg",
 };
+};
 
-// 3. SPEECH RECOGNITION LOGIC
-const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-let rec;
-
-if (Recognition) {
-    rec = new Recognition();
-    rec.lang = 'ms-MY';
-    rec.continuous = true;
-    rec.interimResults = false;
-
-    rec.onresult = (e) => {
-        const t = e.results[e.results.length - 1][0].transcript.toLowerCase().trim();
-        document.getElementById('transcriptDisplay').innerText = `"${t}"`;
-        
-        const words = t.split(" ");
-        let found = false;
-
-        // Mencari perkataan dalam kamus (mula dari perkataan terakhir disebut)
-        for (let i = words.length - 1; i >= 0; i--) {
-            let cleanWord = words[i].replace(/[^\w]/g, '');
-            if (wordImages[cleanWord]) {
-                document.getElementById('signImage').src = wordImages[cleanWord];
-                document.getElementById('output').innerText = cleanWord.toUpperCase();
-                found = true;
-                break; 
-            }
-        }
-
-        if (!found) {
-            document.getElementById('output').innerText = "Tiada Padanan";
-            document.getElementById('signImage').src = "https://via.placeholder.com/400x300?text=Tiada+Isyarat";
-        }
-    };
-}
-
-// 4. UI EVENT LISTENERS (YOUTUBE & BUTTONS)
-document.addEventListener('DOMContentLoaded', () => {
-    // Check status login
-    if(localStorage.getItem('tandaX_logged') === 'true') bukaAplikasi();
-
-    // Tampilkan/Sembunyikan Ruang Paste Link YouTube
-    const btnYT = document.getElementById('btnYT');
-    const inputArea = document.getElementById('youtubeInputArea');
-    
-    btnYT.onclick = () => {
-        if (inputArea.style.display === "none" || inputArea.style.display === "") {
-            inputArea.style.display = "block";
-        } else {
-            inputArea.style.display = "none";
-        }
-    };
-
-    // Fungsi Load Video YouTube
-    document.getElementById('btnLoad').onclick = () => {
-        const url = document.getElementById('youtubeUrl').value.trim();
-        const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
-        const match = url.match(regex);
-        
-        if (match && match[1]) {
-            document.getElementById('player').innerHTML = 
-                `<iframe src="https://www.youtube.com/embed/${match[1]}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
-            inputArea.style.display = "none"; // Sembunyi kotak link selepas muat video
-        } else {
-            alert("Link YouTube tidak sah! Pastikan link penuh dipaste.");
-        }
-    };
-
-    // Button Mula Suara
-    document.getElementById('btnStart').onclick = () => {
-        if (rec) {
-            rec.start();
-            document.getElementById('status').innerText = "Nota: Suara Mula... (Sila bercakap)";
-            document.getElementById('status').style.color = "green";
-        }
-    };
-
-    // Button Henti Suara
-    document.getElementById('btnStop').onclick = () => {
-        if (rec) {
-            rec.stop();
-            document.getElementById('status').innerText = "Nota: Berhenti.";
-            document.getElementById('status').style.color = "red";
-        }
-    };
-});
-
-// 5. AUTH & NAVIGATION
+// LOGIN & ADMIN LOGIC
 window.prosesLogin = () => {
     const u = document.getElementById('userInput').value.trim().toLowerCase();
     const p = document.getElementById('passInput').value.trim();
     
     if (u === "admin" && p === "1234") {
-        localStorage.setItem('tandaX_logged', 'true');
-        bukaAplikasi();
+        bukaAdmin();
     } else {
         db.ref('users/' + u).once('value', (s) => {
             const d = s.val();
             if (d && d.pass === p) {
-                localStorage.setItem('tandaX_logged', 'true');
-                bukaAplikasi();
-            } else { alert("Gagal Masuk! Sila semak Username/Password."); }
+                if (d.status === "active") { bukaAplikasi(); }
+                else { alert("Tunggu kelulusan admin."); }
+            } else { alert("Gagal!"); }
         });
     }
+};
+
+function bukaAdmin() {
+    document.getElementById('pay-screen').style.display = 'none';
+    document.getElementById('adminSection').style.display = 'block';
+    db.ref('users').on('value', (snapshot) => {
+        const users = snapshot.val();
+        let html = '<table><tr><th>User</th><th>Aksi</th></tr>';
+        for (let id in users) {
+            if (users[id].status === "pending") {
+                html += `<tr><td>${id}</td><td><button onclick="approveUser('${id}')" style="background:green;color:white;padding:5px;">LULUS</button></td></tr>`;
+            }
+        }
+        html += '</table>';
+        document.getElementById('userList').innerHTML = html;
+    });
+}
+
+window.approveUser = (id) => {
+    db.ref('users/' + id).update({ status: "active" }).then(() => alert(id + " diaktifkan!"));
 };
 
 function bukaAplikasi() {
@@ -754,20 +688,58 @@ function bukaAplikasi() {
     document.getElementById('mainAppSection').style.display = 'block';
 }
 
-window.logKeluar = () => {
-    localStorage.clear();
-    location.reload();
+window.logKeluar = () => location.reload();
+
+// MOD YOUTUBE TOGGLE (PAPARAN PENUH)
+document.getElementById('btnYT').onclick = () => {
+    const ytSection = document.getElementById('youtubeSection');
+    // Jika sembunyi, tunjuk. Jika tunjuk, sembunyi.
+    if (ytSection.style.display === "none" || ytSection.style.display === "") {
+        ytSection.style.display = "block";
+    } else {
+        ytSection.style.display = "none";
+    }
 };
 
-// 6. ANIMASI CNY (HIASAN)
+document.getElementById('btnLoad').onclick = () => {
+    const url = document.getElementById('youtubeUrl').value;
+    const match = url.match(/(?:v=|youtu\.be\/)([^"&?\/\s]{11})/);
+    if (match) {
+        document.getElementById('player').innerHTML = `<iframe src="https://www.youtube.com/embed/${match[1]}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
+    } else {
+        alert("Link tidak sah!");
+    }
+};
+
+// SPEECH RECOGNITION (TIADA MENGEJA)
+const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (Recognition) {
+    const rec = new Recognition();
+    rec.lang = 'ms-MY';
+    rec.continuous = true;
+    rec.onresult = (e) => {
+        const t = e.results[e.results.length - 1][0].transcript.toLowerCase().trim();
+        document.getElementById('transcriptDisplay').innerText = `"${t}"`;
+        const words = t.split(" ");
+        for (let i = words.length - 1; i >= 0; i--) {
+            if (wordImages[words[i]]) {
+                document.getElementById('signImage').src = wordImages[words[i]];
+                document.getElementById('output').innerText = words[i].toUpperCase();
+                break;
+            }
+        }
+    };
+    document.getElementById('btnStart').onclick = () => rec.start();
+    document.getElementById('btnStop').onclick = () => rec.stop();
+}
+
+// CNY ANIMATION
 setInterval(() => {
-    const icons = ['🍊', '🧧', '🏮'];
     const icon = document.createElement('div');
     icon.className = 'cny-icon';
-    icon.innerText = icons[Math.floor(Math.random() * icons.length)];
+    icon.innerText = ['🍊', '🧧', '🏮'][Math.floor(Math.random()*3)];
     icon.style.left = Math.random() * 100 + "vw";
-    icon.style.animation = `fall ${Math.random() * 3 + 4}s linear forwards`;
+    icon.style.animation = `fall ${Math.random()*3 + 4}s linear forwards`;
     document.body.appendChild(icon);
     setTimeout(() => icon.remove(), 5000);
 }, 1000);
-
