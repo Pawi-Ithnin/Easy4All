@@ -642,7 +642,6 @@ cermin: "https://i.ibb.co/9mLsWhVW/Cermin-a011bddc13e2a2f09897.jpg",
 gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
 tengok: "https://i.ibb.co/2S0LmmK/Lihat-Tengok-40c6f1eb831eb4fa42c4.jpg",
 };
-};
 
 // --- FUNGSI LOG KELUAR (FIXED) ---
 window.logKeluar = () => {
@@ -767,3 +766,4 @@ setInterval(() => {
     document.body.appendChild(icon);
     setTimeout(() => icon.remove(), 5000);
 }, 1000);
+
