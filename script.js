@@ -1,4 +1,4 @@
-// CONFIG FIREBASE
+// --- CONFIG FIREBASE ASAL ---
 const firebaseConfig = { databaseURL: "https://tanda-x-pro-default-rtdb.asia-southeast1.firebasedatabase.app/" };
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
@@ -642,8 +642,41 @@ cermin: "https://i.ibb.co/9mLsWhVW/Cermin-a011bddc13e2a2f09897.jpg",
 gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
 tengok: "https://i.ibb.co/2S0LmmK/Lihat-Tengok-40c6f1eb831eb4fa42c4.jpg",
 };
+};
 
-// LOGIN & ADMIN LOGIC
+// --- FUNGSI LOG KELUAR (FIXED) ---
+window.logKeluar = () => {
+    window.location.reload(); 
+};
+
+// --- NAVIGASI SKRIN ---
+window.tukarKeDaftar = () => {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('register-screen').style.display = 'block';
+};
+window.tukarKeLogin = () => {
+    document.getElementById('login-screen').style.display = 'block';
+    document.getElementById('register-screen').style.display = 'none';
+};
+
+// --- DAFTAR AKAUN ---
+window.prosesRegister = () => {
+    const name = document.getElementById('regName').value.trim();
+    const user = document.getElementById('regUser').value.trim().toLowerCase();
+    const pass = document.getElementById('regPass').value.trim();
+    const phone = document.getElementById('regPhone').value.trim();
+
+    if(!name || !user || !pass || !phone) return alert("Sila isi semua ruangan!");
+
+    db.ref('users/' + user).set({
+        nama: name, pass: pass, telefon: phone, status: "pending"
+    }).then(() => {
+        alert("Pendaftaran Berjaya! Tunggu admin aktifkan akaun.");
+        tukarKeLogin();
+    });
+};
+
+// --- LOG MASUK ---
 window.prosesLogin = () => {
     const u = document.getElementById('userInput').value.trim().toLowerCase();
     const p = document.getElementById('passInput').value.trim();
@@ -655,66 +688,58 @@ window.prosesLogin = () => {
             const d = s.val();
             if (d && d.pass === p) {
                 if (d.status === "active") { bukaAplikasi(); }
-                else { alert("Tunggu kelulusan admin."); }
-            } else { alert("Gagal!"); }
+                else { alert("Akaun belum aktif. Hubungi admin."); }
+            } else { alert("Username/Password Salah!"); }
         });
     }
 };
 
+// --- DASHBOARD ADMIN (AKTIF & DEAKTIF) ---
 function bukaAdmin() {
-    document.getElementById('pay-screen').style.display = 'none';
+    document.getElementById('login-screen').style.display = 'none';
     document.getElementById('adminSection').style.display = 'block';
+    
     db.ref('users').on('value', (snapshot) => {
         const users = snapshot.val();
-        let html = '<table><tr><th>User</th><th>Aksi</th></tr>';
+        let pT = '<table><tr><th>Nama</th><th>User</th><th>Tel</th><th>Aksi</th></tr>';
+        let aT = '<table><tr><th>Nama</th><th>User</th><th>Tel</th><th>Aksi</th></tr>';
+        
         for (let id in users) {
+            let row = `<tr><td>${users[id].nama || '-'}</td><td>${id}</td><td>${users[id].telefon || '-'}</td>`;
             if (users[id].status === "pending") {
-                html += `<tr><td>${id}</td><td><button onclick="approveUser('${id}')" style="background:green;color:white;padding:5px;">LULUS</button></td></tr>`;
+                pT += row + `<td><button class="btn-approve" onclick="approveUser('${id}')">AKTIF</button></td></tr>`;
+            } else if (users[id].status === "active") {
+                aT += row + `<td><button class="btn-deactivate" onclick="deactivateUser('${id}')">OFF</button></td></tr>`;
             }
         }
-        html += '</table>';
-        document.getElementById('userList').innerHTML = html;
+        document.getElementById('pendingList').innerHTML = pT + '</table>';
+        document.getElementById('activeList').innerHTML = aT + '</table>';
     });
 }
 
-window.approveUser = (id) => {
-    db.ref('users/' + id).update({ status: "active" }).then(() => alert(id + " diaktifkan!"));
-};
+window.approveUser = (id) => db.ref('users/' + id).update({ status: "active" });
+window.deactivateUser = (id) => db.ref('users/' + id).update({ status: "pending" });
 
 function bukaAplikasi() {
-    document.getElementById('pay-screen').style.display = 'none';
+    document.getElementById('login-screen').style.display = 'none';
     document.getElementById('mainAppSection').style.display = 'block';
 }
 
-window.logKeluar = () => location.reload();
-
-// MOD YOUTUBE TOGGLE (PAPARAN PENUH)
+// --- FUNGSI ASAL: YOUTUBE MOD ---
 document.getElementById('btnYT').onclick = () => {
-    const ytSection = document.getElementById('youtubeSection');
-    // Jika sembunyi, tunjuk. Jika tunjuk, sembunyi.
-    if (ytSection.style.display === "none" || ytSection.style.display === "") {
-        ytSection.style.display = "block";
-    } else {
-        ytSection.style.display = "none";
-    }
+    const yt = document.getElementById('youtubeSection');
+    yt.style.display = (yt.style.display === "none") ? "block" : "none";
 };
-
 document.getElementById('btnLoad').onclick = () => {
     const url = document.getElementById('youtubeUrl').value;
     const match = url.match(/(?:v=|youtu\.be\/)([^"&?\/\s]{11})/);
-    if (match) {
-        document.getElementById('player').innerHTML = `<iframe src="https://www.youtube.com/embed/${match[1]}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
-    } else {
-        alert("Link tidak sah!");
-    }
+    if (match) document.getElementById('player').innerHTML = `<iframe src="https://www.youtube.com/embed/${match[1]}?autoplay=1" frameborder="0"></iframe>`;
 };
 
-// SPEECH RECOGNITION (TIADA MENGEJA)
+// --- FUNGSI ASAL: SPEECH RECOGNITION ---
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 if (Recognition) {
-    const rec = new Recognition();
-    rec.lang = 'ms-MY';
-    rec.continuous = true;
+    const rec = new Recognition(); rec.lang = 'ms-MY'; rec.continuous = true;
     rec.onresult = (e) => {
         const t = e.results[e.results.length - 1][0].transcript.toLowerCase().trim();
         document.getElementById('transcriptDisplay').innerText = `"${t}"`;
@@ -731,14 +756,14 @@ if (Recognition) {
     document.getElementById('btnStop').onclick = () => rec.stop();
 }
 
-// CNY ANIMATION
+// --- FUNGSI ASAL: ANIMASI CNY ---
 setInterval(() => {
     const icon = document.createElement('div');
     icon.className = 'cny-icon';
     icon.innerText = ['🍊', '🧧', '🏮'][Math.floor(Math.random()*3)];
     icon.style.left = Math.random() * 100 + "vw";
+    icon.style.position = 'fixed'; icon.style.top = '-50px';
     icon.style.animation = `fall ${Math.random()*3 + 4}s linear forwards`;
     document.body.appendChild(icon);
     setTimeout(() => icon.remove(), 5000);
 }, 1000);
-
