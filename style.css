@@ -1,11 +1,11 @@
-/* --- GLOBAL STYLES --- */
+/* --- MODERN RAMADHAN THEME --- */
 :root {
-    --primary: #6c5ce7;
-    --primary-light: #a29bfe;
-    --success: #00b894;
-    --danger: #d63031;
-    --dark-bg: #1a1a2e;
-    --card-bg: #16213e;
+    --gold: #D4AF37;
+    --gold-light: #F1D279;
+    --emerald: #064E3B;
+    --dark-green: #022C22;
+    --success: #10B981;
+    --danger: #ef4444;
     --text-light: #f9f9f9;
     --yt-red: #ff0000;
 }
@@ -17,54 +17,93 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--dark-bg);
+    background-color: var(--dark-green);
     color: var(--text-light);
     margin: 0;
     overflow-x: hidden;
 }
 
 /* --- HEADER --- */
-header {
-    background: linear-gradient(135deg, var(--primary), #4834d4);
-    padding: 20px;
+header.ramadhan-header {
+    background: linear-gradient(135deg, var(--dark-green) 0%, var(--emerald) 100%);
+    padding: 35px 20px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 3px solid var(--gold);
+    overflow: hidden;
+}
+
+.header-pattern {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0.08;
+    background-image: url('https://www.transparenttextures.com/patterns/islamic-art.png');
+    pointer-events: none;
+}
+
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    z-index: 2;
 }
 
 header h1 {
     margin: 0;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+header h1 .highlight {
+    color: var(--gold);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+.edition-text {
+    color: var(--gold-light);
+    margin-top: 5px;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.decor-icon {
     font-size: 1.5rem;
-    letter-spacing: 1px;
+    animation: glow 2s infinite alternate;
 }
 
 /* --- AUTH SCREENS --- */
 .auth-container {
     max-width: 450px;
     margin: 40px auto;
-    background: var(--card-bg);
+    background: #065F46; /* Warna emerald card */
     padding: 30px;
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .game-promo {
-    background: rgba(108, 92, 231, 0.2);
+    background: rgba(212, 175, 55, 0.1);
     padding: 15px;
     border-radius: 12px;
     margin-bottom: 20px;
-    border: 1px dashed var(--primary-light);
+    border: 1px dashed var(--gold);
 }
 
 .btn-game-free {
     display: inline-block;
     padding: 8px 20px;
-    background: var(--primary);
-    color: white;
+    background: var(--gold);
+    color: var(--dark-green);
     text-decoration: none;
     border-radius: 25px;
     font-weight: bold;
@@ -76,8 +115,8 @@ header h1 {
     padding: 14px;
     margin: 10px 0;
     border-radius: 10px;
-    border: 1px solid #333;
-    background: #0f3460;
+    border: 1px solid var(--dark-green);
+    background: #022C22;
     color: white;
     font-size: 1rem;
 }
@@ -87,34 +126,23 @@ header h1 {
     padding: 14px;
     border: none;
     border-radius: 10px;
-    background: var(--primary);
-    color: white;
+    background: linear-gradient(to right, var(--gold), #B8860B);
+    color: var(--dark-green);
     font-weight: 700;
     cursor: pointer;
     margin-top: 15px;
     font-size: 1rem;
     text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .btn-main:hover {
-    background: var(--primary-light);
     transform: translateY(-2px);
+    background: var(--gold-light);
 }
 
-.btn-green { background: var(--success); }
-.btn-dark { background: #000; }
-
-.switch-auth {
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: #bbb;
-}
-
-.switch-auth span {
-    color: var(--primary-light);
-    cursor: pointer;
-    text-decoration: underline;
-}
+.btn-green { background: var(--success); color: white; }
+.btn-dark { background: #000; color: white; }
 
 /* --- PRICING BOX --- */
 .pricing-box {
@@ -125,32 +153,32 @@ header h1 {
 
 .price-item {
     flex: 1;
-    background: #0f3460;
+    background: #022C22;
     padding: 10px;
     border-radius: 10px;
-    border: 1px solid #333;
+    border: 1px solid #064E3B;
 }
 
 .price-item.premium {
-    border: 2px solid var(--primary);
-    background: rgba(108, 92, 231, 0.1);
+    border: 2px solid var(--gold);
+    background: rgba(212, 175, 55, 0.05);
 }
 
 .price-val {
     font-size: 1.2rem;
     font-weight: bold;
-    color: var(--primary-light);
+    color: var(--gold-light);
 }
 
 /* --- CONTROL PANEL --- */
 .control-panel {
-    background: #0f3460;
+    background: #064E3B;
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
     align-items: center;
-    border-bottom: 2px solid #16213e;
+    border-bottom: 3px solid var(--gold);
 }
 
 .panel-top {
@@ -172,9 +200,9 @@ header h1 {
 }
 
 .btn-dark-small {
-    background: #333;
-    color: white;
-    border: none;
+    background: #022C22;
+    color: var(--gold);
+    border: 1px solid var(--gold);
     padding: 8px 15px;
     border-radius: 8px;
     cursor: pointer;
@@ -193,7 +221,7 @@ header h1 {
     border-radius: 30px;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 184, 148, 0.3);
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
 }
 
 .btn-stop {
@@ -208,95 +236,77 @@ header h1 {
 
 /* --- STATUS INDICATOR --- */
 .status-box {
-    background: #1a1a2e;
+    background: #022C22;
     padding: 8px 18px;
     border-radius: 25px;
     display: flex;
     align-items: center;
-    border: 1px solid #444;
-    color: #888;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
     font-size: 0.85rem;
     font-weight: bold;
 }
 
-.status-box.active {
-    color: var(--success);
-    border-color: var(--success);
-    box-shadow: 0 0 10px rgba(0, 184, 148, 0.2);
-}
-
 .dot {
-    height: 10px;
-    width: 10px;
-    background-color: currentColor;
+    height: 10px; width: 10px;
+    background-color: var(--gold);
     border-radius: 50%;
     margin-right: 10px;
 }
 
 .status-box.active .dot {
+    background-color: var(--success);
     animation: pulse 1s infinite;
 }
 
-/* --- CONTENT LAYOUT (SIDE BY SIDE - UPDATED) --- */
+/* --- CONTENT LAYOUT --- */
 .content-layout {
     display: flex;
     flex-wrap: wrap;
     padding: 25px;
     gap: 25px;
     justify-content: center;
-    align-items: flex-start; /* Pastikan bermula dari atas */
+    align-items: flex-start;
 }
 
 .video-container, .sign-box {
     flex: 1;
     min-width: 350px;
-    max-width: 550px; /* Lebar maksimum dikecilkan sedikit untuk keseimbangan */
-    min-height: 480px; /* Kekalkan tinggi minimum supaya kotak sama size */
-    background: var(--card-bg);
+    max-width: 550px;
+    min-height: 480px;
+    background: #065F46;
     padding: 25px;
     border-radius: 20px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid rgba(212, 175, 55, 0.1);
     display: flex;
     flex-direction: column;
-}
-
-.yt-header {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
 }
 
 .yt-header input {
     flex: 1;
     padding: 10px;
     border-radius: 8px;
-    border: 1px solid #333;
-    background: #0f3460;
+    border: 1px solid #022C22;
+    background: #022C22;
     color: white;
 }
 
 .yt-header button {
-    background: var(--primary);
-    color: white;
+    background: var(--gold);
+    color: var(--dark-green);
     border: none;
     padding: 0 20px;
     border-radius: 8px;
     cursor: pointer;
-}
-
-/* Player YouTube Size Adjustment */
-#player {
-    width: 100%;
-    margin-top: auto;
-    margin-bottom: auto;
+    font-weight: bold;
 }
 
 #player iframe {
     width: 100%;
     aspect-ratio: 16 / 9;
     border-radius: 10px;
-    border: none;
+    border: 2px solid var(--gold);
 }
 
 .transcript-area {
@@ -304,54 +314,32 @@ header h1 {
     padding: 12px;
     border-radius: 10px;
     margin-bottom: 15px;
-    border-left: 4px solid var(--primary);
+    border-left: 4px solid var(--gold);
 }
 
 #transcriptDisplay {
     font-style: italic;
-    color: var(--primary-light);
-    font-size: 1rem;
+    color: var(--gold-light);
     margin-top: 5px;
 }
 
-/* --- SIGN LANGUAGE IMAGE (SCALED DOWN) --- */
-.image-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1; /* Ambil ruang tengah */
-}
-
 .image-wrapper img {
-    max-width: 100%; /* Elak melimpah kotak */
-    max-height: 280px; /* HADKAN TINGGI GAMBAR */
-    height: auto;
-    width: auto;
+    max-width: 100%;
+    max-height: 280px;
     border-radius: 15px;
-    border: 3px solid #1a1a2e;
+    border: 3px solid var(--gold);
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    object-fit: contain; /* Kekalkan ratio gambar */
 }
 
 #output {
     text-align: center;
     font-size: 1.3rem;
     font-weight: bold;
-    color: var(--success);
+    color: var(--gold);
     margin-top: 15px;
-    text-shadow: 0 0 10px rgba(0, 184, 148, 0.4);
 }
 
-/* --- ADMIN TABLES --- */
-.admin-lists h3 { margin-top: 25px; font-size: 1rem; color: var(--primary-light); }
-table { width: 100%; border-collapse: collapse; margin-top: 10px; background: #0f3460; border-radius: 10px; overflow: hidden; }
-th, td { padding: 12px; border: 1px solid #16213e; text-align: left; font-size: 0.85rem; }
-th { background: #1a1a2e; color: var(--primary-light); }
-.btn-approve { background: var(--success); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
-.btn-deactivate { background: var(--danger); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
-
-/* --- WHATSAPP FLOATING BUTTON --- */
+/* --- WHATSAPP --- */
 .whatsapp-float {
     position: fixed;
     bottom: 25px;
@@ -360,52 +348,28 @@ th { background: #1a1a2e; color: var(--primary-light); }
     height: 60px;
     background-color: #25d366;
     border-radius: 50%;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    z-index: 10000;
-    transition: all 0.3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    z-index: 10000;
+    border: 2px solid white;
 }
-
-.whatsapp-float img { width: 32px; height: 32px; }
-.whatsapp-float:hover { transform: scale(1.1) rotate(10deg); background-color: #1ebd59; }
-
-.wa-tooltip {
-    position: absolute;
-    right: 75px;
-    background: white;
-    color: #333;
-    padding: 6px 15px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: bold;
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-.whatsapp-float:hover .wa-tooltip { opacity: 1; }
 
 /* --- ANIMATIONS --- */
-@keyframes fall {
-    to { transform: translateY(105vh) rotate(360deg); }
+@keyframes glow {
+    from { opacity: 0.6; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.1); }
 }
 
 @keyframes pulse {
-    0% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.2); }
-    100% { opacity: 1; transform: scale(1); }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    .content-layout { flex-direction: column; align-items: center; padding: 15px; }
-    .video-container, .sign-box { min-width: 100%; min-height: auto; }
-    .image-wrapper img { max-height: 220px; } /* Kecilkan lagi untuk mobile */
-    .wa-tooltip { display: none; }
-    .panel-top { flex-direction: row; font-size: 0.8rem; }
+    .content-layout { flex-direction: column; align-items: center; }
+    .video-container, .sign-box { min-width: 100%; }
 }
