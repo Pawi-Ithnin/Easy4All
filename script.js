@@ -1,9 +1,16 @@
 // --- CONFIG FIREBASE ASAL ---
-const firebaseConfig = { databaseURL: "https://tanda-x-pro-default-rtdb.asia-southeast1.firebasedatabase.app/" };
-if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+const firebaseConfig = { 
+    databaseURL: "https://tanda-x-pro-default-rtdb.asia-southeast1.firebasedatabase.app/" 
+};
+
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
 const db = firebase.database();
+
+// Database Isyarat (Tambah mengikut keperluan)
 const wordImages = {
-    kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
+  kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
     saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
     makan: "https://i.ibb.co/pd6WB8L/Makan-Makanan-358171f7a0d456b53998.jpg",
     mandi: "https://i.ibb.co/RT8bLtZ/Mandi-36a248a7c1e9603e8ad9.jpg",
@@ -642,23 +649,24 @@ cermin: "https://i.ibb.co/9mLsWhVW/Cermin-a011bddc13e2a2f09897.jpg",
 gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
 tengok: "https://i.ibb.co/2S0LmmK/Lihat-Tengok-40c6f1eb831eb4fa42c4.jpg",
 };
-
-// --- FUNGSI LOG KELUAR (FIXED) ---
+// --- FUNGSI NAVIGASI & LOG KELUAR ---
 window.logKeluar = () => {
-    window.location.reload(); 
+    if(confirm("Adakah anda pasti ingin log keluar?")) {
+        window.location.reload(); 
+    }
 };
 
-// --- NAVIGASI SKRIN ---
 window.tukarKeDaftar = () => {
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('register-screen').style.display = 'block';
 };
+
 window.tukarKeLogin = () => {
     document.getElementById('login-screen').style.display = 'block';
     document.getElementById('register-screen').style.display = 'none';
 };
 
-// --- DAFTAR AKAUN ---
+// --- PROSES DAFTAR ---
 window.prosesRegister = () => {
     const name = document.getElementById('regName').value.trim();
     const user = document.getElementById('regUser').value.trim().toLowerCase();
@@ -667,33 +675,50 @@ window.prosesRegister = () => {
 
     if(!name || !user || !pass || !phone) return alert("Sila isi semua ruangan!");
 
-    db.ref('users/' + user).set({
-        nama: name, pass: pass, telefon: phone, status: "pending"
-    }).then(() => {
-        alert("Pendaftaran Berjaya! Tunggu admin aktifkan akaun.");
-        tukarKeLogin();
+    // Check jika user sudah wujud sebelum daftar
+    db.ref('users/' + user).once('value', (snapshot) => {
+        if (snapshot.exists()) {
+            alert("Username sudah digunakan. Sila pilih yang lain.");
+        } else {
+            db.ref('users/' + user).set({
+                nama: name, 
+                pass: pass, 
+                telefon: phone, 
+                status: "pending"
+            }).then(() => {
+                alert("Pendaftaran Berjaya! Sila tunggu admin aktifkan akaun anda.");
+                tukarKeLogin();
+            });
+        }
     });
 };
 
-// --- LOG MASUK ---
+// --- PROSES LOG MASUK ---
 window.prosesLogin = () => {
     const u = document.getElementById('userInput').value.trim().toLowerCase();
     const p = document.getElementById('passInput').value.trim();
     
+    if (!u || !p) return alert("Sila masukkan Username & Password");
+
     if (u === "admin" && p === "1234") {
         bukaAdmin();
     } else {
         db.ref('users/' + u).once('value', (s) => {
             const d = s.val();
             if (d && d.pass === p) {
-                if (d.status === "active") { bukaAplikasi(); }
-                else { alert("Akaun belum aktif. Hubungi admin."); }
-            } else { alert("Username/Password Salah!"); }
+                if (d.status === "active") { 
+                    bukaAplikasi(); 
+                } else { 
+                    alert("Akaun anda masih 'Pending'. Sila hubungi Admin."); 
+                }
+            } else { 
+                alert("Username atau Password Salah!"); 
+            }
         });
     }
 };
 
-// --- DASHBOARD ADMIN (AKTIF & DEAKTIF) ---
+// --- PANEL ADMIN ---
 function bukaAdmin() {
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('adminSection').style.display = 'block';
@@ -703,16 +728,22 @@ function bukaAdmin() {
         let pT = '<table><tr><th>Nama</th><th>User</th><th>Tel</th><th>Aksi</th></tr>';
         let aT = '<table><tr><th>Nama</th><th>User</th><th>Tel</th><th>Aksi</th></tr>';
         
+        let hasPending = false;
+        let hasActive = false;
+
         for (let id in users) {
             let row = `<tr><td>${users[id].nama || '-'}</td><td>${id}</td><td>${users[id].telefon || '-'}</td>`;
             if (users[id].status === "pending") {
-                pT += row + `<td><button class="btn-approve" onclick="approveUser('${id}')">AKTIF</button></td></tr>`;
+                pT += row + `<td><button class="btn-approve" onclick="approveUser('${id}')">AKTIFKAN</button></td></tr>`;
+                hasPending = true;
             } else if (users[id].status === "active") {
                 aT += row + `<td><button class="btn-deactivate" onclick="deactivateUser('${id}')">OFF</button></td></tr>`;
+                hasActive = true;
             }
         }
-        document.getElementById('pendingList').innerHTML = pT + '</table>';
-        document.getElementById('activeList').innerHTML = aT + '</table>';
+        
+        document.getElementById('pendingList').innerHTML = hasPending ? pT + '</table>' : '<p>Tiada permohonan baru.</p>';
+        document.getElementById('activeList').innerHTML = hasActive ? aT + '</table>' : '<p>Tiada user aktif.</p>';
     });
 }
 
@@ -724,46 +755,78 @@ function bukaAplikasi() {
     document.getElementById('mainAppSection').style.display = 'block';
 }
 
-// --- FUNGSI ASAL: YOUTUBE MOD ---
+// --- MOD YOUTUBE ---
 document.getElementById('btnYT').onclick = () => {
     const yt = document.getElementById('youtubeSection');
     yt.style.display = (yt.style.display === "none") ? "block" : "none";
 };
+
 document.getElementById('btnLoad').onclick = () => {
     const url = document.getElementById('youtubeUrl').value;
-    const match = url.match(/(?:v=|youtu\.be\/)([^"&?\/\s]{11})/);
-    if (match) document.getElementById('player').innerHTML = `<iframe src="https://www.youtube.com/embed/${match[1]}?autoplay=1" frameborder="0"></iframe>`;
+    const match = url.match(/(?:v=|youtu\.be\/|embed\/)([^"&?\/\s]{11})/);
+    if (match) {
+        document.getElementById('player').innerHTML = `
+            <div class="video-responsive">
+                <iframe src="https://www.youtube.com/embed/${match[1]}?autoplay=1" frameborder="0" allowfullscreen></iframe>
+            </div>`;
+    } else {
+        alert("Link YouTube tidak sah!");
+    }
 };
 
-// --- FUNGSI ASAL: SPEECH RECOGNITION ---
+// --- SPEECH RECOGNITION (PENGECAMAN SUARA) ---
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 if (Recognition) {
-    const rec = new Recognition(); rec.lang = 'ms-MY'; rec.continuous = true;
+    const rec = new Recognition(); 
+    rec.lang = 'ms-MY'; 
+    rec.continuous = true; 
+    rec.interimResults = false;
+
     rec.onresult = (e) => {
         const t = e.results[e.results.length - 1][0].transcript.toLowerCase().trim();
         document.getElementById('transcriptDisplay').innerText = `"${t}"`;
-        const words = t.split(" ");
+        
+        const words = t.split(/\s+/); // Pecahkan ikut ruang kosong
+        // Cari perkataan dari belakang untuk visual isyarat terbaru
         for (let i = words.length - 1; i >= 0; i--) {
             if (wordImages[words[i]]) {
                 document.getElementById('signImage').src = wordImages[words[i]];
-                document.getElementById('output').innerText = words[i].toUpperCase();
+                document.getElementById('output').innerText = "Tanda: " + words[i].toUpperCase();
                 break;
             }
         }
     };
-    document.getElementById('btnStart').onclick = () => rec.start();
-    document.getElementById('btnStop').onclick = () => rec.stop();
+
+    rec.onerror = (event) => console.error("Ralat Suara: ", event.error);
+    
+    document.getElementById('btnStart').onclick = () => {
+        rec.start();
+        document.getElementById('btnStart').classList.add('listening');
+        document.getElementById('transcriptDisplay').innerText = "Mendengar...";
+    };
+
+    document.getElementById('btnStop').onclick = () => {
+        rec.stop();
+        document.getElementById('btnStart').classList.remove('listening');
+    };
+} else {
+    alert("Maaf, pelayar web anda tidak menyokong fungsi suara.");
 }
 
-// --- FUNGSI ASAL: ANIMASI CNY ---
-setInterval(() => {
+// --- ANIMASI CNY (PRO) ---
+function createFallingIcon() {
+    const icons = ['🍊', '🧧', '🏮'];
     const icon = document.createElement('div');
-    icon.className = 'cny-icon';
-    icon.innerText = ['🍊', '🧧', '🏮'][Math.floor(Math.random()*3)];
-    icon.style.left = Math.random() * 100 + "vw";
-    icon.style.position = 'fixed'; icon.style.top = '-50px';
-    icon.style.animation = `fall ${Math.random()*3 + 4}s linear forwards`;
+    icon.innerText = icons[Math.floor(Math.random() * icons.length)];
+    icon.style.left = Math.random() * 95 + "vw";
+    icon.style.position = 'fixed'; 
+    icon.style.top = '-50px';
+    icon.style.fontSize = Math.random() * 20 + 20 + 'px';
+    icon.style.zIndex = '9999';
+    icon.style.pointerEvents = 'none';
+    icon.style.animation = `fall ${Math.random() * 3 + 4}s linear forwards`;
     document.body.appendChild(icon);
+    
     setTimeout(() => icon.remove(), 5000);
-}, 1000);
-
+}
+setInterval(createFallingIcon, 1500);
