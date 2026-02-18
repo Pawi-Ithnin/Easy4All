@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tanda X 1.0 - Pro 🤟</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,12 +20,9 @@
                 <p>🎮 Cuba versi percuma sekarang!</p>
                 <a href="https://pawi-ithnin.github.io/test/" target="_blank" class="btn-game-free">GAME FREE</a>
             </div>
-
             <h2>Log Masuk</h2>
-            <div class="input-group">
-                <input type="text" id="userInput" class="login-input" placeholder="Username" required>
-                <input type="password" id="passInput" class="login-input" placeholder="Password" required>
-            </div>
+            <input type="text" id="userInput" class="login-input" placeholder="Username">
+            <input type="password" id="passInput" class="login-input" placeholder="Password">
             <button onclick="prosesLogin()" class="btn-main">LOG MASUK</button>
             <div class="switch-auth">Tiada akaun? <span onclick="tukarKeDaftar()">Daftar Sini</span></div>
         </div>
@@ -34,23 +31,14 @@
     <section id="register-screen" style="display:none;">
         <div class="auth-container">
             <div class="pricing-box">
-                <div class="price-item">
-                    <h4>Harian</h4>
-                    <div class="price-val">RM3</div>
-                </div>
-                <div class="price-item premium">
-                    <h4>Bulanan</h4>
-                    <div class="price-val">RM25</div>
-                </div>
+                <div class="price-item"><h4>Harian</h4><div class="price-val">RM3</div></div>
+                <div class="price-item premium"><h4>Bulanan</h4><div class="price-val">RM25</div></div>
             </div>
-            
             <h2>Daftar Akaun Baru</h2>
-            <div class="input-group">
-                <input type="text" id="regName" class="login-input" placeholder="Nama Penuh">
-                <input type="text" id="regUser" class="login-input" placeholder="Username">
-                <input type="password" id="regPass" class="login-input" placeholder="Password">
-                <input type="number" id="regPhone" class="login-input" placeholder="No. Telefon (WhatsApp)">
-            </div>
+            <input type="text" id="regName" class="login-input" placeholder="Nama Penuh">
+            <input type="text" id="regUser" class="login-input" placeholder="Username">
+            <input type="password" id="regPass" class="login-input" placeholder="Password">
+            <input type="number" id="regPhone" class="login-input" placeholder="No. Telefon">
             <button onclick="prosesRegister()" class="btn-main btn-green">DAFTAR SEKARANG</button>
             <div class="switch-auth">Dah ada akaun? <span onclick="tukarKeLogin()">Log Masuk</span></div>
         </div>
@@ -60,15 +48,11 @@
         <div class="auth-container admin-box">
             <h2>Panel Admin Dashboard</h2>
             <div class="admin-lists">
-                <div class="admin-card">
-                    <h3>⏳ Menunggu Kelulusan</h3>
-                    <div id="pendingList" class="scroll-list"></div>
-                </div>
+                <h3>⏳ Menunggu Kelulusan</h3>
+                <div id="pendingList"></div>
                 <hr>
-                <div class="admin-card">
-                    <h3>✅ User Aktif</h3>
-                    <div id="activeList" class="scroll-list"></div>
-                </div>
+                <h3>✅ User Aktif</h3>
+                <div id="activeList"></div>
             </div>
             <button onclick="logKeluar()" class="btn-main btn-dark">🚪 LOG KELUAR ADMIN</button>
         </div>
@@ -76,32 +60,37 @@
 
     <section id="mainAppSection" style="display:none;">
         <div class="control-panel">
-            <div class="top-nav">
+            <div class="panel-top">
                 <button id="btnYT" class="btn-yt">📺 MOD YOUTUBE</button>
+                <div id="statusIndicator" class="status-box">
+                    <span class="dot"></span> <span id="statusText">SEDIA</span>
+                </div>
                 <button onclick="logKeluar()" class="btn-dark-small">🚪 KELUAR</button>
             </div>
-            <div class="voice-controls">
+            <div class="voice-buttons">
                 <button id="btnStart" class="btn-start">🎤 MULA SUARA</button>
                 <button id="btnStop" class="btn-stop">⏹ HENTI</button>
             </div>
         </div>
 
-        <div class="content-wrapper">
+        <div class="content-layout">
             <div id="youtubeSection" style="display:none;" class="video-container">
-                <div class="yt-input-group">
-                    <input type="text" id="youtubeUrl" class="login-input-inline" placeholder="Paste Link YouTube...">
-                    <button id="btnLoad" class="btn-load">MUAT</button>
+                <div class="yt-header">
+                    <input type="text" id="youtubeUrl" placeholder="Paste Link YouTube...">
+                    <button id="btnLoad">MUAT</button>
                 </div>
                 <div id="player"></div>
             </div>
 
             <div class="sign-box">
-                <div class="status-badge">Live Transcript:</div>
-                <div id="transcriptDisplay">Menunggu input suara...</div>
-                <div class="image-frame">
+                <div class="transcript-area">
+                    <small>TRANSKRIP LIVE:</small>
+                    <div id="transcriptDisplay">Menunggu input...</div>
+                </div>
+                <div class="image-wrapper">
                     <img id="signImage" src="https://via.placeholder.com/400x300?text=Sedia..." alt="Isyarat">
                 </div>
-                <p id="output" class="text-feedback"></p>
+                <p id="output"></p>
             </div>
         </div>
     </section>
@@ -110,6 +99,5 @@
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 <script src="script.js"></script>
-
 </body>
 </html>
