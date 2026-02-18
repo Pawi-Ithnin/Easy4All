@@ -1,24 +1,152 @@
-body { font-family: sans-serif; background: #f0f2f5; text-align: center; margin: 0; }
-header { background: #222; color: white; padding: 15px; }
-main { padding: 20px; max-width: 400px; margin: auto; }
+body { 
+    font-family: 'Segoe UI', Roboto, sans-serif; 
+    background: #f0f2f5; 
+    text-align: center; 
+    margin: 0; 
+    color: #333;
+}
 
-#login-box { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-top: 20px; }
+header { 
+    background: #1a1a1a; 
+    color: white; 
+    padding: 20px; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
 
-.game-promo { background: #fff0f3; padding: 15px; border-radius: 15px; border: 2px dashed #ff4757; margin-bottom: 15px; }
-.game-promo p { font-size: 13px; font-weight: bold; color: #ff4757; margin-top: 0; }
+main { 
+    padding: 20px; 
+    max-width: 420px; 
+    margin: auto; 
+}
+
+/* Container Utama */
+#login-box, .auth-container { 
+    background: white; 
+    padding: 25px; 
+    border-radius: 20px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08); 
+    margin-top: 20px; 
+}
+
+/* Bahagian Promosi Game */
+.game-promo { 
+    background: #fff0f3; 
+    padding: 15px; 
+    border-radius: 15px; 
+    border: 2px dashed #ff4757; 
+    margin-bottom: 20px; 
+}
+.game-promo p { 
+    font-size: 14px; 
+    font-weight: bold; 
+    color: #ff4757; 
+    margin: 0 0 10px 0; 
+}
 
 .btn-game-free {
-    display: block; text-decoration: none; background: linear-gradient(135deg, #ff4757, #ff6b81);
-    color: white; padding: 12px; border-radius: 10px; font-weight: bold; font-size: 18px;
-    box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3); transition: 0.3s;
+    display: block; 
+    text-decoration: none; 
+    background: linear-gradient(135deg, #ff4757, #ff6b81);
+    color: white; 
+    padding: 12px; 
+    border-radius: 10px; 
+    font-weight: bold; 
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3); 
+    transition: 0.3s ease;
 }
-.btn-game-free:hover { transform: scale(1.05); filter: brightness(1.1); }
+.btn-game-free:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 15px rgba(255, 71, 87, 0.4);
+}
 
-.divider { margin: 20px 0; border-bottom: 1px solid #ddd; line-height: 0.1em; }
-.divider span { background: #fff; padding: 0 10px; color: #999; font-size: 12px; }
+/* --- BARU: Section Harga RM3 & RM25 --- */
+.pricing-wrapper {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+.price-item {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    background: #fdfdfd;
+}
+.price-item.jimat {
+    border: 2px solid #2ecc71;
+    background: #f0fff4;
+    position: relative;
+}
+.price-item h4 { margin: 0; font-size: 11px; text-transform: uppercase; color: #777; }
+.price-item .cost { font-size: 18px; font-weight: 800; color: #222; margin: 4px 0; }
+.badge-jimat {
+    background: #2ecc71;
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+}
 
-.login-input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-.btn-main { width: 100%; padding: 12px; background: #2196F3; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+/* Divider */
+.divider { 
+    margin: 25px 0; 
+    border-bottom: 1px solid #eee; 
+    position: relative;
+}
+.divider span { 
+    background: #fff; 
+    padding: 0 15px; 
+    color: #aaa; 
+    font-size: 12px; 
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
-.cny-icon { position: fixed; top: -50px; z-index: 99; animation: fall linear forwards; }
-@keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+/* Input & Button */
+.login-input { 
+    width: 100%; 
+    padding: 14px; 
+    margin: 10px 0; 
+    border: 1px solid #ddd; 
+    border-radius: 10px; 
+    box-sizing: border-box; 
+    font-size: 15px;
+    transition: 0.2s;
+}
+.login-input:focus {
+    border-color: #2196F3;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.btn-main { 
+    width: 100%; 
+    padding: 14px; 
+    background: #2196F3; 
+    color: white; 
+    border: none; 
+    border-radius: 10px; 
+    font-weight: bold; 
+    font-size: 16px;
+    cursor: pointer; 
+    transition: 0.3s;
+    margin-top: 10px;
+}
+.btn-main:hover { background: #1976D2; }
+
+/* Animasi CNY */
+.cny-icon { 
+    position: fixed; 
+    top: -50px; 
+    z-index: 99; 
+    pointer-events: none;
+    animation: fall linear forwards; 
+}
+
+@keyframes fall { 
+    to { transform: translateY(110vh) rotate(360deg); } 
+}
