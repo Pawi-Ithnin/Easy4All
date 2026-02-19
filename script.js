@@ -661,9 +661,18 @@ window.prosesRegister = () => {
     const pass = document.getElementById('regPass').value;
     const phone = document.getElementById('regPhone').value;
 
-    if(!name || !user || !pass) return alert("Isi semua!");
-    db.ref('users/' + user).set({ nama: name, pass: pass, telefon: phone, status: "pending" })
-    .then(() => { alert("Berjaya! Tunggu admin."); tukarKeLogin(); });
+    if(!name || !user || !pass || !phone) return alert("Isi semua maklumat termasuk No. Telefon!");
+    
+    db.ref('users/' + user).set({ 
+        nama: name, 
+        pass: pass, 
+        telefon: phone, 
+        status: "pending" 
+    })
+    .then(() => { 
+        alert("Pendaftaran Berjaya! Sila tunggu kelulusan admin."); 
+        tukarKeLogin(); 
+    });
 };
 
 window.prosesLogin = () => {
@@ -678,28 +687,49 @@ window.prosesLogin = () => {
             if (d.status === "active") {
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('mainAppSection').style.display = 'block';
-            } else alert("Akaun Pending!");
-        } else alert("Salah Password!");
+            } else alert("Akaun anda masih Pending! Sila hubungi admin.");
+        } else alert("Username atau Password salah!");
     });
 };
 
-// --- ADMIN PANEL ---
+// --- ADMIN PANEL (UPDATED) ---
 function bukaAdmin() {
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('adminSection').style.display = 'block';
+    
     db.ref('users').on('value', (snapshot) => {
         const users = snapshot.val();
-        let pT = '<table><tr><th>User</th><th>Aksi</th></tr>';
-        let aT = '<table><tr><th>User</th><th>Aksi</th></tr>';
+        let pT = '<table><tr><th>User</th><th>Telefon</th><th>Aksi</th></tr>';
+        let aT = '<table><tr><th>User</th><th>Telefon</th><th>Aksi</th></tr>';
+        
+        let pCount = 0;
+        let aCount = 0;
+
         for (let id in users) {
-            let row = `<tr><td>${id}</td>`;
-            if (users[id].status === "pending") pT += row + `<td><button onclick="approve('${id}')">OK</button></td></tr>`;
-            else aT += row + `<td><button onclick="deactivate('${id}')">OFF</button></td></tr>`;
+            let userData = users[id];
+            let phone = userData.telefon || "-";
+            let waLink = `https://wa.me/${phone}`;
+            
+            let row = `<tr>
+                <td><b>${id}</b></td>
+                <td><a href="${waLink}" target="_blank" style="color:#25D366; text-decoration:none;">📞 ${phone}</a></td>`;
+
+            if (userData.status === "pending") {
+                pT += row + `<td><button class="btn-ok" onclick="approve('${id}')">OK</button></td></tr>`;
+                pCount++;
+            } else {
+                aT += row + `<td><button class="btn-off" onclick="deactivate('${id}')">OFF</button></td></tr>`;
+                aCount++;
+            }
         }
+        
         document.getElementById('pendingList').innerHTML = pT + '</table>';
         document.getElementById('activeList').innerHTML = aT + '</table>';
+        document.getElementById('countPending').innerText = `⏳ Menunggu Kelulusan (${pCount})`;
+        document.getElementById('countActive').innerText = `✅ User Aktif (${aCount})`;
     });
 }
+
 window.approve = (id) => db.ref('users/' + id).update({ status: "active" });
 window.deactivate = (id) => db.ref('users/' + id).update({ status: "pending" });
 
