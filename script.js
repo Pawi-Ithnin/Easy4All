@@ -1,10 +1,8 @@
-// --- CONFIG FIREBASE ---
 const firebaseConfig = { databaseURL: "https://tanda-x-pro-default-rtdb.asia-southeast1.firebasedatabase.app/" };
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// Simpan data asal wordImages anda
-const wordImages = {
+const wordImages = { 
   kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
     saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
     makan: "https://i.ibb.co/pd6WB8L/Makan-Makanan-358171f7a0d456b53998.jpg",
@@ -643,132 +641,74 @@ cheongsam: "https://i.ibb.co/yFyX2kcF/Cheong-Sam-bb768bb2bbea9a7d97b2.jpg",
 cermin: "https://i.ibb.co/9mLsWhVW/Cermin-a011bddc13e2a2f09897.jpg",
 gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
 tengok: "https://i.ibb.co/2S0LmmK/Lihat-Tengok-40c6f1eb831eb4fa42c4.jpg",
-// --- NAVIGATION ---
+  
+};
+
 window.logKeluar = () => window.location.reload();
-window.tukarKeDaftar = () => {
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('register-screen').style.display = 'block';
-};
-window.tukarKeLogin = () => {
-    document.getElementById('login-screen').style.display = 'block';
-    document.getElementById('register-screen').style.display = 'none';
-};
+window.tukarKeDaftar = () => { document.getElementById('login-screen').style.display = 'none'; document.getElementById('register-screen').style.display = 'block'; };
+window.tukarKeLogin = () => { document.getElementById('login-screen').style.display = 'block'; document.getElementById('register-screen').style.display = 'none'; };
 
-// --- AUTH PROCESS ---
 window.prosesRegister = () => {
-    const name = document.getElementById('regName').value;
-    const user = document.getElementById('regUser').value.toLowerCase();
-    const pass = document.getElementById('regPass').value;
-    const phone = document.getElementById('regPhone').value; // Ambil no telefon
-
-    if(!name || !user || !pass) return alert("Isi semua!");
-    // Simpan data telefon sekali dalam database
-    db.ref('users/' + user).set({ nama: name, pass: pass, telefon: phone, status: "pending" })
-    .then(() => { alert("Berjaya! Tunggu admin."); tukarKeLogin(); });
+    const n = document.getElementById('regName').value, u = document.getElementById('regUser').value.toLowerCase(), p = document.getElementById('regPass').value, ph = document.getElementById('regPhone').value;
+    if(!n || !u || !p) return alert("Isi semua!");
+    db.ref('users/' + u).set({ nama: n, pass: p, telefon: ph, status: "pending" }).then(() => { alert("Berjaya!"); tukarKeLogin(); });
 };
 
 window.prosesLogin = () => {
-    const u = document.getElementById('userInput').value.toLowerCase();
-    const p = document.getElementById('passInput').value;
-    
+    const u = document.getElementById('userInput').value.toLowerCase(), p = document.getElementById('passInput').value;
     if (u === "admin" && p === "1234") return bukaAdmin();
-    
     db.ref('users/' + u).once('value', (s) => {
         const d = s.val();
         if (d && d.pass === p) {
-            if (d.status === "active") {
-                document.getElementById('login-screen').style.display = 'none';
-                document.getElementById('mainAppSection').style.display = 'block';
-            } else alert("Akaun Pending!");
+            if (d.status === "active") { document.getElementById('login-screen').style.display = 'none'; document.getElementById('mainAppSection').style.display = 'block'; }
+            else alert("Akaun Pending!");
         } else alert("Salah Password!");
     });
 };
 
-// --- ADMIN PANEL (Ditambah lajur No. Telefon & Counter) ---
 function bukaAdmin() {
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('adminSection').style.display = 'block';
-    
     db.ref('users').on('value', (snapshot) => {
         const users = snapshot.val();
-        
-        // Header jadual dengan lajur Telefon
-        let pT = '<table><tr><th>User</th><th>No. Telefon</th><th>Aksi</th></tr>';
-        let aT = '<table><tr><th>User</th><th>No. Telefon</th><th>Aksi</th></tr>';
-        
-        let pCount = 0;
-        let aCount = 0;
-
+        let pT = '<table><tr><th>User</th><th>No. Telefon</th><th>Aksi</th></tr>', aT = pT;
+        let pc = 0, ac = 0;
         for (let id in users) {
-            const userData = users[id];
-            const phone = userData.telefon || "-"; // Papar "-" jika tiada no
-            let row = `<tr><td>${id}</td><td>${phone}</td>`;
-            
-            if (userData.status === "pending") {
-                pT += row + `<td><button onclick="approve('${id}')">OK</button></td></tr>`;
-                pCount++;
-            } else {
-                aT += row + `<td><button onclick="deactivate('${id}')">OFF</button></td></tr>`;
-                aCount++;
-            }
+            let d = users[id], tel = d.telefon || "-", row = `<tr><td>${id}</td><td>${tel}</td>`;
+            if (d.status === "pending") { pT += row + `<td><button onclick="approve('${id}')">OK</button></td></tr>`; pc++; }
+            else { aT += row + `<td><button onclick="deactivate('${id}')">OFF</button></td></tr>`; ac++; }
         }
-        
         document.getElementById('pendingList').innerHTML = pT + '</table>';
         document.getElementById('activeList').innerHTML = aT + '</table>';
-        
-        // Update teks jumlah user
-        document.getElementById('pendingTitle').innerText = `⏳ Menunggu Kelulusan (${pCount})`;
-        document.getElementById('activeTitle').innerText = `✅ User Aktif (${aCount})`;
+        document.getElementById('pTitle').innerText = `⏳ Menunggu Kelulusan (${pc})`;
+        document.getElementById('aTitle').innerText = `✅ User Aktif (${ac})`;
     });
 }
 
 window.approve = (id) => db.ref('users/' + id).update({ status: "active" });
 window.deactivate = (id) => db.ref('users/' + id).update({ status: "pending" });
 
-// --- MOD YOUTUBE (Fungsi Asal Kekal) ---
-document.getElementById('btnYT').onclick = () => {
-    const s = document.getElementById('youtubeSection');
-    s.style.display = (s.style.display === "none") ? "block" : "none";
-};
+document.getElementById('btnYT').onclick = () => { const s = document.getElementById('youtubeSection'); s.style.display = (s.style.display === "none") ? "block" : "none"; };
 document.getElementById('btnLoad').onclick = () => {
-    const url = document.getElementById('youtubeUrl').value;
-    const id = url.match(/(?:v=|youtu\.be\/)([^"&?\/\s]{11})/);
+    const url = document.getElementById('youtubeUrl').value, id = url.match(/(?:v=|youtu\.be\/)([^"&?\/\s]{11})/);
     if (id) document.getElementById('player').innerHTML = `<iframe src="https://www.youtube.com/embed/${id[1]}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
 };
 
-// --- SPEECH & STATUS LOGIC (Fungsi Asal Kekal) ---
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 if (Recognition) {
     const rec = new Recognition(); rec.lang = 'ms-MY'; rec.continuous = true;
-    const statusText = document.getElementById('statusText');
-    const statusBox = document.getElementById('statusIndicator');
-
     rec.onresult = (e) => {
         const t = e.results[e.results.length - 1][0].transcript.toLowerCase().trim();
         document.getElementById('transcriptDisplay').innerText = `"${t}"`;
         const words = t.split(" ");
         for (let i = words.length - 1; i >= 0; i--) {
-            if (wordImages[words[i]]) {
-                document.getElementById('signImage').src = wordImages[words[i]];
-                document.getElementById('output').innerText = words[i].toUpperCase();
-                break;
-            }
+            if (wordImages[words[i]]) { document.getElementById('signImage').src = wordImages[words[i]]; document.getElementById('output').innerText = words[i].toUpperCase(); break; }
         }
     };
-
-    document.getElementById('btnStart').onclick = () => {
-        rec.start();
-        statusText.innerText = "SEDANG BERJALAN...";
-        statusBox.classList.add('active');
-    };
-    document.getElementById('btnStop').onclick = () => {
-        rec.stop();
-        statusText.innerText = "BERHENTI";
-        statusBox.classList.remove('active');
-    };
+    document.getElementById('btnStart').onclick = () => { rec.start(); document.getElementById('statusText').innerText = "BERJALAN"; document.getElementById('statusIndicator').classList.add('active'); };
+    document.getElementById('btnStop').onclick = () => { rec.stop(); document.getElementById('statusText').innerText = "SEDIA"; document.getElementById('statusIndicator').classList.remove('active'); };
 }
 
-// --- CNY ANIMATION (Fungsi Asal Kekal) ---
 setInterval(() => {
     const icon = document.createElement('div');
     icon.style.cssText = `position:fixed; top:-50px; left:${Math.random()*100}vw; animation: fall ${Math.random()*3+4}s linear forwards; pointer-events:none; z-index:9999;`;
