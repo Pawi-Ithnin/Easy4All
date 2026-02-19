@@ -51,7 +51,7 @@
             <input type="text" id="regName" class="login-input" placeholder="Nama Penuh">
             <input type="text" id="regUser" class="login-input" placeholder="Username">
             <input type="password" id="regPass" class="login-input" placeholder="Password">
-            <input type="number" id="regPhone" class="login-input" placeholder="No. Telefon">
+            <input type="number" id="regPhone" class="login-input" placeholder="No. Telefon (Contoh: 60123456789)">
             <button onclick="prosesRegister()" class="btn-main btn-green">DAFTAR SEKARANG</button>
             <div class="switch-auth">Dah ada akaun? <span onclick="tukarKeLogin()">Log Masuk</span></div>
         </div>
@@ -61,10 +61,10 @@
         <div class="auth-container admin-box">
             <h2>Panel Admin Dashboard</h2>
             <div class="admin-lists">
-                <h3>⏳ Menunggu Kelulusan</h3>
+                <h3 id="countPending">⏳ Menunggu Kelulusan (0)</h3>
                 <div id="pendingList"></div>
                 <hr>
-                <h3>✅ User Aktif</h3>
+                <h3 id="countActive">✅ User Aktif (0)</h3>
                 <div id="activeList"></div>
             </div>
             <button onclick="logKeluar()" class="btn-main btn-dark">🚪 LOG KELUAR ADMIN</button>
