@@ -2,6 +2,8 @@
 const firebaseConfig = { databaseURL: "https://tanda-x-pro-default-rtdb.asia-southeast1.firebasedatabase.app/" };
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
+
+// Simpan data asal wordImages anda
 const wordImages = {
   kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
     saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
@@ -641,8 +643,6 @@ cheongsam: "https://i.ibb.co/yFyX2kcF/Cheong-Sam-bb768bb2bbea9a7d97b2.jpg",
 cermin: "https://i.ibb.co/9mLsWhVW/Cermin-a011bddc13e2a2f09897.jpg",
 gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
 tengok: "https://i.ibb.co/2S0LmmK/Lihat-Tengok-40c6f1eb831eb4fa42c4.jpg",
-};
-
 // --- NAVIGATION ---
 window.logKeluar = () => window.location.reload();
 window.tukarKeDaftar = () => {
@@ -659,20 +659,12 @@ window.prosesRegister = () => {
     const name = document.getElementById('regName').value;
     const user = document.getElementById('regUser').value.toLowerCase();
     const pass = document.getElementById('regPass').value;
-    const phone = document.getElementById('regPhone').value;
+    const phone = document.getElementById('regPhone').value; // Ambil no telefon
 
-    if(!name || !user || !pass || !phone) return alert("Isi semua maklumat termasuk No. Telefon!");
-    
-    db.ref('users/' + user).set({ 
-        nama: name, 
-        pass: pass, 
-        telefon: phone, 
-        status: "pending" 
-    })
-    .then(() => { 
-        alert("Pendaftaran Berjaya! Sila tunggu kelulusan admin."); 
-        tukarKeLogin(); 
-    });
+    if(!name || !user || !pass) return alert("Isi semua!");
+    // Simpan data telefon sekali dalam database
+    db.ref('users/' + user).set({ nama: name, pass: pass, telefon: phone, status: "pending" })
+    .then(() => { alert("Berjaya! Tunggu admin."); tukarKeLogin(); });
 };
 
 window.prosesLogin = () => {
@@ -687,53 +679,53 @@ window.prosesLogin = () => {
             if (d.status === "active") {
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('mainAppSection').style.display = 'block';
-            } else alert("Akaun anda masih Pending! Sila hubungi admin.");
-        } else alert("Username atau Password salah!");
+            } else alert("Akaun Pending!");
+        } else alert("Salah Password!");
     });
 };
 
-// --- ADMIN PANEL (UPDATED) ---
+// --- ADMIN PANEL (Ditambah lajur No. Telefon & Counter) ---
 function bukaAdmin() {
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('adminSection').style.display = 'block';
     
     db.ref('users').on('value', (snapshot) => {
         const users = snapshot.val();
-        let pT = '<table><tr><th>User</th><th>Telefon</th><th>Aksi</th></tr>';
-        let aT = '<table><tr><th>User</th><th>Telefon</th><th>Aksi</th></tr>';
+        
+        // Header jadual dengan lajur Telefon
+        let pT = '<table><tr><th>User</th><th>No. Telefon</th><th>Aksi</th></tr>';
+        let aT = '<table><tr><th>User</th><th>No. Telefon</th><th>Aksi</th></tr>';
         
         let pCount = 0;
         let aCount = 0;
 
         for (let id in users) {
-            let userData = users[id];
-            let phone = userData.telefon || "-";
-            let waLink = `https://wa.me/${phone}`;
+            const userData = users[id];
+            const phone = userData.telefon || "-"; // Papar "-" jika tiada no
+            let row = `<tr><td>${id}</td><td>${phone}</td>`;
             
-            let row = `<tr>
-                <td><b>${id}</b></td>
-                <td><a href="${waLink}" target="_blank" style="color:#25D366; text-decoration:none;">📞 ${phone}</a></td>`;
-
             if (userData.status === "pending") {
-                pT += row + `<td><button class="btn-ok" onclick="approve('${id}')">OK</button></td></tr>`;
+                pT += row + `<td><button onclick="approve('${id}')">OK</button></td></tr>`;
                 pCount++;
             } else {
-                aT += row + `<td><button class="btn-off" onclick="deactivate('${id}')">OFF</button></td></tr>`;
+                aT += row + `<td><button onclick="deactivate('${id}')">OFF</button></td></tr>`;
                 aCount++;
             }
         }
         
         document.getElementById('pendingList').innerHTML = pT + '</table>';
         document.getElementById('activeList').innerHTML = aT + '</table>';
-        document.getElementById('countPending').innerText = `⏳ Menunggu Kelulusan (${pCount})`;
-        document.getElementById('countActive').innerText = `✅ User Aktif (${aCount})`;
+        
+        // Update teks jumlah user
+        document.getElementById('pendingTitle').innerText = `⏳ Menunggu Kelulusan (${pCount})`;
+        document.getElementById('activeTitle').innerText = `✅ User Aktif (${aCount})`;
     });
 }
 
 window.approve = (id) => db.ref('users/' + id).update({ status: "active" });
 window.deactivate = (id) => db.ref('users/' + id).update({ status: "pending" });
 
-// --- MOD YOUTUBE ---
+// --- MOD YOUTUBE (Fungsi Asal Kekal) ---
 document.getElementById('btnYT').onclick = () => {
     const s = document.getElementById('youtubeSection');
     s.style.display = (s.style.display === "none") ? "block" : "none";
@@ -744,7 +736,7 @@ document.getElementById('btnLoad').onclick = () => {
     if (id) document.getElementById('player').innerHTML = `<iframe src="https://www.youtube.com/embed/${id[1]}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
 };
 
-// --- SPEECH & STATUS LOGIC ---
+// --- SPEECH & STATUS LOGIC (Fungsi Asal Kekal) ---
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 if (Recognition) {
     const rec = new Recognition(); rec.lang = 'ms-MY'; rec.continuous = true;
@@ -776,7 +768,7 @@ if (Recognition) {
     };
 }
 
-// --- CNY ANIMATION ---
+// --- CNY ANIMATION (Fungsi Asal Kekal) ---
 setInterval(() => {
     const icon = document.createElement('div');
     icon.style.cssText = `position:fixed; top:-50px; left:${Math.random()*100}vw; animation: fall ${Math.random()*3+4}s linear forwards; pointer-events:none; z-index:9999;`;
