@@ -1,40 +1,24 @@
-/* --- SEMUA CSS ASAL ANDA KEKAL DI SINI --- */
-
-/* --- TAMBAHAN UNTUK JADUAL ADMIN --- */
+/* --- Tambahan Styling Jadual Admin --- */
 .admin-lists table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
-    background: rgba(0,0,0,0.2);
-    border-radius: 10px;
 }
-
 .admin-lists th {
-    background: var(--dark-green);
-    color: var(--gold);
-    padding: 10px;
-    font-size: 0.8rem;
     text-align: left;
+    padding: 8px;
     border-bottom: 2px solid var(--gold);
-}
-
-.admin-lists td {
-    padding: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    font-size: 0.85rem;
-}
-
-.btn-ok { background: var(--success); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
-.btn-off { background: var(--danger); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
-
-.switch-auth {
-    margin-top: 15px;
-    font-size: 0.9rem;
-}
-.switch-auth span {
     color: var(--gold);
+    font-size: 0.8rem;
+}
+.admin-lists td {
+    padding: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.8rem;
+}
+.admin-lists button {
+    padding: 3px 8px;
     cursor: pointer;
-    text-decoration: underline;
 }
 
 @keyframes fall {
