@@ -169,111 +169,111 @@ lima: "https://i.ibb.co/RDQBCKh/1-Satu-be2c6afc02b43bc634d4.jpg",
  sepuluhttps:"https://i.ibb.co/GfZhhVG/10-Sepuluh-1214a3213d0a5543fe01.jpg", 
  sebelas: "https://i.ibb.co/hR19wBg/11-Sebelas-7601ac76a708edbe44c5.jpg",
  duabelas: "https://i.ibb.co/DRzZNFm/12-Dua-belas-54baac271c048bec19df.jpg", 
- tigabelas: "https://i.ibb.co/r4D59vb/13-Tiga-belas-58c8e321eb7e05a085b6-1.jpg", // tigas belas
- empatbelas: "https://i.ibb.co/VWt9BbM/14-Empat-belas-8327b75bd2f2f8ab7bce.jpg" , // Empat belas
- limbelas: "https://i.ibb.co/3hTXvRS/15-Lima-belas-185ea6db042b998c57cc.jpg" , // Lima Belas
- enambelas: "https://i.ibb.co/xLq2TZv/16-Enam-belas-1018b8cd0cd3640b5ff1.jpg" , // Enam Belas
- tujuhbelas: "https://i.ibb.co/7KDgqN4/17-Tujuh-belas-51132c3502d7431d9bea.jpg" , // Tujuh Belas
- lapanbelas: "https://i.ibb.co/0219vjv/18-Lapan-belas-d36082da2c7397ba08f2.jpg" , // Lapan Belas
- sembilanbelas: "https://i.ibb.co/LzMQFMD/19-Sembilan-belas-2d4b82594acb8430db9f.jpg" , // Sembilan Belas 
- duapuluh: "https://i.ibb.co/FnxCkbZ/20-Dua-puluh-b1585bcde54d33d9884b.jpg" , // Dua puluh
- duapuluhsatu: "https://i.ibb.co/D1pxybP/21-Dua-puluh-satu-16e74dbbe125e6a67715.jpg", // Dua puluh satu
- duapuluhdua: "https://i.ibb.co/Z65sw2H/22-Dua-puluh-dua-94fdbf4eb637e45c9917.jpg", // Dua Puluh Dua
- duapuluhtiga: "https://i.ibb.co/s99pvc8/23-Dua-puluh-tiga-150488c4f5272e27cc22.jpg", // Dua Puluh Tiga
- tigapuluh: "https://i.ibb.co/mXjSYrM/30-Tiga-puluh-032299449438f1a7260c.jpg" , // Tiga Puluh
- empatpuluh: "https://i.ibb.co/wsvV0RN/40-Empat-puluh-fdb9a1f223797624c240.jpg", // Empat Puluh
- seratus: "https://i.ibb.co/sPQ6q33/100-Seratus-d5ff48b4c11a7c4d2f1c.jpg" , // Seratus
- seribu: "https://i.ibb.co/qDgyq94/1000-Seribu-d1a76db29ae5087da73c.jpg" , // Seribu
- sejuta: "https://i.ibb.co/8DYPzWM/1000000-Sejuta-1c7b6d3e14c4db074651.jpg", // Sejuta
-waktu: "https://i.ibb.co/m0xkDd0/Waktu-e615ee5e5a8d2536f73b.jpg", // Waktu
-tengahhari: "https://i.ibb.co/dfFCfhG/Tengah-Hari-e69443fe25d742eb75bf.jpg" , // Tengah Hari
- tahunini: "https://i.ibb.co/VM2nsjh/Tahun-ini-4add4ece77503a9591a0.jpg", //Tahun Ini
- siang: "https://i.ibb.co/18qfrVb/Siang-fde16dd5a35ef670d5cb.jpg", // Siang
- semalam: "https://i.ibb.co/hZtRXpp/Semalam-3c1e7e80729d5ec68b02.jpg" , // Semalam
- minit: "https://i.ibb.co/tYSy4SF/Minit-797006439f573a2529ac.jpg" , // Minit
- musim: "https://i.ibb.co/dLX2Gzd/Musim-87670b94347782619769.jpg" , // Musim
- malam: "https://i.ibb.co/LN2CCxD/Malam-dae6e38ac19264808c82.jpg" , // Malam
- hariini: "https://i.ibb.co/JjDPZ4Q/Hari-ini-d563ab5fcbb76750bcef.jpg" ,  // Hari Ini 
- melayu: "https://i.ibb.co/9Z9mmNs/Melayu-Kaum-5c868fae3c1fa93f1c83.jpg" , //  Melayu
- bangsa: "https://i.ibb.co/3rNSprN/Bangsa-Orang-6a529dc046b0e4d0c37d.jpg", // Bangsa
- india: "https://i.ibb.co/RB2dCZx/India-Kaum-31ab9d9c0851da59d69d.jpg", // India
- cina: "https://i.ibb.co/8M6DCvL/Cina-Kaum-810739e5bfe6367db56f.jpg", // Cina    
- manis: "https://i.ibb.co/J2CNm2S/Manis-f4084527a2578320cec8.jpg" , // Manis
- masam: "https://i.ibb.co/6WQ7dGN/Masam-29ea15c3839c43ee765e-1.jpg", // Masam
- pahit: "https://i.ibb.co/dMBqLDC/Pahit-4e5ddd2b02f6a8701323.jpg", // Pahit
- pedas: "https://i.ibb.co/h1mwXxv/Pedas-4a718fca621038923d67.jpg", //  Pedas
- asma: "https://i.ibb.co/z5wNgts/Asma-fdea0be0bb7e13926c91.jpg", // asma
-batuk: "https://i.ibb.co/VJg7vMs/Batuk-50610c672ecd348c4aee.jpg" , // Batuk
-timur: "https://i.ibb.co/7GrnKpv/Timur-736bf60383b84fae1cba.jpg", //  Timur
-Utara: "//i.ibb.co/D7qKgtk/Utara-e0bd04ac1b1129dde95d.jpg", // Utara
-Selatan : "//i.ibb.co/LJ8HZJL/Selatan-3ee41c29bd8976e17035.jpg", // Selatan
-Barat: "//i.ibb.co/khqbhk4/Barat-62551077a732a7148c20.jpg", // Barat
-Kanan: "//i.ibb.co/XWfBwv7/Kanan-5b39ee88da259bea25d4.jpg", // Kanan
-Kiri:  "//i.ibb.co/9w3YL8m/Kiri-378d09483b0911ff12c1.jpg", // Kiri
-Satu: "https://i.ibb.co/608fJ90X/1-Satu-be2c6afc02b43bc634d4-1.jpg" , // Satu
-hijau: "https://i.ibb.co/Jj3N1R72/Hijau-7bac86d69ab1abb15f71.jpg" , // Hijau
-hitam: "https://i.ibb.co/fz8s2SCZ/Hitam-a4146302f4f5d9bb0334.jpg" , // Hitam
-jingga: "https://i.ibb.co/5xtLzNLr/Jingga-Oren-51cd97c193b29ab271af-1.jpg", // Jingga
- kelabu: "https://i.ibb.co/gQH3tVd/Kelabu-4c96a3de8ddb45c736ac.jpg", // Kelabu
- kuning: "https://i.ibb.co/b5pwgLgw/Kuning-335ef3711a2d51f79fab.jpg", // Kuning 
- merah: "https://i.ibb.co/GQp8Pjy2/Merah-b6ae5513335a91bb8360.jpg" , // Merah
-  putih: "https://i.ibb.co/cKhfx3qT/Putih-1cdbf16b2534f3c30ed0.jpg" , // Putih
- ampu: "https://i.ibb.co/HfJ5BFd2/Ampu-4da68827093463d11601.jpg" , // Ampu
- bertolakansur: "https://i.ibb.co/nMFYLbJn/Bertolak-ansur-73d0fb750cd36d938942.jpg", // Bertolakansur
- bunuh: "https://i.ibb.co/Fq4YT3nT/Bunuh-60518a3a973427a4915a.jpg", // Bunuh
-  cium: "https://i.ibb.co/ksnsTHf7/Cium-f6d78ba43a0ece3131d2.jpg", // Cium
- Harap: "https://i.ibb.co/Wp0BfBKT/Harap-8353bd4b0197e6701136.jpg", // Harap
- hina: "https://i.ibb.co/0jMtzRmB/Hina-e54e678d97061f4eecbe.jpg", // Hina
- larang: "https://i.ibb.co/N6vhd6nc/Larang-550e0b0fbe36619b4d95.jpg" ,// Larang
- lemas: "https://i.ibb.co/hRw6L706/Lemas-b769356f4947f3d1c8f5.jpg", // Lemas 
-  memperdayakan: "https://i.ibb.co/j9yQtcsL/Memperdayakan-b1e6a8d66328154f9c51.jpg" , //  Memperdayakan
- mengapikan: "https://i.ibb.co/V0k2n9wd/Mengapi-apikan-19b78270c6ec33eb0494.jpg" , //  Mengapikan
- mengasingkan: "https://i.ibb.co/7NdfSYXD/Mengasingkan-85633da85702133c2ea3.jpg" , // Mengasingkan
-mengingatkatkan: "https://i.ibb.co/wFf7JhRJ/Mengingatkan-65390875b4187affa665.jpg", // Mengintkantkan
-abang:"https://i.ibb.co/zWRdgHX2/Abang-e5bdd22323a6ee4c262f.jpg" , // Abang
-  suami: "https://i.ibb.co/v6fff1t6/Suami-f14ced6fc8b9d8c11414.jpg" ,// Suami
-perempuan: "https://i.ibb.co/hJtZMZHn/Perempuan-cd4e9db3a361c8669dc4.jpg" , // Perempuan
- orang: "https://i.ibb.co/chh0VQbK/Orang-da89e55044321089d0e7.jpg", // Orang 
-  lelaki: "https://i.ibb.co/pBH1XD5s/Lelaki-be5bfe0eccd872c8e8e2.jpg", // Lelaki
-  keturunan: "https://i.ibb.co/0ywxmnqW/Keturunan-Generasi-17afbafd97a21157a047.jpg" , // Keturunan 
- keluarga: "https://i.ibb.co/hxtnFSk1/Keluarga-a59bea1cb025c9f91246.jpg", // Keluarga
- Kekasih: "https://i.ibb.co/c4HGFVV/Kekasih-4782368daa0315e80216.jpg", // kekasih 
- kanakkanak: "https://i.ibb.co/8DHqzt5N/Kanak-kanak-a93179989a88a56966bd.jpg" , // Kanak Kanak
- kahwin: "https://i.ibb.co/gMtWnMwQ/Kahwin-648473470a71b000ef85.jpg" , //  Kahwin
- Isteri: "https://i.ibb.co/7tDjcY07/Isteri-Bini-0763d2dda611a6f7c43f.jpg" , // isteri
- emak: "https://i.ibb.co/hF8xTn3c/Emak-Ibu-Bonda-c7118950c38d42f24e2a.jpg" , // Emak
- cerai: "https://i.ibb.co/WZChyDL/Cerai-4b0d89c1a988bdabc94c.jpg" , // Cerai 
- bujang: "https://i.ibb.co/G3CmjzTt/Bujang-Belum-berkahwin-d1e03d9f1f87cba23aa6.jpg" , // Bujang
- bertunang: "https://i.ibb.co/20TYd8dv/Bertunang-c1a409fdef77e5842343.jpg", // Bertunang
- berduaduaan: "https://i.ibb.co/11byZxK/Berdua-duaan-48e6e97c8ca640df627a.jpg" , // Berdua duaan 
- anaksulung : "https://i.ibb.co/V0J5jPvK/Anak-sulung-8fa27c2de151d7df85fe.jpg", // Anak Sulung
- senior: "https://i.ibb.co/9mFnYMz3/Senior-8dd6c069fea28e375576.jpg" , // Senior
- wakil: "https://i.ibb.co/9mCZhfp1/Wakil-cfa1eb675272f0090de1.jpg" , // Wakil 
- saksi: "https://i.ibb.co/GvJbh2tR/Saksi-7dabf26b9ea741fb6e80.jpg" , //  Saksi
- remaja: "https://i.ibb.co/RGh3Tg9r/Remaja-d87fe04c744f5bd2ea1c.jpg" , // Remaja
- penonton: "https://i.ibb.co/QFYHPhrv/Penonton-118e391fbc103cbe4f17.jpg" , // Penonton
- pengerusi: "https://i.ibb.co/V0s1q4Dv/Pengerusi-aba74992ca64cf5a9ac5.jpg" , // Pengerusi 
- pakar: "https://i.ibb.co/qFBZKn8H/Pakar-6863a2d61e9ed641fc33.jpg" , // Pakar 
- musuh: "https://i.ibb.co/r2BW4BcX/Musuh-9c27243dc2e1d2b34b92.jpg", // Musuh 
- akta: "https://i.ibb.co/pVqhGM4/Akta-3ba3bd91e892119592db.jpg" , // Akta 
- demokrasi: "https://i.ibb.co/W4WPLyW0/Demokrasi-96329d2bccab0f8965cb.jpg" , // Demokrasi
- ditindas: "https://i.ibb.co/mrTk8Zwk/Ditindas-d76da52f50b9bed2c698.jpg" , //  Ditindas
- masyarakat: "https://i.ibb.co/5X9hpMRk/Masyarakat-bd339cf619a3548c77f6.jpg", // Masyarakat 
- mahkamah: "https://i.ibb.co/8t2FrzR/Mahkamah-589e9c98ac1df606c50b.jpg" , // Mahkamah
- jabatan: "https://i.ibb.co/bg7nwkJR/Jabatan-ec553b53f8d59c24aea1.jpg" , // Jabatan
- ditindas: "https://i.ibb.co/mrTk8Zwk/Ditindas-d76da52f50b9bed2c698.jpg" , // Ditindas
- demokrasi: "https://i.ibb.co/W4WPLyW0/Demokrasi-96329d2bccab0f8965cb.jpg" , // Demokrasi
- tiadaidea: "https://i.ibb.co/dsT4z1Ty/Tiada-idea-1f0400b6f94d999a69d8.jpg" , // Tiada Idea
- tengahberfikir: "https://i.ibb.co/ymqsm86R/Tengah-berfikir-ef31a07c88406e130658.jpg" ,// Tengah Berfikir
- pengetahuan: "https://i.ibb.co/23Ftrs5D/Pengetahuan-6700d11244a0aaefd626.jpg" , // Pengetahuan 
- pendapat: "https://i.ibb.co/5h21VHdX/Pendapat-bf1e1c9cc9153d2f1372.jpg" , // Pendapat
- dibuangkerja: "https://i.ibb.co/0RQKzXqt/Pecat-Dibuang-kerja-3c7c68d03f73b08ecf9e.jpg" , // Dibuangkerja
- bersara: "https://i.ibb.co/93qcFK3d/Bersara-a571744c2f4e3d646ef4.jpg" , // Bersara
- bonus: "https://i.ibb.co/LXnqK1Gh/Bonus-be399506a62e2dd35766.jpg" , // Bonus
- jawatan: "https://i.ibb.co/1tVL093C/Letak-Jawatan-eafa13c8460dea43a000.jpg" , // Jawatan
- pekerjaan: "https://i.ibb.co/Fbz9xLF9/Pekerjaan-95e85e2a9adf540b88c7.jpg" , // Pekerjaan
- profesional: "https://i.ibb.co/G4gWj8Fw/Profesional-03995a53b9e18666c8db.jpg" , // Profesional 
-sah: "https://i.ibb.co/MQRDbf4/Sah-90f22d5d097fe9c300bb.jpg" , // Sah
+ tigabelas: "https://i.ibb.co/r4D59vb/13-Tiga-belas-58c8e321eb7e05a085b6-1.jpg",
+ empatbelas: "https://i.ibb.co/VWt9BbM/14-Empat-belas-8327b75bd2f2f8ab7bce.jpg",
+ limbelas: "https://i.ibb.co/3hTXvRS/15-Lima-belas-185ea6db042b998c57cc.jpg",
+ enambelas: "https://i.ibb.co/xLq2TZv/16-Enam-belas-1018b8cd0cd3640b5ff1.jpg",
+ tujuhbelas: "https://i.ibb.co/7KDgqN4/17-Tujuh-belas-51132c3502d7431d9bea.jpg",
+ lapanbelas: "https://i.ibb.co/0219vjv/18-Lapan-belas-d36082da2c7397ba08f2.jpg" ,
+ sembilanbelas: "https://i.ibb.co/LzMQFMD/19-Sembilan-belas-2d4b82594acb8430db9f.jpg" ,
+ duapuluh: "https://i.ibb.co/FnxCkbZ/20-Dua-puluh-b1585bcde54d33d9884b.jpg" ,
+ duapuluhsatu: "https://i.ibb.co/D1pxybP/21-Dua-puluh-satu-16e74dbbe125e6a67715.jpg", 
+ duapuluhdua: "https://i.ibb.co/Z65sw2H/22-Dua-puluh-dua-94fdbf4eb637e45c9917.jpg",
+ duapuluhtiga: "https://i.ibb.co/s99pvc8/23-Dua-puluh-tiga-150488c4f5272e27cc22.jpg", 
+ tigapuluh: "https://i.ibb.co/mXjSYrM/30-Tiga-puluh-032299449438f1a7260c.jpg" , 
+ empatpuluh: "https://i.ibb.co/wsvV0RN/40-Empat-puluh-fdb9a1f223797624c240.jpg", 
+ seratus: "https://i.ibb.co/sPQ6q33/100-Seratus-d5ff48b4c11a7c4d2f1c.jpg" ,
+ seribu: "https://i.ibb.co/qDgyq94/1000-Seribu-d1a76db29ae5087da73c.jpg" , 
+ sejuta: "https://i.ibb.co/8DYPzWM/1000000-Sejuta-1c7b6d3e14c4db074651.jpg", 
+waktu: "https://i.ibb.co/m0xkDd0/Waktu-e615ee5e5a8d2536f73b.jpg", 
+tengahhari: "https://i.ibb.co/dfFCfhG/Tengah-Hari-e69443fe25d742eb75bf.jpg",
+ tahunini: "https://i.ibb.co/VM2nsjh/Tahun-ini-4add4ece77503a9591a0.jpg", 
+ siang: "https://i.ibb.co/18qfrVb/Siang-fde16dd5a35ef670d5cb.jpg",
+ semalam: "https://i.ibb.co/hZtRXpp/Semalam-3c1e7e80729d5ec68b02.jpg",
+ minit: "https://i.ibb.co/tYSy4SF/Minit-797006439f573a2529ac.jpg",
+ musim: "https://i.ibb.co/dLX2Gzd/Musim-87670b94347782619769.jpg",
+ malam: "https://i.ibb.co/LN2CCxD/Malam-dae6e38ac19264808c82.jpg",
+ hariini: "https://i.ibb.co/JjDPZ4Q/Hari-ini-d563ab5fcbb76750bcef.jpg" ,
+ melayu: "https://i.ibb.co/9Z9mmNs/Melayu-Kaum-5c868fae3c1fa93f1c83.jpg" ,
+ bangsa: "https://i.ibb.co/3rNSprN/Bangsa-Orang-6a529dc046b0e4d0c37d.jpg", 
+ india: "https://i.ibb.co/RB2dCZx/India-Kaum-31ab9d9c0851da59d69d.jpg",
+ cina: "https://i.ibb.co/8M6DCvL/Cina-Kaum-810739e5bfe6367db56f.jpg", 
+ manis: "https://i.ibb.co/J2CNm2S/Manis-f4084527a2578320cec8.jpg" , 
+ masam: "https://i.ibb.co/6WQ7dGN/Masam-29ea15c3839c43ee765e-1.jpg", 
+ pahit: "https://i.ibb.co/dMBqLDC/Pahit-4e5ddd2b02f6a8701323.jpg", 
+ pedas: "https://i.ibb.co/h1mwXxv/Pedas-4a718fca621038923d67.jpg", 
+ asma: "https://i.ibb.co/z5wNgts/Asma-fdea0be0bb7e13926c91.jpg",
+batuk: "https://i.ibb.co/VJg7vMs/Batuk-50610c672ecd348c4aee.jpg" , 
+timur: "https://i.ibb.co/7GrnKpv/Timur-736bf60383b84fae1cba.jpg",
+Utara: "//i.ibb.co/D7qKgtk/Utara-e0bd04ac1b1129dde95d.jpg",
+Selatan : "//i.ibb.co/LJ8HZJL/Selatan-3ee41c29bd8976e17035.jpg",
+Barat: "//i.ibb.co/khqbhk4/Barat-62551077a732a7148c20.jpg", 
+Kanan: "//i.ibb.co/XWfBwv7/Kanan-5b39ee88da259bea25d4.jpg",
+Kiri:  "//i.ibb.co/9w3YL8m/Kiri-378d09483b0911ff12c1.jpg", 
+Satu: "https://i.ibb.co/608fJ90X/1-Satu-be2c6afc02b43bc634d4-1.jpg" , 
+hijau: "https://i.ibb.co/Jj3N1R72/Hijau-7bac86d69ab1abb15f71.jpg" ,
+hitam: "https://i.ibb.co/fz8s2SCZ/Hitam-a4146302f4f5d9bb0334.jpg",
+jingga: "https://i.ibb.co/5xtLzNLr/Jingga-Oren-51cd97c193b29ab271af-1.jpg", 
+ kelabu: "https://i.ibb.co/gQH3tVd/Kelabu-4c96a3de8ddb45c736ac.jpg", 
+ kuning: "https://i.ibb.co/b5pwgLgw/Kuning-335ef3711a2d51f79fab.jpg", 
+ merah: "https://i.ibb.co/GQp8Pjy2/Merah-b6ae5513335a91bb8360.jpg" , 
+  putih: "https://i.ibb.co/cKhfx3qT/Putih-1cdbf16b2534f3c30ed0.jpg" , 
+ ampu: "https://i.ibb.co/HfJ5BFd2/Ampu-4da68827093463d11601.jpg" , 
+ bertolakansur: "https://i.ibb.co/nMFYLbJn/Bertolak-ansur-73d0fb750cd36d938942.jpg", 
+ bunuh: "https://i.ibb.co/Fq4YT3nT/Bunuh-60518a3a973427a4915a.jpg", 
+  cium: "https://i.ibb.co/ksnsTHf7/Cium-f6d78ba43a0ece3131d2.jpg", 
+ Harap: "https://i.ibb.co/Wp0BfBKT/Harap-8353bd4b0197e6701136.jpg", 
+ hina: "https://i.ibb.co/0jMtzRmB/Hina-e54e678d97061f4eecbe.jpg",
+ larang: "https://i.ibb.co/N6vhd6nc/Larang-550e0b0fbe36619b4d95.jpg" ,
+ lemas: "https://i.ibb.co/hRw6L706/Lemas-b769356f4947f3d1c8f5.jpg",
+  memperdayakan: "https://i.ibb.co/j9yQtcsL/Memperdayakan-b1e6a8d66328154f9c51.jpg" ,
+ mengapikan: "https://i.ibb.co/V0k2n9wd/Mengapi-apikan-19b78270c6ec33eb0494.jpg" , 
+ mengasingkan: "https://i.ibb.co/7NdfSYXD/Mengasingkan-85633da85702133c2ea3.jpg" ,
+mengingatkatkan: "https://i.ibb.co/wFf7JhRJ/Mengingatkan-65390875b4187affa665.jpg", 
+abang:"https://i.ibb.co/zWRdgHX2/Abang-e5bdd22323a6ee4c262f.jpg" ,
+  suami: "https://i.ibb.co/v6fff1t6/Suami-f14ced6fc8b9d8c11414.jpg" ,
+perempuan: "https://i.ibb.co/hJtZMZHn/Perempuan-cd4e9db3a361c8669dc4.jpg" ,
+ orang: "https://i.ibb.co/chh0VQbK/Orang-da89e55044321089d0e7.jpg", 
+  lelaki: "https://i.ibb.co/pBH1XD5s/Lelaki-be5bfe0eccd872c8e8e2.jpg", 
+  keturunan: "https://i.ibb.co/0ywxmnqW/Keturunan-Generasi-17afbafd97a21157a047.jpg" ,
+ keluarga: "https://i.ibb.co/hxtnFSk1/Keluarga-a59bea1cb025c9f91246.jpg", 
+ Kekasih: "https://i.ibb.co/c4HGFVV/Kekasih-4782368daa0315e80216.jpg", 
+ kanakkanak: "https://i.ibb.co/8DHqzt5N/Kanak-kanak-a93179989a88a56966bd.jpg" ,
+ kahwin: "https://i.ibb.co/gMtWnMwQ/Kahwin-648473470a71b000ef85.jpg" , 
+ Isteri: "https://i.ibb.co/7tDjcY07/Isteri-Bini-0763d2dda611a6f7c43f.jpg" ,
+ emak: "https://i.ibb.co/hF8xTn3c/Emak-Ibu-Bonda-c7118950c38d42f24e2a.jpg" ,
+ cerai: "https://i.ibb.co/WZChyDL/Cerai-4b0d89c1a988bdabc94c.jpg" ,
+ bujang: "https://i.ibb.co/G3CmjzTt/Bujang-Belum-berkahwin-d1e03d9f1f87cba23aa6.jpg" ,
+ bertunang: "https://i.ibb.co/20TYd8dv/Bertunang-c1a409fdef77e5842343.jpg",
+ berduaduaan: "https://i.ibb.co/11byZxK/Berdua-duaan-48e6e97c8ca640df627a.jpg" , 
+ anaksulung : "https://i.ibb.co/V0J5jPvK/Anak-sulung-8fa27c2de151d7df85fe.jpg", 
+ senior: "https://i.ibb.co/9mFnYMz3/Senior-8dd6c069fea28e375576.jpg" ,
+ wakil: "https://i.ibb.co/9mCZhfp1/Wakil-cfa1eb675272f0090de1.jpg" ,
+ saksi: "https://i.ibb.co/GvJbh2tR/Saksi-7dabf26b9ea741fb6e80.jpg" , 
+ remaja: "https://i.ibb.co/RGh3Tg9r/Remaja-d87fe04c744f5bd2ea1c.jpg" , 
+ penonton: "https://i.ibb.co/QFYHPhrv/Penonton-118e391fbc103cbe4f17.jpg" , 
+ pengerusi: "https://i.ibb.co/V0s1q4Dv/Pengerusi-aba74992ca64cf5a9ac5.jpg",
+ pakar: "https://i.ibb.co/qFBZKn8H/Pakar-6863a2d61e9ed641fc33.jpg" ,
+ musuh: "https://i.ibb.co/r2BW4BcX/Musuh-9c27243dc2e1d2b34b92.jpg", 
+ akta: "https://i.ibb.co/pVqhGM4/Akta-3ba3bd91e892119592db.jpg" , 
+ demokrasi: "https://i.ibb.co/W4WPLyW0/Demokrasi-96329d2bccab0f8965cb.jpg" , 
+ ditindas: "https://i.ibb.co/mrTk8Zwk/Ditindas-d76da52f50b9bed2c698.jpg" , 
+ masyarakat: "https://i.ibb.co/5X9hpMRk/Masyarakat-bd339cf619a3548c77f6.jpg",  
+ mahkamah: "https://i.ibb.co/8t2FrzR/Mahkamah-589e9c98ac1df606c50b.jpg" , 
+ jabatan: "https://i.ibb.co/bg7nwkJR/Jabatan-ec553b53f8d59c24aea1.jpg" , 
+ ditindas: "https://i.ibb.co/mrTk8Zwk/Ditindas-d76da52f50b9bed2c698.jpg" , 
+ demokrasi: "https://i.ibb.co/W4WPLyW0/Demokrasi-96329d2bccab0f8965cb.jpg" , 
+ tiadaidea: "https://i.ibb.co/dsT4z1Ty/Tiada-idea-1f0400b6f94d999a69d8.jpg" , 
+ tengahberfikir: "https://i.ibb.co/ymqsm86R/Tengah-berfikir-ef31a07c88406e130658.jpg" ,
+ pengetahuan: "https://i.ibb.co/23Ftrs5D/Pengetahuan-6700d11244a0aaefd626.jpg" , 
+ pendapat: "https://i.ibb.co/5h21VHdX/Pendapat-bf1e1c9cc9153d2f1372.jpg" ,
+ dibuangkerja: "https://i.ibb.co/0RQKzXqt/Pecat-Dibuang-kerja-3c7c68d03f73b08ecf9e.jpg" , 
+ bersara: "https://i.ibb.co/93qcFK3d/Bersara-a571744c2f4e3d646ef4.jpg" ,
+ bonus: "https://i.ibb.co/LXnqK1Gh/Bonus-be399506a62e2dd35766.jpg" , 
+ jawatan: "https://i.ibb.co/1tVL093C/Letak-Jawatan-eafa13c8460dea43a000.jpg" ,
+ pekerjaan: "https://i.ibb.co/Fbz9xLF9/Pekerjaan-95e85e2a9adf540b88c7.jpg" , 
+ profesional: "https://i.ibb.co/G4gWj8Fw/Profesional-03995a53b9e18666c8db.jpg" , 
+sah: "https://i.ibb.co/MQRDbf4/Sah-90f22d5d097fe9c300bb.jpg" ,
 sementara: "https://i.ibb.co/KpK3XF9z/Sementara-871e9343710a965c1f61.jpg" , // Sementara
 telinga: "https://i.ibb.co/v492qfNF/Telinga-b753a3572bf0bd3e23ee.jpg" , // Telinga
 tangan: "https://i.ibb.co/5htqNkVt/Tangan-e042c749cf513be0fdbf.jpg" , // tangan
@@ -716,4 +716,5 @@ setInterval(() => {
     document.body.appendChild(icon);
     setTimeout(() => icon.remove(), 5000);
 }, 1500);
+
 
