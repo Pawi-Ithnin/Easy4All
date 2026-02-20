@@ -15,7 +15,6 @@
 </a>
 
 <header class="ramadhan-header">
-    <div class="header-pattern"></div>
     <div class="header-content">
         <span class="decor-icon">🌙</span>
         <h1>TANDA <span class="highlight">X</span> PRO</h1>
@@ -55,24 +54,9 @@
         </div>
     </section>
 
-    <section id="adminSection" style="display:none;">
-        <div class="auth-container admin-box">
-            <h2>Panel Admin Dashboard</h2>
-            <div class="admin-lists">
-                <h3 id="pTitle">⏳ Menunggu Kelulusan</h3>
-                <div id="pendingList"></div>
-                <hr>
-                <h3 id="aTitle">✅ User Aktif</h3>
-                <div id="activeList"></div>
-            </div>
-            <button onclick="logKeluar()" class="btn-main btn-dark">🚪 LOG KELUAR ADMIN</button>
-        </div>
-    </section>
-
     <section id="mainAppSection" style="display:none;">
         <div class="control-panel">
             <div class="panel-top">
-                <button id="btnYT" class="btn-yt">📺 MOD YOUTUBE</button>
                 <div id="statusIndicator" class="status-box">
                     <span class="dot"></span> <span id="statusText">SEDIA</span>
                 </div>
@@ -83,15 +67,26 @@
                 <button id="btnStop" class="btn-stop">⏹ HENTI</button>
             </div>
         </div>
-        <div class="content-layout">
-            <div id="youtubeSection" style="display:none;" class="video-container">
-                <div class="yt-header"><input type="text" id="youtubeUrl" placeholder="Link YouTube..."><button id="btnLoad">MUAT</button></div>
-                <div id="player"></div>
+
+        <div class="content-layout-pro">
+            <div id="youtubeSection" class="video-panel">
+                <div class="yt-header">
+                    <input type="text" id="youtubeUrl" placeholder="Link YouTube...">
+                    <button id="btnLoad">MUAT</button>
+                </div>
+                <div class="video-wrapper">
+                    <div id="player"></div>
+                </div>
             </div>
-            <div class="sign-box">
-                <div class="transcript-area"><small>TRANSKRIP LIVE:</small><div id="transcriptDisplay">Menunggu...</div></div>
-                <div class="image-wrapper"><img id="signImage" src="https://via.placeholder.com/400x300?text=Sedia..." alt="Isyarat"></div>
-                <p id="output"></p>
+
+            <div class="sign-panel">
+                <div class="transcript-area">
+                    <small>TRANSKRIP LIVE:</small>
+                    <div id="transcriptDisplay">Menunggu...</div>
+                </div>
+                <div class="sign-display">
+                    <img id="signImage" src="https://via.placeholder.com/400x300?text=Sedia..." alt="Isyarat">
+                </div>
             </div>
         </div>
     </section>
