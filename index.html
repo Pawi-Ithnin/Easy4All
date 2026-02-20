@@ -54,9 +54,24 @@
         </div>
     </section>
 
+    <section id="adminSection" style="display:none;">
+        <div class="auth-container admin-box">
+            <h2>Panel Admin Dashboard</h2>
+            <div class="admin-lists">
+                <h3 id="pTitle">⏳ Menunggu Kelulusan</h3>
+                <div id="pendingList"></div>
+                <hr>
+                <h3 id="aTitle">✅ User Aktif</h3>
+                <div id="activeList"></div>
+            </div>
+            <button onclick="logKeluar()" class="btn-main btn-dark">🚪 LOG KELUAR ADMIN</button>
+        </div>
+    </section>
+
     <section id="mainAppSection" style="display:none;">
         <div class="control-panel">
             <div class="panel-top">
+                <button id="btnYT" class="btn-yt">📺 MOD YOUTUBE</button>
                 <div id="statusIndicator" class="status-box">
                     <span class="dot"></span> <span id="statusText">SEDIA</span>
                 </div>
