@@ -1,4 +1,3 @@
-/* Variable Warna */
 :root { 
     --gold: #D4AF37; 
     --emerald: #064E3B; 
@@ -7,146 +6,32 @@
     --danger: #ef4444; 
 }
 
-body { 
-    font-family: 'Poppins', sans-serif; 
-    background: var(--dark-green); 
-    color: white; 
-    margin: 0; 
-}
+body { font-family: 'Poppins', sans-serif; background: var(--dark-green); color: white; margin: 0; }
 
-/* Header */
-header { 
-    background: linear-gradient(135deg, var(--dark-green), var(--emerald)); 
-    padding: 30px; 
-    text-align: center; 
-    border-bottom: 3px solid var(--gold); 
-}
-.highlight { color: var(--gold); }
+/* Dashboard Admin Table Styles (Fungsi Asal) */
+.admin-box table { width: 100%; border-collapse: collapse; margin-top: 10px; color: white; }
+.admin-box th, .admin-box td { padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; text-align: left; }
+.admin-lists { text-align: left; max-height: 400px; overflow-y: auto; }
 
-/* Containers */
-.auth-container { 
-    max-width: 400px; 
-    margin: 40px auto; 
-    background: #065F46; 
-    padding: 25px; 
-    border-radius: 15px; 
-    text-align: center; 
-    border: 1px solid var(--gold); 
-}
+/* Header & Auth */
+header { background: linear-gradient(135deg, var(--dark-green), var(--emerald)); padding: 30px; text-align: center; border-bottom: 3px solid var(--gold); }
+.auth-container { max-width: 450px; margin: 40px auto; background: #065F46; padding: 25px; border-radius: 15px; text-align: center; border: 1px solid var(--gold); }
+.login-input { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: none; background: #022C22; color: white; box-sizing: border-box; }
+.btn-main { width: 100%; padding: 12px; border: none; border-radius: 8px; background: var(--gold); font-weight: bold; cursor: pointer; }
 
-.login-input { 
-    width: 100%; 
-    padding: 12px; 
-    margin: 8px 0; 
-    border-radius: 8px; 
-    border: none; 
-    background: #022C22; 
-    color: white; 
-    box-sizing: border-box;
-}
+/* Layout Side-by-Side Pro */
+.content-layout-pro { display: flex; flex-direction: row; gap: 20px; padding: 20px; max-width: 1400px; margin: 0 auto; align-items: flex-start; }
+.video-panel, .sign-panel { flex: 1; background: rgba(6, 95, 70, 0.4); padding: 20px; border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.2); }
 
-.btn-main { 
-    width: 100%; 
-    padding: 12px; 
-    border: none; 
-    border-radius: 8px; 
-    background: var(--gold); 
-    font-weight: bold; 
-    cursor: pointer; 
-}
+.video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; background: #000; }
+.video-wrapper iframe, #player { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; }
 
-/* --- Layout Bersebelahan (Side-by-Side) --- */
-.content-layout-pro {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    padding: 20px;
-    max-width: 1400px;
-    margin: 0 auto;
-    align-items: flex-start;
-}
+.sign-display { width: 100%; background: white; border-radius: 10px; display: flex; justify-content: center; min-height: 350px; }
+.sign-display img { max-width: 100%; height: auto; }
 
-.video-panel, .sign-panel {
-    flex: 1; /* Bahagi dua sama rata */
-    background: rgba(6, 95, 70, 0.4);
-    padding: 20px;
-    border-radius: 15px;
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
+.transcript-area { background: var(--dark-green); border-left: 4px solid var(--gold); padding: 15px; margin-bottom: 15px; border-radius: 8px; }
 
-/* Video Frame 16:9 */
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%; 
-    height: 0;
-    overflow: hidden;
-    border-radius: 10px;
-    background: #000;
-}
+/* WhatsApp */
+.whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; }
 
-.video-wrapper iframe, #player {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100% !important;
-    height: 100% !important;
-}
-
-.yt-header {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.yt-header input {
-    flex: 1;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    background: #022C22;
-    color: white;
-}
-
-/* Sign Display */
-.sign-display {
-    width: 100%;
-    background: white;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 350px;
-}
-
-.sign-display img {
-    max-width: 100%;
-    height: auto;
-}
-
-.transcript-area {
-    background: var(--dark-green);
-    border-left: 4px solid var(--gold);
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    min-height: 70px;
-}
-
-/* Floating WhatsApp */
-.whatsapp-float { 
-    position: fixed; bottom: 20px; right: 20px; background: #25d366; 
-    width: 55px; height: 55px; border-radius: 50%; display: flex; 
-    justify-content: center; align-items: center; z-index: 1000; 
-}
-.whatsapp-float img { width: 30px; height: 30px; }
-
-/* Status & Animations */
-.status-box .dot { height: 10px; width: 10px; background-color: #bbb; border-radius: 50%; display: inline-block; }
-.status-box.active .dot { background: var(--success); animation: pulse 1s infinite; }
-@keyframes pulse { 50% { transform: scale(1.5); } }
-
-/* Responsive Mobile */
-@media (max-width: 992px) {
-    .content-layout-pro { flex-direction: column; }
-    .video-panel, .sign-panel { width: 100%; }
-}
+@media (max-width: 992px) { .content-layout-pro { flex-direction: column; } }
