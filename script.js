@@ -276,266 +276,265 @@ perempuan: "https://i.ibb.co/hJtZMZHn/Perempuan-cd4e9db3a361c8669dc4.jpg" ,
  pekerjaan: "https://i.ibb.co/Fbz9xLF9/Pekerjaan-95e85e2a9adf540b88c7.jpg" , 
  profesional: "https://i.ibb.co/G4gWj8Fw/Profesional-03995a53b9e18666c8db.jpg" , 
 sah: "https://i.ibb.co/MQRDbf4/Sah-90f22d5d097fe9c300bb.jpg" ,
-sementara: "https://i.ibb.co/KpK3XF9z/Sementara-871e9343710a965c1f61.jpg" , // Sementara
-telinga: "https://i.ibb.co/v492qfNF/Telinga-b753a3572bf0bd3e23ee.jpg" , // Telinga
-tangan: "https://i.ibb.co/5htqNkVt/Tangan-e042c749cf513be0fdbf.jpg" , // tangan
-rambut: "https://i.ibb.co/VYmNBcZb/Rambut-f18a841219e385b93519.jpg" , // Rambut
-mukawajah: "https://i.ibb.co/R4VV0jz8/Muka-Wajah-978a49628366d3e932db.jpg" , // Muka Wajah
-mata: "https://i.ibb.co/93WBssmS/Mata-6c492b83aec181db461b.jpg" , // Mata
-usaha: "https://i.ibb.co/4RWnKGk9/Usaha-a5e9e011576c07e3134e.jpg" , // Usaha
-tugasan: "https://i.ibb.co/XfDPh7cB/Tugasan-159ba498f4d28d60424a.jpg" , // Tugasan
-syarat: "https://i.ibb.co/5XzCDk2k/Syarat-20c385b99a1b0ad9dc27.jpg" , // Syarat
-sistem: "https://i.ibb.co/cKDj58zm/Sistem-d570181f3b08f81c856e.jpg" , // Ssitem
-kualiti: "https://i.ibb.co/N6JgYskr/Kualiti-77a85fabc287e0bb0951.jpg" , // Kualiti
-kerjasam: "https://i.ibb.co/Z1750d4s/Kerjasama-f0b774114c276e795803.jpg" , // Kerjasama
-kecemasan: "https://i.ibb.co/93Z9C2Pg/Kecemasan-1e2abe3e623828b2fd2f.jpg", // Kecemasan
-tunjuk: "https://i.ibb.co/nNdwXX8p/Tunjuk-0190c8e30053e0878aef.jpg", // Tunjuk
-tuduh: "https://i.ibb.co/s9d2C8xD/Tuduh-3154156b682ce1008f5e.jpg", // Tuduh
-tidakbersetuju: "https://i.ibb.co/8gWsRxph/Tidak-bersetuju-33db97b9aa0dba966bd6.jpg" , // Tidak Bersetuju
-pandangrendah: "https://i.ibb.co/SwGyZCvp/Pandang-rendah-0aba3c24ff4d318e34ab.jpg" , // Pandang Rendah
-mengalah: "https://i.ibb.co/6JtL4cbS/Mengalah-2a4ecc7b39ec89415c2e.jpg", // Mengalah
-pedas: "https://i.ibb.co/9k3ZV08n/Pedas-4a718fca621038923d67-1.jpg" , // Pedas
-pahit: "https://i.ibb.co/kNQzXJF/Pahit-4e5ddd2b02f6a8701323-1.jpg" , // Pahit 
-masam: "https://i.ibb.co/3yvggh1F/Masam-29ea15c3839c43ee765e-2.jpg" , // Masam
-manis: "https://i.ibb.co/LDP9BZXh/Manis-f4084527a2578320cec8-1.jpg" , // Manis 
-tunjuk: "https://i.ibb.co/nNdwXX8p/Tunjuk-0190c8e30053e0878aef.jpg" , // Tunjuk
-tuduh: "https://i.ibb.co/s9d2C8xD/Tuduh-3154156b682ce1008f5e.jpg" , // Tuduh
-tidakbersetuju: "https://i.ibb.co/8gWsRxph/Tidak-bersetuju-33db97b9aa0dba966bd6.jpg"  , // Tidak Bersetuju
-pandangrendah: "https://i.ibb.co/SwGyZCvp/Pandang-rendah-0aba3c24ff4d318e34ab.jpg", // Pandang Rendah
-mengalah: "https://i.ibb.co/6JtL4cbS/Mengalah-2a4ecc7b39ec89415c2e.jpg", // Mengalah
-pedas: "https://i.ibb.co/9k3ZV08n/Pedas-4a718fca621038923d67-1.jpg", // Pedas
-pahit: "https://i.ibb.co/kNQzXJF/Pahit-4e5ddd2b02f6a8701323-1.jpg", // Pahit 
-masam: "https://i.ibb.co/3yvggh1F/Masam-29ea15c3839c43ee765e-2.jpg", // Masam
-manis: "https://i.ibb.co/LDP9BZXh/Manis-f4084527a2578320cec8-1.jpg", //manis 
-ulat: "https://i.ibb.co/ycCwQwbK/Ulat-3d8bad380e09964f2866.jpg" , // Ulat
-ular: "https://i.ibb.co/ZzjNvjFB/Ular-9e228c18aa7b1cdb94ab.jpg", // Ular
-stong: "https://i.ibb.co/YFrmKHBS/Sotong-a6a8efe864030d496839.jpg" , // Sotong
-singa: "https://i.ibb.co/7NR6bqVz/Singa-c094d05974668d0d4c84.jpg",  // Singa
-semut: "https://i.ibb.co/2033pGZg/Semut-101a60a37c3eb156b28e.jpg" , // semut
-lembu: "https://i.ibb.co/KpHdVCHL/Lembu-b130751520517d6185d6.jpg" , // Lembu
-kelawar: "https://i.ibb.co/PvkpV5BZ/Kelawar-3385ddb88d8711ec8378.jpg" , // kelawar
-kambing: "https://i.ibb.co/7dNqG2jn/Kambing-5ab62e242a7d3173d252.jpg" , // kelawar
-kambingbiri: "https://i.ibb.co/SwS7N1mp/Kambing-biri-biri-30da7ad7f8014604926d.jpg", // Kambingbiri
-harimau: "https://i.ibb.co/Zpdq91Xm/Harimau-2d18ad2961cb14ec24dd.jpg", // Harimau 
-burung: "https://i.ibb.co/fVCkcPBk/Burung-6fdeaba1d9768e98b401.jpg" , // Burung
-binatang: "https://i.ibb.co/nNSGn9jW/Binatang-2f8ca7e1363ddf5c9e7b.jpg" , // Binatang
-alamri: "https://i.ibb.co/5XrN4Gm6/Almari-89fd881bdc63362f1423-1.jpg" , // Almari
-bakul: "https://i.ibb.co/spsGjp34/Bakul-I-bc35d57fc56a37815c87.jpg" , // Bakul
-beg: "https://i.ibb.co/sdLWPByM/Beg-f0aa0f31219ad4cbeee2.jpg", // Beg
-ubat: "https://i.ibb.co/BVBS9XmW/Ubat-gigi-e33499eccd62bc41acbc.jpg" , // Ubat 
-surat: "https://i.ibb.co/0pFtPjrP/Surat-c9cc16c8c10115049ba3-1.jpg" , // Surat
-pen: "https://i.ibb.co/RpxN2Rns/Pen-6aef200195cdd4e9f394.jpg" , // Pen
-logo: "https://i.ibb.co/Vp3SyDys/Logo-7e52935adcea48f356e8.jpg" , // Logo
-gambar: "https://i.ibb.co/5W0J56BG/Gambar-eacd98b172fa95132f71.jpg" , // Gambar
-tudung: "https://i.ibb.co/jkfBtm9P/Tudung-11b1c5672322fc428532.jpg" , // Tudung 
-seluarpendek: "https://i.ibb.co/5h8LHBRb/Seluar-pendek-f8e43bb66910987a9a26.jpg" , // Seluar Pendek
-seluarpanjang: "https://i.ibb.co/C5vfjr1D/Seluar-panjang-5a791a14abd2b2b52e61.jpg" , // Seluar Panjang
-kasut: "https://i.ibb.co/6JpwwVDY/Kasut-09d26bd0b46388fc6b2e.jpg" , // Kasut
-bajumelayu: "https://i.ibb.co/vx1dGXyy/Baju-Melayu-ad30bf60d41c91379694.jpg" , // Baju Melayu
-cincin: "https://i.ibb.co/fVDrN0cL/Cincin-2f9b9f6c203cfb5964f4.jpg" , // Cincin 
-agama: "https://i.ibb.co/Mx9BXN4V/Agama-85a3aa0261256caabe03.jpg" , // Agama 
-tuhan: "https://i.ibb.co/R4kpB5DY/Tuhan-4604f4874defa266bf77.jpg" , // Tuhan
-syurga: "https://i.ibb.co/XZ369LpB/Syurga-121795fa86d707b7d9f7.jpg" , // Syurga
-syaitan: "https://i.ibb.co/tw7jd3W0/Syaitan-5dbdfe6ae9d1d8d836d1.jpg" , // Syaitan
-sembayang: "https://i.ibb.co/WWHbXbvD/Sembahyang-Islam-2fe82574e44450a2869e.jpg" , // Sembayang
-rasul: "https://i.ibb.co/W430gmM3/Rasul-de66810bc259c3e6ff67.jpg" , // Rasul 
-puasa: "https://i.ibb.co/yFxthyfJ/Puasa-7bf038f436412805b94b.jpg", // Puasa
-pahala: "https://i.ibb.co/d0Z4cKDH/Pahala-236f688c4826394fab8c.jpg" , // Pahala
-niat: "https://i.ibb.co/1YbDqfSk/Niat-a98db66e2286da582a35.jpg" , // Niat
-neraka: "https://i.ibb.co/0yKbqG3v/Neraka-2ca82d0f888fdb89d745.jpg" , // Neraka
-nafsu: "https://i.ibb.co/HTB49JMD/Nafsu-56a4a0a48c97bcd2f5a6.jpg" , // Nafsu
-nabimuhammad: "https://i.ibb.co/99WwbRPv/Nabi-Muhammad-S-A-W-cc4435a617642e247ed4.jpg" , // Nabi Muhammad
-nabi: "https://i.ibb.co/xS64Q640/Nabi-8e95d5a6790eadd136bd.jpg" , // Nabi
-malaikat: "https://i.ibb.co/FLjT9t70/Malaikat-Islam-8489d59bf5098e93fad1.jpg" , // Malaikat
-islam: "https://i.ibb.co/84zRnVsH/Islam-d840c33817645784cd24.jpg" , // Islam
-iman: "https://i.ibb.co/CKGwkT8Z/Iman-9bdeeded726702a2608e.jpg" , // Iman
-imam: "https://i.ibb.co/C3fdH0jt/Imam-d154cf50f428fffd09a0.jpg" , // Imam
-ibadat: "https://i.ibb.co/CLzQdPd/Ibadat-Islam-220f6db01202ba345ac5.jpg" , // Ibadah
+sementara: "https://i.ibb.co/KpK3XF9z/Sementara-871e9343710a965c1f61.jpg" ,
+telinga: "https://i.ibb.co/v492qfNF/Telinga-b753a3572bf0bd3e23ee.jpg" ,
+tangan: "https://i.ibb.co/5htqNkVt/Tangan-e042c749cf513be0fdbf.jpg" , 
+rambut: "https://i.ibb.co/VYmNBcZb/Rambut-f18a841219e385b93519.jpg" , 
+mukawajah: "https://i.ibb.co/R4VV0jz8/Muka-Wajah-978a49628366d3e932db.jpg" , 
+mata: "https://i.ibb.co/93WBssmS/Mata-6c492b83aec181db461b.jpg" ,
+usaha: "https://i.ibb.co/4RWnKGk9/Usaha-a5e9e011576c07e3134e.jpg" , 
+tugasan: "https://i.ibb.co/XfDPh7cB/Tugasan-159ba498f4d28d60424a.jpg" , 
+syarat: "https://i.ibb.co/5XzCDk2k/Syarat-20c385b99a1b0ad9dc27.jpg" , 
+sistem: "https://i.ibb.co/cKDj58zm/Sistem-d570181f3b08f81c856e.jpg" ,
+kualiti: "https://i.ibb.co/N6JgYskr/Kualiti-77a85fabc287e0bb0951.jpg" , 
+kerjasam: "https://i.ibb.co/Z1750d4s/Kerjasama-f0b774114c276e795803.jpg" ,
+kecemasan: "https://i.ibb.co/93Z9C2Pg/Kecemasan-1e2abe3e623828b2fd2f.jpg", 
+tunjuk: "https://i.ibb.co/nNdwXX8p/Tunjuk-0190c8e30053e0878aef.jpg", 
+tuduh: "https://i.ibb.co/s9d2C8xD/Tuduh-3154156b682ce1008f5e.jpg",
+tidakbersetuju: "https://i.ibb.co/8gWsRxph/Tidak-bersetuju-33db97b9aa0dba966bd6.jpg" ,
+pandangrendah: "https://i.ibb.co/SwGyZCvp/Pandang-rendah-0aba3c24ff4d318e34ab.jpg" ,
+mengalah: "https://i.ibb.co/6JtL4cbS/Mengalah-2a4ecc7b39ec89415c2e.jpg", 
+pedas: "https://i.ibb.co/9k3ZV08n/Pedas-4a718fca621038923d67-1.jpg" ,
+pahit: "https://i.ibb.co/kNQzXJF/Pahit-4e5ddd2b02f6a8701323-1.jpg" , 
+masam: "https://i.ibb.co/3yvggh1F/Masam-29ea15c3839c43ee765e-2.jpg" ,
+manis: "https://i.ibb.co/LDP9BZXh/Manis-f4084527a2578320cec8-1.jpg" , 
+tunjuk: "https://i.ibb.co/nNdwXX8p/Tunjuk-0190c8e30053e0878aef.jpg" , 
+tuduh: "https://i.ibb.co/s9d2C8xD/Tuduh-3154156b682ce1008f5e.jpg" ,
+tidakbersetuju: "https://i.ibb.co/8gWsRxph/Tidak-bersetuju-33db97b9aa0dba966bd6.jpg" ,
+pandangrendah: "https://i.ibb.co/SwGyZCvp/Pandang-rendah-0aba3c24ff4d318e34ab.jpg", 
+mengalah: "https://i.ibb.co/6JtL4cbS/Mengalah-2a4ecc7b39ec89415c2e.jpg", 
+pedas: "https://i.ibb.co/9k3ZV08n/Pedas-4a718fca621038923d67-1.jpg", 
+pahit: "https://i.ibb.co/kNQzXJF/Pahit-4e5ddd2b02f6a8701323-1.jpg", 
+masam: "https://i.ibb.co/3yvggh1F/Masam-29ea15c3839c43ee765e-2.jpg", 
+manis: "https://i.ibb.co/LDP9BZXh/Manis-f4084527a2578320cec8-1.jpg",
+ulat: "https://i.ibb.co/ycCwQwbK/Ulat-3d8bad380e09964f2866.jpg" , 
+ular: "https://i.ibb.co/ZzjNvjFB/Ular-9e228c18aa7b1cdb94ab.jpg", 
+stong: "https://i.ibb.co/YFrmKHBS/Sotong-a6a8efe864030d496839.jpg", 
+singa: "https://i.ibb.co/7NR6bqVz/Singa-c094d05974668d0d4c84.jpg",
+semut: "https://i.ibb.co/2033pGZg/Semut-101a60a37c3eb156b28e.jpg",
+lembu: "https://i.ibb.co/KpHdVCHL/Lembu-b130751520517d6185d6.jpg" ,
+kelawar: "https://i.ibb.co/PvkpV5BZ/Kelawar-3385ddb88d8711ec8378.jpg",
+kambing: "https://i.ibb.co/7dNqG2jn/Kambing-5ab62e242a7d3173d252.jpg" , 
+kambingbiri: "https://i.ibb.co/SwS7N1mp/Kambing-biri-biri-30da7ad7f8014604926d.jpg",
+harimau: "https://i.ibb.co/Zpdq91Xm/Harimau-2d18ad2961cb14ec24dd.jpg", 
+burung: "https://i.ibb.co/fVCkcPBk/Burung-6fdeaba1d9768e98b401.jpg" ,
+binatang: "https://i.ibb.co/nNSGn9jW/Binatang-2f8ca7e1363ddf5c9e7b.jpg" , 
+alamri: "https://i.ibb.co/5XrN4Gm6/Almari-89fd881bdc63362f1423-1.jpg" , 
+bakul: "https://i.ibb.co/spsGjp34/Bakul-I-bc35d57fc56a37815c87.jpg" , 
+beg: "https://i.ibb.co/sdLWPByM/Beg-f0aa0f31219ad4cbeee2.jpg",
+ubat: "https://i.ibb.co/BVBS9XmW/Ubat-gigi-e33499eccd62bc41acbc.jpg" , 
+surat: "https://i.ibb.co/0pFtPjrP/Surat-c9cc16c8c10115049ba3-1.jpg" , 
+pen: "https://i.ibb.co/RpxN2Rns/Pen-6aef200195cdd4e9f394.jpg" , 
+logo: "https://i.ibb.co/Vp3SyDys/Logo-7e52935adcea48f356e8.jpg" , 
+gambar: "https://i.ibb.co/5W0J56BG/Gambar-eacd98b172fa95132f71.jpg",
+tudung: "https://i.ibb.co/jkfBtm9P/Tudung-11b1c5672322fc428532.jpg" , 
+seluarpendek: "https://i.ibb.co/5h8LHBRb/Seluar-pendek-f8e43bb66910987a9a26.jpg" ,
+seluarpanjang: "https://i.ibb.co/C5vfjr1D/Seluar-panjang-5a791a14abd2b2b52e61.jpg" ,
+kasut: "https://i.ibb.co/6JpwwVDY/Kasut-09d26bd0b46388fc6b2e.jpg",
+bajumelayu: "https://i.ibb.co/vx1dGXyy/Baju-Melayu-ad30bf60d41c91379694.jpg",
+cincin: "https://i.ibb.co/fVDrN0cL/Cincin-2f9b9f6c203cfb5964f4.jpg",
+agama: "https://i.ibb.co/Mx9BXN4V/Agama-85a3aa0261256caabe03.jpg" ,
+tuhan: "https://i.ibb.co/R4kpB5DY/Tuhan-4604f4874defa266bf77.jpg" , 
+syurga: "https://i.ibb.co/XZ369LpB/Syurga-121795fa86d707b7d9f7.jpg",
+syaitan: "https://i.ibb.co/tw7jd3W0/Syaitan-5dbdfe6ae9d1d8d836d1.jpg" ,
+sembayang: "https://i.ibb.co/WWHbXbvD/Sembahyang-Islam-2fe82574e44450a2869e.jpg" , 
+rasul: "https://i.ibb.co/W430gmM3/Rasul-de66810bc259c3e6ff67.jpg" , 
+puasa: "https://i.ibb.co/yFxthyfJ/Puasa-7bf038f436412805b94b.jpg", 
+pahala: "https://i.ibb.co/d0Z4cKDH/Pahala-236f688c4826394fab8c.jpg",
+niat: "https://i.ibb.co/1YbDqfSk/Niat-a98db66e2286da582a35.jpg" , 
+neraka: "https://i.ibb.co/0yKbqG3v/Neraka-2ca82d0f888fdb89d745.jpg" , 
+nafsu: "https://i.ibb.co/HTB49JMD/Nafsu-56a4a0a48c97bcd2f5a6.jpg" ,
+nabimuhammad: "https://i.ibb.co/99WwbRPv/Nabi-Muhammad-S-A-W-cc4435a617642e247ed4.jpg",
+nabi: "https://i.ibb.co/xS64Q640/Nabi-8e95d5a6790eadd136bd.jpg" ,
+malaikat: "https://i.ibb.co/FLjT9t70/Malaikat-Islam-8489d59bf5098e93fad1.jpg" , 
+islam: "https://i.ibb.co/84zRnVsH/Islam-d840c33817645784cd24.jpg" , 
+imam: "https://i.ibb.co/C3fdH0jt/Imam-d154cf50f428fffd09a0.jpg" , 
+ibadat: "https://i.ibb.co/CLzQdPd/Ibadat-Islam-220f6db01202ba345ac5.jpg",
 dosa: "https://i.ibb.co/twJVp9PV/Dosa-7f4e1132023c8994c163.jpg" , // Dosa
-bukapuasa: "https://i.ibb.co/hbxT9Zr/Buka-puasa-c1017bc39c5302ce48d5.jpg" , // Buka Puasa 
-alquran: "https://i.ibb.co/LXzVsDPD/Al-Quran-0ad7921822b517ae4be1.jpg" , // Al-Quran
-agama: "https://i.ibb.co/Mx9BXN4V/Agama-85a3aa0261256caabe03.jpg" , // Agama
-teater: "https://i.ibb.co/8DcbkTN9/Teater-7c5d6868deee9d1bf31e.jpg" , // Teater
-tarian: "https://i.ibb.co/Mxr105kF/Tarian-896f0acdc180536e9fad.jpg" , // Tarian
-lagu: "https://i.ibb.co/HpFns789/Lagu-7f87916ca896921d1f87.jpg", // Lagu
-komedi: "https://i.ibb.co/p6QHxB0M/Komedi-aa978c074427a5ba75e6.jpg" , // Komedi
-kartun: "https://i.ibb.co/fzncRJBM/Kartun-a3f454c428be965ab74b.jpg" , // Kartun
-joget: "https://i.ibb.co/wZcXvy8B/Joget-e53755246923925ca671.jpg" , // Joget
-filemgambar: "https://i.ibb.co/DHgx63Bh/Filem-gambar-bergerak-6323d4c42ddbd24251bd.jpg", // Filem Gambar
-drama: "https://i.ibb.co/fKmVy2y/Drama-televisyen-4e50ae593be95b44d4fd.jpg" , // Drama
-bunyi: "https://i.ibb.co/LzbJvTtg/Bunyi-8fb65a3c4200788f7089.jpg" , // Bunyi
-satelit: "https://i.ibb.co/JRmJNZz2/Satelit-c35a50ebb64432795fbc.jpg" , //  Satelit 
-lapisanozon:  "https://i.ibb.co/hRvK9nVc/Lapisan-ozon-89ebf0a490d8d196c5f4.jpg" , //  Lapisan Ozon
-gerhana: "https://i.ibb.co/hRyprVsK/Gerhana-5bb78bf10f0e78a7502a.jpg" , // Gerhana 
-institusi: "https://i.ibb.co/6JTqwG4p/Institusi-Institut-d449a0feb13f5987d6e7.jpg", // Institusi
-tuisyen: "https://i.ibb.co/WNsjzTcY/Tuisyen-Tutorial-264b9aff95a2fdcba1e2.jpg" , // Tuisyen
-taska: "https://i.ibb.co/xKng0Dj0/Taska-518551902fb5cc122a31.jpg", // Taska  
-sekolah:"https://i.ibb.co/RT3Sb6hY/Sekolah-e993381ead46951edee7.jpg", // Sekolah
-kelas: "https://i.ibb.co/7NT43S6Z/Kelas-1fc9912005665a25ad04.jpg", // Kelas
-politeknik: "https://i.ibb.co/Mb3Sppt/Politeknik-1ed5c205ab7f087a800e.jpg", // Polikteknik
-universiti: "https://i.ibb.co/KpT3rb5R/Universiti-42bdeb04178a1ca6d2e5.jpg", // Universiti
-tuan: "https://i.ibb.co/JRrRmwFw/Tuan-3adf9e6d6d94044daf5c.jpg", // Tuan
-saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg", // Saya
-Puan: "https://i.ibb.co/FbY0sD1t/Puan-71e866ca6641595c8b4b.jpg", // Puan
-nama: "https://i.ibb.co/VpjLW0n5/Nama-5935f139206a1e7b5fc9.jpg", // Nama
-kita: "https://i.ibb.co/PZkh1FG7/Kita-36e7e067e8bbd27180d6.jpg", // Kita 
-kamu: "https://i.ibb.co/8n1bmBH5/Kamu-0132a9764ea77bdd84a8-1.jpg", // Kamu
-kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg", // Kami
-dia: "https://i.ibb.co/F4KGCZYr/Dia-58a150ee6765f407cf41.jpg" , // Dia
-awak: "https://i.ibb.co/CpT6SFbz/Awak-Anda-001ee1698bfb731f20e6.jpg", // Awak
-tentang: "https://i.ibb.co/6RdHcWjz/Tentang-8b0d1e2c025970a0c134-1.jpg", // Tentang
-tetapi: "https://i.ibb.co/ch88rBvV/Tetapi-2c71a5a0c3cce20ff7e8.jpg", // tetapi
-tadi: "https://i.ibb.co/67ZLnb5D/Tadi-7acc98765ef4cfbc6c92-1.jpg", // tadi 
-selepas: "https://i.ibb.co/h1CMF1tt/Selepas-0fa27a8adb3929ebf684-1.jpg" , // Selepas
-semenjak: "https://i.ibb.co/SDb6TSgX/Sejak-Semenjak-6b6277138e3c876f2d29.jpg", // Semenjak
-sebab: "https://i.ibb.co/PGRPGQ5T/Sebab-951f0f5aea5f868a56bf.jpg", // Sebab 
-sahaja: "https://i.ibb.co/3mhdDVYF/Sahaja-5df68324ca5b836b5b82.jpg", // Sahaja
-kerana: "https://i.ibb.co/KxCWtCNM/Kerana-27ddf91e624d0799dc95-1.jpg", // kerana 
-pengangkutan: "https://i.ibb.co/VYdpSfJB/Pengangkutan-fa3d40265f9dc1004350.jpg" , // Pengangkutan
-timah: "https://i.ibb.co/1J2S5TY0/Timah-24328b129e2398b029aa.jpg", // Timah
-pasir: "logamhttps://i.ibb.co/679g8MJ6/Pasir-328ffc79dd668ee28339.jpg", // Pasir
-logam: "https://i.ibb.co/zVHyHgKX/Perak-Logam-8c9d505cb3dac97f1ce7.jpg", // Logam
-kaca: "https://i.ibb.co/6RxGFQ4p/Kaca-f6e099b721f61c4063a8.jpg", // Kaca
-emas: "https://i.ibb.co/Vcrvfh49/Emas-dcc9d064e751d66b31b0.jpg" , // Emas
-debu: "https://i.ibb.co/67W2117c/Debu-4a515c0dd19d45962884.jpg", // Debu
-aluminium: "https://i.ibb.co/9mQjYCff/Aluminium-d766fcf98ac4e6039f03.jpg", // Aluminium
-usia: "https://i.ibb.co/8DXs0Wq7/Usia-4e407790a9b469b596e6.jpg" , // Usia
-suhu: "https://i.ibb.co/TD5VJcpx/Suhu-4fb6639d1b0796848e34.jpg", // Suhu
-sesetengah: "https://i.ibb.co/JW0g2zrB/Sesetengah-4cfa9ae70fd430d8cba3.jpg", // Sesetengah 
-pertengahan: "https://i.ibb.co/tpncFjk5/Pertengahan-eb9c8d014e733f110bd8.jpg" , // Pertengahan
-peratus: "https://i.ibb.co/xKR2wjP6/Peratus-d702dcf71e62b59a702b.jpg" , // Peratus
-gred: "https://i.ibb.co/Mx2q6RvD/Gred-akademik-f6931f11591132d45240.jpg", // Gred
-video: "https://i.ibb.co/Cs54Zrp2/Video-75dce9866d26facee508.jpg", // Video
-robot: "https://i.ibb.co/kVR7CHg6/Robot-d669971bf2f9d619a081.jpg", // Robot
-multimedia: "https://i.ibb.co/bhSQKPH/Multimedia-a7759bf30bda56d220ff.jpg", // Multimedia
-mesin: "https://i.ibb.co/pvSjq1cj/Mesin-9c33ae0331b56483329a.jpg", // Mesin
-gas: "https://i.ibb.co/ccg9NLLN/Gas-f58a181e2c3ea971107b.jpg", // Gas
-formula: "https://i.ibb.co/21frws9d/Formula-7c1a50cd9e852ca3e379.jpg", // Formula
-elektronik: "https://i.ibb.co/60LLKn6z/Elektronik-e5c6d81d339cb713ce64.jpg" , // Elektronik
-elektrik: "https://i.ibb.co/JRFw2WqZ/Elektrik-7be25d2231f03dfd7a72.jpg", // Elektrik
-bateri: "https://i.ibb.co/xqkJVdHZ/Bateri-2999984545d04a0919b3.jpg", // Bateri
-permaian: "https://i.ibb.co/rfFXR5tk/Permainan-47089a52105228079a54.jpg", // Permainan
-perlawananakhir: "https://i.ibb.co/LXVRM5Zh/Perlawanan-akhir-65b7ed77a9813664dab4.jpg", // PerlawananAkhir
-pertandingan: "https://i.ibb.co/ch89FJT7/Pertandingan-115a5b238d3fc606f9e2.jpg" , // Pertandingan
-memanah: "https://i.ibb.co/Wpp98NqP/Memanah-224b550d16e0d4347b78.jpg", // Memanah 
-tempat: "https://i.ibb.co/DD0z0BfB/Tempat-39d65ef07f156f68e998-1.jpg", //Tempat
-asrama: "https://i.ibb.co/7tcpGPGf/Asrama-65db96ef2640639f5a5a-1.jpg" , // Asrama 
-surau: "https://i.ibb.co/1JmtKGZS/Surau-e0779f818583c7846344.jpg" , // Surau
-stadium: "https://i.ibb.co/0yBh18L9/Stadium-I-84964342dae94adf8ffd.jpg", // Stadium 
-restoran: "https://i.ibb.co/TMX2m6ZZ/Restoran-dc9126b5e180efd0f6e6.jpg", // Restoran
-lif: "https://i.ibb.co/rGHjZbTt/Lif-ea2087943301702498f5-1.jpg", // Lif
-kilang: "https://i.ibb.co/6ckBLmDv/Kilang-26db5b426667fe2944d0-1.jpg",// Kilang
-kampung: "https://i.ibb.co/TBQq0gfY/Kampung-0a0d99255650f9c93fd1-1.jpg" , // Kampung
-dwan: "https://i.ibb.co/tpWP8NPh/Dewan-1ff3a3fe38c16416c032-1.jpg", // Dewan 
-hotel: "https://i.ibb.co/jkPg3JBR/Hotel-ff4f747da332d15828cc-1.jpg", // Hotel
-bengkel: "https://i.ibb.co/HDSBBSwJ/Bengkel-bd2ad9acccf65e96aa6b-1.jpg", // Bengkel
-bolasepak: "https://i.ibb.co/RqFrXq5/Bola-sepak-bfb658fa247e21ed37a6-2.jpg", // Bola Sepak
-bolajaring: "https://i.ibb.co/93pkkZXv/Bola-jaring-551684fe82fd59720160-1.jpg", // Bola Jaring 
-angkatberat: "https://i.ibb.co/SwhSJ2KL/Angkat-berat-3d3d2e6d1a3a7d71a0e1-1.jpg", // Angkat Berat
-seri: "https://i.ibb.co/RpNJVZYb/Sukan-752622b9074af9e707e9.jpg", // Seri  
-sepaktarwa: "https://i.ibb.co/rrrgzb3/Sepak-takraw-fa4a60e6db8b26c24e6f.jpg", // Sepak Takra
-pertandingan: "https://i.ibb.co/MDV9CTWG/Pertandingan-115a5b238d3fc606f9e2-1.jpg", // pertandigan
-perlawanan: "https://i.ibb.co/WvHMQH8S/Perlawanan-akhir-65b7ed77a9813664dab4-1.jpg", // Perlawanan
-ofsaid: "https://i.ibb.co/RG0LNNJP/Ofsaid-37c3c0cfd8c944e6e981.jpg", // Ofsaid
-pecahrekod: "https://i.ibb.co/TBwcY8pW/Pecah-rekod-f7069e863109efeb0d8b.jpg", // Pecah Rekod 
-hoki: "https://i.ibb.co/HR8hcpN/Hoki-119228f1a9945096ecfc-1.jpg", // Hoki
-aras: "https://i.ibb.co/p6SycfRP/Aras-6ba2ec02ea4e77e7436d-1.jpg", // Aras
-beberapa: "https://i.ibb.co/XkJZXxHS/Beberapa-c359bddb9257a7b54e8a-1.jpg", // Beberapa
-akademik: "https://i.ibb.co/fVfrHWpM/Gred-akademik-f6931f11591132d45240-1.jpg", // Akademik 
-peringkat: "https://i.ibb.co/wFCNBjD3/Peringkat-acb9df07eb86aa827eef-1.jpg", // Peringkat
-pertengahan: "https://i.ibb.co/bgnQwX00/Pertengahan-eb9c8d014e733f110bd8-1.jpg", // Pertengahan
-saiz: "https://i.ibb.co/sdL3hYbX/Saiz-b9189abaec0305b5c127.jpg", // Saiz
-suhu: "https://i.ibb.co/fVbWd9v2/Suhu-4fb6639d1b0796848e34-1.jpg", // Suhu
-usia: "https://i.ibb.co/JFrPsM9Y/Usia-4e407790a9b469b596e6-1.jpg" , // Usia
-tehtarik: "https://i.ibb.co/TMCS0RkC/Teh-Tarik-ad70872406a1969ef281.jpg" , // Teh Tarik
-arak: "https://i.ibb.co/zW5M1MCF/Arak-a65ee71a8ef852376f3b.jpg" , // Arak 
-sirap: "https://i.ibb.co/Ld4rCqPg/Sirap-bbf770554a51bed81024.jpg" , // Sirap
-nescafe: "https://i.ibb.co/VYwg9Cwm/Nescafe-e4a2f72b6a4b5cd24856.jpg" , // Nesacafe 
-teh: "https://i.ibb.co/jkMFkMbP/Teh-fe1f3af532222ffa98d9.jpg" , // Teh
-kondom: "https://i.ibb.co/8D8xcSHr/Kondom-d010fb097688da8d4c5f.jpg", // Kondom
-luka: "https://i.ibb.co/999wzRFq/Luka-0e49f3a61c13aff2aaf3.jpg" , // Luka 
-rabun: "https://i.ibb.co/HL8Kf621/Rabun-82074aee38427a0e9ea7.jpg" , // Rabun
-selesema: "https://i.ibb.co/21z1r6Fs/Selesema-1c2adb3dd3a6885c2e4d.jpg", // Selesema
-sperma: "https://i.ibb.co/7dnmqsmK/Sperma-71852fc3b48265034342.jpg", // Sperma
-urut: "https://i.ibb.co/QvWwvhKB/Urut-70e7fc2c77fcf300d04a.jpg" , // Urut
-xray: "https://i.ibb.co/rKJx0kk7/X-ray-74b15797d651b6dd8ee8.jpg" , // Xray
-vitamin: "https://i.ibb.co/HMkgWtK/Vitamin-aa781c45f280ac1f6bf6.jpg" , // Vitamin
-juri: "https://i.ibb.co/HpMTfbQd/Juri-b7cace7e5f3ae0b25c3c-1.jpg" , // Juri
-jururawat: "https://i.ibb.co/bMDv5wTL/Jururawat-1ed9515be06e9d01b59a.jpg", // Jururawat
-pengurus: "https://i.ibb.co/Y7Z6bmcV/Pengurus-27e20f6ccacb55dc09b5.jpg", // Pengurus
-polis: "https://i.ibb.co/PsSWfhQW/Polis-3fa95d7b38ba3020ef42.jpg" , // Polis
-temuduga: "https://i.ibb.co/1tg9gSBb/Temuduga-387ba83c1aa7874b78ff.jpg" , // Temuduga
-jurubahasa: "https://i.ibb.co/PbHRDYw/Jurubahasa-Isyarat-763bfdaf44e550f26d6c.jpg" , // JuruBahasa
-bos: "https://i.ibb.co/Fqf2Zkb9/Bos-b9650dc7122a78706fb8.jpg" , // Bos
-jurukamera: "https://i.ibb.co/5Wyc8ZmF/Jurukamera-1846bfcf490ce764a30e.jpg" , // Jurukamera
-jadual: "https://i.ibb.co/V0D7KHSJ/Jadual-0428bd7bac1a44e7c297.jpg" , // jadual
-novel: "https://i.ibb.co/BVSZ7wK2/Novel-1f785b556a45adc52c45-1.jpg" , // Novel
-pasport: "https://i.ibb.co/HTJhf1r0/Pasport-574c5f5f40388f5d91d1.jpg" , // Pasport
-statistik: "https://i.ibb.co/xSmckxnf/Statistik-fb6971ba0093d72004ae.jpg" , // Stastik
-visa: "https://i.ibb.co/NgBthz49/Visa-15e3af232c1eeb19109c.jpg" , // Visa
-sampul: "https://i.ibb.co/fZzSGnn/Sampul-f2d51fb42a252426fc8b.jpg" , // Sampul
-rekod: "https://i.ibb.co/S7HRXz8m/Rekod-453268191b4216cf6b2d.jpg", // Rekod
-belajar: "https://i.ibb.co/dN9KRbK/Belajar-88861e428bb0aa10c470.jpg" , // Belajar
-diploma: "https://i.ibb.co/QjnQGtJD/Diploma-c9ca2041fa0e4ebfa2f2.jpg" , // Diploma
-fizik: "https://i.ibb.co/N2XF2n9L/Fizik-d39dc9735c9ab79d2fba.jpg" , // Fizik
-ijazah: "https://i.ibb.co/60LtHWYF/Ijazah-01f4bd302dda40bf45df.jpg" , // Ijazah
-pendidikan: "https://i.ibb.co/nsyFmtLW/Pendidikan-4111b5ed3a78e948a199.jpg" , // Pendidikan
-pelajaran: "https://i.ibb.co/R4MqFfGq/Pelajaran-c276ee8367f967a36334.jpg" , // Pelajaran
-ponteng: "https://i.ibb.co/RGtCWJhN/Ponteng-1235705e94f36a7028fa.jpg" , // Ponteng 
-semester: "https://i.ibb.co/rfQZ6TJH/Semester-d6d3368b0833cf9f465f.jpg", // Semester
-ujian: "https://i.ibb.co/rGLDBKsG/Ujian-4197cd6e78075d23363c.jpg" , // Ujian
-aman: "https://i.ibb.co/JjCnSS3d/Aman-616d20b3eecb8fb90566.jpg", // Aman
-buruk: "https://i.ibb.co/tMR02xBJ/Buruk-b1f390e55da673b287c4.jpg", // buruk
-dahaga:"https://i.ibb.co/23gDGjPt/Dahaga-85d238bb1353e551fcf3-1.jpg", // Dahaga
-kacak: "https://i.ibb.co/B2WvJM82/Kacak-e6f187c95b8a38f8bcc8.jpg", // kacak 
-lipat: "https://i.ibb.co/FkTjKWX7/Lipat-aa858e1f47f0c79b08ac.jpg", // Lipat
-pandu: "https://i.ibb.co/bjfxcgL1/Pandu-9ea12a2f407481caa065.jpg", // Pandu
-sembelih:"https://i.ibb.co/qty7RCy/Sembelih-haiwan-b1e88771bbc1a806f08b.jpg", // Sembelih
-hospital:"https://i.ibb.co/jkGkgwNv/Hospital-e1de8168a6129a770291-1.jpg", // Hospital
-ambulans:"https://i.ibb.co/gZk2pwkZ/Ambulans-9b9aa1b0fde34732c0f3-1.jpg", // Ambulans
-kanan:"https://i.ibb.co/bg9Qbvnq/Kanan-5b39ee88da259bea25d4-1.jpg", // Kanan
-kiri: "https://i.ibb.co/62KcdbR/Kiri-378d09483b0911ff12c1-1.jpg", // Kiri 
-tidak: "https://i.ibb.co/FRrgzyQ/Tidak-a785ae42f197ad1e523e-1.jpg", // Tidak
-selalu: "https://i.ibb.co/HTFtffJJ/Selalu-53535a255bbeaf06558c-1.jpg", // Selalu
-akan: "https://i.ibb.co/39n59FMW/Akan-3bb1faa656300c10097c.jpg", // Akan
-juga: "https://i.ibb.co/B2fZJjQh/Juga-8feca30d97f1a840f0b3.jpg" , // Juga
-tanpa: "https://i.ibb.co/79dgNVy/Tanpa-50cda4b4d88253ad3040-1.jpg", // Tanpa
-kecuali: "https://i.ibb.co/B5t8TQhZ/Kecuali-0c145c698b686699423d-2.jpg", // Kecuali
-kemudian: "https://i.ibb.co/M5VzySq7/Kemudian-7f4a8a08a8e91827c26c-2.jpg", // Kemudian
-soalan: "https://i.ibb.co/tMymQ8g6/Soalan-7a8711f0b79530118b10.jpg", // Soalan
-puisi: "https://i.ibb.co/N2mvR7cM/Puisi-025fab03f71ad9f2b0ad-1.jpg", // Puisi
-tariansinga: "https://i.ibb.co/Lz5gLRN7/Tarian-Singa-0f0d3ed786dcde9db0a3.jpg" , // TarianSinga
-silapmata: "https://i.ibb.co/6RfYxSgm/Silap-mata-7f21b61cdf6a1368cde2.jpg" , // SilapMata
-pencen: "https://i.ibb.co/B2szmDPn/Pencen-a93c846569532755052a-1.jpg", // Pencen
-almari: "https://i.ibb.co/vvVs0qRp/Almari-89fd881bdc63362f1423-2.jpg", // Almari
-badan: "https://i.ibb.co/S4Gn6D59/Badan-87f34d5ee3cc8b2cdbed-1.jpg", // Badan
-bonus: "https://i.ibb.co/XxS76Fqw/Bonus-be399506a62e2dd35766-1.jpg", // Bonus
-jiran: "https://i.ibb.co/cKsVJvZN/Jiran-31bd1cc4a9898a87afa9-3.jpg" , // Jiran
-kampung: "https://i.ibb.co/Lz2CyLJX/Kampung-0a0d99255650f9c93fd1-2.jpg" , // Kampung
-pasar: "https://i.ibb.co/PsYBW4GL/Pasar-bb015a83e4f3b92eb10b-1.jpg", // Pasar
-alahan: "https://i.ibb.co/VY8q32P3/Alahan-e0199fd13c15226fef99.jpg" , // Alahan
-koma: "https://i.ibb.co/gbDy1PMy/Koma-3672073456d5d150c032.jpg", // Koma
-lemak: "https://i.ibb.co/9kfvR06K/Lemak-839500fc78de5aa5afd0.jpg" , // Lemak
-rabun: "https://i.ibb.co/Dg658KRf/Rabun-82074aee38427a0e9ea7-1.jpg" , // Rabun
-virus: "https://i.ibb.co/6J8MPZr6/Virus-d212b92f52c854d4479c-1.jpg" , // Virus
-hanya: "https://i.ibb.co/KxTFd4z8/Hanya-b420f93704f9fd0e5a22-1.jpg", // Hanya
-tiap: "https://i.ibb.co/cShB7PwT/Tiap-843e17b0a15a8a0cdd30-1.jpg" , // Tiap
-bawang: "https://i.ibb.co/dwBRD9T9/Bawang-61c3cb7933a64f074ecd-1.jpg" , // Bawang
-biskut: "https://i.ibb.co/hRpZdBR7/Biskut-76abab4ace2c7bad8977.jpg" , // Biskut
-daging: "https://i.ibb.co/s9924P2r/Daging-42fc3b365e415b039348.jpg" , // Daging
-garam: "https://i.ibb.co/k6PJm65P/Garam-192ee12eb33c2ddf2399.jpg" , // Garam
-kicap: "https://i.ibb.co/nqKKgfMN/Kicap-afa67c250ef28e7c37de-1.jpg" , // Kicap
-kurma: "https://i.ibb.co/7dLdVQTb/Kurma-886ef7c573a6f5a510ae-1.jpg", // Kurma
-lemang: "https://i.ibb.co/BVCTL1HP/Lemang-8d47975c08f946783dd4-1.jpg", // Lemang
-nasi: "https://i.ibb.co/zHHTTf0q/Nasi-81c4e6ad724545aa8068.jpg", // Nasi
-roti: "https://i.ibb.co/XZgDcWnP/Roti-8ec35ce96766609e5af3.jpg", // Roti
-sarapan: "https://i.ibb.co/fGkJgZGD/Sarapan-df9487cf2c1805e01674-1.jpg" ,// Sarapan
-benci: "https://i.ibb.co/KTD1RCY/Benci-0cc240f8b9ecd6ec0ec9.jpg" , // Benci
-cinta: "https://i.ibb.co/HLdQjnWK/Cinta-6c7e958d080b126ff423.jpg" , // Cinta
-dendam: "https://i.ibb.co/C5vkdhzb/Dendam-366067bd6be7943c2d6c-1.jpg", // Dendam
-kecewa: "https://i.ibb.co/8nCKkGGT/Kecewa-2e845cc0ab6a7b8ae24c.jpg", // Kecewa
-letih: "https://i.ibb.co/mFrv7WRj/Letih-c3f167daa801aee71591-1.jpg", // Letih
-bersemuka: "https://i.ibb.co/9H23sGNB/Bersemuka-e1d19d9efd57e173aae5.jpg", // Bersemuka
+bukapuasa: "https://i.ibb.co/hbxT9Zr/Buka-puasa-c1017bc39c5302ce48d5.jpg" , 
+alquran: "https://i.ibb.co/LXzVsDPD/Al-Quran-0ad7921822b517ae4be1.jpg" , 
+agama: "https://i.ibb.co/Mx9BXN4V/Agama-85a3aa0261256caabe03.jpg" , 
+teater: "https://i.ibb.co/8DcbkTN9/Teater-7c5d6868deee9d1bf31e.jpg" ,
+tarian: "https://i.ibb.co/Mxr105kF/Tarian-896f0acdc180536e9fad.jpg" , 
+lagu: "https://i.ibb.co/HpFns789/Lagu-7f87916ca896921d1f87.jpg",
+komedi: "https://i.ibb.co/p6QHxB0M/Komedi-aa978c074427a5ba75e6.jpg" , 
+kartun: "https://i.ibb.co/fzncRJBM/Kartun-a3f454c428be965ab74b.jpg" , 
+joget: "https://i.ibb.co/wZcXvy8B/Joget-e53755246923925ca671.jpg" ,
+filemgambar: "https://i.ibb.co/DHgx63Bh/Filem-gambar-bergerak-6323d4c42ddbd24251bd.jpg", 
+drama: "https://i.ibb.co/fKmVy2y/Drama-televisyen-4e50ae593be95b44d4fd.jpg" , 
+bunyi: "https://i.ibb.co/LzbJvTtg/Bunyi-8fb65a3c4200788f7089.jpg" , 
+satelit: "https://i.ibb.co/JRmJNZz2/Satelit-c35a50ebb64432795fbc.jpg" , 
+lapisanozon:  "https://i.ibb.co/hRvK9nVc/Lapisan-ozon-89ebf0a490d8d196c5f4.jpg" , 
+gerhana: "https://i.ibb.co/hRyprVsK/Gerhana-5bb78bf10f0e78a7502a.jpg" ,
+institusi: "https://i.ibb.co/6JTqwG4p/Institusi-Institut-d449a0feb13f5987d6e7.jpg", 
+tuisyen: "https://i.ibb.co/WNsjzTcY/Tuisyen-Tutorial-264b9aff95a2fdcba1e2.jpg" ,
+taska: "https://i.ibb.co/xKng0Dj0/Taska-518551902fb5cc122a31.jpg",  
+sekolah:"https://i.ibb.co/RT3Sb6hY/Sekolah-e993381ead46951edee7.jpg", 
+kelas: "https://i.ibb.co/7NT43S6Z/Kelas-1fc9912005665a25ad04.jpg",
+politeknik: "https://i.ibb.co/Mb3Sppt/Politeknik-1ed5c205ab7f087a800e.jpg", 
+universiti: "https://i.ibb.co/KpT3rb5R/Universiti-42bdeb04178a1ca6d2e5.jpg", 
+tuan: "https://i.ibb.co/JRrRmwFw/Tuan-3adf9e6d6d94044daf5c.jpg", 
+saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg", 
+Puan: "https://i.ibb.co/FbY0sD1t/Puan-71e866ca6641595c8b4b.jpg", 
+nama: "https://i.ibb.co/VpjLW0n5/Nama-5935f139206a1e7b5fc9.jpg", 
+kita: "https://i.ibb.co/PZkh1FG7/Kita-36e7e067e8bbd27180d6.jpg", 
+kamu: "https://i.ibb.co/8n1bmBH5/Kamu-0132a9764ea77bdd84a8-1.jpg", 
+kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
+dia: "https://i.ibb.co/F4KGCZYr/Dia-58a150ee6765f407cf41.jpg" , 
+awak: "https://i.ibb.co/CpT6SFbz/Awak-Anda-001ee1698bfb731f20e6.jpg", 
+tentang: "https://i.ibb.co/6RdHcWjz/Tentang-8b0d1e2c025970a0c134-1.jpg", 
+tetapi: "https://i.ibb.co/ch88rBvV/Tetapi-2c71a5a0c3cce20ff7e8.jpg", 
+tadi: "https://i.ibb.co/67ZLnb5D/Tadi-7acc98765ef4cfbc6c92-1.jpg",
+selepas: "https://i.ibb.co/h1CMF1tt/Selepas-0fa27a8adb3929ebf684-1.jpg" , 
+semenjak: "https://i.ibb.co/SDb6TSgX/Sejak-Semenjak-6b6277138e3c876f2d29.jpg", 
+sebab: "https://i.ibb.co/PGRPGQ5T/Sebab-951f0f5aea5f868a56bf.jpg", 
+sahaja: "https://i.ibb.co/3mhdDVYF/Sahaja-5df68324ca5b836b5b82.jpg", 
+kerana: "https://i.ibb.co/KxCWtCNM/Kerana-27ddf91e624d0799dc95-1.jpg", 
+pengangkutan: "https://i.ibb.co/VYdpSfJB/Pengangkutan-fa3d40265f9dc1004350.jpg" ,
+timah: "https://i.ibb.co/1J2S5TY0/Timah-24328b129e2398b029aa.jpg",
+pasir: "logamhttps://i.ibb.co/679g8MJ6/Pasir-328ffc79dd668ee28339.jpg",
+logam: "https://i.ibb.co/zVHyHgKX/Perak-Logam-8c9d505cb3dac97f1ce7.jpg", 
+kaca: "https://i.ibb.co/6RxGFQ4p/Kaca-f6e099b721f61c4063a8.jpg",
+emas: "https://i.ibb.co/Vcrvfh49/Emas-dcc9d064e751d66b31b0.jpg" , 
+debu: "https://i.ibb.co/67W2117c/Debu-4a515c0dd19d45962884.jpg", 
+aluminium: "https://i.ibb.co/9mQjYCff/Aluminium-d766fcf98ac4e6039f03.jpg", 
+usia: "https://i.ibb.co/8DXs0Wq7/Usia-4e407790a9b469b596e6.jpg" , 
+suhu: "https://i.ibb.co/TD5VJcpx/Suhu-4fb6639d1b0796848e34.jpg", 
+sesetengah: "https://i.ibb.co/JW0g2zrB/Sesetengah-4cfa9ae70fd430d8cba3.jpg",  
+pertengahan: "https://i.ibb.co/tpncFjk5/Pertengahan-eb9c8d014e733f110bd8.jpg" , 
+peratus: "https://i.ibb.co/xKR2wjP6/Peratus-d702dcf71e62b59a702b.jpg" , 
+gred: "https://i.ibb.co/Mx2q6RvD/Gred-akademik-f6931f11591132d45240.jpg", 
+video: "https://i.ibb.co/Cs54Zrp2/Video-75dce9866d26facee508.jpg", 
+robot: "https://i.ibb.co/kVR7CHg6/Robot-d669971bf2f9d619a081.jpg",
+multimedia: "https://i.ibb.co/bhSQKPH/Multimedia-a7759bf30bda56d220ff.jpg", 
+mesin: "https://i.ibb.co/pvSjq1cj/Mesin-9c33ae0331b56483329a.jpg", 
+gas: "https://i.ibb.co/ccg9NLLN/Gas-f58a181e2c3ea971107b.jpg", 
+formula: "https://i.ibb.co/21frws9d/Formula-7c1a50cd9e852ca3e379.jpg", 
+elektronik: "https://i.ibb.co/60LLKn6z/Elektronik-e5c6d81d339cb713ce64.jpg" ,
+elektrik: "https://i.ibb.co/JRFw2WqZ/Elektrik-7be25d2231f03dfd7a72.jpg",
+bateri: "https://i.ibb.co/xqkJVdHZ/Bateri-2999984545d04a0919b3.jpg", 
+permaian: "https://i.ibb.co/rfFXR5tk/Permainan-47089a52105228079a54.jpg", 
+perlawananakhir: "https://i.ibb.co/LXVRM5Zh/Perlawanan-akhir-65b7ed77a9813664dab4.jpg", 
+pertandingan: "https://i.ibb.co/ch89FJT7/Pertandingan-115a5b238d3fc606f9e2.jpg" , 
+memanah: "https://i.ibb.co/Wpp98NqP/Memanah-224b550d16e0d4347b78.jpg", 
+tempat: "https://i.ibb.co/DD0z0BfB/Tempat-39d65ef07f156f68e998-1.jpg",
+asrama: "https://i.ibb.co/7tcpGPGf/Asrama-65db96ef2640639f5a5a-1.jpg" , 
+surau: "https://i.ibb.co/1JmtKGZS/Surau-e0779f818583c7846344.jpg" , 
+stadium: "https://i.ibb.co/0yBh18L9/Stadium-I-84964342dae94adf8ffd.jpg", 
+restoran: "https://i.ibb.co/TMX2m6ZZ/Restoran-dc9126b5e180efd0f6e6.jpg", 
+lif: "https://i.ibb.co/rGHjZbTt/Lif-ea2087943301702498f5-1.jpg",
+kilang: "https://i.ibb.co/6ckBLmDv/Kilang-26db5b426667fe2944d0-1.jpg",
+kampung: "https://i.ibb.co/TBQq0gfY/Kampung-0a0d99255650f9c93fd1-1.jpg" , 
+dwan: "https://i.ibb.co/tpWP8NPh/Dewan-1ff3a3fe38c16416c032-1.jpg", 
+hotel: "https://i.ibb.co/jkPg3JBR/Hotel-ff4f747da332d15828cc-1.jpg", 
+bengkel: "https://i.ibb.co/HDSBBSwJ/Bengkel-bd2ad9acccf65e96aa6b-1.jpg", 
+bolasepak: "https://i.ibb.co/RqFrXq5/Bola-sepak-bfb658fa247e21ed37a6-2.jpg", 
+bolajaring: "https://i.ibb.co/93pkkZXv/Bola-jaring-551684fe82fd59720160-1.jpg",  
+angkatberat: "https://i.ibb.co/SwhSJ2KL/Angkat-berat-3d3d2e6d1a3a7d71a0e1-1.jpg", 
+seri: "https://i.ibb.co/RpNJVZYb/Sukan-752622b9074af9e707e9.jpg", 
+sepaktarwa: "https://i.ibb.co/rrrgzb3/Sepak-takraw-fa4a60e6db8b26c24e6f.jpg", 
+pertandingan: "https://i.ibb.co/MDV9CTWG/Pertandingan-115a5b238d3fc606f9e2-1.jpg", 
+perlawanan: "https://i.ibb.co/WvHMQH8S/Perlawanan-akhir-65b7ed77a9813664dab4-1.jpg",
+ofsaid: "https://i.ibb.co/RG0LNNJP/Ofsaid-37c3c0cfd8c944e6e981.jpg", 
+pecahrekod: "https://i.ibb.co/TBwcY8pW/Pecah-rekod-f7069e863109efeb0d8b.jpg", 
+hoki: "https://i.ibb.co/HR8hcpN/Hoki-119228f1a9945096ecfc-1.jpg", 
+aras: "https://i.ibb.co/p6SycfRP/Aras-6ba2ec02ea4e77e7436d-1.jpg", 
+beberapa: "https://i.ibb.co/XkJZXxHS/Beberapa-c359bddb9257a7b54e8a-1.jpg", 
+akademik: "https://i.ibb.co/fVfrHWpM/Gred-akademik-f6931f11591132d45240-1.jpg",
+peringkat: "https://i.ibb.co/wFCNBjD3/Peringkat-acb9df07eb86aa827eef-1.jpg", 
+pertengahan: "https://i.ibb.co/bgnQwX00/Pertengahan-eb9c8d014e733f110bd8-1.jpg",
+saiz: "https://i.ibb.co/sdL3hYbX/Saiz-b9189abaec0305b5c127.jpg", 
+suhu: "https://i.ibb.co/fVbWd9v2/Suhu-4fb6639d1b0796848e34-1.jpg",
+usia: "https://i.ibb.co/JFrPsM9Y/Usia-4e407790a9b469b596e6-1.jpg" , 
+tehtarik: "https://i.ibb.co/TMCS0RkC/Teh-Tarik-ad70872406a1969ef281.jpg" ,
+arak: "https://i.ibb.co/zW5M1MCF/Arak-a65ee71a8ef852376f3b.jpg" ,
+sirap: "https://i.ibb.co/Ld4rCqPg/Sirap-bbf770554a51bed81024.jpg" , 
+nescafe: "https://i.ibb.co/VYwg9Cwm/Nescafe-e4a2f72b6a4b5cd24856.jpg" , 
+teh: "https://i.ibb.co/jkMFkMbP/Teh-fe1f3af532222ffa98d9.jpg" , 
+kondom: "https://i.ibb.co/8D8xcSHr/Kondom-d010fb097688da8d4c5f.jpg",
+luka: "https://i.ibb.co/999wzRFq/Luka-0e49f3a61c13aff2aaf3.jpg" , 
+rabun: "https://i.ibb.co/HL8Kf621/Rabun-82074aee38427a0e9ea7.jpg" , 
+selesema: "https://i.ibb.co/21z1r6Fs/Selesema-1c2adb3dd3a6885c2e4d.jpg", 
+sperma: "https://i.ibb.co/7dnmqsmK/Sperma-71852fc3b48265034342.jpg", 
+urut: "https://i.ibb.co/QvWwvhKB/Urut-70e7fc2c77fcf300d04a.jpg" , 
+xray: "https://i.ibb.co/rKJx0kk7/X-ray-74b15797d651b6dd8ee8.jpg" , 
+vitamin: "https://i.ibb.co/HMkgWtK/Vitamin-aa781c45f280ac1f6bf6.jpg" ,
+juri: "https://i.ibb.co/HpMTfbQd/Juri-b7cace7e5f3ae0b25c3c-1.jpg" ,
+jururawat: "https://i.ibb.co/bMDv5wTL/Jururawat-1ed9515be06e9d01b59a.jpg", 
+pengurus: "https://i.ibb.co/Y7Z6bmcV/Pengurus-27e20f6ccacb55dc09b5.jpg",
+polis: "https://i.ibb.co/PsSWfhQW/Polis-3fa95d7b38ba3020ef42.jpg" , 
+temuduga: "https://i.ibb.co/1tg9gSBb/Temuduga-387ba83c1aa7874b78ff.jpg" ,
+jurubahasa: "https://i.ibb.co/PbHRDYw/Jurubahasa-Isyarat-763bfdaf44e550f26d6c.jpg" , 
+bos: "https://i.ibb.co/Fqf2Zkb9/Bos-b9650dc7122a78706fb8.jpg" , 
+jurukamera: "https://i.ibb.co/5Wyc8ZmF/Jurukamera-1846bfcf490ce764a30e.jpg" ,
+jadual: "https://i.ibb.co/V0D7KHSJ/Jadual-0428bd7bac1a44e7c297.jpg" ,
+novel: "https://i.ibb.co/BVSZ7wK2/Novel-1f785b556a45adc52c45-1.jpg" ,
+pasport: "https://i.ibb.co/HTJhf1r0/Pasport-574c5f5f40388f5d91d1.jpg" , 
+statistik: "https://i.ibb.co/xSmckxnf/Statistik-fb6971ba0093d72004ae.jpg" , 
+visa: "https://i.ibb.co/NgBthz49/Visa-15e3af232c1eeb19109c.jpg" , 
+sampul: "https://i.ibb.co/fZzSGnn/Sampul-f2d51fb42a252426fc8b.jpg" ,
+rekod: "https://i.ibb.co/S7HRXz8m/Rekod-453268191b4216cf6b2d.jpg", 
+belajar: "https://i.ibb.co/dN9KRbK/Belajar-88861e428bb0aa10c470.jpg" , 
+diploma: "https://i.ibb.co/QjnQGtJD/Diploma-c9ca2041fa0e4ebfa2f2.jpg" , 
+fizik: "https://i.ibb.co/N2XF2n9L/Fizik-d39dc9735c9ab79d2fba.jpg" , 
+ijazah: "https://i.ibb.co/60LtHWYF/Ijazah-01f4bd302dda40bf45df.jpg" , 
+pendidikan: "https://i.ibb.co/nsyFmtLW/Pendidikan-4111b5ed3a78e948a199.jpg" ,
+pelajaran: "https://i.ibb.co/R4MqFfGq/Pelajaran-c276ee8367f967a36334.jpg" , 
+ponteng: "https://i.ibb.co/RGtCWJhN/Ponteng-1235705e94f36a7028fa.jpg" , 
+semester: "https://i.ibb.co/rfQZ6TJH/Semester-d6d3368b0833cf9f465f.jpg", 
+ujian: "https://i.ibb.co/rGLDBKsG/Ujian-4197cd6e78075d23363c.jpg" , 
+aman: "https://i.ibb.co/JjCnSS3d/Aman-616d20b3eecb8fb90566.jpg",
+buruk: "https://i.ibb.co/tMR02xBJ/Buruk-b1f390e55da673b287c4.jpg", 
+dahaga:"https://i.ibb.co/23gDGjPt/Dahaga-85d238bb1353e551fcf3-1.jpg", 
+kacak: "https://i.ibb.co/B2WvJM82/Kacak-e6f187c95b8a38f8bcc8.jpg", 
+lipat: "https://i.ibb.co/FkTjKWX7/Lipat-aa858e1f47f0c79b08ac.jpg", 
+pandu: "https://i.ibb.co/bjfxcgL1/Pandu-9ea12a2f407481caa065.jpg", 
+sembelih:"https://i.ibb.co/qty7RCy/Sembelih-haiwan-b1e88771bbc1a806f08b.jpg", 
+hospital:"https://i.ibb.co/jkGkgwNv/Hospital-e1de8168a6129a770291-1.jpg", 
+ambulans:"https://i.ibb.co/gZk2pwkZ/Ambulans-9b9aa1b0fde34732c0f3-1.jpg", 
+kanan:"https://i.ibb.co/bg9Qbvnq/Kanan-5b39ee88da259bea25d4-1.jpg", 
+kiri: "https://i.ibb.co/62KcdbR/Kiri-378d09483b0911ff12c1-1.jpg",
+tidak: "https://i.ibb.co/FRrgzyQ/Tidak-a785ae42f197ad1e523e-1.jpg", 
+selalu: "https://i.ibb.co/HTFtffJJ/Selalu-53535a255bbeaf06558c-1.jpg", 
+akan: "https://i.ibb.co/39n59FMW/Akan-3bb1faa656300c10097c.jpg", 
+juga: "https://i.ibb.co/B2fZJjQh/Juga-8feca30d97f1a840f0b3.jpg" ,
+tanpa: "https://i.ibb.co/79dgNVy/Tanpa-50cda4b4d88253ad3040-1.jpg", 
+kecuali: "https://i.ibb.co/B5t8TQhZ/Kecuali-0c145c698b686699423d-2.jpg", 
+kemudian: "https://i.ibb.co/M5VzySq7/Kemudian-7f4a8a08a8e91827c26c-2.jpg", 
+soalan: "https://i.ibb.co/tMymQ8g6/Soalan-7a8711f0b79530118b10.jpg", 
+puisi: "https://i.ibb.co/N2mvR7cM/Puisi-025fab03f71ad9f2b0ad-1.jpg",
+tariansinga: "https://i.ibb.co/Lz5gLRN7/Tarian-Singa-0f0d3ed786dcde9db0a3.jpg" , 
+silapmata: "https://i.ibb.co/6RfYxSgm/Silap-mata-7f21b61cdf6a1368cde2.jpg" ,
+pencen: "https://i.ibb.co/B2szmDPn/Pencen-a93c846569532755052a-1.jpg",
+almari: "https://i.ibb.co/vvVs0qRp/Almari-89fd881bdc63362f1423-2.jpg", 
+badan: "https://i.ibb.co/S4Gn6D59/Badan-87f34d5ee3cc8b2cdbed-1.jpg", 
+bonus: "https://i.ibb.co/XxS76Fqw/Bonus-be399506a62e2dd35766-1.jpg", 
+jiran: "https://i.ibb.co/cKsVJvZN/Jiran-31bd1cc4a9898a87afa9-3.jpg" ,
+kampung: "https://i.ibb.co/Lz2CyLJX/Kampung-0a0d99255650f9c93fd1-2.jpg" , 
+pasar: "https://i.ibb.co/PsYBW4GL/Pasar-bb015a83e4f3b92eb10b-1.jpg", 
+alahan: "https://i.ibb.co/VY8q32P3/Alahan-e0199fd13c15226fef99.jpg" , 
+koma: "https://i.ibb.co/gbDy1PMy/Koma-3672073456d5d150c032.jpg", 
+lemak: "https://i.ibb.co/9kfvR06K/Lemak-839500fc78de5aa5afd0.jpg" , 
+rabun: "https://i.ibb.co/Dg658KRf/Rabun-82074aee38427a0e9ea7-1.jpg" , 
+virus: "https://i.ibb.co/6J8MPZr6/Virus-d212b92f52c854d4479c-1.jpg" , 
+hanya: "https://i.ibb.co/KxTFd4z8/Hanya-b420f93704f9fd0e5a22-1.jpg", 
+tiap: "https://i.ibb.co/cShB7PwT/Tiap-843e17b0a15a8a0cdd30-1.jpg" , 
+bawang: "https://i.ibb.co/dwBRD9T9/Bawang-61c3cb7933a64f074ecd-1.jpg" ,
+biskut: "https://i.ibb.co/hRpZdBR7/Biskut-76abab4ace2c7bad8977.jpg" ,
+daging: "https://i.ibb.co/s9924P2r/Daging-42fc3b365e415b039348.jpg", 
+garam: "https://i.ibb.co/k6PJm65P/Garam-192ee12eb33c2ddf2399.jpg" , 
+kicap: "https://i.ibb.co/nqKKgfMN/Kicap-afa67c250ef28e7c37de-1.jpg" ,
+kurma: "https://i.ibb.co/7dLdVQTb/Kurma-886ef7c573a6f5a510ae-1.jpg", 
+lemang: "https://i.ibb.co/BVCTL1HP/Lemang-8d47975c08f946783dd4-1.jpg", 
+nasi: "https://i.ibb.co/zHHTTf0q/Nasi-81c4e6ad724545aa8068.jpg", 
+roti: "https://i.ibb.co/XZgDcWnP/Roti-8ec35ce96766609e5af3.jpg", 
+sarapan: "https://i.ibb.co/fGkJgZGD/Sarapan-df9487cf2c1805e01674-1.jpg" ,
+benci: "https://i.ibb.co/KTD1RCY/Benci-0cc240f8b9ecd6ec0ec9.jpg" ,
+cinta: "https://i.ibb.co/HLdQjnWK/Cinta-6c7e958d080b126ff423.jpg" , 
+dendam: "https://i.ibb.co/C5vkdhzb/Dendam-366067bd6be7943c2d6c-1.jpg", 
+kecewa: "https://i.ibb.co/8nCKkGGT/Kecewa-2e845cc0ab6a7b8ae24c.jpg", 
+letih: "https://i.ibb.co/mFrv7WRj/Letih-c3f167daa801aee71591-1.jpg", 
+bersemuka: "https://i.ibb.co/9H23sGNB/Bersemuka-e1d19d9efd57e173aae5.jpg",
 bebel: "https://i.ibb.co/W4SygXTW/Bebel-a0e8232b9113af6a994d.jpg",
 berjalan: "https://i.ibb.co/N26HRKFw/Berjalan-43024d3d67e775b3d914-2.jpg" ,
 bisik: "https://i.ibb.co/3yCvFx1B/Bisik-676bd4ca2814a5252778-1.jpg",
@@ -763,3 +762,4 @@ setInterval(() => {
     document.body.appendChild(icon);
     setTimeout(() => icon.remove(), 5000);
 }, 2000);
+
