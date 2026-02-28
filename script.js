@@ -1,7 +1,9 @@
+// 1. FIREBASE CONFIG
 const firebaseConfig = { databaseURL: "https://tanda-x-pro-default-rtdb.asia-southeast1.firebasedatabase.app/" };
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
+// 2. DICTIONARY (Imej Isyarat)
 const wordImages = { 
   kami: "https://i.ibb.co/2BQ4Zyw/Kami-b14a9c807d6417a26758-1.jpg",
     saya: "https://i.ibb.co/tTYPQ2YH/Saya-308cf649158d30e78273.jpg",
@@ -641,28 +643,49 @@ cheongsam: "https://i.ibb.co/yFyX2kcF/Cheong-Sam-bb768bb2bbea9a7d97b2.jpg",
 cermin: "https://i.ibb.co/9mLsWhVW/Cermin-a011bddc13e2a2f09897.jpg",
 gendang: "https://i.ibb.co/xqpkrXWt/Gendang-e07f7f9b9565c0c2aadb.jpg",
 tengok: "https://i.ibb.co/2S0LmmK/Lihat-Tengok-40c6f1eb831eb4fa42c4.jpg",
-  
+  };
+
+// 3. NAVIGATION & LOGOUT (Dibaiki)
+window.logKeluar = () => {
+    // Memberhentikan sesi dan reload halaman ke Login
+    window.location.reload(); 
 };
 
-window.logKeluar = () => window.location.reload();
-window.tukarKeDaftar = () => { document.getElementById('login-screen').style.display = 'none'; document.getElementById('register-screen').style.display = 'block'; };
-window.tukarKeLogin = () => { document.getElementById('login-screen').style.display = 'block'; document.getElementById('register-screen').style.display = 'none'; };
+window.tukarKeDaftar = () => { 
+    document.getElementById('login-screen').style.display = 'none'; 
+    document.getElementById('register-screen').style.display = 'block'; 
+};
 
+window.tukarKeLogin = () => { 
+    document.getElementById('login-screen').style.display = 'block'; 
+    document.getElementById('register-screen').style.display = 'none'; 
+};
+
+// 4. PROSES AUTH & ADMIN
 window.prosesRegister = () => {
-    const n = document.getElementById('regName').value, u = document.getElementById('regUser').value.toLowerCase(), p = document.getElementById('regPass').value, ph = document.getElementById('regPhone').value;
-    if(!n || !u || !p) return alert("Isi semua!");
-    db.ref('users/' + u).set({ nama: n, pass: p, telefon: ph, status: "pending" }).then(() => { alert("Berjaya!"); tukarKeLogin(); });
+    const n = document.getElementById('regName').value, 
+          u = document.getElementById('regUser').value.toLowerCase(), 
+          p = document.getElementById('regPass').value, 
+          ph = document.getElementById('regPhone').value;
+    if(!n || !u || !p) return alert("Sila isi semua ruangan!");
+    db.ref('users/' + u).set({ nama: n, pass: p, telefon: ph, status: "pending" })
+      .then(() => { alert("Pendaftaran Berjaya! Tunggu kelulusan Admin."); tukarKeLogin(); });
 };
 
 window.prosesLogin = () => {
-    const u = document.getElementById('userInput').value.toLowerCase(), p = document.getElementById('passInput').value;
+    const u = document.getElementById('userInput').value.toLowerCase(), 
+          p = document.getElementById('passInput').value;
+    // Logik Admin
     if (u === "admin" && p === "1234") return bukaAdmin();
+    // Logik User
     db.ref('users/' + u).once('value', (s) => {
         const d = s.val();
         if (d && d.pass === p) {
-            if (d.status === "active") { document.getElementById('login-screen').style.display = 'none'; document.getElementById('mainAppSection').style.display = 'block'; }
-            else alert("Akaun Pending!");
-        } else alert("Salah Password!");
+            if (d.status === "active") { 
+                document.getElementById('login-screen').style.display = 'none'; 
+                document.getElementById('mainAppSection').style.display = 'block'; 
+            } else alert("Akaun anda masih Pending!");
+        } else alert("Username atau Password salah!");
     });
 };
 
@@ -671,50 +694,72 @@ function bukaAdmin() {
     document.getElementById('adminSection').style.display = 'block';
     db.ref('users').on('value', (snapshot) => {
         const users = snapshot.val();
-        let pT = '<table><tr><th>User</th><th>No. Telefon</th><th>Aksi</th></tr>', aT = pT;
+        let pT = '<table><tr><th>User</th><th>Telefon</th><th>Aksi</th></tr>', aT = pT;
         let pc = 0, ac = 0;
         for (let id in users) {
             let d = users[id], tel = d.telefon || "-", row = `<tr><td>${id}</td><td>${tel}</td>`;
-            if (d.status === "pending") { pT += row + `<td><button onclick="approve('${id}')">OK</button></td></tr>`; pc++; }
+            if (d.status === "pending") { pT += row + `<td><button onclick="approve('${id}')">Lulus</button></td></tr>`; pc++; }
             else { aT += row + `<td><button onclick="deactivate('${id}')">OFF</button></td></tr>`; ac++; }
         }
         document.getElementById('pendingList').innerHTML = pT + '</table>';
         document.getElementById('activeList').innerHTML = aT + '</table>';
-        document.getElementById('pTitle').innerText = `⏳ Menunggu Kelulusan (${pc})`;
-        document.getElementById('aTitle').innerText = `✅ User Aktif (${ac})`;
+        document.getElementById('pTitle').innerText = `⏳ Menunggu (${pc})`;
+        document.getElementById('aTitle').innerText = `✅ Aktif (${ac})`;
     });
 }
 
 window.approve = (id) => db.ref('users/' + id).update({ status: "active" });
 window.deactivate = (id) => db.ref('users/' + id).update({ status: "pending" });
 
-document.getElementById('btnYT').onclick = () => { const s = document.getElementById('youtubeSection'); s.style.display = (s.style.display === "none") ? "block" : "none"; };
+// 5. YOUTUBE & SPEECH RECOGNITION (SEQUENTIAL DISPLAY)
+document.getElementById('btnYT').onclick = () => { 
+    const s = document.getElementById('youtubeSection'); 
+    s.style.display = (s.style.display === "none") ? "block" : "none"; 
+};
+
 document.getElementById('btnLoad').onclick = () => {
-    const url = document.getElementById('youtubeUrl').value, id = url.match(/(?:v=|youtu\.be\/)([^"&?\/\s]{11})/);
+    const url = document.getElementById('youtubeUrl').value, 
+          id = url.match(/(?:v=|youtu\.be\/)([^"&?\/\s]{11})/);
     if (id) document.getElementById('player').innerHTML = `<iframe src="https://www.youtube.com/embed/${id[1]}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
 };
 
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 if (Recognition) {
     const rec = new Recognition(); rec.lang = 'ms-MY'; rec.continuous = true;
-    rec.onresult = (e) => {
+    
+    rec.onresult = async (e) => {
         const t = e.results[e.results.length - 1][0].transcript.toLowerCase().trim();
         document.getElementById('transcriptDisplay').innerText = `"${t}"`;
+        
         const words = t.split(" ");
-        for (let i = words.length - 1; i >= 0; i--) {
-            if (wordImages[words[i]]) { document.getElementById('signImage').src = wordImages[words[i]]; document.getElementById('output').innerText = words[i].toUpperCase(); break; }
+        // Loop setiap perkataan satu demi satu
+        for (const word of words) {
+            if (wordImages[word]) {
+                document.getElementById('signImage').src = wordImages[word];
+                document.getElementById('outputWord').innerText = word.toUpperCase();
+                // Tunggu 1.2 saat sebelum tukar ke perkataan seterusnya
+                await new Promise(resolve => setTimeout(resolve, 1200));
+            }
         }
     };
-    document.getElementById('btnStart').onclick = () => { rec.start(); document.getElementById('statusText').innerText = "BERJALAN"; document.getElementById('statusIndicator').classList.add('active'); };
-    document.getElementById('btnStop').onclick = () => { rec.stop(); document.getElementById('statusText').innerText = "SEDIA"; document.getElementById('statusIndicator').classList.remove('active'); };
+
+    document.getElementById('btnStart').onclick = () => { 
+        rec.start(); 
+        document.getElementById('statusText').innerText = "MENDENGAR"; 
+        document.getElementById('statusIndicator').classList.add('active'); 
+    };
+    document.getElementById('btnStop').onclick = () => { 
+        rec.stop(); 
+        document.getElementById('statusText').innerText = "SEDIA"; 
+        document.getElementById('statusIndicator').classList.remove('active'); 
+    };
 }
 
+// 6. ANIMASI RAMADHAN
 setInterval(() => {
     const icon = document.createElement('div');
-    icon.style.cssText = `position:fixed; top:-50px; left:${Math.random()*100}vw; animation: fall ${Math.random()*3+4}s linear forwards; pointer-events:none; z-index:9999;`;
-    icon.innerText = ['🍊', '🧧', '🏮'][Math.floor(Math.random()*3)];
+    icon.style.cssText = `position:fixed; top:-50px; left:${Math.random()*100}vw; animation: fall ${Math.random()*3+4}s linear forwards; pointer-events:none; z-index:9999; font-size:20px;`;
+    icon.innerText = ['🌙', '⭐', '✨', '🕌'][Math.floor(Math.random()*4)];
     document.body.appendChild(icon);
     setTimeout(() => icon.remove(), 5000);
-}, 1500);
-
-
+}, 2000);
